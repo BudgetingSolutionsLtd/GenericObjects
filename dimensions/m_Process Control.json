@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"m_Process Control",
+	"Hierarchies@Code.links":
+	[
+		"m_Process Control.hierarchies/m_Process Control.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('m_Process Control')/Hierarchies('m_Process Control')"
+	}
+}
