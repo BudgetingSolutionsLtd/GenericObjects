@@ -1,0 +1,20 @@
+{
+	"@type":"Cube",
+	"Name":"SYS Instance to Instance Tool",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('ITIT Input')"
+		},
+		{
+			"@id":"Dimensions('m_ITIT')"
+		}
+	],
+	"Rules@Code.link":"SYS Instance to Instance Tool.rules",
+	"Views@Code.links":
+	[
+		"SYS Instance to Instance Tool.views/All.json",
+		"SYS Instance to Instance Tool.views/Clear.json",
+		"SYS Instance to Instance Tool.views/Type.json"
+	]
+}

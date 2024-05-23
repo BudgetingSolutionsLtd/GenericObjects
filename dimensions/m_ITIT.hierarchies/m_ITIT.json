@@ -1,0 +1,32 @@
+{
+	"@type":"Hierarchy",
+	"Name":"m_ITIT",
+	"Elements":
+	[
+		{
+			"Name":"Type",
+			"Type":"String"
+		},
+		{
+			"Name":"Object",
+			"Type":"String"
+		},
+		{
+			"Name":"Source",
+			"Type":"String"
+		},
+		{
+			"Name":"Destination",
+			"Type":"String"
+		},
+		{
+			"Name":"Status",
+			"Type":"String"
+		},
+		{
+			"Name":"File",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

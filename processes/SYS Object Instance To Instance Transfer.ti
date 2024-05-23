@@ -1,0 +1,38 @@
+#region Prolog
+cubename = 'SYS Instance to Instance Tool';
+viewname = 'Type';
+
+if(ViewExists( cubename, viewname )=0);
+    ViewCreate( cubename, viewname, 0 );
+endif;
+
+dimname = 'm_ITIT';
+
+If(SubsetExists( dimname, viewname )=1);
+    SubsetDestroy( dimname, viewname );
+endif;
+
+SubsetCreate( dimname, viewname, 1 );
+SubsetElementInsert( dimname, viewname, 'Type', 1 );
+
+DatasourceCubeview = viewname;
+
+# full paths to data folders
+source=CellGetS( 'SYS Instance to Instance Tool', '1', 'Source' );
+
+dest=CellGetS( 'SYS Instance to Instance Tool', '1', 'Destination' );
+
+#endregion
+#region Data
+if(Value@='');
+    ItemSkip;
+endif;
+
+file=CellGetS( 'SYS Instance to Instance Tool', vLine, 'File' );
+
+command = 'xcopy "' | source | '\' | file | '" "' | dest | '" /Y';
+
+ExecuteCommand( command, 1 );
+
+CellPutS( 'Done :)', 'SYS Instance to Instance Tool', vLine, 'Status' );
+#endregion

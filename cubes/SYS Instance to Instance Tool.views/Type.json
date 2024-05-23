@@ -1,0 +1,15 @@
+{
+	"@type":"MDXView",
+	"Name":"Type",
+	"MDX@Code.link":"Type.mdx",
+	"Meta" : 
+	{
+		"Aliases" : {},
+		"ContextSets" : {},
+		"ExpandAboves" : 
+		{
+			"[ITIT Input].[ITIT Input]" : false,
+			"[m_ITIT].[m_ITIT]" : false
+		}
+	}
+}

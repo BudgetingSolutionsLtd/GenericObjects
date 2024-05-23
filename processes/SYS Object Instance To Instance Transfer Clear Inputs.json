@@ -1,0 +1,13 @@
+{
+	"@type":"Process",
+	"Name":"SYS Object Instance To Instance Transfer Clear Inputs",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Object Instance To Instance Transfer Clear Inputs.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[]
+}
