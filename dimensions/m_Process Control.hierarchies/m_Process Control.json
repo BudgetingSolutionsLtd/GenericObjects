@@ -1,0 +1,32 @@
+{
+	"@type":"Hierarchy",
+	"Name":"m_Process Control",
+	"Elements":
+	[
+		{
+			"Name":"Last Run By",
+			"Type":"String"
+		},
+		{
+			"Name":"Last Run Time",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Time Taken",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Number of Errors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Message",
+			"Type":"String"
+		},
+		{
+			"Name":"File Path",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

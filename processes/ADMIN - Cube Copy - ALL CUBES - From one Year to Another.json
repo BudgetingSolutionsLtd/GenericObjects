@@ -1,0 +1,49 @@
+{
+	"@type":"Process",
+	"Name":"ADMIN - Cube Copy - ALL CUBES - From one Year to Another",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"ADMIN - Cube Copy - ALL CUBES - From one Year to Another.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"VariablesUIData":
+	[
+		"VarType=32\fColType=827\f"
+	],
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForClient":"}Cubes:}Cubes",
+		"dataSourceNameForServer":"}Cubes:}Cubes",
+		"subset":"All"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pVersion",
+			"Prompt":"Version to Copy",
+			"Value":"Forecast",
+			"Type":"String"
+		},
+		{
+			"Name":"pYearFrom",
+			"Prompt":"Year to Copy From (FY20xx/xx)",
+			"Value":"FY2023/24",
+			"Type":"String"
+		},
+		{
+			"Name":"pYearTo",
+			"Prompt":"Year to Copy To  (FY20xx/xx)",
+			"Value":"FY2024/25",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"vCube",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

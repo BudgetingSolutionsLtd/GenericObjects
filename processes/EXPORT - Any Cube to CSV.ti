@@ -1,0 +1,107 @@
+#region Prolog
+
+# Extracts all leaf level data 
+# Does include calculations 
+# Does not include consolidations
+# Is zero suppressed
+# Programmed for up to 7 dimensions
+
+# Create view for exporting
+sView = GetProcessName|' Export '|pCube;
+sSubset = GetProcessName|' Export '|pCube;
+nTemp = 1;
+
+sFileLocation = GetProcessErrorFileDirectory;
+sFileLocation = Subst(sFileLocation, 1, LONG( sFileLocation )-5)|'Data\Model_Upload';
+sFileName = pCube | ' Extract.csv';
+
+ViewDestroy( pCube, sView );
+ViewCreate( pCube, sView, nTemp );
+
+nDim=CubeDimensionCountGet( pCube );
+iDim = 1;
+While (iDim <= nDim);
+  sDim = TABDIM( pCube, iDim );
+  IF(SubsetExists( sDim, sSubset )<>0);
+      SubsetDestroy( sDim, sSubset );
+  Endif;
+    SubsetCreate( sDim, sSubset, nTemp );
+    SubsetMDXSet( sDim, sSubset, 'TM1Filterbylevel(TM1SubsetAll(['| sDim |']),0)' );
+    SubsetMDXSet( sDim, sSubset, '' );
+    ViewSubsetAssign( pCube, sView, sDim, sSubset );
+iDim = iDim+1;
+End;
+
+IF(pYear@<>'');
+    sDim = 'Period';
+    SubsetDeleteAllElements( sDim, sSubset );
+    SubsetMDXSet( sDim, sSubset, 'TM1FILTERBYLEVEL(TM1DRILLDOWNMEMBER({[Period].[' | pYear | ']} , all , recursive) , 0)' );
+    SubsetMDXSet( sDim, sSubset, '' );
+Endif;
+
+IF(pVersion@<>'');
+    sDim = 'Version';
+    SubsetDeleteAllElements( sDim, sSubset );
+    SubsetMDXSet( sDim, sSubset, '{[' | sDim | '].[' | pVersion | ']}' );
+    SubsetMDXSet( sDim, sSubset, '' );
+Endif;
+
+# Update Source view
+ViewExtractSkipCalcsSet (pCube, sView, 0);
+ViewExtractSkipRuleValuesSet (pCube, sView, 0);
+ViewExtractSkipZeroesSet (pCube, sView, 1);
+
+DataSourceCubeView = sView;
+DatasourceNameForClient = pCube;
+DatasourceNameForServer = pCube;
+DatasourceType = 'VIEW';
+
+nLine=1;
+sHeader = '';
+#endregion
+#region Data
+
+# Create header line on CSV
+IF(nLine=1);
+  nDim=CubeDimensionCountGet( pCube );
+  IF(nDim = 2);
+    ASCIIOutput( sFileLocation | '\' | sFileName, TABDIM( pCube, 1 ), TABDIM( pCube, 2 ), 'Value');
+  ELSEIF(nDim = 3);
+    ASCIIOutput( sFileLocation | '\' | sFileName, TABDIM( pCube, 1 ), TABDIM( pCube, 2 ), TABDIM( pCube, 3 ), 'Value');
+  ELSEIF(nDim = 4);
+    ASCIIOutput( sFileLocation | '\' | sFileName, TABDIM( pCube, 1 ), TABDIM( pCube, 2 ), TABDIM( pCube, 3 ), TABDIM( pCube, 4 ), 'Value');
+  ELSEIF(nDim = 5);
+    ASCIIOutput( sFileLocation | '\' | sFileName, TABDIM( pCube, 1 ), TABDIM( pCube, 2 ), TABDIM( pCube, 3 ), TABDIM( pCube, 4 ), TABDIM( pCube, 5 ), 'Value');
+  ELSEIF(nDim = 6);
+    ASCIIOutput( sFileLocation | '\' | sFileName, TABDIM( pCube, 1 ), TABDIM( pCube, 2 ), TABDIM( pCube, 3 ), TABDIM( pCube, 4 ), TABDIM( pCube, 5 ), TABDIM( pCube, 6 ), 'Value');
+  ELSEIF(nDim = 7);
+    ASCIIOutput( sFileLocation | '\' | sFileName, TABDIM( pCube, 1 ), TABDIM( pCube, 2 ), TABDIM( pCube, 3 ), TABDIM( pCube, 4 ), TABDIM( pCube, 5 ), TABDIM( pCube, 6 ), TABDIM( pCube, 7 ), 'Value');
+  #ELSEIF(nDim = 8);
+    #ASCIIOutput( sFileLocation | '\' | sFileName, TABDIM( pCube, 1 ), TABDIM( pCube, 2 ), TABDIM( pCube, 3 ), TABDIM( pCube, 4 ), TABDIM( pCube, 5 ), TABDIM( pCube, 6 ), TABDIM( pCube, 7 ), TABDIM( pCube, 8 ), 'Value');
+  #ELSEIF(nDim = 9);
+    #ASCIIOutput( sFileLocation | '\' | sFileName, TABDIM( pCube, 1 ), TABDIM( pCube, 2 ), TABDIM( pCube, 3 ), TABDIM( pCube, 4 ), TABDIM( pCube, 5 ), TABDIM( pCube, 6 ), TABDIM( pCube, 7 ), TABDIM( pCube, 8 ), TABDIM( pCube, 9 ), 'Value');
+  Else;
+    ItemReject( 'Cube has more than 7 dimensions' );
+  EndIf;
+  nLine=2;
+Endif;
+
+# Export line depends on number of dimnesions in the cube
+IF(nDim = 2);
+  ASCIIOutput( sFileLocation | '\' | sFileName, v1, v2, v3 );
+ELSEIF(nDim = 3);
+  ASCIIOutput( sFileLocation | '\' | sFileName, v1, v2, v3, v4 );
+ELSEIF(nDim = 4);
+  ASCIIOutput( sFileLocation | '\' | sFileName, v1, v2, v3, v4, v5 );
+ELSEIF(nDim = 5);
+  ASCIIOutput( sFileLocation | '\' | sFileName, v1, v2, v3, v4, v5, v6 );
+ELSEIF(nDim = 6);
+  ASCIIOutput( sFileLocation | '\' | sFileName, v1, v2, v3, v4, v5, v6, v7 );
+ELSEIF(nDim = 7);
+  ASCIIOutput( sFileLocation | '\' | sFileName, v1, v2, v3, v4, v5, v6, v7, v8 );
+#ELSEIF(nDim = 8);
+  #ASCIIOutput( sFileLocation | '\' | sFileName, v1, v2, v3, v4, v5, v6, v7, v8, v9 );
+#ELSEIF(nDim = 9);
+  #ASCIIOutput( sFileLocation | '\' | sFileName, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10 );
+EndIf;
+#endregion

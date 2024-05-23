@@ -1,0 +1,37 @@
+{
+	"@type":"Process",
+	"Name":"DIMUPDATE Time Dimension",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"DIMUPDATE Time Dimension.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"VariablesUIData":
+	[
+		"VarType=32\fColType=827\f"
+	],
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForClient":"Year:Year",
+		"dataSourceNameForServer":"Year:Year",
+		"subset":"All"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pAddYear",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"vYear",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

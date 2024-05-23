@@ -1,0 +1,305 @@
+#region Prolog
+
+## This process will loop through the week dimension (others to be added - Day, Period) and create the index
+## Variables
+sDimPrd = 'Period';
+nTmp = 1;
+sSrcSubset = GetProcessName;
+sLoopSubset = GetProcessName |'_Loop';
+
+
+SubsetCreate( sDimPrd, sSrcSubset, nTmp );
+SubsetElementInsert( sDimPrd, sSrcSubset, 'All Financial Years', 1);
+
+DatasourceNameForServer = sDimPrd;
+DatasourceDimensionSubset = sSrcSubset;
+#endregion
+#region Metadata
+
+# Monthly Rollups
+
+sCurrPrd = CellGetS('SYS Control','Current Reporting Period','String' );
+sCurrQtr = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Financial Quarter');  
+sCurrYr = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Financial Year');  
+
+# Unwind Monthly Rollups
+  iUnwind = ELCOMPN(sDimPrd, 'Monthly Rollups');
+  While(iUnwind > 0);
+    sRollup = ELCOMP( sDimPrd, 'Monthly Rollups', iUnwind );
+    DimensionElementDelete( sDimPrd, sRollup );
+  iUnwind = iUnwind - 1;
+  End;  
+
+  DimensionElementInsert( sDimPrd, '', 'Monthly Rollups', 'C' );
+
+  DimensionElementInsert( sDimPrd, '', 'Prev YTD', 'C' );
+  DimensionElementInsert( sDimPrd, '', 'Prev Year YTD', 'C' );
+
+# QTD / Prev Yr QTD
+  
+  DimensionElementInsert( sDimPrd, '', 'QTD', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'QTD', 1 );
+
+  DimensionElementInsert( sDimPrd, '', 'Prev Yr QTD', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev Yr QTD', 1 );
+
+  sPeriod = sCurrPrd;
+  
+  iLoop = 3;
+  While( iLoop > 0);
+    sYear = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Year');    
+    sQuarter = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Quarter'); 
+    IF( sQuarter @= sCurrQtr);
+      DimensionElementComponentAdd( sDimPrd, 'QTD', sPeriod, 1 ); 
+      
+      sFinancialMonth = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Month');  
+      sPriorYear = CellGetS('}ElementAttributes_Year', sYear, 'Last FY');
+      sLastYrMonth = sFinancialMonth | ' ' | sPriorYear;
+      DimensionElementComponentAdd( sDimPrd, 'Prev Yr QTD', sLastYrMonth, 1 );         
+    Else;
+      iLoop = 0;
+    EndIF;
+    sPeriod = CellGetS('}ElementAttributes_Period', sPeriod, 'Previous Period');    
+    iLoop = iLoop - 1;
+  End;
+
+
+
+# QTG
+
+  sPeriod = sCurrPrd;
+
+  DimensionElementInsert( sDimPrd, '', 'QTG', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'QTG', 1 );
+
+  DimensionElementInsert( sDimPrd, '', 'Prev Yr QTG', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev Yr QTG', 1 );
+
+  iLoop = 2;
+  While( iLoop > 0);
+    sPeriod = CellGetS('}ElementAttributes_Period', sPeriod, 'Next Period');   
+      
+    sYear = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Year');    
+    sQuarter = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Quarter'); 
+    IF( sQuarter @= sCurrQtr);
+      DimensionElementComponentAdd( sDimPrd, 'QTG', sPeriod, 1 ); 
+      
+      sFinancialMonth = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Month');  
+      sPriorYear = CellGetS('}ElementAttributes_Year', sYear, 'Last FY');
+      sLastYrMonth = sFinancialMonth | ' ' | sPriorYear;
+      DimensionElementComponentAdd( sDimPrd, 'Prev Yr QTG', sLastYrMonth, 1 );         
+    Else;
+      iLoop = 0;
+    EndIF;
+ 
+    iLoop = iLoop - 1;
+  End;
+
+
+
+# Prev QTD
+
+  sPeriod = sCurrPrd;
+
+  DimensionElementInsert( sDimPrd, '', 'Prev QTD', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev QTD', 1 );
+
+  sPeriod = CellGetS('}ElementAttributes_Period', sPeriod, 'Previous Period');
+  sPrevCurrQtr = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Quarter');
+
+  iLoop = 3;
+  While( iLoop > 0);
+    sYear = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Year');    
+    sQuarter = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Quarter'); 
+    IF( sQuarter @= sPrevCurrQtr);
+      DimensionElementComponentAdd( sDimPrd, 'Prev QTD', sPeriod, 1 );       
+    Else;
+      iLoop = 0;
+    EndIF;
+    sPeriod = CellGetS('}ElementAttributes_Period', sPeriod, 'Previous Period');    
+    iLoop = iLoop - 1;
+  End;
+
+
+# Prev QTG
+
+  sPeriod = sCurrPrd;
+
+  DimensionElementInsert( sDimPrd, '', 'Prev QTG', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev QTG', 1 );
+
+  sPeriod = CellGetS('}ElementAttributes_Period', sPeriod, 'Previous Period');
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev QTD', 1 );
+
+  iLoop = 2;
+  While( iLoop > 0);
+    sPeriod = CellGetS('}ElementAttributes_Period', sPeriod, 'Next Period');    
+      
+    sYear = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Year');    
+    sQuarter = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Quarter'); 
+    IF( sQuarter @= sPrevCurrQtr);
+      DimensionElementComponentAdd( sDimPrd, 'Prev QTG', sPeriod, 1 );       
+    Else;
+      iLoop = 0;
+    EndIF;
+
+    iLoop = iLoop - 1;
+  End;
+
+# Current Year
+
+  DimensionElementInsert( sDimPrd, '', 'Current Year', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Current Year', 1 );
+  DimensionElementComponentAdd( sDimPrd, 'Current Year', sCurrYr, 1 );  
+  
+# Current Month 
+
+  DimensionElementInsert( sDimPrd, '', 'Current Month', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Current Month', 1 );
+  DimensionElementComponentAdd( sDimPrd, 'Current Month', sCurrPrd, 1 );
+  
+# Prev Mth  
+
+  sPeriod = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Previous Period');
+  
+  DimensionElementInsert( sDimPrd, '', 'Prev Mth', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev Mth', 1 );
+  DimensionElementComponentAdd( sDimPrd, 'Prev Mth', sPeriod, 1 );
+
+
+# Current YTD / Prev Yr YTD
+
+  DimensionElementInsert( sDimPrd, '', 'Current YTD', 'C' );  
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Current YTD', 1 );
+  DimensionElementComponentAdd( sDimPrd, 'Current YTD', sCurrPrd, 1 );  
+
+  DimensionElementInsert( sDimPrd, '', 'Prev Yr YTD', 'C' );  
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev Yr YTD', 1 );
+
+  sPeriod = sCurrPrd;
+  
+  iLoop = 12;
+  While(iLoop >0);
+    sYear = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Year');    
+    IF( sYear @= sCurrYr);
+      DimensionElementComponentAdd( sDimPrd, 'Current YTD', sPeriod, 1 );
+      sFinancialMonth = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Month');  
+      sPriorYear = CellGetS('}ElementAttributes_Year', sYear, 'Last FY');
+      sLastYrMonth = sFinancialMonth | ' ' | sPriorYear;
+      DimensionElementComponentAdd( sDimPrd, 'Prev Yr YTD', sLastYrMonth, 1 );      
+    Else;
+      iLoop = 0;
+    EndIF;
+    
+    sPeriod = CellGetS('}ElementAttributes_Period', sPeriod, 'Previous Period');    
+    iLoop = iLoop - 1;
+  End;
+
+    IF( SubsetExists( 'Period', 'Current Year' ) = 0);
+      SubsetCreate( 'Period', 'Current Year', 0 );
+    Else;
+        SubsetDeleteAllElements( 'Period', 'Current Year' );
+    EndIF;
+
+    sInsert = sCurrPrd | ' YTD';
+    SubsetElementInsert( 'Period', 'Current Year', sInsert, 1 );
+
+# Prev Mth YTD
+
+  sPeriod = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Previous Period');
+
+  DimensionElementInsert( sDimPrd, '', 'Prev Mth YTD', 'C' );  
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev Mth YTD', 1 );
+  
+  iLoop = 12;
+  While(iLoop >0);
+    sYear = CellGetS('}ElementAttributes_Period', sPeriod, 'Financial Year');    
+    IF( sYear @= sCurrYr);
+      DimensionElementComponentAdd( sDimPrd, 'Prev Mth YTD', sPeriod, 1 );
+    Else;
+      iLoop = 0;
+    EndIF;
+    
+    sPeriod = CellGetS('}ElementAttributes_Period', sPeriod, 'Previous Period');    
+    iLoop = iLoop - 1;
+  End;
+  
+# Prev Yr Month
+
+  sFinancialMonth = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Financial Month');  
+  sPriorYear = CellGetS('}ElementAttributes_Year', sCurrYr, 'Last FY');
+  sPeriod = sFinancialMonth | ' ' | sPriorYear;
+
+  DimensionElementInsert( sDimPrd, '', 'Prev Yr Mth', 'C' );  
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Prev Yr Mth', 1 );
+  DimensionElementComponentAdd( sDimPrd, 'Prev Yr Mth', sPeriod, 1 );  
+
+# Plan Periods
+  sLastActPrd = CellGetS('SYS Control','Last Period Actualised','String' );
+  nLastActPrdIndex = CellGetN('}ElementAttributes_Period', sLastActPrd, 'Period Index' );
+  sLastActPrdIndex = NumberToString( nLastActPrdIndex );
+
+  DimensionElementInsert( sDimPrd, '', 'Live Plan Periods', 'C' );
+  DimensionElementComponentAdd( sDimPrd, 'Monthly Rollups', 'Live Plan Periods', 1 );
+
+  sMDX = Expand('{Filter(TM1FilterByLevel(TM1SubsetAll([Period]),0),[}ElementAttributes_Period].([}ElementAttributes_Period].[Period Index]) > %sLastActPrdIndex%)}');
+  
+  SubsetCreate( sDimPrd, sLoopSubset, nTmp );
+  SubsetMDXSet( sDimPrd, sLoopSubset, sMDX );
+  SubsetMDXSet( sDimPrd, sLoopSubset, '' );
+  iLoop = SubsetGetSize( sDimPrd, sLoopSubset );
+  While( iLoop > 0);
+    sPeriod = SubsetGetElementName( sDimPrd, sLoopSubset, iLoop );
+    DimensionElementComponentAdd( sDimPrd, 'Live Plan Periods', sPeriod, 1 );
+#    CellPutS('Plan', '}ElementAttributes_Period', sPeriod, 'Act or Plan');
+    CellPutS('Plan', 'Monthly Assumption', 'Live Plan', sPeriod, 'Act or Plan');    
+    CellPutN(0, 'Monthly Assumption', 'Live Plan', sPeriod, 'Act Flag'); 
+  iLoop = iLoop - 1;
+  End;
+
+  SubsetDeleteAllElements( sDimPrd, sLoopSubset );
+  sMDX = Expand('{Filter(TM1FilterByLevel(TM1SubsetAll([Period]),0),[}ElementAttributes_Period].([}ElementAttributes_Period].[Period Index]) <= %sLastActPrdIndex%)}');
+  SubsetMDXSet( sDimPrd, sLoopSubset, sMDX );
+  SubsetMDXSet( sDimPrd, sLoopSubset, '' );
+
+  iLoop = SubsetGetSize( sDimPrd, sLoopSubset );
+  While( iLoop > 0);
+    sPeriod = SubsetGetElementName( sDimPrd, sLoopSubset, iLoop );
+#    CellPutS('Act', '}ElementAttributes_Period', sPeriod, 'Act or Plan');
+    CellPutS('Act', 'Monthly Assumption', 'Live Plan', sPeriod, 'Act or Plan');    
+    CellPutN(1, 'Monthly Assumption', 'Live Plan', sPeriod, 'Act Flag'); 
+  iLoop = iLoop - 1;
+  End;
+
+  SubsetDestroy( sDimPrd, sLoopSubset );
+
+
+
+#endregion
+#region Data
+
+#endregion
+#region Epilog
+
+# Monthly Rollups
+
+sCurrPrd = CellGetS('SYS Control','Current Reporting Period','String' );
+sCurrQtr = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Financial Quarter');  
+sCurrYr = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Financial Year');  
+sCurrFinMth = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Financial Month');
+sPriorYr = CellGetS('}ElementAttributes_Period', sCurrYr, 'Prior Year');
+sPriorMonth = CellGetS('}ElementAttributes_Period', sCurrPrd, 'Previous Period' );
+
+  
+    CellPutS('Prev Yr QTD','}ElementAttributes_Period', 'QTD', 'Prior Year');
+    CellPutS('Prev Yr QTG','}ElementAttributes_Period', 'QTG', 'Prior Year');
+    CellPutS(sPriorYr,'}ElementAttributes_Period', 'Current Year', 'Prior Year');
+    CellPutS(sCurrFinMth | ' ' | sPriorYr , '}ElementAttributes_Period', 'Current Month', 'Prior Year');
+    CellPutS('Prev Yr YTD', '}ElementAttributes_Period', 'Current YTD', 'Prior Year');
+
+
+
+SubsetDestroy( sDimPrd, sSrcSubset );
+
+RefreshMdxHierarchy( '');
+#endregion

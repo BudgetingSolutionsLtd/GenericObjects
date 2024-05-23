@@ -1,0 +1,33 @@
+#region Prolog
+## Process to write to logging cube 
+
+# put in prolog of process to log:
+# pPrologNow = Now; 
+
+# put in epilog of process to log:
+# ExecuteProcess('Process Control Logging', 'pProcessName', GetProcessName, 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage);
+# pMessage and nErrors must be defined in the process to log with exeption handling.
+
+User = ATTRS( '}clients', pUser, '}TM1_DefaultDisplayValue' );
+
+# User from User() function in prolog of process to log
+CellPutS( User, 'Process Control', pProcessName, 'Last Run By');
+
+# Time prolog is ran from Now function in prolog of proces to log
+CellPutN( pPrologNow, 'Process Control', pProcessName, 'Last Run Time'  );
+
+
+# Time difference between end of epilog and start of prolog
+Elapsed = pPrologNow-Now;
+CellPutN( 864*(Now-pPrologNow), 'Process Control', pProcessName, 'Time Taken'  );
+
+# Number of errors counted in exception handling of process to log and passed as parameter.
+CellPutN( pErrors, 'Process Control', pProcessName, 'Number of Errors'  );
+
+# Message as defined in process to log
+CellPutS( pMessage, 'Process Control', pProcessName, 'Message'  );
+
+
+
+
+#endregion
