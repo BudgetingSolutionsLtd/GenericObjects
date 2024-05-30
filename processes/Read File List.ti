@@ -1,0 +1,41 @@
+#region Prolog
+# Create file to read in
+CommandLine = 'cmd /c dir /o-d *.* >.\\model_upload\File_List.txt';
+ExecuteCommand(CommandLine, 0);
+DatasourceNameForServer = 'model_upload\File_List.txt';
+
+cubename = 'Change Log';
+viewname = cubename | ' clear';
+dimname = 'Change Log Field';
+
+if(ViewExists( cubename, viewname )=1);
+    ViewDestroy( cubename, viewname );
+endif;
+ViewCreate( cubename, viewname, 1 );
+
+if(SubsetExists( dimname, viewname )=1);
+    SubsetDestroy( dimname, viewname );
+endif;
+SubsetCreate( dimname, viewname, 1 );
+
+SubsetElementInsert( dimname, viewname, 'File Last Modified', 1 );
+ViewSubsetAssign( cubename, viewname, dimname, viewname );
+
+ViewZeroOut( cubename, viewname );
+
+n=1;
+#endregion
+#region Data
+sModified = SUBST( vString, 1, 20 );
+sObject = SUBST( vString, 40,long(vString) );
+
+#skip a whole bunch of stuff
+if(scan('<DIR>',vstring )=0 & scan('}Stats',vstring )=0 & scan('}git',vstring )=0 & scan('}Cube',vstring )=0 & scan('.feeders',vstring )=0 & scan('}Dim',vstring )=0 & scan('}Client',vstring )=0 & scan('}Group',vstring )=0 &  scan('}Perf',vstring )=0 &  scan('bytes',vstring )=0 &  scan('Dir(s)',vstring )=0);
+    if(DimensionElementExists( 'ITIT Input', NumberToString( n ) )=0);
+        DimensionElementInsertDirect( 'ITIT Input', '', NumberToString( n ), 'n' );
+    endif;    
+    CellPutS( sModified, 'Change Log', 'File Last Modified', NumberToString( n ), 'Last Modified' );
+    CellPutS( sObject, 'Change Log', 'File Last Modified', NumberToString( n ), 'Object' );
+    n = n+1;  
+endif;
+#endregion

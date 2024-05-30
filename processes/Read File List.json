@@ -1,0 +1,34 @@
+{
+	"@type":"Process",
+	"Name":"Read File List",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"Read File List.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"VariablesUIData":
+	[
+		"VarType=32\fColType=827\f"
+	],
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"asciiDecimalSeparator":".",
+		"asciiDelimiterChar":"\t",
+		"asciiDelimiterType":"Character",
+		"asciiHeaderRecords":4,
+		"asciiQuoteCharacter":"\"",
+		"asciiThousandSeparator":",",
+		"dataSourceNameForClient":"model_upload/File_Listing2.txt",
+		"dataSourceNameForServer":"model_upload/File_Listing2.txt"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vString",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

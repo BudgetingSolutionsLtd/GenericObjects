@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"Change Log Field",
+	"Hierarchies@Code.links":
+	[
+		"Change Log Field.hierarchies/Change Log Field.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('Change Log Field')/Hierarchies('Change Log Field')"
+	}
+}
