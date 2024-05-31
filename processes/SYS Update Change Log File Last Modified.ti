@@ -1,10 +1,12 @@
 #region Prolog
+SaveDataAll;
+
 # Create file to read in
 CommandLine = 'cmd /c dir /o-d *.* >.\\model_upload\File_List.txt';
 ExecuteCommand(CommandLine, 0);
 DatasourceNameForServer = 'model_upload\File_List.txt';
 
-cubename = 'Change Log';
+cubename = 'SYS Change Log';
 viewname = cubename | ' clear';
 dimname = 'Change Log Field';
 
@@ -29,13 +31,17 @@ n=1;
 sModified = SUBST( vString, 1, 20 );
 sObject = SUBST( vString, 40,long(vString) );
 
+#put in UK date format
+sModified = SUBST( sModified, 4, 2 ) | '/' | SUBST( sModified, 1, 2 ) | '/' | SUBST( sModified, 7, 4 ) | ' '| SUBST( sModified, 12, 9 );
+
+
 #skip a whole bunch of stuff
-if(scan('<DIR>',vstring )=0 & scan('}Stats',vstring )=0 & scan('}git',vstring )=0 & scan('}Cube',vstring )=0 & scan('.feeders',vstring )=0 & scan('}Dim',vstring )=0 & scan('}Client',vstring )=0 & scan('}Group',vstring )=0 &  scan('}Perf',vstring )=0 &  scan('bytes',vstring )=0 &  scan('Dir(s)',vstring )=0);
+if(scan('<DIR>',vstring )=0 & scan('}Stats',vstring )=0 & scan('SYS ',vstring )=0 & scan('}git',vstring )=0 & scan('}CAM',vstring )=0 & scan('}Cube',vstring )=0 & scan('.feeders',vstring )=0 & scan('}Dim',vstring )=0 & scan('}Client',vstring )=0 & scan('}Group',vstring )=0 &  scan('}Perf',vstring )=0 &  scan('bytes',vstring )=0 &  scan('Dir(s)',vstring )=0);
     if(DimensionElementExists( 'ITIT Input', NumberToString( n ) )=0);
         DimensionElementInsertDirect( 'ITIT Input', '', NumberToString( n ), 'n' );
     endif;    
-    CellPutS( sModified, 'Change Log', 'File Last Modified', NumberToString( n ), 'Last Modified' );
-    CellPutS( sObject, 'Change Log', 'File Last Modified', NumberToString( n ), 'Object' );
+    CellPutS( sModified, cubename, 'File Last Modified', NumberToString( n ), 'Last Modified' );
+    CellPutS( sObject, cubename, 'File Last Modified', NumberToString( n ), 'Object' );
     n = n+1;  
 endif;
 #endregion

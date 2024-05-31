@@ -1,38 +1,37 @@
 #region Prolog
-cubename = 'SYS Instance to Instance Tool';
-viewname = 'Type';
+cubename = 'SYS Change Log';
+viewname = 'Flag';
 
 if(ViewExists( cubename, viewname )=0);
     ViewCreate( cubename, viewname, 0 );
 endif;
 
-dimname = 'm_ITIT';
+#ViewExtractSkipCalcsSet( cubename, viewname, 1 );
+ViewExtractSkipZeroesSet( cubename, viewname, 1 );
+
+dimname = 'm_Last Modified';
 
 If(SubsetExists( dimname, viewname )=1);
     SubsetDestroy( dimname, viewname );
 endif;
 
 SubsetCreate( dimname, viewname, 1 );
-SubsetElementInsert( dimname, viewname, 'Type', 1 );
+SubsetElementInsert( dimname, viewname, 'Flag for Promotion', 1 );
 
 DatasourceCubeview = viewname;
 
 # full paths to data folders
-source=CellGetS( 'SYS Instance to Instance Tool', '1', 'Source' );
+source=CellGetS( 'SYS Model Settings', 'Data Folder Path', 'Input' );
 
-dest=CellGetS( 'SYS Instance to Instance Tool', '1', 'Destination' );
+dest=CellGetS( 'SYS Model Settings', 'Test Database Path', 'Input' );
 
 #endregion
 #region Data
-if(Value@='');
-    ItemSkip;
+
+if(CellGetS( cubename, 'File Last Modified', vLine, 'Flag for Promotion' )@='Y');
+    file=CellGetS( 'SYS Change Log', 'File Last Modified', vLine , 'Object');
+    command = 'xcopy "' | source | '\' | file | '" "' | dest | '" /Y';
+    ExecuteCommand( command, 1 );
+    CellPutS( 'Promoted ' | timst(now(), '\d/\m/\Y \H:\i \p'), cubename, 'File Last Modified', vLine, 'Comment' );
 endif;
-
-file=CellGetS( 'SYS Instance to Instance Tool', vLine, 'File' );
-
-command = 'xcopy "' | source | '\' | file | '" "' | dest | '" /Y';
-
-ExecuteCommand( command, 1 );
-
-CellPutS( 'Done :)', 'SYS Instance to Instance Tool', vLine, 'Status' );
 #endregion

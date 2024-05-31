@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"EXPORT - Any Cube to CSV",
+	"Name":"SYS Export Cube Data to CSV",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"EXPORT - Any Cube to CSV.ti",
+	"Code@Code.link":"SYS Export Cube Data to CSV.ti",
 	"UIData":"_ParameterConstraints=e30=\f",
 	"VariablesUIData":
 	[

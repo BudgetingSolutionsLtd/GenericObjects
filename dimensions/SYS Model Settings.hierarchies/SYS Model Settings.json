@@ -1,0 +1,16 @@
+{
+	"@type":"Hierarchy",
+	"Name":"SYS Model Settings",
+	"Elements":
+	[
+		{
+			"Name":"Data Folder Path",
+			"Type":"String"
+		},
+		{
+			"Name":"Test Database Path",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

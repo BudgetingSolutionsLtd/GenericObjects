@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"IMPORT - Any Cube from CSV",
+	"Name":"SYS Import Cube Data from CSV",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"IMPORT - Any Cube from CSV.ti",
+	"Code@Code.link":"SYS Import Cube Data from CSV.ti",
 	"UIData":"_ParameterConstraints=e30=\f",
 	"VariablesUIData":
 	[

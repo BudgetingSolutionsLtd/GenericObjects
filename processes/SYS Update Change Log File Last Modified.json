@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"Read File List",
+	"Name":"SYS Update Change Log File Last Modified",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"Read File List.ti",
+	"Code@Code.link":"SYS Update Change Log File Last Modified.ti",
 	"UIData":"_ParameterConstraints=e30=\f",
 	"VariablesUIData":
 	[
@@ -12,13 +12,13 @@
 	{
 		"Type":"ASCII",
 		"asciiDecimalSeparator":".",
-		"asciiDelimiterChar":"\t",
+		"asciiDelimiterChar":"@",
 		"asciiDelimiterType":"Character",
 		"asciiHeaderRecords":4,
 		"asciiQuoteCharacter":"\"",
 		"asciiThousandSeparator":",",
-		"dataSourceNameForClient":"model_upload/File_Listing2.txt",
-		"dataSourceNameForServer":"model_upload/File_Listing2.txt"
+		"dataSourceNameForClient":"model_upload/File_List.txt",
+		"dataSourceNameForServer":"model_upload/File_List.txt"
 	},
 	"Parameters":[],
 	"Variables":

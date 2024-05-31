@@ -1,6 +1,6 @@
 {
 	"@type":"Cube",
-	"Name":"Change Log",
+	"Name":"SYS Change Log",
 	"Dimensions":
 	[
 		{
@@ -13,5 +13,8 @@
 			"@id":"Dimensions('m_Last Modified')"
 		}
 	],
-	"Views@Code.links":[]
+	"Views@Code.links":
+	[
+		"SYS Change Log.views/Flag.json"
+	]
 }

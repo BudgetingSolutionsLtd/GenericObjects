@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"Process Control Logging",
+	"Name":"SYS Process Control Logging",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"Process Control Logging.ti",
+	"Code@Code.link":"SYS Process Control Logging.ti",
 	"UIData":"_ParameterConstraints=e30=\f",
 	"DataSource":
 	{

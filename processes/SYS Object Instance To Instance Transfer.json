@@ -8,14 +8,15 @@
 	[
 		"VarType=32\fColType=827\f",
 		"VarType=32\fColType=827\f",
+		"IgnoredInputVarName=Measure\fVarType=32\fColType=1165\f",
 		"VarType=32\fColType=827\f"
 	],
 	"DataSource":
 	{
 		"Type":"TM1CubeView",
-		"dataSourceNameForClient":"SYS Instance to Instance Tool",
-		"dataSourceNameForServer":"SYS Instance to Instance Tool",
-		"view":"Type"
+		"dataSourceNameForClient":"SYS Change Log",
+		"dataSourceNameForServer":"SYS Change Log",
+		"view":"Flag"
 	},
 	"Parameters":
 	[
@@ -51,7 +52,7 @@
 		{
 			"Name":"Value",
 			"Type":"String",
-			"Position":3,
+			"Position":4,
 			"StartByte":0,
 			"EndByte":0
 		}
