@@ -36,7 +36,7 @@ sModified = SUBST( sModified, 4, 2 ) | '/' | SUBST( sModified, 1, 2 ) | '/' | SU
 
 
 #skip a whole bunch of stuff
-if(scan('<DIR>',vstring )=0 & scan('}Stats',vstring )=0 & scan('SYS ',vstring )=0 & scan('}git',vstring )=0 & scan('}CAM',vstring )=0 & scan('}Cube',vstring )=0 & scan('.feeders',vstring )=0 & scan('}Dim',vstring )=0 & scan('}Client',vstring )=0 & scan('}Group',vstring )=0 &  scan('}Perf',vstring )=0 &  scan('bytes',vstring )=0 &  scan('Dir(s)',vstring )=0);
+if(scan('<DIR>',vstring )=0 & scan('}Cultures',vstring )=0 & scan('}tp',vstring )=0 & scan('}Stats',vstring )=0 & scan('}Application',vstring )=0 & scan('SYS ',vstring )=0 & scan('}git',vstring )=0 & scan('}CAM',vstring )=0 & scan('}Cube',vstring )=0 & scan('.feeders',vstring )=0 & scan('}Time',vstring )=0 & scan('}Dim',vstring )=0 & scan('}Client',vstring )=0 & scan('}Group',vstring )=0 &  scan('}Perf',vstring )=0 &  scan('bytes',vstring )=0 &  scan('Dir(s)',vstring )=0);
     if(DimensionElementExists( 'ITIT Input', NumberToString( n ) )=0);
         DimensionElementInsertDirect( 'ITIT Input', '', NumberToString( n ), 'n' );
     endif;    

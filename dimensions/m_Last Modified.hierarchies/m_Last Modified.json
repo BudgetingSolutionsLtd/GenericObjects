@@ -12,11 +12,11 @@
 			"Type":"String"
 		},
 		{
-			"Name":"Comment",
+			"Name":"Flag for Promotion",
 			"Type":"String"
 		},
 		{
-			"Name":"Flag for Promotion",
+			"Name":"Comment",
 			"Type":"String"
 		}
 	],

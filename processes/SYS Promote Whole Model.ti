@@ -1,0 +1,12 @@
+#region Prolog
+
+# full paths to data folders
+source=CellGetS( 'SYS Model Settings', 'Data Folder Path', 'Input' );
+
+dest=CellGetS( 'SYS Model Settings', 'Test Database Path', 'Input' );
+
+ExecuteCommand( 's:\instance_to_instance_tool.bat' | ' ' | source | ' ' | dest, 1 );
+#endregion
+#region Data
+
+#endregion

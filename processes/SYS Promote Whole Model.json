@@ -1,0 +1,27 @@
+{
+	"@type":"Process",
+	"Name":"SYS Promote Whole Model",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Promote Whole Model.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"p1",
+			"Prompt":"Have you stopped the destination instance?",
+			"Value":"y/n",
+			"Type":"String"
+		},
+		{
+			"Name":"P2",
+			"Prompt":"I understand this will overwrite duplicate objects.",
+			"Value":"y/n",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}
