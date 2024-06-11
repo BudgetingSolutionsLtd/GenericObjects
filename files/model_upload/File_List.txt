@@ -1,0 +1,1586 @@
+ Volume in drive S is S Drive
+ Volume Serial Number is 08C3-19FA
+
+ Directory of s:\prod\hbg\data
+
+06/10/2024  11:04 PM    <DIR>          .
+06/10/2024  11:04 PM    <DIR>          ..
+06/10/2024  11:04 PM    <DIR>          SYS Change Log}vues
+06/10/2024  11:04 PM            27,686 }DimensionProperties.cub
+06/10/2024  11:04 PM           116,054 SYS Change Log.cub
+06/10/2024  11:04 PM                16 }DimensionProperties.feeders
+06/10/2024  11:03 PM               171 Change Log Field.dim
+06/10/2024  11:03 PM             2,889 SYS Object Instance To Instance Transfer.pro
+06/10/2024  10:51 PM               166 m_Last Modified.dim
+06/10/2024  10:48 PM             2,852 SYS Update Change Log File Last Modified.pro
+05/31/2024  02:49 PM    <DIR>          }async
+05/31/2024  01:00 PM                33 }ElementAttributes_Years.feeders
+05/31/2024  01:00 PM            27,363 }ElementAttributes_}Cultures.cub
+05/31/2024  01:00 PM               103 }ElementAttributes_RFS_Months.feeders
+05/31/2024  01:00 PM                33 }ElementAttributes_Locations.feeders
+05/31/2024  01:00 PM                43 }ElementAttributes_Days 23-24.feeders
+05/31/2024  01:00 PM               178 }ElementAttributes_CONS_t_Month.feeders
+05/31/2024  01:00 PM                43 }ElementAttributes_Days 22-23.feeders
+05/31/2024  01:00 PM                35 }ElementAttributes_c_PL Report.feeders
+05/31/2024  01:00 PM               115 }ElementAttributes_CONS_a_Company.feeders
+05/31/2024  01:00 PM                61 }ElementAttributes_c_PL for RF.feeders
+05/31/2024  01:00 PM                80 }ElementAttributes_BSCF_t_Month.feeders
+05/31/2024  01:00 PM                74 }ElementAttributes_4_Months.feeders
+05/31/2024  01:00 PM            10,434 }CubeProperties.cub
+05/31/2024  01:00 PM                16 }ElementAttributes_}Cultures.feeders
+05/31/2024  01:00 PM                16 }CubeProperties.feeders
+05/31/2024  11:56 AM             4,370 }ApplicationEntries.dim
+05/31/2024  11:56 AM               243 }PerfClients.dim
+05/31/2024  11:56 AM            11,689 }PerfCubes.dim
+05/31/2024  11:56 AM               171 }Clients.dim
+05/31/2024  11:56 AM               221 }Groups.dim
+05/31/2024  11:39 AM                20 }StatsByProcess.feeders
+05/31/2024  11:39 AM                16 }StatsForServer.feeders
+05/31/2024  11:39 AM             2,240 }StatsForServer.cub
+05/31/2024  11:39 AM             9,145 }StatsByProcess.cub
+05/31/2024  11:39 AM            10,274 }StatsByCubeByClient.cub
+05/31/2024  11:39 AM                20 }StatsByCube.feeders
+05/31/2024  11:39 AM                28 }StatsByCubeByClient.feeders
+05/31/2024  11:39 AM                20 }StatsByChore.feeders
+05/31/2024  11:39 AM             2,383 }StatsByClient.cub
+05/31/2024  11:39 AM                20 }StatsByClient.feeders
+05/31/2024  11:39 AM            10,367 }StatsByCube.cub
+05/31/2024  11:39 AM             2,343 }StatsByChore.cub
+05/31/2024  11:21 AM            10,446 }git.ctx
+05/31/2024  11:20 AM    <DIR>          }git
+05/31/2024  11:14 AM             1,278 SYS Promote Whole Model.pro
+05/31/2024  10:40 AM            21,419 ITIT Input.dim
+05/31/2024  10:40 AM    <DIR>          model_upload
+05/31/2024  10:40 AM               233 SYS Model Settings.cub
+05/31/2024  10:11 AM             2,264 SYS Process Control Logging.pro
+05/31/2024  10:11 AM             5,732 SYS Export Cube Data to CSV.pro
+05/31/2024  10:11 AM             7,359 SYS Import Cube Data from CSV.pro
+05/31/2024  09:30 AM             1,199 backup_tool.pro
+05/30/2024  12:58 PM               257 }ElementAttributes_m_Last Modified.cub
+05/30/2024  12:39 PM                77 }ElementAttributes_m_Last Modified.dim
+05/30/2024  12:34 PM               188 }ElementAttributes_SYS Model Settings.cub
+05/30/2024  12:34 PM               263 }ElementAttributes_m_ITIT.cub
+05/30/2024  12:34 PM               118 }ElementAttributes_m_Input.cub
+05/30/2024  12:34 PM               172 }ElementAttributes_Change Log Field.cub
+05/30/2024  12:34 PM               990 SYS Process Control.cub
+05/30/2024  12:26 PM               102 SYS Model Settings.dim
+05/30/2024  12:25 PM                57 }ElementAttributes_SYS Model Settings.dim
+05/30/2024  12:24 PM                47 m_Input.dim
+05/30/2024  12:24 PM                46 }ElementAttributes_m_Input.dim
+05/30/2024  11:29 AM                55 }ElementAttributes_Change Log Field.dim
+05/29/2024  01:00 PM               507 }ElementAttributes_}tp_system_config.cub
+05/29/2024  01:00 PM               250 }ElementAttributes_}ModelProperties.cub
+05/29/2024  01:00 PM             8,289 }CubeSecurity.cub
+05/29/2024  01:00 PM               626 }Capabilities.cub
+05/29/2024  01:00 PM                20 }Capabilities.feeders
+05/29/2024  01:00 PM                16 }ElementAttributes_}ModelProperties.feeders
+05/29/2024  01:00 PM                16 }CubeSecurity.feeders
+05/29/2024  01:00 PM                16 }ElementAttributes_}tp_system_config.feeders
+05/29/2024  12:35 PM    <DIR>          rfs calculation}subs
+05/29/2024  12:29 PM    <DIR>          rfs_months}subs
+05/29/2024  12:29 PM    <DIR>          4_Months}subs
+05/29/2024  12:28 PM    <DIR>          c_pl for rf}subs
+05/29/2024  12:28 PM    <DIR>          c_PL Report}subs
+05/29/2024  12:28 PM    <DIR>          Locations}subs
+05/29/2024  12:28 PM                28 }ElementSecurity_}tp_applications.RUX
+05/29/2024  12:28 PM                27 }tp_application_root_permissions.RUX
+05/29/2024  12:28 PM               133 }tp_system_config.dim
+05/29/2024  12:10 PM    <DIR>          Versions}subs
+05/29/2024  12:10 PM    <DIR>          Mth_YTD}subs
+05/29/2024  12:05 PM    <DIR>          scenarios}subs
+05/29/2024  12:05 PM    <DIR>          Years}subs
+05/24/2024  01:00 PM             6,545 }tp_workflow_util_reserve_cube_slices.pro
+05/24/2024  01:00 PM             7,325 }tp_workflow_util_reject_ancestors.pro
+05/24/2024  01:00 PM             2,402 }tp_workflow_util_lock_app_node.pro
+05/24/2024  01:00 PM             5,916 }tp_workflow_util_lock_cube_slices.pro
+05/24/2024  01:00 PM            20,831 }tp_workflow_util_own_node.pro
+05/24/2024  01:00 PM             8,720 }tp_workflow_util_bounce_nodes_message.pro
+05/24/2024  01:00 PM             5,887 }tp_workflow_update_user_name.pro
+05/24/2024  01:00 PM             9,334 }tp_workflow_util_bounce_nodes.pro
+05/24/2024  01:00 PM            13,658 }tp_workflow_util_bounce_conflict_users.pro
+05/24/2024  01:00 PM            13,449 }tp_workflow_release_node.pro
+05/24/2024  01:00 PM             9,962 }tp_workflow_submit_leaf_children.pro
+05/24/2024  01:00 PM             8,456 }tp_workflow_submit_node.pro
+05/24/2024  01:00 PM             8,988 }tp_workflow_save_node.pro
+05/24/2024  01:00 PM            20,826 }tp_workflow_own_node.pro
+05/24/2024  01:00 PM             7,850 }tp_workflow_reject_nodes.pro
+05/24/2024  01:00 PM             7,871 }tp_workflow_reject_node.pro
+05/24/2024  01:00 PM             6,985 }tp_workflow_online_node.pro
+05/24/2024  01:00 PM             8,704 }tp_workflow_enter_node.pro
+05/24/2024  01:00 PM             7,162 }tp_workflow_offline_node.pro
+05/24/2024  01:00 PM             8,127 }tp_workflow_leave_node.pro
+05/24/2024  01:00 PM             6,162 }tp_workflow_execute_action.pro
+05/24/2024  01:00 PM            16,186 }tp_workflow_change_node_state.pro
+05/24/2024  01:00 PM            13,363 }tp_workflow_bounce_conflict_users.pro
+05/24/2024  01:00 PM            11,013 }tp_workflow_bounce_nodes.pro
+05/24/2024  01:00 PM             7,151 }tp_util_update_node_in_subset.pro
+05/24/2024  01:00 PM             3,449 }tp_util_is_dim_in_cube.pro
+05/24/2024  01:00 PM             1,495 }tp_util_truncate_error_dim.pro
+05/24/2024  01:00 PM             5,324 }tp_util_is_in_subset.pro
+05/24/2024  01:00 PM             6,400 }tp_util_update_hierarchy.pro
+05/24/2024  01:00 PM             6,138 }tp_util_update_hierarchy_from_file.pro
+05/24/2024  01:00 PM             5,057 }tp_util_export_hierarchy.pro
+05/24/2024  01:00 PM             7,169 }tp_util_insert_value_into_cube.pro
+05/24/2024  01:00 PM             6,458 }tp_util_export_cube.pro
+05/24/2024  01:00 PM             2,039 }tp_util_get_all_leaf_children_in_subset.pro
+05/24/2024  01:00 PM             8,044 }tp_util_import_cube.pro
+05/24/2024  01:00 PM             2,881 }tp_util_escape_id.pro
+05/24/2024  01:00 PM             4,278 }tp_util_convert_security_file.pro
+05/24/2024  01:00 PM             3,099 }tp_util_does_dim_have_cube_name.pro
+05/24/2024  01:00 PM             1,562 }tp_util_delete_subset_element.pro
+05/24/2024  01:00 PM            11,995 }tp_util_create_cube.pro
+05/24/2024  01:00 PM            12,912 }tp_upgrade_security_post_from_v9_5_2_to_v10_1.pro
+05/24/2024  01:00 PM             2,283 }tp_util_add_direct_children_to_subset.pro
+05/24/2024  01:00 PM             4,805 }tp_upgrade_security_pre_from_v9_5_2_to_v10_1.pro
+05/24/2024  01:00 PM             1,959 }tp_util_convert_dynamic_subset_to_static.pro
+05/24/2024  01:00 PM             5,068 }tp_util_check_approval_overlap.pro
+05/24/2024  01:00 PM             6,971 }tp_upgrade_from_v9_5_1_to_v9_5_2.pro
+05/24/2024  01:00 PM            13,729 }tp_update_ownership.pro
+05/24/2024  01:00 PM             6,607 }tp_upgrade_from_v9_5_2_to_v10_1.pro
+05/24/2024  01:00 PM            12,157 }tp_update_state_cube.pro
+05/24/2024  01:00 PM             8,232 }tp_update_application_cubes_pre.pro
+05/24/2024  01:00 PM             5,774 }tp_update_application_DR.pro
+05/24/2024  01:00 PM             5,477 }tp_update_application_securityOverlay.pro
+05/24/2024  01:00 PM             4,057 }tp_update_application_cubes.pro
+05/24/2024  01:00 PM             2,785 }tp_set_state_reviewers.pro
+05/24/2024  01:00 PM             4,895 }tp_update_application.pro
+05/24/2024  01:00 PM             1,741 }tp_set_running_maintenance.pro
+05/24/2024  01:00 PM             2,945 }tp_set_system_config.pro
+05/24/2024  01:00 PM             4,735 }tp_setup_application_dr.pro
+05/24/2024  01:00 PM             2,601 }tp_set_state_reviewers_all.pro
+05/24/2024  01:00 PM             4,431 }tp_set_access_to_cubes.pro
+05/24/2024  01:00 PM             5,171 }tp_set_access_to_cube.pro
+05/24/2024  01:00 PM             4,882 }tp_rights_update_RDCLS_static_rights.pro
+05/24/2024  01:00 PM             2,736 }tp_set_app_user_preference.pro
+05/24/2024  01:00 PM             2,058 }tp_set_dr_capabilities.pro
+05/24/2024  01:00 PM             2,158 }tp_reset_views.pro
+05/24/2024  01:00 PM             2,053 }tp_reset_view_by_cube_user.pro
+05/24/2024  01:00 PM             4,934 }tp_rights_update_preparation.pro
+05/24/2024  01:00 PM             3,803 }tp_rights_update_RDCLS_post.pro
+05/24/2024  01:00 PM            12,595 }tp_reset_state.pro
+05/24/2024  01:00 PM             1,376 }tp_reset_permission_on_failure.pro
+05/24/2024  01:00 PM             5,749 }tp_reserve_slice.pro
+05/24/2024  01:00 PM             5,200 }tp_reserve_release_all.pro
+05/24/2024  01:00 PM             4,459 }tp_modify_application_attribute.pro
+05/24/2024  01:00 PM             2,595 }tp_mdx_find_descendants.pro
+05/24/2024  01:00 PM             4,416 }tp_job_start.pro
+05/24/2024  01:00 PM             1,388 }tp_initialize_session.pro
+05/24/2024  01:00 PM             2,614 }tp_job_delete.pro
+05/24/2024  01:00 PM             3,102 }tp_job_end.pro
+05/24/2024  01:00 PM             2,091 }tp_mdx_find_consolidate_descendants.pro
+05/24/2024  01:00 PM             3,693 }tp_get_top_node.pro
+05/24/2024  01:00 PM             7,002 }tp_get_user_permissions.pro
+05/24/2024  01:00 PM             3,648 }tp_get_parent_in_subset.pro
+05/24/2024  01:00 PM             5,802 }tp_init_new_server.pro
+05/24/2024  01:00 PM             3,672 }tp_get_user_root_permissions.pro
+05/24/2024  01:00 PM             3,309 }tp_error_update_error_cube.pro
+05/24/2024  01:00 PM             2,412 }tp_error_cleanup.pro
+05/24/2024  01:00 PM             2,687 }tp_get_log_file_names.pro
+05/24/2024  01:00 PM             4,221 }tp_get_application_attributes.pro
+05/24/2024  01:00 PM             1,963 }tp_error_add_guid.pro
+05/24/2024  01:00 PM             4,397 }tp_error_setup.pro
+05/24/2024  01:00 PM             3,384 }tp_deploy_create_task_navigation_cube.pro
+05/24/2024  01:00 PM             3,990 }tp_deploy_create_security_overlay_cube.pro
+05/24/2024  01:00 PM             7,231 }tp_deploy_create_shadow_dimension.pro
+05/24/2024  01:00 PM             2,049 }tp_deploy_update_cube_security_property.pro
+05/24/2024  01:00 PM             2,780 }tp_deploy_sort_shadow_hierarchy.pro
+05/24/2024  01:00 PM             4,545 }tp_delete_drill_view.pro
+05/24/2024  01:00 PM             6,606 }tp_deploy_app_cubes_add.pro
+05/24/2024  01:00 PM             2,739 }tp_delete_sandboxes.pro
+05/24/2024  01:00 PM             9,460 }tp_deploy_app_cubes_cleanup.pro
+05/24/2024  01:00 PM            11,569 }tp_custom_TI_update_TI_cube.pro
+05/24/2024  01:00 PM             4,434 }tp_create_users_and_groups.pro
+05/24/2024  01:00 PM             3,630 }tp_custom_TI_update_error_code.pro
+05/24/2024  01:00 PM             4,386 }tp_custom_TI_update_error_code_caption.pro
+05/24/2024  01:00 PM             2,523 }tp_custom_TI_delete_error_code.pro
+05/24/2024  01:00 PM             1,797 }tp_clear_running_job.pro
+05/24/2024  01:00 PM             4,331 }tp_clean_owner_groups.pro
+05/24/2024  01:00 PM            55,767 }tp_create_planning_artifacts.pro
+05/24/2024  01:00 PM             5,619 }tp_application_remove_control_subset.pro
+05/24/2024  01:00 PM            28,515 }tp_application_deploy.pro
+05/24/2024  01:00 PM             4,824 }tp_admin_application_users.pro
+05/24/2024  01:00 PM             8,814 }tp_application_remove.pro
+05/24/2024  01:00 PM             7,187 }tp_admin_state_summary.pro
+05/24/2024  01:00 PM             6,958 }tp_admin_delete_all.pro
+05/24/2024  01:00 PM             6,651 }ProcessSecurity.cub
+05/24/2024  01:00 PM            50,041 }tp_add_user_security_from_file.pro
+05/24/2024  01:00 PM             8,563 }ElementAttributes_}Processes.cub
+05/24/2024  01:00 PM            37,228 }ElementAttributes_}Modeling.cub
+05/24/2024  01:00 PM               330 }ElementAttributes_}Groups.cub
+05/24/2024  01:00 PM            18,629 }DimensionSecurity.cub
+05/24/2024  01:00 PM               546 }ClientGroups.cub
+05/24/2024  01:00 PM                16 }ElementAttributes_}Processes.feeders
+05/24/2024  01:00 PM                16 }DimensionSecurity.feeders
+05/24/2024  01:00 PM                16 }ProcessSecurity.feeders
+05/24/2024  01:00 PM                16 }ElementAttributes_}Modeling.feeders
+05/24/2024  01:00 PM                16 }ElementAttributes_}Groups.feeders
+05/24/2024  10:51 AM    <DIR>          c_GL codes}subs
+05/24/2024  10:51 AM    <DIR>          Company}subs
+05/24/2024  10:50 AM             1,354 object_instance_to_instance.pro
+05/24/2024  10:50 AM            12,219 }Modeling.dim
+05/24/2024  01:00 AM               326 }ElementAttributes_}Clients.cub
+05/24/2024  01:00 AM                16 }ElementAttributes_}Clients.feeders
+05/23/2024  02:57 PM             1,106 }ElementAttributes_ITIT Input.cub
+05/23/2024  01:59 PM                16 }tp_application_root_permissions.feeders
+05/23/2024  01:59 PM                20 }StatsByRule.feeders
+05/23/2024  01:59 PM                16 }ElementSecurity_}tp_applications.feeders
+05/23/2024  01:59 PM                20 }HierarchyProperties.feeders
+05/23/2024  01:59 PM                16 }formatTester.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}RF Roll Fcst - PandL by Loc (source map Versions) 1619783205007.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}RF Rolling Fcst - Intl copy scenarios (source map RF Months) 1619779535555.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}tp_applications.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}tp_config.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}tp_process_errors_localization.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}RF Roll Fcst - PandL by Loc (source map 4_Months) 1619783205054.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}ProgressTimings.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}PL by Detail - Internal Trf (source map Versions) 1702289416327.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_PL by Location - PL Detail splits.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_RF Rolling Fcst - Intl copy scenarios.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_RF Roll Fcst - PandL by Loc.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_Temp NY data load.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_RFS Rolling Fcst - Intl copy scenarios.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_PL by Location - PL Detail.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_PL Bdgt Detail - Mktg Report.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_Bdgt21-22 - Daily Sales - Internal Trf.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_PL by Detail - Internal Trf.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Link_PL by Location - PL Detail Games.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}formatUsers.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}formatTestSlots.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}DeployedLinkRecord.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Bdgt21-22 - Daily Sales - Internal Trf (source map Versions - Budget) 1651570560759.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Scenarios.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Versions - Budget.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Backup_RFS Calculation.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_}Backup_c_New Locations.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Versions.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Years.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RFS Calculation.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RFS_New_Locations.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Sales Build.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Sequence.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Months.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF New Locations.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RFS_Driver_Detail.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Method.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Profile %.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Profile Ref.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Drivers.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_New Location Parameters.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Driver Type.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Driver Detail.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_RF Calculation.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Revenue Build.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Marketing Analysis.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Mth_YTD.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Marketing Codes.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Model Parameters.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Flags.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Fixed Asset codes.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Days.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Company.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Days 19-20.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Days 20-21.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Days 21-22.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_c_Fixed Asset Movements.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_c_GL codes.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_c_Budget - Sales.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_c_Funding Calculation.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_c_New Locations.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_c_BS codes.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_BS Consol Adjs.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Bowling Split.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Amusements Suppliers.feeders
+05/23/2024  01:59 PM                16 }ElementAttributes_Amusements Assumptions.feeders
+05/23/2024  01:59 PM                16 }CubeSecurityProperties.feeders
+05/23/2024  01:59 PM                16 }DimensionAttributes.feeders
+05/23/2024  01:59 PM                16 }CubeAttributes.feeders
+05/23/2024  01:59 PM                16 }ConnectionProperties.feeders
+05/23/2024  01:59 PM                16 }ChoreSecurity.feeders
+05/23/2024  01:59 PM        61,821,844 RFS Rolling Forecast.feeders
+05/23/2024  01:59 PM                41 RFS New Loc Start.feeders
+05/23/2024  01:59 PM            81,363 RFS New Location Target.feeders
+05/23/2024  01:59 PM         6,911,487 RFS New Locations.feeders
+05/23/2024  01:59 PM                86 RFS Flags.feeders
+05/23/2024  01:59 PM                20 RFS Driver Data.feeders
+05/23/2024  01:59 PM            73,626 RFS_Funding Costs.feeders
+05/23/2024  01:59 PM             6,740 RFS Driver Details.feeders
+05/23/2024  01:59 PM        74,520,285 P&L by Location.feeders
+05/23/2024  01:59 PM        11,018,873 P&L by Detail.feeders
+05/23/2024  01:59 PM                47 CONS_ProfitandLossConsol.feeders
+05/23/2024  01:59 PM             6,844 Consolidation Jnls.feeders
+05/23/2024  01:59 PM                68 CONS_Journals.feeders
+05/23/2024  01:59 PM                91 CONS_BalanceSheetConsol.feeders
+05/23/2024  01:59 PM                76 CONS_CapitalandReserves.feeders
+05/23/2024  01:59 PM                78 CONS_DataChecks.feeders
+05/23/2024  01:59 PM             1,331 CONS_Holdings.feeders
+05/23/2024  01:59 PM                56 CONS_Alloc_JnltoPL.feeders
+05/23/2024  01:59 PM                55 CONS_Alloc_JnltoBS.feeders
+05/23/2024  01:59 PM                16 Budget Parameters.feeders
+05/23/2024  01:59 PM                70 BSCF_ReceiptandPayment.feeders
+05/23/2024  01:59 PM                24 Budget - Bowling Split.feeders
+05/23/2024  01:59 PM                92 BSCF_ProfitandLoss.feeders
+05/23/2024  01:59 PM            26,447 BSCF_BalanceSheet.feeders
+05/23/2024  01:59 PM                28 BSCF_Cashflow.feeders
+05/23/2024  01:59 PM                53 BSCF_Alloc_RPtoBS.feeders
+05/23/2024  01:59 PM                45 BSCF_Alloc_BStoCF.feeders
+05/23/2024  01:59 PM                71 BSCF_Assum_Monthly.feeders
+05/23/2024  01:59 PM                51 Bdgt23-24 - PPG SPG daily assumptions.feeders
+05/23/2024  01:59 PM                51 Bdgt23-24 - Margin assumptions.feeders
+05/23/2024  01:59 PM        17,910,794 Bdgt23-24 - Daily Sales.feeders
+05/23/2024  01:59 PM                51 Bdgt22-23 - PPG SPG daily assumptions.feeders
+05/23/2024  01:59 PM                51 Bdgt22-23 - Margin assumptions.feeders
+05/23/2024  01:59 PM        15,930,773 Bdgt22-23 - Daily Sales.feeders
+05/23/2024  01:59 PM                78 Amusement Assumptions.feeders
+05/23/2024  12:56 PM                48 log.txt
+05/23/2024  12:46 PM               153 m_ITIT.dim
+05/23/2024  12:20 PM                68 }ElementAttributes_m_ITIT.dim
+05/23/2024  12:20 PM                49 }ElementAttributes_ITIT Input.dim
+05/23/2024  12:13 PM               133 }StatsByClient.RUX
+05/23/2024  12:13 PM             3,247 }TimeIntervals.dim
+05/23/2024  12:13 PM               231 }ElementAttributes_}CAMAssociatedGroups.cub
+05/23/2024  12:13 PM                98 }ElementAttributes_}CAMAssociatedGroups.dim
+05/23/2024  12:13 PM               137 }ElementAttributes_}Cultures.dim
+05/23/2024  12:13 PM                86 }ElementAttributes_}Clients.dim
+05/23/2024  12:13 PM                85 }ElementAttributes_}Groups.dim
+05/23/2024  12:13 PM                57 }ElementProperties.dim
+05/23/2024  12:13 PM           119,783 }StatsByRule.cub
+05/23/2024  12:13 PM           188,925 }LineNumber.dim
+05/15/2024  10:49 AM             1,164 RefreshMDX.pro
+05/15/2024  10:49 AM             1,648 live_to_dev_tool.pro
+05/15/2024  10:49 AM             3,279 CONS_DATATRANSFER_PLfromBSCF.pro
+05/15/2024  10:49 AM             3,270 CONS_DATATRANSFER_BSfromBSCF.pro
+05/15/2024  10:49 AM             3,340 CONS_DATALOAD_ProfitLossLC.pro
+05/15/2024  10:49 AM             3,257 CONS_DATALOAD_HistFVA.pro
+05/15/2024  10:49 AM             4,685 CONS_DATALOAD_HistAcqn.pro
+05/15/2024  10:49 AM             2,868 CONS_DATALOAD_BalSheetLC.pro
+05/15/2024  10:49 AM             3,324 BSCF_DataLoad_ProfitLoss.pro
+05/15/2024  10:49 AM             4,987 BSCF_DATALOAD_ActualBalanceSheet.pro
+05/07/2024  02:58 PM            10,214 DIMUPDATE Time Dimension.pro
+05/07/2024  02:58 PM            12,261 DIMUPDATE Time Dimension - Create Monthly Rollups.pro
+05/07/2024  02:58 PM             3,527 DIMUPDATE Time Dimension - Create Index.pro
+05/07/2024  02:58 PM            12,669 DIMUPDATE Time Dimension - Create Alternative Hierarchies.pro
+05/07/2024  11:50 AM             4,031 ADMIN - Send Email.pro
+05/07/2024  11:50 AM             2,671 ADMIN - Cube Copy - SINGLE CUBE - From one Year to Another.pro
+05/07/2024  11:50 AM             3,216 ADMIN - Cube Copy - ALL CUBES - Version Copy.pro
+05/07/2024  11:50 AM             2,625 ADMIN - Cube Copy - ALL CUBES - From one Year to Another.pro
+05/07/2024  11:50 AM             3,261 ADMIN - Cube Copy - SINGLE CUBE - Version Copy.pro
+05/07/2024  11:50 AM             4,518 ADMIN - Backup Data Folder.pro
+04/04/2024  10:42 AM            11,634 SYS Version Maintenance.pro
+04/04/2024  10:42 AM            18,428 SYS Version Copy.pro
+03/07/2024  01:00 PM    <DIR>          c_budget - sales}subs
+03/07/2024  01:00 PM    <DIR>          versions - budget}subs
+03/06/2024  12:36 PM    <DIR>          }link_rf rolling fcst - intl copy scenarios}subs
+03/06/2024  12:36 PM    <DIR>          }link_rf roll fcst - pandl by loc}subs
+03/06/2024  12:36 PM    <DIR>          }link_bdgt21-22 - daily sales - internal trf}subs
+03/06/2024  12:36 PM    <DIR>          walstead}subs
+03/06/2024  12:36 PM    <DIR>          User
+03/06/2024  12:36 PM    <DIR>          sandboxlogs
+03/06/2024  12:36 PM    <DIR>          sales build}subs
+03/06/2024  12:36 PM    <DIR>          rfs_new_locations}subs
+03/06/2024  12:36 PM    <DIR>          RFS_Funding Costs}vues
+03/06/2024  12:36 PM    <DIR>          rfs_driver_detail}subs
+03/06/2024  12:36 PM    <DIR>          RFS Rolling Forecast}vues
+03/06/2024  12:36 PM    <DIR>          RFS New Locations}vues
+03/06/2024  12:36 PM    <DIR>          RFS New Location Target}vues
+03/06/2024  12:36 PM    <DIR>          RFS New Loc Start}vues
+03/06/2024  12:36 PM    <DIR>          RFS Flags}vues
+03/06/2024  12:36 PM    <DIR>          RFS Driver Details}vues
+03/06/2024  12:36 PM    <DIR>          RFS Driver Data}vues
+03/06/2024  12:36 PM    <DIR>          rf years}subs
+03/06/2024  12:36 PM    <DIR>          rf sequence}subs
+03/06/2024  12:36 PM    <DIR>          rf profile ref}subs
+03/06/2024  12:36 PM    <DIR>          rf profile %}subs
+03/06/2024  12:36 PM    <DIR>          rf new locations}subs
+03/06/2024  12:36 PM    <DIR>          rf months}subs
+03/06/2024  12:36 PM    <DIR>          rf method}subs
+03/06/2024  12:36 PM    <DIR>          rf drivers}subs
+03/06/2024  12:36 PM    <DIR>          rf driver type}subs
+03/06/2024  12:36 PM    <DIR>          rf driver detail}subs
+03/06/2024  12:36 PM    <DIR>          rf calculation}subs
+03/06/2024  12:36 PM    <DIR>          revenue build}subs
+03/06/2024  12:36 PM    <DIR>          PM_Admin
+03/06/2024  12:36 PM    <DIR>          P&L by Location}vues
+03/06/2024  12:36 PM    <DIR>          P&L by Detail}vues
+03/06/2024  12:36 PM    <DIR>          new location parameters}subs
+03/06/2024  12:36 PM    <DIR>          model parameters}subs
+03/06/2024  12:36 PM    <DIR>          marketing codes}subs
+03/06/2024  12:36 PM    <DIR>          marketing analysis}subs
+03/06/2024  12:36 PM    <DIR>          HollywoodBowl
+03/06/2024  12:36 PM    <DIR>          flags}subs
+03/06/2024  12:36 PM    <DIR>          fixed asset codes}subs
+03/06/2024  12:36 PM    <DIR>          days}subs
+03/06/2024  12:36 PM    <DIR>          days 23-24}subs
+03/06/2024  12:36 PM    <DIR>          days 22-23}subs
+03/06/2024  12:36 PM    <DIR>          days 21-22}subs
+03/06/2024  12:36 PM    <DIR>          days 20-21}subs
+03/06/2024  12:36 PM    <DIR>          days 19-20}subs
+03/06/2024  12:36 PM    <DIR>          c_new locations}subs
+03/06/2024  12:36 PM    <DIR>          c_funding calculation}subs
+03/06/2024  12:36 PM    <DIR>          c_fixed asset movements}subs
+03/06/2024  12:36 PM    <DIR>          c_bs codes}subs
+03/06/2024  12:36 PM    <DIR>          CONS_t_Month}subs
+03/06/2024  12:36 PM    <DIR>          CONS_ProfitandLoss}subs
+03/06/2024  12:36 PM    <DIR>          CONS_ProfitandLossConsol}vues
+03/06/2024  12:36 PM    <DIR>          CONS_m_Holdings}subs
+03/06/2024  12:36 PM    <DIR>          CONS_Journals}vues
+03/06/2024  12:36 PM    <DIR>          CONS_Holdings}vues
+03/06/2024  12:36 PM    <DIR>          CONS_FXRates}vues
+03/06/2024  12:36 PM    <DIR>          CONS_DataChecks}vues
+03/06/2024  12:36 PM    <DIR>          CONS_CapitalandReserves}vues
+03/06/2024  12:36 PM    <DIR>          CONS_BalanceSheet}subs
+03/06/2024  12:36 PM    <DIR>          CONS_BalanceSheetConsol}vues
+03/06/2024  12:36 PM    <DIR>          CONS_a_Company}subs
+03/06/2024  12:36 PM    <DIR>          CONS_Alloc_JnltoPL}vues
+03/06/2024  12:36 PM    <DIR>          CONS_Alloc_JnltoBS}vues
+03/06/2024  12:36 PM    <DIR>          Consolidation Jnls}vues
+03/06/2024  12:36 PM    <DIR>          Cognos
+03/06/2024  12:36 PM    <DIR>          Business Analytics
+03/06/2024  12:36 PM    <DIR>          Budget Parameters}vues
+03/06/2024  12:36 PM    <DIR>          Budget - Bowling Split}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_t_Month}subs
+03/06/2024  12:36 PM    <DIR>          bscf_scenario}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_ReceiptandPayment}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_ReceiptandPayment}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_ProfitandLoss}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_ProfitandLoss}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_PaymentProfile}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_m_MonthAssumptions}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_m_CashPayment}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_m_CapitalAssets}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_ModelParameters}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_Map_ReceiptandPayment}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_Map_PaymentProfilePhasing}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_Map_BalanceSheet}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_Cashflow}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_Cashflow}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_CapitalAssets}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_BalanceSheet}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_BalanceSheet}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_a_Company}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_Assum_ReceiptandPayment}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_Assum_Monthly}vues
+03/06/2024  12:36 PM    <DIR>          bscf_assetcategory}subs
+03/06/2024  12:36 PM    <DIR>          BSCF_Alloc_RPtoBS}vues
+03/06/2024  12:36 PM    <DIR>          BSCF_Alloc_BStoCF}vues
+03/06/2024  12:36 PM    <DIR>          bs consol adjs}subs
+03/06/2024  12:36 PM    <DIR>          bowling split}subs
+03/06/2024  12:36 PM    <DIR>          Bdgt23-24 - PPG SPG daily assumptions}vues
+03/06/2024  12:36 PM    <DIR>          Bdgt23-24 - Margin assumptions}vues
+03/06/2024  12:36 PM    <DIR>          Bdgt23-24 - Daily Sales}vues
+03/06/2024  12:36 PM    <DIR>          Bdgt22-23 - PPG SPG daily assumptions}vues
+03/06/2024  12:36 PM    <DIR>          Bdgt22-23 - Margin assumptions}vues
+03/06/2024  12:36 PM    <DIR>          Bdgt22-23 - Daily Sales}vues
+03/06/2024  12:36 PM    <DIR>          Apache
+03/06/2024  12:36 PM    <DIR>          amusements suppliers}subs
+03/06/2024  12:36 PM    <DIR>          amusements assumptions}subs
+03/06/2024  12:36 PM    <DIR>          Amusement Assumptions}vues
+03/06/2024  12:36 PM    <DIR>          Admin
+03/06/2024  12:03 PM    <DIR>          }tp_root_permissions}subs
+03/06/2024  12:03 PM    <DIR>          }tp_permissions}subs
+03/06/2024  12:03 PM    <DIR>          }tp_applications}subs
+03/06/2024  12:03 PM    <DIR>          }StatsByCube}vues
+03/06/2024  12:03 PM    <DIR>          }ProgressTimings}subs
+03/06/2024  12:03 PM    <DIR>          }ProcessSecurity}vues
+03/06/2024  12:03 PM    <DIR>          }ModelProperties}subs
+03/06/2024  12:03 PM    <DIR>          }Modeling}subs
+03/06/2024  12:03 PM    <DIR>          }link_temp ny data load}subs
+03/06/2024  12:03 PM    <DIR>          }link_rfs rolling fcst - intl copy scenarios}subs
+03/06/2024  12:03 PM    <DIR>          }Link_PL by Location - PL Detail}subs
+03/06/2024  12:03 PM    <DIR>          }Link_PL by Location - PL Detail splits}subs
+03/06/2024  12:03 PM    <DIR>          }link_pl by location - pl detail games}subs
+03/06/2024  12:03 PM    <DIR>          }link_pl by detail - internal trf}subs
+03/06/2024  12:03 PM    <DIR>          }link_pl bdgt detail - mktg report}subs
+03/06/2024  12:03 PM    <DIR>          }Groups}subs
+03/06/2024  12:03 PM    <DIR>          }formatUsers}subs
+03/06/2024  12:03 PM    <DIR>          }formatTestSlots}subs
+03/06/2024  12:03 PM    <DIR>          }formatTester}vues
+03/06/2024  12:03 PM    <DIR>          }Externals
+03/06/2024  12:03 PM    <DIR>          }DimensionSecurity}vues
+03/06/2024  12:03 PM    <DIR>          }DimensionAttributes}vues
+03/06/2024  12:03 PM    <DIR>          }DeployedLinkRecord}subs
+03/06/2024  12:03 PM    <DIR>          }CubeSecurity}vues
+03/06/2024  12:03 PM    <DIR>          }CubeAttributes}vues
+03/06/2024  12:03 PM    <DIR>          }ClientGroups}vues
+03/06/2024  12:03 PM    <DIR>          }ClientCAMAssociatedGroups}vues
+03/06/2024  12:03 PM    <DIR>          }ChoreSecurity}vues
+03/06/2024  12:03 PM    <DIR>          }Capabilities}vues
+03/06/2024  12:03 PM    <DIR>          }backup_rfs calculation}subs
+03/06/2024  12:03 PM    <DIR>          }backup_c_new locations}subs
+03/06/2024  12:03 PM    <DIR>          }applications
+03/06/2024  12:03 PM    <DIR>          }-intDPD-hidden-2}subs
+03/06/2024  12:03 PM    <DIR>          }-intDPD-hidden-1}subs
+02/17/2024  10:28 AM               520 }ClientProperties.cub
+01/16/2024  12:15 PM    <DIR>          }backup_bscf_m_accountmapping}subs
+01/16/2024  10:41 AM            30,198 BSCF_Assum_ReceiptandPayment.cub
+01/16/2024  10:41 AM           164,193 BSCF_ProfitandLoss.cub
+01/16/2024  10:41 AM            38,535 BSCF_BalanceSheet.cub
+01/16/2024  10:41 AM               345 }ElementAttributes_BSCF_Scenario.cub
+01/16/2024  10:41 AM            35,665 }ElementAttributes_BSCF_t_Month.cub
+01/16/2024  10:41 AM            32,587 BSCF_Assum_Monthly.cub
+01/16/2024  10:41 AM             7,054 }tp_workflow__save__central.pro
+01/16/2024  10:41 AM             6,944 }tp_workflow__enter__central.pro
+01/16/2024  10:41 AM            16,611 BSCF_CapitalAssets.cub
+01/16/2024  10:41 AM             4,457 }tp_workflow__execute_action__central.pro
+01/16/2024  10:41 AM             2,708 BSCF_Map_BalanceSheet.cub
+01/16/2024  10:41 AM             7,028 }tp_workflow__leave__central.pro
+01/16/2024  10:41 AM             6,834 }tp_workflow__offline__central.pro
+01/16/2024  10:41 AM             6,829 }tp_workflow__online__central.pro
+01/16/2024  10:41 AM             7,900 }tp_workflow__own__central.pro
+01/16/2024  10:41 AM             4,977 BSCF_Map_ReceiptandPayment.cub
+01/16/2024  10:41 AM             7,401 }tp_workflow__release__central.pro
+01/16/2024  10:41 AM             2,682 }tp_dyn_util_instant_action.pro
+01/16/2024  10:41 AM                21 tm1rawstore.20240116103202
+01/15/2024  01:00 PM        23,368,742 P&L by Detail.cub
+01/09/2024  01:00 PM        29,509,359 RFS Rolling Forecast.cub
+01/08/2024  01:00 PM           112,975 RFS New Location Target.cub
+01/08/2024  01:00 PM             8,294 }ElementAttributes_}Temp NY data load (source map c_PL Report) 1704714509385.cub
+01/08/2024  01:00 PM            19,740 }DimensionAttributes.cub
+01/08/2024  01:00 PM            63,045 }ElementAttributes_}Link_RFS Rolling Fcst - Intl copy scenarios.cub
+01/08/2024  11:49 AM            25,455 Temp NY data load.pro
+01/08/2024  11:48 AM             1,813 }Temp NY data load (mapping cube 4_Months) 1704714520743.cub
+01/08/2024  11:48 AM               278 }Temp NY data load (source map 4_Months) 1704714519993.dim
+01/08/2024  11:48 AM               160 }Temp NY data load (target selection 4_Months) 1704714520346.dim
+01/08/2024  11:48 AM             4,082 }Temp NY data load (source map c_PL Report) 1704714509385.dim
+01/08/2024  11:48 AM               130 }ElementAttributes_}Temp NY data load (source map c_PL Report) 1704714509385.dim
+01/08/2024  11:40 AM            14,993 RFS Rolling Fcst - Intl copy scenarios.pro
+01/08/2024  11:40 AM             1,537 }RFS Rolling Fcst - Intl copy scenarios (source map RFS_Months) 1704714011227.dim
+01/08/2024  11:40 AM               168 }RFS Rolling Fcst - Intl copy scenarios (source map Scenarios) 1704714012541.dim
+01/08/2024  11:39 AM            62,163 CompiledCubeCalc_RFS Rolling Forecast.blb
+01/08/2024  11:39 AM            28,127 }Link_RFS Rolling Fcst - Intl copy scenarios.dim
+01/08/2024  11:39 AM               278 }ElementAttributes_}Link_RFS Rolling Fcst - Intl copy scenarios.dim
+12/31/2023  03:22 AM               304 }ClientCAMAssociatedGroups.cub
+12/31/2023  03:21 AM                98 }CAMAssociatedGroups.dim
+12/31/2023  03:21 AM               678 }ClientSettings.cub
+12/31/2023  03:21 AM               724 }ClientSettings.dim
+12/31/2023  03:21 AM               290 }ClientProperties.dim
+12/30/2023  08:58 PM               187 }groups.dim_12-30-2023_21_08_28
+12/30/2023  07:29 PM               304 }ClientCAMAssociatedGroups.cub_12-30-2023_21_08_28
+12/30/2023  07:29 PM                98 }CAMAssociatedGroups.dim_12-30-2023_21_08_28
+12/21/2023  01:00 PM            16,141 }ElementAttributes_Locations.cub
+12/21/2023  01:00 PM             7,814 }ElementAttributes_}ProgressTimings.cub
+12/21/2023  09:54 AM            25,519 Locations.dim
+12/21/2023  09:54 AM                82 }ElementAttributes_Locations.RUX
+12/21/2023  09:54 AM               112 }ElementAttributes_Locations.dim
+12/21/2023  09:53 AM            25,515 }Backup_Locations.dim.20231221095347
+12/21/2023  09:53 AM                56 }ElementAttributes_}Backup_Locations.dim.20231221095346
+12/21/2023  01:00 AM               528 }ElementAttributes_Versions.cub
+12/20/2023  02:14 PM            65,176 P&L by Detail.RUX
+12/20/2023  02:13 PM            60,430 P&L by Location.RUX
+12/20/2023  02:13 PM               160 }ElementAttributes_Versions.dim
+12/20/2023  02:13 PM                70 }ElementAttributes_Versions.RUX
+12/20/2023  02:12 PM               280 Versions.dim
+12/20/2023  02:12 PM                55 }ElementAttributes_}Backup_Versions.dim.20231220141248
+12/20/2023  02:12 PM               263 }Backup_Versions.dim.20231220141249
+12/20/2023  12:14 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt23-24 - PPG SPG daily assumptions.RUX
+12/20/2023  12:06 PM             5,148 }ProgressTimings.dim
+12/20/2023  12:06 PM               162 }ElementAttributes_}ProgressTimings.dim
+12/20/2023  09:51 AM               245 }Backup_Versions.dim.20231220095109
+12/20/2023  09:51 AM                55 }ElementAttributes_}Backup_Versions.dim.20231220095108
+12/19/2023  01:00 AM            83,638 Bdgt23-24 - Margin assumptions.cub
+12/19/2023  01:00 AM         1,403,979 Bdgt23-24 - PPG SPG daily assumptions.cub
+12/15/2023  01:00 PM             1,580 }ElementAttributes_}DeployedLinkRecord.cub
+12/15/2023  01:00 PM         1,040,084 Bdgt23-24 - Daily Sales.cub
+12/15/2023  09:20 AM                64 }Link_Bdgt23-24 - Daily Sales - Internal Trf.dim.20231215092019.1
+12/15/2023  09:18 AM            13,993 Bdgt23-24 - Daily Sales.RUX
+12/15/2023  09:18 AM            12,343 CompiledCubeCalc_Bdgt23_2D24 _2D Daily Sales.blb
+12/15/2023  09:17 AM                70 }ElementAttributes_}PL by Detail - Internal Trf (source map Versions) 1702289416327.RUX
+12/15/2023  09:16 AM               793 CompiledLinkDefn__7DLink_5FBdgt23_2D24 _2D Daily Sales _2D Internal Trf.blb
+12/15/2023  09:16 AM               562 }DeployedLinkRecord.dim
+12/12/2023  04:04 PM            25,491 }Backup_Locations.dim.20231212160608
+12/12/2023  03:58 PM                56 }ElementAttributes_}Backup_Locations.dim.20231212155802
+12/11/2023  01:00 PM            15,780 }ElementAttributes_}Link_PL by Detail - Internal Trf.cub
+12/11/2023  01:00 PM               352 }ElementAttributes_}PL by Detail - Internal Trf (source map Versions) 1702289416327.cub
+12/11/2023  10:10 AM            11,734 PL by Detail - Internal Trf.pro
+12/11/2023  10:10 AM               105 }PL by Detail - Internal Trf (source map Versions) 1702289416327.dim
+12/11/2023  10:10 AM               137 }ElementAttributes_}PL by Detail - Internal Trf (source map Versions) 1702289416327.dim
+12/11/2023  10:10 AM               103 }PL by Detail - Internal Trf (source map Years) 1702289416628.dim
+12/11/2023  10:09 AM            35,758 CompiledCubeCalc_P_26L by Detail.blb
+12/11/2023  10:09 AM               267 }ElementAttributes_}Link_PL by Detail - Internal Trf.dim
+12/11/2023  10:09 AM             6,446 }Link_PL by Detail - Internal Trf.dim
+11/11/2023  01:00 AM            68,061 }ElementAttributes_c_BS codes.cub
+11/11/2023  01:00 AM            85,744 }ElementAttributes_c_GL codes.cub
+11/11/2023  01:00 AM            15,612 }HierarchyProperties.cub
+11/10/2023  03:14 PM                70 }ElementAttributes_c_BS codes.RUX
+11/10/2023  03:14 PM            14,074 c_BS codes.dim
+11/10/2023  03:14 PM               243 }ElementAttributes_c_BS codes.dim
+11/10/2023  03:12 PM            14,047 }Backup_c_BS codes.dim.20231110151331
+11/10/2023  03:12 PM                57 }ElementAttributes_}Backup_c_BS codes.dim.20231110151233
+11/10/2023  03:08 PM               313 }ElementAttributes_c_GL codes.dim
+11/10/2023  03:08 PM            17,062 c_GL codes.dim
+11/10/2023  03:08 PM                70 }ElementAttributes_c_GL codes.RUX
+11/10/2023  03:07 PM            17,035 }Backup_c_GL codes.dim.20231110150747
+11/10/2023  03:07 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20231110150744
+11/09/2023  02:52 PM                56 }ElementAttributes_}Backup_Locations.dim.20231109145205
+11/07/2023  02:56 PM                78 }ElementAttributes_BSCF_Scenario.dim
+11/07/2023  02:56 PM               126 BSCF_Scenario.dim
+11/07/2023  01:00 AM            14,231 RFS_Funding Costs.cub
+11/07/2023  01:00 AM            22,041 RFS Driver Details.cub
+11/07/2023  01:00 AM            11,077 RFS Flags.cub
+11/07/2023  01:00 AM               389 }ElementAttributes_Scenarios.cub
+11/07/2023  01:00 AM             6,279 RFS New Loc Start.cub
+11/06/2023  03:43 PM                96 }RFS Rolling Fcst - Intl copy scenarios (source map Scenarios) 1699285423410.dim.20231106154343
+11/06/2023  03:43 PM                97 }RFS Rolling Fcst - Intl copy scenarios (source map RFS_Months) 1699285421264.dim.20231106154343
+11/06/2023  03:09 PM                96 }RFS Rolling Fcst - Intl copy scenarios (source map Scenarios) 1699283388391.dim.20231106150948
+11/06/2023  03:09 PM                97 }RFS Rolling Fcst - Intl copy scenarios (source map RFS_Months) 1699283386232.dim.20231106150948
+11/06/2023  03:05 PM                87 }ElementAttributes_Scenarios.dim
+11/06/2023  03:05 PM               101 Scenarios.dim
+11/06/2023  03:05 PM                70 }ElementAttributes_Scenarios.RUX
+11/06/2023  03:04 PM                56 }ElementAttributes_}Backup_Scenarios.dim.20231106150454
+11/03/2023  09:59 AM             7,384 ODBC_a1 MthActl NewDream.pro
+10/26/2023  01:00 AM             1,663 }ElementAttributes_RFS_New_Locations.cub
+10/26/2023  01:00 AM               473 }ElementAttributes_}Backup_RFS Calculation.cub
+10/26/2023  01:00 AM               649 }ElementAttributes_}formatUsers.cub
+10/26/2023  01:00 AM               547 }formatTester.cub
+10/25/2023  07:24 PM            42,025 RFS New Locations.RUX
+10/25/2023  07:23 PM                70 }ElementAttributes_}Backup_RFS Calculation.RUX
+10/25/2023  03:03 PM               340 }Backup_RFS Calculation.dim
+10/25/2023  03:03 PM               109 }ElementAttributes_}Backup_RFS Calculation.dim
+10/25/2023  01:22 PM                98 }ElementAttributes_RFS_New_Locations.dim
+10/25/2023  01:22 PM             1,704 RFS_New_Locations.dim
+10/25/2023  01:22 PM                70 }ElementAttributes_RFS_New_Locations.RUX
+10/25/2023  01:21 PM             1,712 }Backup_RFS_New_Locations.dim.20231025132142
+10/25/2023  01:20 PM                64 }ElementAttributes_}Backup_RFS_New_Locations.dim.20231025132001
+10/24/2023  04:46 PM               256 BSCF_ProfitandLoss.Actual Profit and Loss.blb
+10/17/2023  05:03 PM                56 }ElementAttributes_}Backup_Locations.dim.20231017170318
+10/12/2023  11:31 AM               585 }ElementAttributes_BSCF_t_Month.dim
+10/12/2023  11:31 AM             2,498 BSCF_t_Month.dim
+10/11/2023  03:16 PM            25,413 }Backup_Locations.dim.20231011151655
+10/11/2023  03:16 PM                56 }ElementAttributes_}Backup_Locations.dim.20231011151638
+10/11/2023  12:09 PM                96 }RFS Rolling Fcst - Intl copy scenarios (source map Scenarios) 1697026196024.dim.20231011120956
+10/11/2023  12:09 PM                97 }RFS Rolling Fcst - Intl copy scenarios (source map RFS_Months) 1697026194709.dim.20231011120956
+10/05/2023  09:10 AM                64 }ElementAttributes_}Backup_RFS_New_Locations.dim.20231005091009
+10/05/2023  09:08 AM             1,602 }Backup_RFS_New_Locations.dim.20231005090852
+10/05/2023  01:00 AM           143,551 }ElementAttributes_}Link_Temp NY data load.cub
+10/04/2023  07:15 PM            63,676 }Link_Temp NY data load.dim
+10/04/2023  07:15 PM               257 }ElementAttributes_}Link_Temp NY data load.dim
+10/04/2023  01:00 PM            80,394 Bdgt22-23 - Margin assumptions.cub
+10/04/2023  01:00 PM         1,316,439 Bdgt22-23 - PPG SPG daily assumptions.cub
+10/04/2023  01:00 PM           672,474 Bdgt22-23 - Daily Sales.cub
+10/02/2023  01:00 PM            10,722 }ElementAttributes_RFS_Months.cub
+10/02/2023  10:25 AM                74 }Temp NY data load (source map 4_Months) 1696242298076.dim.20231002102458
+10/02/2023  10:24 AM                77 }Temp NY data load (source map c_PL Report) 1696242287638.dim.20231002102449
+10/02/2023  10:19 AM                70 }Hold_HollywoodBowl_Kevin Mather_}}_RFS Rolling Forecast.RUX
+10/02/2023  09:49 AM                74 }Temp NY data load (source map 4_Months) 1696240140441.dim.20231002094900
+10/02/2023  09:48 AM                77 }Temp NY data load (source map c_PL Report) 1696240129845.dim.20231002094851
+10/02/2023  09:47 AM                57 }ElementAttributes_}Backup_RFS_Months.dim.20231002094711
+10/02/2023  09:46 AM                74 }Temp NY data load (source map 4_Months) 1696239960607.dim.20231002094600
+10/02/2023  09:45 AM                77 }Temp NY data load (source map c_PL Report) 1696239949907.dim.20231002094552
+10/02/2023  09:39 AM                74 }Temp NY data load (source map 4_Months) 1696239555481.dim.20231002093915
+10/02/2023  09:39 AM                77 }Temp NY data load (source map c_PL Report) 1696239543515.dim.20231002093906
+10/02/2023  09:35 AM                74 }Temp NY data load (source map 4_Months) 1696239305009.dim.20231002093505
+10/02/2023  09:34 AM                77 }Temp NY data load (source map c_PL Report) 1696239293957.dim.20231002093456
+10/02/2023  09:32 AM             2,487 RFS_Months.dim
+10/02/2023  09:32 AM                70 }ElementAttributes_RFS_Months.RUX
+10/02/2023  09:32 AM               268 }ElementAttributes_RFS_Months.dim
+09/30/2023  01:00 AM            24,826 }ElementAttributes_c_PL for RF.cub
+09/29/2023  04:34 PM            33,531 RFS New Location Target.RUX
+09/29/2023  04:34 PM            39,299 RFS Driver Details.RUX
+09/29/2023  04:34 PM            49,000 RFS Rolling Forecast.RUX
+09/29/2023  04:33 PM            61,301 CompiledCubeCalc_RFS New Location Target.blb
+09/29/2023  04:33 PM            61,997 CompiledCubeCalc_RF Rolling Forecast.blb
+09/29/2023  04:33 PM            61,464 CompiledCubeCalc_RF New Locations.blb
+09/29/2023  04:33 PM            61,247 CompiledCubeCalc_RFS Driver Details.blb
+09/29/2023  04:33 PM            61,353 CompiledCubeCalc_RFS New Locations.blb
+09/29/2023  04:33 PM            61,250 CompiledCubeCalc_RF New Location Details.blb
+09/29/2023  04:33 PM            59,292 CompiledCubeCalc_RF Driver Details.blb
+09/29/2023  04:33 PM             4,034 c_PL for RF.dim
+09/29/2023  04:33 PM                70 }ElementAttributes_c_PL for RF.RUX
+09/29/2023  04:33 PM               430 }ElementAttributes_c_PL for RF.dim
+09/29/2023  04:33 PM                58 }ElementAttributes_}Backup_c_PL for RF.dim.20230929163335
+09/29/2023  04:13 PM                57 }ElementAttributes_}Backup_RFS_Months.dim.20230929161305
+09/29/2023  03:52 PM                58 }ElementAttributes_}Backup_c_PL for RF.dim.20230929155204
+09/29/2023  03:52 PM             4,010 }Backup_c_PL for RF.dim.20230929155230
+09/29/2023  03:40 PM                80 }Temp NY data load (target selection 4_Months) 1696002048200.dim.20230929154048
+09/29/2023  03:40 PM                74 }Temp NY data load (source map 4_Months) 1696002047837.dim.20230929154048
+09/29/2023  03:40 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_P&L by Detail.RUX
+09/29/2023  03:40 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt23-24 - Daily Sales.RUX
+09/29/2023  03:15 PM                57 }ElementAttributes_}Backup_RFS_Months.dim.20230929151554
+09/26/2023  08:52 PM            25,243 }Backup_Locations.dim.20230926205326
+09/26/2023  08:52 PM                56 }ElementAttributes_}Backup_Locations.dim.20230926205211
+09/12/2023  10:49 PM                56 }ElementAttributes_}Backup_Locations.dim.20230912224917
+09/12/2023  10:10 PM            25,195 }Backup_Locations.dim.20230912221016
+09/12/2023  10:10 PM                56 }ElementAttributes_}Backup_Locations.dim.20230912221006
+09/12/2023  10:07 AM            17,035 }Backup_c_GL codes.dim.20230912100737
+09/12/2023  10:07 AM                57 }ElementAttributes_}Backup_c_GL codes.dim.20230912100736
+09/12/2023  01:00 AM            58,673 }ElementAttributes_}Link_PL by Location - PL Detail.cub
+09/12/2023  01:00 AM             1,009 }ElementAttributes_Years.cub
+09/12/2023  01:00 AM            29,413 }ElementAttributes_c_PL Report.cub
+09/11/2023  01:33 PM            78,109 CompiledCubeCalc_P_26L by Location.blb
+09/11/2023  01:33 PM             4,974 CompiledLinkDefn__7DLink_5FPL by Location _2D PL Detail.blb
+09/11/2023  01:33 PM               266 }ElementAttributes_}Link_PL by Location - PL Detail.dim
+09/11/2023  01:33 PM            25,397 }Link_PL by Location - PL Detail.dim
+09/11/2023  01:33 PM               430 }ElementAttributes_c_PL Report.dim
+09/11/2023  01:31 PM             1,276 CompiledLinkDefn__7DLink_5FPL by Location _2D PL Detail games.blb
+09/11/2023  01:31 PM             2,572 CompiledLinkDefn__7DLink_5FPL by Location _2D PL Detail splits.blb
+09/11/2023  01:31 PM                70 }ElementAttributes_c_PL Report.RUX
+09/11/2023  01:31 PM             4,670 c_PL Report.dim
+09/11/2023  01:29 PM             4,678 }Backup_c_PL Report.dim.20230911132915
+09/11/2023  01:29 PM                58 }ElementAttributes_}Backup_c_PL Report.dim.20230911132911
+09/11/2023  01:27 PM             1,429 CompiledLinkDefn_P_26L by Detail_5F1ab8b0e4.blb
+09/11/2023  01:27 PM               226 }ElementAttributes_Years.dim
+09/11/2023  01:25 PM            17,035 }Backup_c_GL codes.dim.20230911132505
+09/11/2023  01:22 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20230911132222.1
+09/08/2023  04:01 PM            25,147 }Backup_Locations.dim.20230908160225
+09/08/2023  03:53 PM                56 }ElementAttributes_}Backup_Locations.dim.20230908155330
+09/06/2023  01:22 PM             3,250 tp_ModelBkup_{90fa37f6-4083-4641-8a20-81e123ce6856}.blb
+09/06/2023  01:22 PM               987 tp_AdminBkup_{90fa37f6-4083-4641-8a20-81e123ce6856}.blb
+09/06/2023  01:22 PM               345 tp_SecurityBkup_{90fa37f6-4083-4641-8a20-81e123ce6856}.blb
+09/05/2023  02:19 PM             5,419 BSCF_Map_PaymentProfilePhasing.cub
+09/05/2023  02:19 PM               369 }ElementAttributes_BSCF_a_Company.cub
+09/05/2023  02:19 PM             2,221 BSCF_Cashflow.cub
+09/05/2023  02:19 PM             2,145 }ElementAttributes_BSCF_ProfitandLoss.cub
+09/05/2023  02:19 PM               352 BSCF_ModelParameters.cub
+09/05/2023  02:19 PM             3,026 BSCF_ReceiptandPayment.cub
+08/30/2023  08:54 AM                56 }ElementAttributes_}Backup_Locations.dim.20230830085415
+08/30/2023  08:54 AM            24,979 }Backup_Locations.dim.20230830085638
+08/09/2023  11:08 PM                56 }ElementAttributes_}Backup_Locations.dim.20230809230809
+08/09/2023  10:49 PM            24,955 }Backup_Locations.dim.20230809224934
+08/09/2023  09:43 PM             6,043 CompiledCubeCalc_FA Report _2D BS Codes.blb
+08/09/2023  09:43 PM            12,343 CompiledCubeCalc_Bdgt20_2D21 _2D Daily Sales.blb
+08/09/2023  09:43 PM            12,343 CompiledCubeCalc_Bdgt19_2D20 _2D Daily Sales.blb
+08/09/2023  09:43 PM            12,343 CompiledCubeCalc_Bdgt21_2D22 _2D Daily Sales.blb
+08/09/2023  09:42 PM            12,343 CompiledCubeCalc_Bdgt22_2D23 _2D Daily Sales.blb
+08/09/2023  09:42 PM             2,350 CompiledCubeCalc_Budget _2D Daily Sales.blb
+08/03/2023  09:29 AM             7,404 test.pro
+08/01/2023  05:56 PM                56 }ElementAttributes_}Backup_Locations.dim.20230801175619
+08/01/2023  05:56 PM            21,276 }Backup_Locations.dim.20230801175621
+08/01/2023  04:21 PM                56 }ElementAttributes_}Backup_Locations.dim.20230801162100
+08/01/2023  02:12 PM            16,869 }Backup_c_GL codes.dim.20230801141255
+08/01/2023  02:12 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20230801141253
+08/01/2023  01:16 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20230801131633
+08/01/2023  01:16 PM            16,792 }Backup_c_GL codes.dim.20230801131633
+08/01/2023  01:14 PM            21,252 }Backup_Locations.dim.20230801131434
+08/01/2023  01:14 PM                56 }ElementAttributes_}Backup_Locations.dim.20230801131425
+07/19/2023  12:00 AM               573 }ElementAttributes_Company.cub
+07/18/2023  04:41 PM                68 }ElementAttributes_Company.dim
+07/18/2023  04:41 PM                70 }ElementAttributes_Company.RUX
+07/18/2023  04:41 PM               521 Company.dim
+07/18/2023  04:40 PM               517 }Backup_Company.dim.20230718164055
+07/18/2023  04:40 PM                54 }ElementAttributes_}Backup_Company.dim.20230718164053
+07/18/2023  01:14 PM               482 }Backup_Company.dim.20230718131430
+07/18/2023  01:14 PM                54 }ElementAttributes_}Backup_Company.dim.20230718131427
+07/18/2023  01:13 PM             6,217 Backup ODBC_a1 MthActl NewDream.pro
+07/18/2023  01:13 PM             5,259 Backup ODBC_a2 Games from Dream.pro
+05/26/2023  01:58 PM               303 Bdgt23-24 - PPG SPG daily assumptions.RUX
+05/26/2023  01:56 PM             1,788 Bdgt23-24 - Margin assumptions.RUX
+05/26/2023  01:14 PM                56 }ElementAttributes_}Backup_days test.dim.20230526131448
+05/26/2023  01:14 PM                37 }Backup_days test.dim.20230526131452
+05/26/2023  01:10 PM                18 days test.dim.20230526131052.1
+05/25/2023  08:22 AM                70 }ElementAttributes_Days 23-24.RUX
+05/25/2023  12:00 AM            92,490 }ElementAttributes_Days 23-24.cub
+05/24/2023  09:05 PM               350 }ElementAttributes_Days 23-24.dim
+05/24/2023  09:05 PM            20,688 Days 23-24.dim
+05/24/2023  09:01 PM            20,684 }Backup_Days 23-24.dim.20230524210213
+05/24/2023  08:44 PM                57 }ElementAttributes_}Backup_Days 23-24.dim.20230524204411
+05/24/2023  05:11 PM            19,493 }Backup_Days 23-24.dim.20230524171408
+05/24/2023  05:01 PM                57 }ElementAttributes_}Backup_Days 23-24.dim.20230524170143
+05/24/2023  02:20 PM               570 }Backup_Days 23-24.dim.20230524142030
+05/24/2023  01:52 PM                57 }ElementAttributes_}Backup_Days 23-24.dim.20230524135231
+05/12/2023  12:00 AM               239 }ChoreSecurity.cub
+03/20/2023  08:47 PM               102 RFS Rolling Forecast.BSCF Copy View Canada.blb
+03/20/2023  10:39 AM                70 }ElementAttributes_}Link_RFS Rolling Fcst - Intl copy scenarios.RUX
+03/14/2023  08:32 PM            13,977 }Backup_c_BS codes.dim.20230314203253
+03/14/2023  08:21 PM                57 }ElementAttributes_}Backup_c_BS codes.dim.20230314202153.1
+03/14/2023  05:26 PM            16,624 }Backup_c_GL codes.dim.20230314172657
+03/14/2023  05:26 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20230314172637
+03/01/2023  11:25 AM                56 }ElementAttributes_}Backup_Locations.dim.20230301112501
+03/01/2023  11:25 AM            21,183 }Backup_Locations.dim.20230301112631
+02/28/2023  03:23 PM            21,147 }Backup_Locations.dim.20230228152344
+02/28/2023  03:23 PM                56 }ElementAttributes_}Backup_Locations.dim.20230228152342
+02/22/2023  03:40 PM               790 test1.pro
+02/16/2023  10:18 AM                56 }ElementAttributes_}Backup_Locations.dim.20230216101809
+02/03/2023  03:30 PM            16,589 }Backup_c_GL codes.dim.20230203153048
+02/03/2023  03:29 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20230203152955
+01/31/2023  03:31 PM            21,024 }Backup_Locations.dim.20230131153113
+01/31/2023  03:29 PM                56 }ElementAttributes_}Backup_Locations.dim.20230131152901
+01/21/2023  01:00 AM             2,543 }ElementAttributes_4_Months.cub
+01/20/2023  03:18 PM             4,880 CompiledCubeCalc_Balance Sheet.blb
+01/20/2023  03:18 PM             5,187 CompiledCubeCalc_Consolidation Jnls.blb
+01/20/2023  03:18 PM             1,287 CompiledCubeCalc_Fixed Asset Control.blb
+01/20/2023  03:18 PM                70 }ElementAttributes_4_Months.RUX
+01/20/2023  03:18 PM             2,371 4_Months.dim
+01/20/2023  03:18 PM               312 }ElementAttributes_4_Months.dim
+01/20/2023  03:17 PM                55 }ElementAttributes_}Backup_4_Months.dim.20230120151732
+01/20/2023  03:17 PM             2,351 }Backup_4_Months.dim.20230120151745
+01/17/2023  05:12 PM                54 }ElementAttributes_}Backup_Mth_YTD.dim.20230117171227
+01/17/2023  04:01 PM                55 }ElementAttributes_}Backup_4_Months.dim.20230117160140
+01/17/2023  03:35 PM                55 }ElementAttributes_}Backup_4_Months.dim.20230117153506
+01/17/2023  02:55 PM             2,326 }Backup_4_Months.dim.20230117145549
+01/11/2023  04:11 PM                56 }ElementAttributes_}Backup_Locations.dim.20230111161058
+01/11/2023  10:32 AM                56 }ElementAttributes_}Backup_Locations.dim.20230111103206
+12/20/2022  11:37 AM                57 }ElementAttributes_}Backup_c_GL codes.dim.20221220113720
+12/20/2022  11:37 AM            16,449 }Backup_c_GL codes.dim.20221220113720
+12/19/2022  03:56 PM                56 }ElementAttributes_}Backup_Locations.dim.20221219155639
+11/17/2022  09:16 AM               101 }ElementAttributes_BSCF_a_Company.dim
+11/17/2022  09:16 AM               126 BSCF_a_Company.dim
+11/16/2022  06:01 PM                64 }ElementAttributes_}Backup_RFS_New_Locations.dim.20221116180144
+11/16/2022  06:00 PM                56 }ElementAttributes_}Backup_Locations.dim.20221116180026
+11/16/2022  04:39 PM             1,602 }Backup_RFS_New_Locations.dim.20221116163928.1
+11/16/2022  04:36 PM                64 }ElementAttributes_}Backup_RFS_New_Locations.dim.20221116163649
+11/16/2022  04:28 PM            20,165 }Backup_Locations.dim.20221116162931
+11/16/2022  04:27 PM                56 }ElementAttributes_}Backup_Locations.dim.20221116162754
+11/16/2022  04:22 PM             1,026 }Backup_RFS_New_Locations.dim.20221116162243
+11/16/2022  04:22 PM                64 }ElementAttributes_}Backup_RFS_New_Locations.dim.20221116162226
+11/16/2022  02:57 PM                58 }ElementAttributes_}Backup_c_PL for RF.dim.20221116145737
+11/16/2022  02:54 PM                58 }ElementAttributes_}Backup_c_PL Report.dim.20221116145419
+11/16/2022  02:18 PM                58 }ElementAttributes_}Backup_c_PL Report.dim.20221116141844
+11/16/2022  02:18 PM                58 }ElementAttributes_}Backup_c_PL for RF.dim.20221116141811
+11/16/2022  12:59 PM                58 }ElementAttributes_}Backup_c_PL for RF.dim.20221116125905
+11/16/2022  12:54 PM                58 }ElementAttributes_}Backup_c_PL Report.dim.20221116125422
+11/16/2022  11:11 AM            20,081 }Backup_Locations.dim.20221116111210
+11/16/2022  11:11 AM                56 }ElementAttributes_}Backup_Locations.dim.20221116111100
+11/09/2022  11:35 AM                56 }ElementAttributes_}Backup_Locations.dim.20221109113542
+11/09/2022  11:27 AM                52 }ElementAttributes_}Backup_Years.dim.20221109112717
+11/09/2022  10:17 AM                81 }PL by Detail - Internal Trf (source map Years) 1667989076722.dim.20221109101756
+11/09/2022  10:17 AM                84 }PL by Detail - Internal Trf (source map Versions) 1667989076662.dim.20221109101756
+11/09/2022  10:13 AM                84 }PL by Detail - Internal Trf (source map Versions) 1667988794325.dim.20221109101314
+11/09/2022  10:13 AM                81 }PL by Detail - Internal Trf (source map Years) 1667988794401.dim.20221109101314
+11/09/2022  10:10 AM                52 }ElementAttributes_}Backup_Years.dim.20221109101050
+11/09/2022  10:08 AM                81 }PL by Detail - Internal Trf (source map Years) 1667988479294.dim.20221109100759
+11/09/2022  10:08 AM                84 }PL by Detail - Internal Trf (source map Versions) 1667988478969.dim.20221109100759
+11/09/2022  10:07 AM                84 }PL by Detail - Internal Trf (source map Versions) 1667988457509.dim.20221109100737
+11/09/2022  10:07 AM                81 }PL by Detail - Internal Trf (source map Years) 1667988457570.dim.20221109100737
+11/09/2022  10:06 AM                70 }ElementAttributes_Years.RUX
+11/09/2022  10:06 AM               223 Years.dim
+11/09/2022  10:05 AM               231 }Backup_Years.dim.20221109100507.1
+11/04/2022  01:11 AM               192 BSCF_ProfitandLoss.P&L Journals.blb
+11/03/2022  09:43 PM               102 BSCF_Assum_Monthly.Monthly Assums.blb
+11/03/2022  08:49 PM               193 BSCF_Map_PaymentProfilePhasing.Cash Months for Profiles.blb
+11/03/2022  05:21 PM             1,842 BSCF_ProfitandLoss.dim
+11/03/2022  05:21 PM               105 }ElementAttributes_BSCF_ProfitandLoss.dim
+11/02/2022  10:36 AM               194 BSCF_CapitalAssets.Asset Disposals.blb
+11/02/2022  10:26 AM               196 BSCF_ReceiptandPayment.Receipts and Payments.blb
+11/01/2022  05:34 PM            19,988 }Backup_Locations.dim.20221101173424.1
+11/01/2022  05:34 PM                56 }ElementAttributes_}Backup_Locations.dim.20221101173413
+11/01/2022  03:21 PM               196 BSCF_Map_ReceiptandPayment.All.blb
+11/01/2022  03:21 PM               196 BSCF_Assum_ReceiptandPayment.Rec and Pay Assumps.blb
+11/01/2022  03:21 PM               191 BSCF_Map_BalanceSheet.All.blb
+11/01/2022  02:24 PM               191 BSCF_Map_BalanceSheet.BSCF_Map_BalanceSheet.blb
+11/01/2022  12:51 PM               256 BSCF_ProfitandLoss.Profit and Loss.blb
+11/01/2022  12:11 PM             3,032 RFS_Funding Costs.RUX
+11/01/2022  01:00 AM               752 }ElementAttributes_}Backup_c_New Locations.cub
+11/01/2022  01:00 AM             4,989 RFS New Locations.cub
+10/31/2022  09:35 PM             1,232 zProcessFeeders.pro
+10/31/2022  05:13 PM               255 BSCF_BalanceSheet.Balance Sheet.blb
+10/31/2022  05:06 PM               273 BSCF_Cashflow.Cashflow.blb
+10/31/2022  03:55 PM             1,359 }ElementProperties_BSCF_t_Month.cub
+10/31/2022  02:54 PM                64 }ElementAttributes_}Backup_RFS_New_Locations.dim.20221031145431
+10/31/2022  02:53 PM                70 }ElementAttributes_}Backup_c_New Locations.RUX
+10/31/2022  02:53 PM               232 }ElementAttributes_}Backup_c_New Locations.dim
+10/31/2022  02:53 PM               253 }Backup_c_New Locations.dim
+10/31/2022  12:55 PM                64 }ElementAttributes_}Backup_RFS_New_Locations.dim.20221031125549
+10/25/2022  12:00 PM               252 }ElementAttributes_RF Years.cub
+10/25/2022  10:38 AM                57 }ElementAttributes_}Backup_RFS_Months.dim.20221025103759
+10/25/2022  10:04 AM                55 }ElementAttributes_}Backup_RF Years.dim.20221025100418
+10/25/2022  10:04 AM                58 }ElementAttributes_}Backup_RF Sequence.dim.20221025100410
+10/25/2022  10:03 AM                57 }ElementAttributes_}Backup_RFS_Months.dim.20221025100318
+10/25/2022  09:40 AM                64 }ElementAttributes_}Backup_RFS_New_Locations.dim.20221025094038
+10/25/2022  09:25 AM               166 }ElementAttributes_RF Years.dim
+10/25/2022  09:25 AM                70 }ElementAttributes_RF Years.RUX
+10/25/2022  09:25 AM               112 RF Years.dim
+10/25/2022  09:25 AM                55 }ElementAttributes_}Backup_RF Years.dim.20221025092521
+10/25/2022  09:25 AM                99 }Backup_RF Years.dim.20221025092521
+10/20/2022  03:11 PM                74 }Temp NY data load (source map 4_Months) 1666278666083.dim.20221020151106
+10/19/2022  04:21 PM                56 }ElementAttributes_}Backup_Locations.dim.20221019162116
+10/19/2022  09:36 AM                56 }ElementAttributes_}Backup_Locations.dim.20221019093608
+10/19/2022  08:35 AM                74 }Temp NY data load (source map 4_Months) 1666168505905.dim.20221019083505
+10/19/2022  08:28 AM                58 }ElementAttributes_}Backup_c_PL for RF.dim.20221019082804
+10/19/2022  08:28 AM             3,976 }Backup_c_PL for RF.dim.20221019082924
+10/19/2022  08:23 AM             2,427 a_Copy data to RFS.pro
+10/17/2022  12:30 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt22-23 - Daily Sales.RUX
+10/17/2022  12:27 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20221017122714
+10/17/2022  12:27 PM            16,414 }Backup_c_GL codes.dim.20221017122737
+09/08/2022  11:48 AM                58 }ElementAttributes_}Backup_c_PL Report.dim.20220908114824
+09/07/2022  05:06 PM                56 }ElementAttributes_}Backup_Locations.dim.20220907170603
+09/07/2022  02:04 PM               102 BSCF_Assum_Monthly.Default.blb
+09/07/2022  12:57 PM            19,936 }Backup_Locations.dim.20220907125907
+09/07/2022  12:56 PM                56 }ElementAttributes_}Backup_Locations.dim.20220907125622
+09/07/2022  11:56 AM            19,135 }Backup_Locations.dim.20220907115620
+09/07/2022  11:55 AM                56 }ElementAttributes_}Backup_Locations.dim.20220907115547
+08/12/2022  02:23 PM                56 }ElementAttributes_}Backup_Locations.dim.20220812142322
+08/12/2022  02:08 PM            16,207 }Backup_Locations.dim.20220812140938
+07/15/2022  04:17 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20220715161726
+07/15/2022  04:17 PM            16,414 }Backup_c_GL codes.dim.20220715161726
+07/15/2022  04:17 PM                58 }ElementAttributes_}Backup_c_PL Report.dim.20220715161724
+07/15/2022  03:00 PM                56 }ElementAttributes_}Backup_Locations.dim.20220715150023
+07/15/2022  03:00 PM            16,174 }Backup_Locations.dim.20220715150023
+07/15/2022  02:27 PM                58 }ElementAttributes_}Backup_c_PL Report.dim.20220715142744
+07/15/2022  02:24 PM                58 }ElementAttributes_}Backup_c_PL Report.dim.20220715142456
+07/15/2022  12:51 PM             4,610 }Backup_c_PL Report.dim.20220715125238
+07/15/2022  12:51 PM                58 }ElementAttributes_}Backup_c_PL Report.dim.20220715125131
+07/15/2022  12:51 PM            16,414 }Backup_c_GL codes.dim.20220715125058
+07/15/2022  12:51 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20220715125058
+07/15/2022  11:14 AM             4,567 }Backup_c_PL Report.dim.20220715111502
+07/15/2022  11:14 AM                58 }ElementAttributes_}Backup_c_PL Report.dim.20220715111456
+07/15/2022  11:10 AM            16,410 }Backup_c_GL codes.dim.20220715111028
+07/15/2022  10:47 AM                57 }ElementAttributes_}Backup_c_GL codes.dim.20220715104704
+07/12/2022  10:17 AM            16,141 }Backup_Locations.dim.20220712101736
+07/12/2022  10:15 AM                56 }ElementAttributes_}Backup_Locations.dim.20220712101509
+07/05/2022  10:10 AM            16,265 }Backup_c_GL codes.dim.20220705101006
+07/05/2022  10:10 AM                57 }ElementAttributes_}Backup_c_GL codes.dim.20220705101005
+07/04/2022  04:46 PM               102 BSCF_ModelParameters.All.blb
+07/04/2022  04:08 PM               182 RFS Flags.RUX
+07/04/2022  04:08 PM               315 RFS Flags.blb
+07/04/2022  04:02 PM               179 RFS Flags.Default.blb
+07/04/2022  02:42 PM            16,230 }Backup_c_GL codes.dim.20220704144331
+07/04/2022  02:37 PM                57 }ElementAttributes_}Backup_c_GL codes.dim.20220704143750
+07/04/2022  02:34 PM             2,182 EXPORT_RFS_Forecast_to_BSCF.pro
+07/04/2022  01:36 PM            16,108 }Backup_Locations.dim.20220704133641
+07/04/2022  01:36 PM                56 }ElementAttributes_}Backup_Locations.dim.20220704133614
+07/04/2022  12:00 PM             1,250 }ElementAttributes_RFS_Driver_Detail.cub
+07/04/2022  12:00 PM             5,908 }CubeAttributes.cub
+07/04/2022  11:08 AM                57 }ElementAttributes_}Backup_RFS_Months.dim.20220704110826
+07/04/2022  11:08 AM                57 }ElementAttributes_}Backup_RFS_Months.dim.20220704110804
+07/04/2022  09:36 AM                70 }ElementAttributes_RFS_Driver_Detail.RUX
+07/04/2022  09:36 AM               169 }ElementAttributes_RFS_Driver_Detail.dim
+07/04/2022  09:36 AM               347 RFS_Driver_Detail.dim
+07/04/2022  09:35 AM               331 }Backup_RFS_Driver_Detail.dim.20220704093506
+07/04/2022  09:34 AM                64 }ElementAttributes_}Backup_RFS_Driver_Detail.dim.20220704093439
+07/04/2022  09:12 AM            14,457 }Backup_Locations.dim.20220704091320
+07/04/2022  08:43 AM               470 }Backup_Company.dim.20220704084353
+07/04/2022  08:42 AM                54 }ElementAttributes_}Backup_Company.dim.20220704084202
+06/09/2022  09:31 AM            13,994 Bdgt22-23 - Daily Sales.RUX
+06/09/2022  09:11 AM               303 Bdgt22-23 - PPG SPG daily assumptions.RUX
+06/09/2022  09:09 AM             1,788 Bdgt22-23 - Margin assumptions.RUX
+06/07/2022  04:01 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt22-23 - Margin assumptions.RUX
+06/07/2022  10:41 AM                70 }ElementAttributes_Days 22-23.RUX
+05/31/2022  12:00 AM            92,060 }ElementAttributes_Days 22-23.cub
+05/30/2022  02:40 PM            20,597 Days 22-23.dim
+05/30/2022  02:40 PM               350 }ElementAttributes_Days 22-23.dim
+05/30/2022  02:39 PM            20,533 }Backup_Days 22-23.dim.20220530143939
+05/30/2022  02:29 PM                57 }ElementAttributes_}Backup_Days 22-23.dim.20220530142901
+05/30/2022  10:20 AM                38 }Backup_Days 22-23.dim.20220530102042.1
+05/30/2022  10:20 AM                57 }ElementAttributes_}Backup_Days 22-23.dim.20220530102041
+05/30/2022  10:02 AM                57 }ElementAttributes_}Backup_Days 22-23.dim.20220530100247
+05/30/2022  10:02 AM               132 }Backup_Days 22-23.dim.20220530100405
+05/25/2022  10:44 AM             2,116 }Backup_4_Months.dim.20220525104445
+05/25/2022  10:41 AM                55 }ElementAttributes_}Backup_4_Months.dim.20220525104122
+05/23/2022  10:09 AM                56 }ElementAttributes_}Backup_Locations.dim.20220523100928
+05/23/2022  09:14 AM            14,193 }Backup_Locations.dim.20220523091435.2
+05/23/2022  09:09 AM                56 }ElementAttributes_}Backup_Locations.dim.20220523090929
+05/20/2022  04:03 PM            14,121 }Backup_Locations.dim.20220520160548
+05/20/2022  03:53 PM                56 }ElementAttributes_}Backup_Locations.dim.20220520155351
+05/20/2022  03:52 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt21-22 - PPG SPG daily assumptions.RUX
+05/17/2022  08:28 AM                56 }ElementAttributes_}Backup_Locations.dim.20220517082847
+05/17/2022  08:28 AM            16,168 }Backup_Locations.dim.20220517082847
+05/03/2022  12:00 PM               420 }ElementAttributes_}Bdgt21-22 - Daily Sales - Internal Trf (source map Versions - Budget) 1651570560759.cub
+05/03/2022  12:00 PM            13,542 }ElementAttributes_}Link_Bdgt21-22 - Daily Sales - Internal Trf.cub
+05/03/2022  10:10 AM                70 }ElementAttributes_}Bdgt21-22 - Daily Sales - Internal Trf (source map Versions - Budget) 1651570560759.RUX
+05/03/2022  09:36 AM            11,738 Bdgt21-22 - Daily Sales - Internal Trf.pro
+05/03/2022  09:36 AM               157 }ElementAttributes_}Bdgt21-22 - Daily Sales - Internal Trf (source map Versions - Budget) 1651570560759.dim
+05/03/2022  09:36 AM               133 }Bdgt21-22 - Daily Sales - Internal Trf (source map Versions - Budget) 1651570560759.dim
+05/03/2022  09:35 AM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt21-22 - Daily Sales.RUX
+05/03/2022  09:35 AM             5,359 }Link_Bdgt21-22 - Daily Sales - Internal Trf.dim
+05/03/2022  09:35 AM               278 }ElementAttributes_}Link_Bdgt21-22 - Daily Sales - Internal Trf.dim
+03/31/2022  04:26 PM             6,382 ODBC_aBS OpBlce from DREAM.pro
+03/31/2022  04:25 PM             6,383 ODBC_aBS MthActl from DREAM.pro
+03/31/2022  04:24 PM             6,259 ODBC_a3 Marketing from DREAM.pro
+03/24/2022  01:00 AM               788 New Process.pro
+03/23/2022  02:41 PM                70 }ElementAttributes_}Link_Bdgt21-22 - Daily Sales - Internal Trf.RUX
+03/23/2022  02:24 PM                84 }PL by Detail - Internal Trf (source map Versions) 1648045477146.dim.20220323142437
+03/23/2022  02:24 PM                81 }PL by Detail - Internal Trf (source map Years) 1648045477100.dim.20220323142437
+03/23/2022  02:22 PM             2,903 Consolidation Jnls.RUX
+02/23/2022  03:26 PM    <DIR>          }batch
+02/23/2022  03:26 PM               811 }CubeProperties.dim
+02/22/2022  11:37 AM               468 }ElementAttributes_}Backup_BSCF_m_AccountMapping.cub
+02/22/2022  11:37 AM               423 }ElementAttributes_BSCF_m_AccountAssumptions.cub
+02/22/2022  11:37 AM               789 }ElementAttributes_BSCF_PaymentProfile.cub
+02/22/2022  11:37 AM             2,784 }ElementAttributes_BSCF_ReceiptandPayment.cub
+02/11/2022  05:19 PM                82 }ElementAttributes_}tp_system_config.dim
+02/02/2022  03:52 PM             6,218 ODBC_a1 MthActl from DREAM (obs).pro
+11/04/2021  11:15 AM            10,960 }Backup_RF Roll Fcst - PandL by Loc.pro
+11/02/2021  06:28 PM             9,493 CubeCalculation_P&L by Detail.blb
+10/20/2021  10:45 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_RFS Flags.RUX
+10/20/2021  11:03 AM               196 BSCF_ReceiptandPayment.BSCF Detailed Breakdown.blb
+10/20/2021  09:19 AM               196 BSCF_Map_ReceiptandPayment.Receipt and Payment Mapping.blb
+10/14/2021  04:18 PM               126 SaveDataAll.cho
+10/14/2021  04:09 PM             1,752 zSaveDataAll.pro
+10/14/2021  02:35 PM               400 }ElementAttributes_RFS Calculation.cub
+10/14/2021  02:35 PM               274 }ElementAttributes_New Location Parameters.cub
+10/14/2021  02:35 PM               268 }ElementAttributes_Flags.cub
+10/14/2021  02:13 PM                70 RFS Driver Data.RUX
+10/14/2021  12:56 PM             2,140 RFS Driver Data.cub
+10/14/2021  11:43 AM               102 RFS_Funding Costs.All.blb
+10/13/2021  05:18 PM               191 BSCF_BalanceSheet.BSCF_BalanceSheet.blb
+10/01/2021  09:52 AM                70 }ElementAttributes_RFS Calculation.RUX
+09/29/2021  05:05 PM                75 }ElementAttributes_RFS Calculation.dim
+09/10/2021  01:09 PM                70 }ElementAttributes_}Link_Temp NY data load.RUX
+09/09/2021  05:26 PM               102 RFS New Locations.All.blb
+09/09/2021  02:22 PM            61,168 CompiledCubeCalc_RFS_5FNew Location Target.blb
+09/09/2021  12:33 PM               102 RFS Parameters.Default.blb
+09/09/2021  12:30 PM               102 RF Parameters.Default.blb
+09/09/2021  10:23 AM               203 RFS New Loc Start.RUX
+09/09/2021  10:23 AM               354 RFS New Loc Start.blb
+09/08/2021  04:25 PM               102 RF New Location Profiles.Default.blb
+09/06/2021  11:54 AM               332 RFS Calculation.dim
+08/18/2021  11:26 AM               102 P&L by Detail.P&L by Detail CY Bdgt.blb
+06/16/2021  09:54 AM             1,301 }ElementAttributes_c_Fixed Asset Movements.cub
+06/16/2021  09:54 AM            87,892 }ElementAttributes_Days 20-21.cub
+06/16/2021  09:54 AM            91,189 }ElementAttributes_Days 21-22.cub
+06/16/2021  09:54 AM               946 }ElementAttributes_RF New Locations.cub
+06/16/2021  09:54 AM               624 }ElementAttributes_c_Budget - Sales.cub
+06/16/2021  09:54 AM         2,631,237 }ElementAttributes_Fixed Asset codes.cub
+06/16/2021  09:54 AM               892 }ElementAttributes_}RF Rolling Fcst - Intl copy scenarios (source map RF Months) 1619779535555.cub
+06/16/2021  09:54 AM               349 }ElementAttributes_}RF Roll Fcst - PandL by Loc (source map Versions) 1619783205007.cub
+06/16/2021  09:54 AM             9,497 }ElementAttributes_RF Months.cub
+06/16/2021  09:54 AM               787 }ElementAttributes_}RF Roll Fcst - PandL by Loc (source map 4_Months) 1619783205054.cub
+06/16/2021  09:54 AM            21,544 }ElementAttributes_}Link_RF Roll Fcst - PandL by Loc.cub
+06/16/2021  09:54 AM             1,478 }ElementAttributes_RF Driver Detail.cub
+06/16/2021  09:54 AM            19,250 }ElementAttributes_}Link_RF Rolling Fcst - Intl copy scenarios.cub
+06/16/2021  09:38 AM                70 }ElementAttributes_Days 21-22.RUX
+06/16/2021  09:38 AM                70 }ElementAttributes_}RF Roll Fcst - PandL by Loc (source map 4_Months) 1619783205054.RUX
+06/16/2021  09:38 AM                70 }ElementAttributes_}RF Roll Fcst - PandL by Loc (source map Versions) 1619783205007.RUX
+06/15/2021  03:23 PM               385 }ElementAttributes_Days 20-21.dim
+06/15/2021  03:23 PM                70 }ElementAttributes_Days 20-21.RUX
+06/15/2021  03:23 PM            20,438 Days 20-21.dim
+06/15/2021  03:23 PM            20,438 Days 21-22.dim
+06/15/2021  03:23 PM               350 }ElementAttributes_Days 21-22.dim
+04/30/2021  11:46 AM            10,950 RF Roll Fcst - PandL by Loc.pro
+04/30/2021  11:46 AM               137 }ElementAttributes_}RF Roll Fcst - PandL by Loc (source map Versions) 1619783205007.dim
+04/30/2021  11:46 AM               288 }RF Roll Fcst - PandL by Loc (source map 4_Months) 1619783205054.dim
+04/30/2021  11:46 AM               105 }RF Roll Fcst - PandL by Loc (source map Versions) 1619783205007.dim
+04/30/2021  11:46 AM               137 }ElementAttributes_}RF Roll Fcst - PandL by Loc (source map 4_Months) 1619783205054.dim
+04/30/2021  11:46 AM                70 }ElementAttributes_}RF Rolling Fcst - Intl copy scenarios (source map RF Months) 1619779535555.RUX
+04/30/2021  11:46 AM             9,140 }Link_RF Roll Fcst - PandL by Loc.dim
+04/30/2021  11:46 AM               267 }ElementAttributes_}Link_RF Roll Fcst - PandL by Loc.dim
+04/30/2021  10:45 AM             9,520 RF Rolling Fcst - Intl copy scenarios.pro
+04/30/2021  10:45 AM               371 }RF Rolling Fcst - Intl copy scenarios (source map RF Months) 1619779535555.dim
+04/30/2021  10:45 AM               148 }ElementAttributes_}RF Rolling Fcst - Intl copy scenarios (source map RF Months) 1619779535555.dim
+04/30/2021  10:45 AM             8,056 }Link_RF Rolling Fcst - Intl copy scenarios.dim
+04/30/2021  10:45 AM               277 }ElementAttributes_}Link_RF Rolling Fcst - Intl copy scenarios.dim
+11/05/2020  11:29 AM                70 }ElementAttributes_RF New Locations.RUX
+11/05/2020  11:29 AM               574 RF New Locations.dim
+11/05/2020  11:29 AM               176 }ElementAttributes_RF New Locations.dim
+10/27/2020  03:37 PM               196 BSCF_ReceiptandPayment.BSCF_ReceiptandPayment.blb
+10/27/2020  03:28 PM               194 BSCF_CapitalAssets.Asset Transactions.blb
+10/27/2020  09:52 AM             1,330 BSCF_ProfitandLoss.blb
+10/27/2020  09:52 AM             1,189 BSCF_ProfitandLoss.RUX
+10/26/2020  10:14 AM               138 }ElementAttributes_}Backup_BSCF_m_AccountMapping.dim
+10/26/2020  10:12 AM               127 }Backup_BSCF_m_AccountMapping.dim
+10/22/2020  10:08 AM             1,813 RF Months.dim
+10/22/2020  10:08 AM                70 }ElementAttributes_RF Months.RUX
+10/22/2020  10:08 AM               372 }ElementAttributes_RF Months.dim
+10/21/2020  03:54 PM             3,786 BSCF_BalanceSheet.blb
+10/21/2020  03:54 PM             3,425 BSCF_BalanceSheet.RUX
+10/21/2020  10:26 AM                70 }Hold_HollywoodBowl_Kevin Mather_}}_RF Rolling Forecast.RUX
+10/16/2020  01:35 PM            94,689 DATALOAD ODBC_FA Control.pro
+10/16/2020  01:35 PM               226 }DimensionAttributes.dim
+10/16/2020  01:35 PM               105 }CubeAttributes.dim
+10/16/2020  01:34 PM           509,588 Fixed Asset codes.dim
+10/15/2020  01:27 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt20-21 - Daily Sales.RUX
+10/15/2020  01:27 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt20-21 - Margin assumptions.RUX
+10/15/2020  01:27 PM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt20-21 - PPG SPG daily assumptions.RUX
+10/14/2020  03:56 PM                87 }ElementAttributes_Flags.dim
+10/14/2020  03:55 PM               155 Flags.dim
+10/08/2020  10:48 AM             3,620 zCopyBudget.pro
+09/30/2020  05:06 PM               184 }StatsByCube.CubeMemoryStats.blb
+09/29/2020  10:39 AM               185 P&L by Location.Summary_Dashboard.blb
+09/23/2020  03:33 PM             2,812 BSCF_ReceiptandPayment.dim
+09/17/2020  09:59 AM                70 }ElementAttributes_}Link_RF Rolling Fcst - Intl copy scenarios.RUX
+09/14/2020  05:49 PM               196 BSCF_Map_ReceiptandPayment.BSCF_Map_ReceiptandPayment.blb
+09/08/2020  03:13 PM               191 BSCF_BalanceSheet.Other Forecast Transactions.blb
+09/08/2020  03:13 PM               102 BSCF_BalanceSheet.Stock Purchases.blb
+09/07/2020  07:53 PM               300 RF Driver Detail.dim
+09/07/2020  07:53 PM               200 }ElementAttributes_RF Driver Detail.dim
+09/07/2020  07:53 PM                70 }ElementAttributes_RF Driver Detail.RUX
+09/07/2020  07:14 PM               102 P&L by Location.P&L report.blb
+09/07/2020  05:52 PM           938,736 Bowling Base Games.pro
+09/07/2020  04:56 PM               221 }ElementAttributes_c_Budget - Sales.dim
+09/07/2020  04:56 PM                70 }ElementAttributes_c_Budget - Sales.RUX
+09/07/2020  04:56 PM               262 c_Budget - Sales.dim
+09/03/2020  05:10 PM               303 }ElementAttributes_Fixed Asset codes.dim
+09/03/2020  05:10 PM                70 }ElementAttributes_Fixed Asset codes.RUX
+09/03/2020  04:50 PM             3,291 DimUpdate_a Fixed Assets.pro
+09/03/2020  02:24 PM             3,679 CubeUpdate_a FA Report - BS.pro
+08/30/2020  05:13 PM             1,680 }ElementAttributes_c_Funding Calculation.cub
+08/30/2020  05:13 PM             1,473 }ElementAttributes_RF Sequence.cub
+08/30/2020  05:13 PM                70 }ElementAttributes_c_Funding Calculation.RUX
+08/28/2020  06:43 PM               463 c_Funding Calculation.dim
+08/28/2020  11:54 AM               230 }ElementAttributes_c_Funding Calculation.dim
+08/28/2020  11:54 AM               120 }ElementAttributes_}formatUsers.dim
+08/28/2020  11:26 AM               189 }ElementAttributes_RF Sequence.dim
+08/28/2020  11:26 AM                70 }ElementAttributes_RF Sequence.RUX
+08/28/2020  11:26 AM             1,090 RF Sequence.dim
+08/17/2020  11:59 AM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt19-20 - PPG SPG daily assumptions.RUX
+08/17/2020  11:58 AM               704 }ElementAttributes_c_New Locations.cub
+08/17/2020  11:51 AM                75 Versions FA.dim
+08/02/2020  09:34 AM                84 Budget - Bowling Split.RUX
+08/02/2020  09:17 AM                70 }ElementAttributes_}Link_PL by Detail - Internal Trf.RUX
+08/02/2020  09:11 AM                70 }Hold_HollywoodBowl_Kevin Mather_}}_Bdgt19-20 - Daily Sales.RUX
+07/28/2020  02:32 PM            92,312 ODBC Budget from DREAM.pro
+07/28/2020  10:14 AM               102 BSCF_Map_PaymentProfilePhasing.BSCF_Map_PaymentProfilePhasing.blb
+07/28/2020  10:12 AM               797 BSCF_PaymentProfile.dim
+07/27/2020  02:24 PM               315 BSCF_AssetCategory.dim
+07/27/2020  02:19 PM               194 BSCF_CapitalAssets.BSCF_CapitalAssets.blb
+07/20/2020  01:27 PM               227 Amusement Assumptions.blb
+07/20/2020  01:27 PM                78 Amusement Assumptions.RUX
+07/20/2020  10:07 AM                70 }ElementAttributes_New Location Parameters.RUX
+07/14/2020  02:41 PM               102 Amusement Assumptions.Default.blb
+07/03/2020  01:07 PM                92 RF Method.dim
+07/01/2020  02:28 PM               123 New Location Parameters.dim
+06/30/2020  11:48 AM               245 c_New Locations.dim
+06/30/2020  08:10 AM                85 }ElementAttributes_New Location Parameters.dim
+06/30/2020  07:26 AM             1,293 }ElementAttributes_RF Calculation.cub
+06/30/2020  07:26 AM               637 }ElementAttributes_RF Profile Ref.cub
+06/29/2020  01:40 PM               102 BSCF_Assum_ReceiptandPayment.All.blb
+06/29/2020  01:40 PM               102 BSCF_Assum_ReceiptandPayment.Default.blb
+06/24/2020  04:51 PM                70 }ElementAttributes_}Link_RF Roll Fcst - PandL by Loc.RUX
+06/24/2020  04:51 PM               276 }ElementAttributes_RF Calculation.dim
+06/24/2020  03:53 PM             1,155 [FlowDiagram]Data Flow - BSCF_Cashflow.blb
+06/22/2020  03:01 PM                70 }ElementAttributes_c_New Locations.RUX
+06/22/2020  02:58 PM               224 }ElementAttributes_c_New Locations.dim
+06/22/2020  02:37 PM                70 }ElementAttributes_RF Profile Ref.RUX
+06/22/2020  02:37 PM               198 }ElementAttributes_RF Profile Ref.dim
+06/22/2020  02:37 PM                98 RF Profile Ref.dim
+06/22/2020  02:36 PM               266 }formatUsers.dim
+06/22/2020  02:34 PM               225 }ElementAttributes_RF Profile %.cub
+06/22/2020  02:33 PM                70 }ElementAttributes_RF Profile %.RUX
+06/22/2020  02:33 PM                56 RF Profile %.dim
+06/22/2020  02:33 PM               170 }ElementAttributes_RF Profile %.dim
+06/22/2020  02:20 PM                70 }ElementAttributes_Flags.RUX
+06/11/2020  02:43 PM                70 }ElementAttributes_RF Calculation.RUX
+06/11/2020  02:43 PM               331 RF Calculation.dim
+06/11/2020  02:38 PM               597 }ElementAttributes_RF Drivers.cub
+06/11/2020  02:38 PM               194 }ElementAttributes_RF Drivers.dim
+06/11/2020  02:38 PM               141 RF Drivers.dim
+06/11/2020  02:38 PM                70 }ElementAttributes_RF Drivers.RUX
+06/11/2020  02:36 PM               256 }ElementAttributes_RF Method.cub
+06/11/2020  02:36 PM               242 }ElementAttributes_RF Driver Type.cub
+06/11/2020  02:36 PM                70 }ElementAttributes_RF Method.RUX
+06/11/2020  02:36 PM                70 }ElementAttributes_RF Driver Type.RUX
+06/11/2020  01:58 PM                76 RF Driver Type.dim
+06/11/2020  01:58 PM               172 }ElementAttributes_RF Driver Type.dim
+06/11/2020  01:56 PM               167 }ElementAttributes_RF Method.dim
+06/04/2020  12:00 PM                80 }ElementAttributes_BSCF_PaymentProfile.dim
+04/29/2020  11:28 AM               102 P&L by Detail.P&L Detail by Month.blb
+02/28/2020  11:19 AM               185 P&L by Location.Export for BSCF.blb
+02/27/2020  02:07 PM             6,473 Consolidation Jnls.cub
+02/27/2020  02:07 PM               241 }ElementAttributes_Mth_YTD.cub
+02/27/2020  10:28 AM               308 BSCF_ReceiptandPayment.Cash Summary.blb
+02/25/2020  05:37 PM               191 BSCF_BalanceSheet.All.blb
+02/25/2020  05:26 PM               196 BSCF_Map_ReceiptandPayment.Default.blb
+02/25/2020  04:04 PM             2,228 BSCF_BalanceSheet.dim
+02/24/2020  12:23 PM                70 }Hold_Kmather_}}_Consolidation Jnls.RUX
+02/18/2020  02:47 PM            83,536 DATALOAD FA Ctrl Op Blcs.pro
+02/18/2020  02:29 PM               184 P&L by Detail.Default.blb
+01/15/2020  11:21 AM                96 Mth_YTD.dim
+01/15/2020  11:21 AM                70 }ElementAttributes_Mth_YTD.RUX
+01/15/2020  11:21 AM               165 }ElementAttributes_Mth_YTD.dim
+01/15/2020  10:51 AM                70 }Hold_Kmather_}}_Bdgt19-20 - Daily Sales.RUX
+11/13/2019  09:47 AM                70 }Hold_Kmather_}}_P&L by Detail.RUX
+11/04/2019  04:44 PM             2,090 Budget - Bowling Split.cub
+11/04/2019  04:44 PM               478 }ElementAttributes_Bowling Split.cub
+11/04/2019  04:44 PM            17,702 }ElementAttributes_}Link_PL by Location - PL Detail Games.cub
+09/18/2019  04:37 PM             7,349 }Link_PL by Location - PL Detail Games.dim
+09/18/2019  04:37 PM               272 }ElementAttributes_}Link_PL by Location - PL Detail Games.dim
+09/18/2019  03:37 PM                70 }ElementAttributes_Bowling Split.RUX
+09/18/2019  03:37 PM               197 }ElementAttributes_Bowling Split.dim
+09/18/2019  03:37 PM               122 Bowling Split.dim
+09/12/2019  08:38 AM    <DIR>          Kmather
+09/09/2019  03:09 PM                70 }Hold_Kmather_}}_Bdgt19-20 - PPG SPG daily assumptions.RUX
+08/12/2019  10:27 AM             3,839 }ElementAttributes_Revenue Build.cub
+08/12/2019  10:27 AM            93,081 }ElementAttributes_Days 19-20.cub
+08/12/2019  10:27 AM             7,338 Amusement Assumptions.cub
+07/22/2019  01:07 PM               246 }ElementAttributes_Revenue Build.dim
+07/22/2019  01:07 PM                82 }ElementAttributes_Revenue Build.RUX
+07/22/2019  01:07 PM               754 Revenue Build.dim
+07/04/2019  09:01 AM                70 }Hold_Kmather_}}_Budget - Daily Sales.RUX
+07/04/2019  09:01 AM                70 }ElementAttributes_Days 19-20.RUX
+07/04/2019  09:01 AM            20,646 Days 19-20.dim
+07/04/2019  09:01 AM               398 }ElementAttributes_Days 19-20.dim
+05/15/2019  03:57 PM                70 }Hold_Admin_}}_Bdgt19-20 - Daily Sales.RUX
+05/14/2019  09:19 AM           937,894 Bdgt19-20 PPG Other.pro
+05/14/2019  08:39 AM           937,823 Bdgt19-20 PPG Amuse.pro
+05/13/2019  05:40 PM           937,702 Bdgt19-20 PPG Diner.pro
+05/13/2019  04:37 PM           937,562 Bdgt19-20 PPG Bar.pro
+05/13/2019  03:07 PM           937,682 Bdgt19-20 PPG Bowling.pro
+05/03/2019  05:52 PM               406 }ElementAttributes_Amusements Assumptions.cub
+05/03/2019  05:52 PM                70 }ElementAttributes_Amusements Assumptions.RUX
+05/03/2019  05:52 PM                88 Amusements Assumptions.dim
+05/03/2019  05:52 PM               231 }ElementAttributes_Amusements Assumptions.dim
+05/03/2019  05:49 PM               256 }ElementAttributes_Amusements Suppliers.cub
+05/03/2019  05:49 PM                70 }ElementAttributes_Amusements Suppliers.RUX
+05/03/2019  05:45 PM               178 }ElementAttributes_Amusements Suppliers.dim
+05/03/2019  05:45 PM                78 Amusements Suppliers.dim
+05/03/2019  05:38 PM            16,311 CompiledLinkDefn__7DLink_5FDailySales cum 7d games.blb
+05/03/2019  02:46 PM               371 }ElementAttributes_Versions - Budget.cub
+05/03/2019  02:46 PM               287 }ElementAttributes_Model Parameters.cub
+05/03/2019  02:46 PM               207 Budget Parameters.cub
+05/03/2019  02:46 PM            21,233 }ElementAttributes_}Link_PL Bdgt Detail - Mktg Report.cub
+05/02/2019  03:57 PM                70 }Hold_Kmather_}}_Fixed Asset Control.RUX
+05/02/2019  03:57 PM                70 Budget Parameters.RUX
+05/02/2019  03:57 PM                70 }ElementAttributes_Model Parameters.RUX
+05/01/2019  09:53 AM             3,306 TempTest.pro
+04/24/2019  02:51 PM               102 Budget Parameters.Default.blb
+04/24/2019  02:46 PM                87 Model Parameters.dim
+04/24/2019  02:42 PM                78 }ElementAttributes_Model Parameters.dim
+04/24/2019  02:39 PM                51 Label_Value.dim
+04/24/2019  12:03 PM               186 Versions - Budget.dim
+04/24/2019  12:03 PM                70 }ElementAttributes_Versions - Budget.RUX
+04/24/2019  12:03 PM               169 }ElementAttributes_Versions - Budget.dim
+04/15/2019  05:24 PM             8,987 }Link_PL Bdgt Detail - Mktg Report.dim
+04/15/2019  05:24 PM               268 }ElementAttributes_}Link_PL Bdgt Detail - Mktg Report.dim
+04/15/2019  04:56 PM                70 }ConnectionProperties.RUX
+03/29/2019  12:11 PM             2,258 }ElementAttributes_BSCF_BalanceSheet.cub
+03/29/2019  12:11 PM               679 }ElementAttributes_BSCF_AssetCategory.cub
+03/29/2019  11:50 AM                52 }Connections.dim
+03/29/2019  11:50 AM               473 }ConnectionProperties.cub
+03/12/2019  01:45 PM             2,827 BSCF_Cashflow.blb
+03/12/2019  01:45 PM             2,549 BSCF_Cashflow.RUX
+03/12/2019  01:44 PM               189 BSCF_Cashflow.Default.blb
+03/12/2019  01:33 PM               187 BSCF_Alloc_BStoCF.BSCF_Alloc_BStoCF.blb
+03/12/2019  01:28 PM               191 BSCF_Map_BalanceSheet.Balance Sheet Mapping.blb
+03/11/2019  04:11 PM               102 BSCF_Alloc_RPtoBS.BSCF_Alloc_RPtoBS.blb
+03/08/2019  10:15 AM                87 }ElementAttributes_BSCF_ReceiptandPayment.dim
+03/07/2019  02:37 PM               102 }ElementAttributes_BSCF_AssetCategory.dim
+03/07/2019  12:48 PM             1,794 ViewZeroOut_P&L Detail CM.pro
+03/04/2019  05:59 PM               184 FA Report - BS Codes.Default.blb
+02/22/2019  09:04 PM         1,672,254 CompiledLinkDefn__7DLink_5FFA Report _2D FA Control.blb
+02/22/2019  05:34 PM               428 c_Fixed Asset Movements.dim
+02/22/2019  04:59 PM             2,110 ViewZeroOut_One Off (Check).pro
+02/22/2019  11:52 AM                70 }ElementAttributes_c_Fixed Asset Movements.RUX
+02/22/2019  11:52 AM               206 }ElementAttributes_c_Fixed Asset Movements.dim
+02/19/2019  03:22 PM                78 }ElementAttributes_BSCF_BalanceSheet.dim
+02/12/2019  03:30 PM               752 }ElementAttributes_BS Consol Adjs.cub
+02/12/2019  03:26 PM                70 }ElementAttributes_BS Consol Adjs.RUX
+02/12/2019  03:26 PM               461 BS Consol Adjs.dim
+02/12/2019  03:26 PM               172 }ElementAttributes_BS Consol Adjs.dim
+02/07/2019  05:10 PM            12,084 DimUpdate_BS codes.pro
+01/03/2019  04:52 PM                70 }Hold_Kmather_}}_Bdgt19-20 - Margin assumptions.RUX
+12/22/2018  04:54 AM               128 }ElementAttributes_walstead.cub
+12/22/2018  04:54 AM             4,995 CONS_ProfitandLossConsol.RUX
+12/22/2018  04:54 AM                75 }AnnotationAppContextFacets.dim
+12/22/2018  04:54 AM                65 }AnnotationMeasures.dim
+12/22/2018  04:54 AM                45 BSCF_Assum_Monthly.dr
+12/22/2018  04:54 AM               426 BSCF_Alloc_BStoCF.RUX
+12/22/2018  04:54 AM                60 }ApplicationNames.dim
+12/22/2018  04:54 AM               492 CONS_Journals.RUX
+12/22/2018  04:54 AM               189 CONS_Holdings.Default.blb
+12/22/2018  04:54 AM               309 CONS_CapitalandReserves.dim
+12/22/2018  04:54 AM               301 }ElementAttributes_BSCF_ModelParameters.cub
+12/22/2018  04:54 AM                87 }ElementAttributes_BSCF_m_AccountAssumptions.dim
+12/22/2018  04:54 AM             1,412 }CellAnnotations_CONS_DataChecks.cub
+12/22/2018  04:54 AM             1,256 CONS_CapitalandReserves.cub
+12/22/2018  04:54 AM             4,327 }PlanningControl.cub
+12/22/2018  04:54 AM             7,554 CONS_CapitalandReserves.blb
+12/22/2018  04:54 AM               102 CONS_DataChecks.Default.blb
+12/22/2018  04:54 AM                81 }ElementAttributes_BSCF_m_AccountBalance.dim
+12/22/2018  04:54 AM                77 }ElementAttributes_CONS_Scenario.dim
+12/22/2018  04:54 AM               105 }ElementAttributes_CONS_m_Consolidation.dim
+12/22/2018  04:54 AM    <DIR>          }FacetModels
+12/22/2018  04:54 AM            14,319 BSCF_ReceiptandPayment.RUX
+12/22/2018  04:54 AM               102 BSCF_ReceiptandPayment.ChartView.blb
+12/22/2018  04:54 AM                74 }ElementAttributes_CONS_BaseCumul.dim
+12/22/2018  04:54 AM               135 CONS_ProfitandLossConsol.View Company Profit Loss CONS_{7170a4e6-9580-4270-8975-375335fc90f8}_[}tp_tasks}{7170a4e6-9580-4270-8975-375335fc90f8}].[Co A].Admin.blb
+12/22/2018  04:54 AM               233 }ElementAttributes_CONS_BaseCumul.cub
+12/22/2018  04:54 AM               507 CONS_Alloc_JnltoPL.blb
+12/22/2018  04:54 AM               102 CONS_Journals.Local Currency Journals.blb
+12/22/2018  04:54 AM               316 }ElementAttributes_BSCF_m_Cashflow.cub
+12/22/2018  04:54 AM               913 CONS_m_Consolidation.dim
+12/22/2018  04:54 AM               102 CONS_Journals.Consolidation Recurring Journals.blb
+12/22/2018  04:54 AM               189 CONS_Holdings.Ongoing Acqns and Disp.blb
+12/22/2018  04:54 AM                47 BSCF_ReceiptandPayment.dr
+12/22/2018  04:54 AM             2,611 BSCF_Alloc_RPtoBS.cub
+12/22/2018  04:54 AM               875 }ElementAttributes_BSCF_m_CashPayment.cub
+12/22/2018  04:54 AM             2,019 CONS_ProfitandLoss.dim
+12/22/2018  04:54 AM               192 CONS_ProfitandLossConsol.Enter Profit Loss.blb
+12/22/2018  04:54 AM             1,862 CONS_Journals.cub
+12/22/2018  04:54 AM               159 BSCF_m_AccountAssumptions.dim
+12/22/2018  04:54 AM               135 CONS_BalanceSheetConsol.View Company Balance Sheet CONS_{7170a4e6-9580-4270-8975-375335fc90f8}_[}tp_tasks}{7170a4e6-9580-4270-8975-375335fc90f8}].[Co A].Admin.blb
+12/22/2018  04:54 AM             2,750 }CellAnnotations_CONS_Holdings.cub
+12/22/2018  04:54 AM               135 BSCF_ProfitandLoss.Profit and Loss_{90fa37f6-4083-4641-8a20-81e123ce6856}_.Admin.blb
+12/22/2018  04:54 AM           191,941 CONS_BalanceSheetConsol.cub
+12/22/2018  04:54 AM                89 BSCF_Assum_Monthly.RUX
+12/22/2018  04:54 AM               191 CONS_BalanceSheetConsol.View Company Balance Sheet CONS.blb
+12/22/2018  04:54 AM               371 CONS_Alloc_JnltoPL.RUX
+12/22/2018  04:54 AM               102 CONS_Journals.Local Currency Recurring Journals.blb
+12/22/2018  04:54 AM               839 [FlowDiagram]Cashflow Model overview.blb
+12/22/2018  04:54 AM               274 }Annotation_ApplicationID.dim
+12/22/2018  04:54 AM            11,956 CONS_Holdings.RUX
+12/22/2018  04:54 AM               331 }ApplicationParameters.dim
+12/22/2018  04:54 AM                41 BSCF_Map_ReceiptandPayment.dr
+12/22/2018  04:54 AM               678 }ElementAttributes_CONS_Currency.cub
+12/22/2018  04:54 AM               106 }ElementAttributes_BSCF_m_MonthAssumptions.dim
+12/22/2018  04:54 AM               191 CONS_DataChecks.Data Checks.blb
+12/22/2018  04:54 AM             2,853 }CellAnnotations_CONS_BalanceSheetConsol.cub
+12/22/2018  04:54 AM               308 BSCF_ReceiptandPayment.Adjust Cash.blb
+12/22/2018  04:54 AM    <DIR>          tunit
+12/22/2018  04:54 AM             1,921 CONS_Alloc_JnltoPL.cub
+12/22/2018  04:54 AM               135 BSCF_BalanceSheet.Actual Balance Sheet_{85817af2-b72b-4eab-bfd3-da7809eb4c3c}_.Admin.blb
+12/22/2018  04:54 AM               102 CONS_CapitalandReserves.Default.blb
+12/22/2018  04:54 AM                47 BSCF_ProfitandLoss.dr
+12/22/2018  04:54 AM               191 CONS_BalanceSheetConsol.Ongoing FVA.blb
+12/22/2018  04:54 AM                75 }ElementAttributes_BSCF_m_Cashflow.dim
+12/22/2018  04:54 AM               179 CONS_FXRates.FX Rates.blb
+12/22/2018  04:54 AM               229 }ElementAttributes_CONS_Scenario.cub
+12/22/2018  04:54 AM                80 }ElementAttributes_BSCF_m_CapitalAssets.dim
+12/22/2018  04:54 AM           105,649 CONS_ProfitandLossConsol.cub
+12/22/2018  04:54 AM               235 CONS_m_Journals.dim
+12/22/2018  04:54 AM             2,129 CONS_DataChecks.blb
+12/22/2018  04:54 AM                98 }ElementAttributes_CONS_m_Holdings.dim
+12/22/2018  04:54 AM               456 CONS_a_Company.dim
+12/22/2018  04:54 AM               626 CONS_Journals.blb
+12/22/2018  04:54 AM             7,078 CONS_CapitalandReserves.RUX
+12/22/2018  04:54 AM               135 BSCF_ReceiptandPayment.Receipts and Payments_{85817af2-b72b-4eab-bfd3-da7809eb4c3c}_.Admin.blb
+12/22/2018  04:54 AM             4,297 }tp_custom_TI_update_error_code_alias.pro
+12/22/2018  04:54 AM               102 BSCF_ReceiptandPayment.Actual Cash.blb
+12/22/2018  04:54 AM               191 CONS_BalanceSheetConsol.Group BS Consolidation.blb
+12/22/2018  04:54 AM               191 CONS_BalanceSheetConsol.Override Bal Sheet FX Rates.blb
+12/22/2018  04:54 AM             1,075 CONS_t_Month.dim
+12/22/2018  04:54 AM               149 BSCF_m_Cashflow.dim
+12/22/2018  04:54 AM               135 BSCF_ProfitandLoss.Actual Profit and Loss_{85817af2-b72b-4eab-bfd3-da7809eb4c3c}_.Admin.blb
+12/22/2018  04:54 AM                18 walstead.dim
+12/22/2018  04:54 AM               189 CONS_Holdings.Goodwill.blb
+12/22/2018  04:54 AM             8,999 CONS_BalanceSheetConsol.RUX
+12/22/2018  04:54 AM                83 }ElementAttributes_BSCF_m_AccountMapping.dim
+12/22/2018  04:54 AM               166 }ElementAttributes_walstead.dim
+12/22/2018  04:54 AM               189 CONS_Holdings.Historical Acquisitions.blb
+12/22/2018  04:54 AM               359 }ElementAttributes_BSCF_m_AccountMapping.cub
+12/22/2018  04:54 AM               649 CONS_m_DataChecks.dim
+12/22/2018  04:54 AM               102 BSCF_ProfitandLoss.ChartView.blb
+12/22/2018  04:54 AM             2,597 }CellAnnotations_CONS_ProfitandLossConsol.cub
+12/22/2018  04:54 AM               473 BSCF_m_CashPayment.dim
+12/22/2018  04:54 AM               142 BSCF_ModelParameters.dim
+12/22/2018  04:54 AM             1,711 BSCF_Cashflow.dim
+12/22/2018  04:54 AM                45 BSCF_Assum_ReceiptandPayment.dr
+12/22/2018  04:54 AM             6,117 CONS_Holdings.cub
+12/22/2018  04:54 AM               615 BSCF_Alloc_BStoCF.blb
+12/22/2018  04:54 AM             4,433 }ElementAttributes_CONS_m_Holdings.cub
+12/22/2018  04:54 AM               242 BSCF_m_AccountBalance.dim
+12/22/2018  04:54 AM               192 CONS_ProfitandLossConsol.Default.blb
+12/22/2018  04:54 AM               368 }ElementAttributes_CONS_t_Month.dim
+12/22/2018  04:54 AM               135 CONS_ProfitandLossConsol.Enter Profit Loss_{7170a4e6-9580-4270-8975-375335fc90f8}_[}tp_tasks}{7170a4e6-9580-4270-8975-375335fc90f8}].[Co A].Admin.blb
+12/22/2018  04:54 AM             4,248 CONS_FXRates.cub
+12/22/2018  04:54 AM             2,686 CONS_m_Holdings.dim
+12/22/2018  04:54 AM               949 CONS_JournalType.dim
+12/22/2018  04:54 AM               772 CONS_Alloc_JnltoBS.blb
+12/22/2018  04:54 AM             1,937 CONS_DataChecks.RUX
+12/22/2018  04:54 AM               447 BSCF_m_CapitalAssets.dim
+12/22/2018  04:54 AM             2,110 BSCF_Alloc_BStoCF.cub
+12/22/2018  04:54 AM                76 }ElementAttributes_CONS_a_Company.dim
+12/22/2018  04:54 AM             2,523 CONS_BalanceSheet.dim
+12/22/2018  04:54 AM            15,281 BSCF_ReceiptandPayment.blb
+12/22/2018  04:54 AM               902 BSCF_Alloc_RPtoBS.RUX
+12/22/2018  04:54 AM               135 BSCF_BalanceSheet.Balance Sheet_{90fa37f6-4083-4641-8a20-81e123ce6856}_.Admin.blb
+12/22/2018  04:54 AM               191 CONS_BalanceSheetConsol.Enter Balance Sheet.blb
+12/22/2018  04:54 AM               437 }ElementAttributes_BSCF_m_MonthAssumptions.cub
+12/22/2018  04:54 AM                81 BSCF_Value.dim
+12/22/2018  04:54 AM               210 CONS_Scenario.dim
+12/22/2018  04:54 AM    <DIR>          BIReporting
+12/22/2018  04:54 AM               496 }ElementAttributes_BSCF_m_AccountBalance.cub
+12/22/2018  04:54 AM             1,975 CONS_Alloc_JnltoBS.cub
+12/22/2018  04:54 AM             1,025 }ElementAttributes_CONS_m_DataChecks.cub
+12/22/2018  04:54 AM                47 BSCF_CapitalAssets.dr
+12/22/2018  04:54 AM                82 }ElementAttributes_BSCF_ModelParameters.dim
+12/22/2018  04:54 AM               192 CONS_ProfitandLossConsol.Group PL Consolidation.blb
+12/22/2018  04:54 AM             1,115 BSCF_Alloc_RPtoBS.blb
+12/22/2018  04:54 AM                77 }ElementAttributes_CONS_m_DataChecks.dim
+12/22/2018  04:54 AM               153 CONS_Currency.dim
+12/22/2018  04:54 AM               102 BSCF_CapitalAssets.Annual Additions and Disposals.blb
+12/22/2018  04:54 AM                98 }ElementAttributes_CONS_m_Journals.dim
+12/22/2018  04:54 AM               102 CONS_Journals.Consolidation Journals.blb
+12/22/2018  04:54 AM               119 BSCF_m_AccountMapping.dim
+12/22/2018  04:54 AM            12,683 CONS_Holdings.blb
+12/22/2018  04:54 AM                98 }ElementAttributes_CONS_Currency.dim
+12/22/2018  04:54 AM             6,434 }ElementAttributes_CONS_t_Month.cub
+12/22/2018  04:54 AM                47 BSCF_BalanceSheet.dr
+12/22/2018  04:54 AM               199 BSCF_m_MonthAssumptions.dim
+12/22/2018  04:54 AM               636 CONS_Alloc_JnltoBS.RUX
+12/22/2018  04:54 AM               733 }ElementAttributes_BSCF_m_CapitalAssets.cub
+12/22/2018  04:54 AM               536 }ElementAttributes_CONS_a_Company.cub
+12/22/2018  04:54 AM               448 }ElementAnnotations_CONS_a_Company.cub
+12/22/2018  04:54 AM             1,054 }CellAnnotations_CONS_Journals.cub
+12/22/2018  04:54 AM             9,581 CONS_BalanceSheetConsol.blb
+12/22/2018  04:54 AM               192 CONS_ProfitandLossConsol.View Company Profit Loss CONS.blb
+12/22/2018  04:54 AM               135 CONS_ProfitandLossConsol.Enter Profit Loss_{7170a4e6-9580-4270-8975-375335fc90f8}_[}tp_tasks}{7170a4e6-9580-4270-8975-375335fc90f8}].[Co B].Admin.blb
+12/22/2018  04:54 AM               393 CONS_m_AcqnData.dim
+12/22/2018  04:54 AM                78 }ElementAttributes_BSCF_m_CashPayment.dim
+12/22/2018  04:54 AM               192 CONS_ProfitandLossConsol.Override P&L FX Rate.blb
+12/22/2018  04:54 AM             5,425 CONS_ProfitandLossConsol.blb
+12/22/2018  04:54 AM               570 }ElementAttributes_CONS_m_Journals.cub
+12/22/2018  04:54 AM               135 BSCF_BalanceSheet.Balance Sheet_{85817af2-b72b-4eab-bfd3-da7809eb4c3c}_.Admin.blb
+12/22/2018  04:54 AM                73 CONS_BaseCumul.dim
+12/22/2018  04:54 AM               209 BSCF_Cashflow.Cash Overview.blb
+12/22/2018  04:54 AM             1,094 CONS_DataChecks.cub
+12/22/2018  04:54 AM             1,558 }ElementAttributes_CONS_m_Consolidation.cub
+12/22/2018  04:54 AM               191 CONS_BalanceSheetConsol.Historical FVA.blb
+12/18/2018  04:38 PM                70 }Hold_Admin_}}_Bdgt19-20 - PPG SPG assumptions.RUX
+12/18/2018  02:56 PM                70 }Hold_Admin_}}_Bdgt19-20 - Margin assumptions.RUX
+12/18/2018  11:43 AM             1,661 }ElementAttributes_Marketing Analysis.cub
+12/17/2018  04:19 PM                70 }ElementAttributes_}Link_PL Bdgt Detail - Mktg Report.RUX
+12/17/2018  10:38 AM           938,899 DATALOAD Budget18 daily data.pro
+11/28/2018  05:52 PM               227 }ElementAttributes_Marketing Analysis.dim
+11/28/2018  05:52 PM                70 }ElementAttributes_Marketing Analysis.RUX
+11/28/2018  05:52 PM               396 Marketing Analysis.dim
+11/28/2018  05:49 PM             2,560 }ElementAttributes_Marketing Codes.cub
+11/28/2018  05:49 PM                70 }ElementAttributes_Marketing Codes.RUX
+11/28/2018  04:57 PM               895 Marketing Codes.dim
+11/28/2018  04:57 PM               198 }ElementAttributes_Marketing Codes.dim
+11/28/2018  03:41 PM               836 }ElementAttributes_Sales Build.cub
+11/14/2018  12:45 PM            90,908 ODBC Games from DREAM (Bdgt).pro
+11/14/2018  12:40 PM             1,792 ViewZeroOut_YearBudget.pro
+11/13/2018  08:40 PM             2,103 ViewZeroOut_YearBudgetGames.pro
+09/11/2018  01:28 PM             8,282 CubeCalculation_P&L by Location.blb
+08/16/2018  11:49 AM               195 }ElementAttributes_Sales Build.dim
+08/16/2018  11:49 AM               279 Sales Build.dim
+08/16/2018  11:49 AM                70 }ElementAttributes_Sales Build.RUX
+08/13/2018  06:00 PM                70 }Hold_Admin_}}_P&L by Detail.RUX
+08/01/2018  05:29 PM                70 }Hold_Admin_}}_Budget - Daily Sales.RUX
+08/01/2018  05:14 PM            20,585 Days.dim
+08/01/2018  05:03 PM            67,852 }ElementAttributes_Days.cub
+08/01/2018  03:18 PM                70 }ElementAttributes_Days.RUX
+08/01/2018  03:18 PM               268 }ElementAttributes_Days.dim
+02/22/2018  09:46 PM            27,297 }ElementAttributes_}Link_PL by Location - PL Detail splits.cub
+02/20/2018  04:07 PM               273 }ElementAttributes_}Link_PL by Location - PL Detail splits.dim
+02/20/2018  04:07 PM            11,634 }Link_PL by Location - PL Detail splits.dim
+02/20/2018  02:36 PM                70 }ElementAttributes_}Link_PL by Location - PL Detail Games.RUX
+02/12/2018  10:15 AM               158 }ElementAttributes_}DeployedLinkRecord.dim
+01/25/2018  05:22 PM                70 }StatsByRule.RUX
+01/25/2018  12:49 PM    <DIR>          Idelderfield
+01/25/2018  12:28 PM                47 }tp_app_user_preference.dim
+01/25/2018  12:28 PM               169 }tp_app_user_preferences.cub
+01/25/2018  12:28 PM               626 }ElementAttributes_}tp_applications.dim
+01/25/2018  12:09 PM               102 P&L Detail.Default.blb
+01/25/2018  10:32 AM               126 }ElementAttributes_}ModelProperties.dim
+01/25/2018  10:23 AM               531 }StatsStatsByCube.dim
+01/25/2018  10:23 AM               318 }Features.dim
+01/25/2018  10:23 AM               545 }DimensionProperties.dim
+01/25/2018  10:23 AM               226 }RuleStats.dim
+01/25/2018  10:17 AM           555,683 tm1server.log
+01/25/2018  10:17 AM             1,590 tm1s20180125101736.log
+01/25/2018  06:37 AM             4,409 }Processes.dim
+01/25/2018  06:37 AM             2,260 }Cubes.dim
+01/25/2018  06:37 AM             3,333 }Dimensions.dim
+01/25/2018  06:37 AM                27 }Chores.dim
+01/24/2018  07:11 PM         2,481,325 tm1s20180124191157.log
+01/24/2018  06:23 PM                70 }ElementAttributes_}Link_PL by Location - PL Detail splits.RUX
+01/24/2018  05:16 PM                70 }ElementAttributes_}Link_PL by Location - PL Detail.RUX
+01/24/2018  05:09 PM                70 }Hold_Admin_}}_P&L Detail.RUX
+01/24/2018  05:09 PM               208 TM1ProcessError_20180124170918_}_intDPD_CallFeederGen_{ced143ef-33d6-4bb3-a416-6867246a49dc}.log
+01/24/2018  05:04 PM            13,809 tm1s20180124170423.log
+01/24/2018  04:40 PM            60,131 tm1s20180124164047.log
+01/24/2018  04:40 PM           275,865 TM1ProcessError_20180124164024_DataLoad_History_Games csv.log
+01/24/2018  04:38 PM           213,074 TM1ProcessError_20180124163849_DataLoad_History csv.log
+01/24/2018  04:34 PM           213,410 TM1ProcessError_20180124163445_DataLoad_History csv.log
+01/24/2018  04:30 PM           276,256 TM1ProcessError_20180124163006_DataLoad_History_Games csv.log
+01/24/2018  04:01 PM           275,789 TM1ProcessError_20180124160059_DataLoad_History_Games csv.log
+01/24/2018  03:25 PM           275,789 TM1ProcessError_20180124152500_DataLoad_History Games csv.log
+01/24/2018  03:14 PM           275,789 TM1ProcessError_20180124151401_DataLoad_History Games csv.log
+01/24/2018  03:04 PM               208 TM1ProcessError_20180124150424_}_intDPD_CallFeederGen_{2bf140ed-649e-4703-9720-232ea53ecbae}.log
+01/24/2018  03:02 PM             1,235 tm1s20180124150158.log
+01/24/2018  02:54 PM           690,974 tm1s20180124145452.log
+01/24/2018  02:54 PM             2,076 }tp_load_process_log.pro
+01/24/2018  02:48 PM               154 }ElementAttributes_}Processes.dim
+01/24/2018  02:18 PM           207,204 TM1ProcessError_20180124141801_DataLoad_History csv.log
+01/24/2018  02:05 PM           220,109 TM1ProcessError_20180124140507_DataLoad_History csv.log
+01/24/2018  02:00 PM           220,109 TM1ProcessError_20180124140056_DataLoad_History csv.log
+01/24/2018  01:41 PM               208 TM1ProcessError_20180124134108_}_intDPD_CallFeederGen_{e9d681e7-9ea9-4973-94df-3c3dd11547bd}.log
+01/24/2018  01:41 PM             1,316 tm1s20180124134106.log
+01/24/2018  01:40 PM         1,573,536 tm1s20180124134007.log
+01/22/2018  12:57 PM           348,544 tm1s20180122125751.log
+01/18/2018  09:42 AM           221,794 TM1ProcessError_20180118094206_DataLoad_Budget csv.log
+01/18/2018  09:33 AM               208 TM1ProcessError_20180118093301_}_intDPD_CallFeederGen_{524e29bd-387c-4c92-b144-e05704115e33}.log
+01/18/2018  08:59 AM           218,981 TM1ProcessError_20180118085952_DataLoad_History csv.log
+01/17/2018  10:05 PM               208 TM1ProcessError_20180117220531_}_intDPD_CallFeederGen_{c89b54d8-6f75-4dfc-8db9-7d13796c89c4}.log
+01/17/2018  10:05 PM               848 tm1s20180117220530.log
+01/17/2018  10:05 PM             1,147 tm1s20180117220511.log
+01/17/2018  10:05 PM             2,213 tm1s20180117220500.log
+01/17/2018  10:04 PM             4,903 P&L by Location.cub
+01/17/2018  10:04 PM         7,025,052 tm1s20180117220451.log
+01/17/2018  10:13 AM               208 TM1ProcessError_20180117101311_}_intDPD_CallFeederGen_{0bb57417-e0e6-4995-8918-8ab5551eccbb}.log
+01/16/2018  03:45 PM                70 }Hold_Admin_}}_P&L by Location.RUX
+01/16/2018  01:55 PM               208 TM1ProcessError_20180116135547_}_intDPD_CallFeederGen_{f918ba3b-94db-4deb-be81-a02fedcb54f7}.log
+01/12/2018  05:02 PM             1,986 tm1s20180112170214.log
+01/12/2018  04:59 PM           157,155 tm1s20180112165950.log
+01/12/2018  04:59 PM               208 TM1ProcessError_20180112165935_}_intDPD_CallFeederGen_{ffdb3646-c64e-457e-bfc0-40cf519b4c43}.log
+01/10/2018  04:35 PM                50 }Hold.dim
+01/10/2018  04:18 PM                70 }formatTester.RUX
+01/10/2018  04:18 PM                70 }ElementAttributes_}formatUsers.RUX
+01/10/2018  04:18 PM                70 }ElementAttributes_}formatTestSlots.RUX
+01/10/2018  04:15 PM               236 }formatTestSlots.dim
+01/10/2018  04:15 PM               174 }ElementAttributes_}formatTestSlots.dim
+01/10/2018  04:15 PM               152 }ElementAttributes_}formatTestSlots.cub
+01/10/2018  04:15 PM                70 }CubeAttributes.RUX
+01/10/2018  04:15 PM                70 }ElementAttributes_}Processes.RUX
+01/10/2018  04:15 PM                70 }ElementAttributes_}ProgressTimings.RUX
+01/10/2018  04:15 PM               575 tm1s20180110161513.log
+01/10/2018  04:13 PM               575 tm1s20180110161355.log
+01/10/2018  04:13 PM             2,506 tm1s20180110161347.log
+01/10/2018  04:13 PM               118 }ElementAttributes_}tp_applications.cub
+01/10/2018  04:13 PM               163 }ElementAttributes_}tp_process_errors_localization.cub
+01/10/2018  04:13 PM               351 }ElementAttributes_}tp_config.cub
+01/10/2018  04:13 PM           131,813 tm1s20180110161326.log
+01/10/2018  12:22 PM                70 }ElementAttributes_}tp_process_errors_localization.RUX
+01/10/2018  12:22 PM                70 }DimensionAttributes.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}Groups.RUX
+01/10/2018  12:22 PM               208 TM1ProcessError_20180110122221_}_intDPD_CallFeederGen_{acdb65d6-9f0b-40db-9413-b9d7d0e19a04}.log
+01/10/2018  12:22 PM                70 }StatsForServer.RUX
+01/10/2018  12:22 PM                70 }CubeSecurityProperties.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}Modeling.RUX
+01/10/2018  12:22 PM                70 }Capabilities.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}Clients.RUX
+01/10/2018  12:22 PM                70 }StatsByProcess.RUX
+01/10/2018  12:22 PM                70 }DimensionProperties.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}tp_applications.RUX
+01/10/2018  12:22 PM                60 }ModelProperties.dim
+01/10/2018  12:22 PM                70 }ChoreSecurity.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}Cultures.RUX
+01/10/2018  12:22 PM                70 }ProcessSecurity.RUX
+01/10/2018  12:22 PM                70 }StatsByChore.RUX
+01/10/2018  12:22 PM                70 }StatsByCube.RUX
+01/10/2018  12:22 PM                70 }HierarchyProperties.RUX
+01/10/2018  12:22 PM                70 }DimensionSecurity.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}DeployedLinkRecord.RUX
+01/10/2018  12:22 PM                70 }StatsByCubeByClient.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}tp_config.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}tp_system_config.RUX
+01/10/2018  12:22 PM                70 }ElementAttributes_}ModelProperties.RUX
+01/10/2018  12:22 PM                70 }CubeProperties.RUX
+01/10/2018  12:22 PM                70 }CubeSecurity.RUX
+01/10/2018  12:22 PM                58 }-intDPD-hidden-2.dim
+01/10/2018  12:22 PM                58 }-intDPD-hidden-1.dim
+01/10/2018  12:22 PM               128 }ElementAttributes_}Modeling.dim
+01/10/2018  12:21 PM               209 }tp_config.dim
+01/10/2018  12:21 PM                88 }ElementSecurity_}tp_applications.cub
+01/10/2018  12:21 PM                46 }tp_application_cubes.cub
+01/10/2018  12:21 PM                53 }tp_intermediate_security_applications.dim
+01/10/2018  12:21 PM                18 }tp_applications.dim
+01/10/2018  12:21 PM                50 }tp_task_navigations.dim
+01/10/2018  12:21 PM                44 }tp_application_jobs.cub
+01/10/2018  12:21 PM               254 }tp_workflow_actions.dim
+01/10/2018  12:21 PM                53 }tp_central_application_state.cub
+01/10/2018  12:21 PM               171 }tp_workflow_action_TI_measures.dim
+01/10/2018  12:21 PM               115 }tp_intermediate_security_measures.dim
+01/10/2018  12:21 PM                18 }tp_jobs.dim
+01/10/2018  12:21 PM               210 }tp_job_info.dim
+01/10/2018  12:21 PM                94 }ElementAttributes_}tp_process_errors_localization.dim
+01/10/2018  12:21 PM               410 }tp_node_info.dim
+01/10/2018  12:21 PM               121 }tp_permissions.dim
+01/10/2018  12:21 PM                58 }tp_root_permissions.dim
+01/10/2018  12:21 PM                67 }tp_process_errors.cub
+01/10/2018  12:21 PM                18 }tp_process_errors_localization.dim
+01/10/2018  12:21 PM               129 }tp_workflow_action_TI.cub
+01/10/2018  12:21 PM                60 }tp_application_root_permissions.cub
+01/10/2018  12:21 PM               104 }ElementAttributes_}tp_config.dim
+01/10/2018  12:21 PM                36 }tp_process_guids.dim
+01/10/2018  12:21 PM               317 }tp_process_error_measures.dim
+01/10/2018  12:21 PM               129 }CellSecurity_}tp_application_root_permissions.cub
+01/10/2018  12:18 PM             3,723 }DimensionFormatAttributes.dim
+01/10/2018  12:18 PM               179 }StatsStatsForServer.dim
+01/10/2018  12:18 PM                96 }StatsStatsByCubeByClient.dim
+01/10/2018  12:18 PM               182 }StatsStatsByClient.dim
+01/10/2018  12:18 PM             5,437 }Cultures.dim
+01/10/2018  12:18 PM               124 }CubeSecurityProperties.dim
+01/10/2018  12:18 PM               356 }CubeSecurityProperties.cub
+01/10/2018  12:18 PM               150 }Cube Functions.dim
+01/10/2018  12:18 PM               585 }HierarchyProperties.dim
+01/10/2018  12:18 PM               271 }ConnectionProperties.dim
+01/10/2018  12:18 PM                62 }SecurityOverlay.dim
+01/10/2018  12:18 PM                57 }Hierarchies.dim
+01/10/2018  12:18 PM               141 }Permissions.dim
+01/10/2018  12:18 PM                49 }PickList.dim
+01/10/2018  12:18 PM                81 }DimensionFormatItems.dim
+01/10/2018  12:18 PM               272 }StatsByProcess.dim
+01/10/2018  12:18 PM            21,354 tm1s.cfg
+            1412 File(s)    280,185,548 bytes
+             167 Dir(s)  210,105,192,448 bytes free

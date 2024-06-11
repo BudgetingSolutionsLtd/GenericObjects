@@ -1,0 +1,66 @@
+#region Prolog
+
+
+# Copies versions in all cubes containing version. 
+
+
+# Check version from exists
+IF(Dimix('Version', pVersionFrom)=0);
+  ProcessError; 
+Endif;
+
+# Create a list of all cubes to loop through
+sDim = '}Cubes';
+sSubset = GetProcessName;
+nTemp = 1;
+
+SubsetDestroy( sDim, sSubset );
+SubsetCreate( sDim, sSubset, nTemp );
+SubsetMDXSet( sDim, sSubset, 'TM1Filterbylevel(TM1SubsetAll(['| sDim |']),0)' );
+SubsetMDXSet( sDim, sSubset, '' );
+
+DatasourceDimensionSubset = sSubset;
+DatasourceNameForClient = sDim;
+DatasourceNameForServer = sDim;
+DataSourceType = 'SUBSET';
+
+# If the version doesn't exist, add it in
+IF(Dimix('Version', pVersionTo)=0);
+  DimensionElementInsert( 'Version', '', pVersionTo, 'N' );
+  DimensionElementComponentAdd( 'Version', 'All Versions', pVersionTo, 1 );
+    IF(pVersionType@='Static');
+      DimensionElementComponentAdd( 'Version', 'Static Versions', pVersionTo, 1 );
+    Else;
+      DimensionElementComponentAdd( 'Version', 'Calculated Versions', pVersionTo, 1 );
+    Endif;
+  ExecuteProcess( 'ADMIN - Logging - Admin - Dimension Changes Log', 'pProcess', GetProcessName(), 'pDimension', 'Version', 'pElement', pVersionTo );
+Endif;
+#endregion
+#region Data
+
+sCube = vCube;
+
+nDim=CubeDimensionCountGet( sCube);
+iDim = 1;
+While (iDim <= nDim);
+    sDim = TABDIM( sCube, iDim ); 
+    IF(sDim @='Version');
+        ExecuteProcess( 'EXPORT - Any Cube to CSV', 'pCube', sCube, 'pYear', '', 'pVersion', pVersionFrom);
+
+        sFileLocation = GetProcessErrorFileDirectory;
+        sFileLocation = Subst(sFileLocation, 1, LONG( sFileLocation )-5)|'Data\Model_Upload\';
+        sFileName = sCube | ' Extract.csv';
+
+        IF(FileExists( sFileLocation |sFileName)<>0);
+            ExecuteProcess( 'IMPORT - Any Cube from CSV', 'pCube', sCube, 'pYear', '', 'pVersion', pVersionTo);
+            ExecuteProcess( 'ADMIN - ASCII Delete', 'pLocation', sFileLocation, 'pFile', sFileName);
+        Endif;
+      Endif;
+      iDim = iDim+1;
+End;
+
+#endregion
+#region Epilog
+
+ExecuteProcess( 'ADMIN - Save Data All' );
+#endregion

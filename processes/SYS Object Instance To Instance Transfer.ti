@@ -6,7 +6,6 @@ if(ViewExists( cubename, viewname )=0);
     ViewCreate( cubename, viewname, 0 );
 endif;
 
-#ViewExtractSkipCalcsSet( cubename, viewname, 1 );
 ViewExtractSkipZeroesSet( cubename, viewname, 1 );
 
 dimname = 'm_Last Modified';
@@ -27,11 +26,27 @@ dest=CellGetS( 'SYS Model Settings', 'Test Database Path', 'Input' );
 
 #endregion
 #region Data
-
+dimname = 'Change Log Field';
 if(CellGetS( cubename, 'File Last Modified', vLine, 'Flag for Promotion' )@='Y');
     file=CellGetS( 'SYS Change Log', 'File Last Modified', vLine , 'Object');
+    
     command = 'xcopy "' | source | '\' | file | '" "' | dest | '" /Y';
     ExecuteCommand( command, 1 );
-    CellPutS( 'Promoted ' | timst(now(), '\d/\m/\Y \H:\i \p'), cubename, 'File Last Modified', vLine, 'Comment' );
+    
+    CellPutS( 'Promoted ' | timst(now(), '\d/\m/\Y \h:\i '), cubename, 'File Last Modified', vLine, 'Comment' );
+    
+    sTimestamp = TIMST( now(), '\Y\m\d\h\i' );
+    
+    DimensionElementInsertDirect( dimname, '', sTimestamp, 'n' );
+    
+    sComment = CellGetS( cubename, 'File Last Modified', vLine, 'Comment' );
+    sUser = attrs( '}Clients', TM1User(), '}TM1_DefaultDisplayValue' );
+    CellPutS( sComment | ' User: ' | subst(sUser, SCAN( '/', sUser)+1, long(sUser)), cubename, sTimestamp, vLine, 'Comment' );
+    
+    sObject = CellGetS( cubename, 'File Last Modified', vLine, 'Object' ); 
+    CellPutS( sObject, cubename,  sTimestamp, vLine, 'Object' );
+    
+    sModified = CellGetS( cubename, 'File Last Modified', vLine, 'Last Modified' ); 
+    CellPutS( sModified, cubename,  sTimestamp, vLine, 'Last Modified' );
 endif;
 #endregion

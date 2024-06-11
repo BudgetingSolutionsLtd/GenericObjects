@@ -10,6 +10,22 @@
 		{
 			"Name":"Test Database Path",
 			"Type":"String"
+		},
+		{
+			"Name":"Share Drive Path (\\\\<IP address from Welcome Kit>\\s)",
+			"Type":"String"
+		},
+		{
+			"Name":"Share User (<customerURLprefix>RICH\\<shareuser>)",
+			"Type":"String"
+		},
+		{
+			"Name":"Share Pass",
+			"Type":"String"
+		},
+		{
+			"Name":"Share Data Folder Path (\\prod\\<instance name>\\data)",
+			"Type":"String"
 		}
 	],
 	"Subsets@Code.links":[]

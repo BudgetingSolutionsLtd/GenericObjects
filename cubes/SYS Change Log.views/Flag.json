@@ -1,0 +1,50 @@
+{
+	"@type":"NativeView",
+	"Name":"Flag",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('m_Last Modified')/Hierarchies('m_Last Modified')"
+				},
+				"Expression":"TM1SubsetAll([m_Last Modified])"
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('ITIT Input')/Hierarchies('ITIT Input')"
+				},
+				"Expression":"TM1SubsetAll([ITIT Input])"
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('Change Log Field')/Hierarchies('Change Log Field')"
+				},
+				"Expression":"TM1SubsetAll([Change Log Field])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('Change Log Field')/Hierarchies('Change Log Field')/Elements('Manual')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.00"
+}
