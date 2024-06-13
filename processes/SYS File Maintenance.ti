@@ -1,0 +1,23 @@
+#region Prolog
+## put this as first line in upload process
+# ExecuteProcess('SYS File Maintenance', 'pFileName' , pFileName, 'pDestination', pDestination);
+
+source = '.\model_upload';
+filePath = source | '\' | pFilename;
+destPath = source | '\' | pDestination |'\';
+
+command = 'MOVE "' | filePath | '" "' | destPath | '"';
+
+# MOVE doesnt work straight from command line but does from batch file.
+batFile = '.\model_upload\SYS Scripts\SYS_File_Mgmt.bat';
+DatasourceASCIIQuoteCharacter = '';
+ASCIIOutput( batFile , command );
+
+#endregion
+#region Data
+
+#endregion
+#region Epilog
+# Execute in epilog to allow commit of bat file
+ExecuteCommand(batFile, 0 );
+#endregion

@@ -5,7 +5,7 @@ source=CellGetS( 'SYS Model Settings', 'Data Folder Path', 'Input' );
 
 dest=CellGetS( 'SYS Model Settings', 'Test Database Path', 'Input' );
 
-ExecuteCommand( '.\model_upload\SYS_DB_Tfer_Local.bat' | ' ' | source | ' ' | dest, 1 );
+ExecuteCommand( '.\model_upload\SYS Scripts\SYS_DB_Tfer_Local.bat' | ' ' | source | ' ' | dest, 1 );
 #endregion
 #region Data
 
