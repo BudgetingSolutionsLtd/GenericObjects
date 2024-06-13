@@ -1,0 +1,19 @@
+#region Prolog
+# Share data should be \\'IP address from Welcome Kit'\s as below
+SHARE_DRIVE=CellGetS( 'SYS Model Settings', 'Share Drive Path (\\<IP address from Welcome Kit>\s)', 'Input' );
+
+# Share user should be 'devurlprefix'RICH\'fileshare user' as below
+SHARE_USER=CellGetS( 'SYS Model Settings', 'Share User (<customerURLprefix>RICH\<shareuser>)', 'Input' );
+
+# Share pass is the password for the fileshare account from the Welcome Kit.
+SHARE_PASS=CellGetS( 'SYS Model Settings', 'Share Pass', 'Input' );
+
+# Local data should be s:\prod\'instance name'\data as below
+LOCAL_DATA=CellGetS( 'SYS Model Settings', 'Data Folder Path', 'Input' );
+
+# Share data should be \prod\'instance name'\data
+SHARE_DATA=CellGetS( 'SYS Model Settings', 'Share Data Folder Path (\prod\<instance name>\data)', 'Input' );
+
+
+ExecuteCommand( 's:\model_upload\SYS_Inst_Tfer_Local_to_Share.bat' | ' ' | SHARE_DRIVE | ' ' | SHARE_USER | ' ' | SHARE_PASS | ' ' | LOCAL_DATA | ' ' | SHARE_DATA, 0 );
+#endregion

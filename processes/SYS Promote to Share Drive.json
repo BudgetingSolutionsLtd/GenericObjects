@@ -1,0 +1,27 @@
+{
+	"@type":"Process",
+	"Name":"SYS Promote to Share Drive",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Promote to Share Drive.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"p1",
+			"Prompt":"Have you stopped the destination instance?",
+			"Value":"y/n",
+			"Type":"String"
+		},
+		{
+			"Name":"P2",
+			"Prompt":"I understand this will copy the whole data folder and overwrite duplicate objects.",
+			"Value":"y/n",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}
