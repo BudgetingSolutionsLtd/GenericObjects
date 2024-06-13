@@ -6,11 +6,7 @@
 		{
 			"Subset":
 			{
-				"Hierarchy":
-				{
-					"@id":"Dimensions('m_Last Modified')/Hierarchies('m_Last Modified')"
-				},
-				"Expression":"TM1SubsetAll([m_Last Modified])"
+				"@id":"Dimensions('m_Last Modified')/Hierarchies('m_Last Modified')/Subsets('Flag')"
 			}
 		}
 	],
@@ -32,15 +28,11 @@
 		{
 			"Subset":
 			{
-				"Hierarchy":
-				{
-					"@id":"Dimensions('Change Log Field')/Hierarchies('Change Log Field')"
-				},
-				"Expression":"TM1SubsetAll([Change Log Field])"
+				"@id":"Dimensions('Change Log Field')/Hierarchies('Change Log Field')/Subsets('Flag')"
 			},
 			"Selected":
 			{
-				"@id":"Dimensions('Change Log Field')/Hierarchies('Change Log Field')/Elements('Manual')"
+				"@id":"Dimensions('Change Log Field')/Hierarchies('Change Log Field')/Elements('File Last Modified')"
 			}
 		}
 	],

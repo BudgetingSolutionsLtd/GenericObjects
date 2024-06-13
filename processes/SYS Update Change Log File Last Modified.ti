@@ -4,7 +4,6 @@ SaveDataAll;
 # Create file to read in
 CommandLine = 'cmd /c dir /o-d *.* >.\\model_upload\File_List.txt';
 ExecuteCommand(CommandLine, 0);
-DatasourceNameForServer = 'model_upload\File_List.txt';
 
 cubename = 'SYS Change Log';
 viewname = cubename | ' clear';
@@ -24,6 +23,14 @@ SubsetElementInsert( dimname, viewname, 'File Last Modified', 1 );
 ViewSubsetAssign( cubename, viewname, dimname, viewname );
 
 ViewZeroOut( cubename, viewname );
+
+# Wait for files to be written to disk
+n=1;
+while(n<1000000);
+    n=n+1;
+end;
+
+DatasourceNameForServer = 'model_upload\File_List.txt';
 
 n=1;
 #endregion

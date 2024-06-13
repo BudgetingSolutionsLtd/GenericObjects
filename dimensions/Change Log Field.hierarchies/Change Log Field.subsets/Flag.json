@@ -1,0 +1,10 @@
+{
+	"@type":"Subset",
+	"Name":"Flag",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('Change Log Field')/Hierarchies('Change Log Field')/Elements('File Last Modified')"
+		}
+	]
+}
