@@ -3,13 +3,13 @@
 	"Name":"SYS Object DB to DB Transfer",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS Object DB to DB Transfer.ti",
-	"UIData":"_ParameterConstraints=e30=\f",
+	"UIData":"_ParameterConstraints=e30=€",
 	"VariablesUIData":
 	[
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"IgnoredInputVarName=Measure\fVarType=32\fColType=1165\f",
-		"VarType=32\fColType=827\f"
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"IgnoredInputVarName=Measure€VarType=32€ColType=1165€",
+		"VarType=32€ColType=827€"
 	],
 	"DataSource":
 	{

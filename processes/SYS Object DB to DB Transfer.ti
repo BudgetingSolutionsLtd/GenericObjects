@@ -1,10 +1,15 @@
 #region Prolog
+if(p1@<>'Y' % p2@<>'Y');
+    ProcessQuit;
+endif;
+
 cubename = 'SYS Change Log';
 viewname = 'Flag';
 
-if(ViewExists( cubename, viewname )=0);
-    ViewCreate( cubename, viewname, 0 );
+if(ViewExists( cubename, viewname )=1);
+    ViewDestroy( cubename, viewname );
 endif;
+    ViewCreate( cubename, viewname, 0 );
 
 ViewExtractSkipZeroesSet( cubename, viewname, 1 );
 
@@ -13,7 +18,7 @@ dimname = 'm_Last Modified';
 If(SubsetExists( dimname, viewname )=1);
     SubsetDestroy( dimname, viewname );
 endif;
-SubsetCreate( dimname, viewname, 0 );
+SubsetCreate( dimname, viewname,  0 );
 
 SubsetElementInsert( dimname, viewname, 'Flag for Promotion', 1 );
 ViewSubsetAssign( cubename, viewname, dimname, viewname );

@@ -15,6 +15,7 @@
 	],
 	"Views@Code.links":
 	[
-		"SYS Change Log.views/Flag.json"
+		"SYS Change Log.views/Flag.json",
+		"SYS Change Log.views/Object.json"
 	]
 }

@@ -3,10 +3,20 @@
 	"Name":"SYS Promote to Share Drive",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS Promote to Share Drive.ti",
-	"UIData":"_ParameterConstraints=e30=\f",
+	"UIData":"_ParameterConstraints=e30=€",
+	"VariablesUIData":
+	[
+		"IgnoredInputVarName=V1€VarType=32€ColType=1165€",
+		"VarType=32€ColType=827€",
+		"IgnoredInputVarName=V3€VarType=32€ColType=1165€",
+		"IgnoredInputVarName=V4€VarType=32€ColType=1165€"
+	],
 	"DataSource":
 	{
-		"Type":"None"
+		"Type":"TM1CubeView",
+		"dataSourceNameForClient":"SYS Change Log",
+		"dataSourceNameForServer":"SYS Change Log",
+		"view":"Object"
 	},
 	"Parameters":
 	[
@@ -23,5 +33,14 @@
 			"Type":"String"
 		}
 	],
-	"Variables":[]
+	"Variables":
+	[
+		{
+			"Name":"vLine",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
 }

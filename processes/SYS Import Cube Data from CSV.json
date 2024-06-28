@@ -3,17 +3,17 @@
 	"Name":"SYS Import Cube Data from CSV",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS Import Cube Data from CSV.ti",
-	"UIData":"_ParameterConstraints=e30=\f",
+	"UIData":"_ParameterConstraints=e30=€",
 	"VariablesUIData":
 	[
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f"
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€"
 	],
 	"DataSource":
 	{

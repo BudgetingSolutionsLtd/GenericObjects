@@ -24,8 +24,8 @@
 			"Type":"String"
 		},
 		{
-			"Name":"Share Data Folder Path (\\prod\\<instance name>\\data)",
-			"Type":"String"
+			"Name":"Share Data Folder Path (\\prod\\<database name>\\data)",
+			"Type":"Numeric"
 		}
 	],
 	"Subsets@Code.links":[]

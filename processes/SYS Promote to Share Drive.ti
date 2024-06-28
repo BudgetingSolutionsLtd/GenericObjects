@@ -1,4 +1,47 @@
 #region Prolog
+if(p1@<>'Y' % p2@<>'Y');
+    ProcessQuit;
+endif;
+
+cubename = 'SYS Change Log';
+viewname = 'Object';
+
+if(ViewExists( cubename, viewname )=1);
+    ViewDestroy( cubename, viewname );
+endif;
+    ViewCreate( cubename, viewname, 0 );
+
+ViewExtractSkipZeroesSet( cubename, viewname, 1 );
+
+dimname = 'm_Last Modified';
+
+If(SubsetExists( dimname, viewname )=1);
+    SubsetDestroy( dimname, viewname );
+endif;
+SubsetCreate( dimname, viewname,  0 );
+
+SubsetElementInsert( dimname, viewname, 'Object', 1 );
+ViewSubsetAssign( cubename, viewname, dimname, viewname );
+
+dimname = 'Change Log Field';
+
+If(SubsetExists( dimname, viewname )=1);
+    SubsetDestroy( dimname, viewname );
+endif;
+SubsetCreate( dimname, viewname, 0 );
+
+SubsetElementInsert( dimname, viewname, 'File Last Modified', 1 );
+ViewSubsetAssign( cubename, viewname, dimname, viewname );
+
+DatasourceCubeview = viewname;
+
+## Check if caption attribute exists and if not, add it (because github doesnt work properly with control objects)
+dimname = 'Change Log Field';
+AttrName = 'Caption';
+IF ( DIMIX ('}Element_Attributes_' | DimName, AttrName ) = 0);
+    ATTRINSERT ( DimName,'', AttrName ,'a');
+ENDIF;
+
 # Share data should be \\'IP address from Welcome Kit'\s as below
 SHARE_DRIVE=CellGetS( 'SYS Model Settings', 'Share Drive Path (\\<IP address from Welcome Kit>\s)', 'Input' );
 
@@ -9,11 +52,29 @@ SHARE_USER=CellGetS( 'SYS Model Settings', 'Share User (<customerURLprefix>RICH\
 SHARE_PASS=CellGetS( 'SYS Model Settings', 'Share Pass', 'Input' );
 
 # Local data should be s:\prod\'instance name'\data as below
-LOCAL_DATA=CellGetS( 'SYS Model Settings', 'Data Folder Path', 'Input' );
+LOCAL_DATA=CellGetS( 'SYS Model Settings', 'Test Database Path', 'Input' );
 
 # Share data should be \prod\'instance name'\data
-SHARE_DATA=CellGetS( 'SYS Model Settings', 'Share Data Folder Path (\prod\<instance name>\data)', 'Input' );
+SHARE_DATA=CellGetS( 'SYS Model Settings', 'Share Data Folder Path (\prod\<database name>\data)', 'Input' );
 
+ExecuteCommand( '.\model_upload\SYS Scripts\SYS_Inst_Tfer_Local_to_Share.bat' | ' ' | SHARE_DRIVE | ' ' | SHARE_USER | ' ' | SHARE_PASS | ' ' | LOCAL_DATA | ' ' | SHARE_DATA, 1 );
 
-ExecuteCommand( 's:\model_upload\SYS_Inst_Tfer_Local_to_Share.bat' | ' ' | SHARE_DRIVE | ' ' | SHARE_USER | ' ' | SHARE_PASS | ' ' | LOCAL_DATA | ' ' | SHARE_DATA, 0 );
+sTimestamp = TIMST( now(), '\Y\m\d\h\i' );
+sPrettyTimestamp = timst(now(), '\d/\m/\Y \h:\i ');
+#endregion
+#region Data
+DimensionElementInsertDirect( dimname, '', sTimestamp | ' "Test" to Prod', 'n' );
+AttrPutS( sPrettyTimestamp| ' "Test" to Prod', dimname, sTimestamp | ' "Test" to Prod', AttrName);
+    
+sComment = CellGetS( cubename, 'File Last Modified', vLine, 'Comment' );
+sUser = attrs( '}Clients', TM1User(), '}TM1_DefaultDisplayValue' );
+CellPutS( sComment | ' User: ' | subst(sUser, SCAN( '/', sUser)+1, long(sUser)), cubename, sTimestamp | ' "Test" to Prod', vLine, 'Comment' );
+    
+sObject = CellGetS( cubename, 'File Last Modified', vLine, 'Object' ); 
+CellPutS( sObject, cubename,  sTimestamp | ' "Test" to Prod', vLine, 'Object' );
+    
+sModified = CellGetS( cubename, 'File Last Modified', vLine, 'Last Modified' ); 
+CellPutS( sModified, cubename,  sTimestamp | ' "Test" to Prod', vLine, 'Last Modified' );
+
+CellPutS( 'Promoted ' | sPrettyTimestamp, cubename, 'File Last Modified', vLine, 'Comment' );
 #endregion

@@ -3,10 +3,10 @@
 	"Name":"SYS Update Change Log File Last Modified",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS Update Change Log File Last Modified.ti",
-	"UIData":"_ParameterConstraints=e30=\f",
+	"UIData":"_ParameterConstraints=e30=€",
 	"VariablesUIData":
 	[
-		"VarType=32\fColType=827\f"
+		"VarType=32€ColType=827€"
 	],
 	"DataSource":
 	{

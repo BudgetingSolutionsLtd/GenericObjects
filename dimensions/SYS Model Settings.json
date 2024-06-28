@@ -1,12 +1,13 @@
 {
 	"@type":"Dimension",
 	"Name":"SYS Model Settings",
-	"Hierarchies@Code.links":
-	[
-		"SYS Model Settings.hierarchies/SYS Model Settings.json"
-	],
+	"AllLeavesHierarchyName":"",
 	"DefaultHierarchy":
 	{
 		"@id":"Dimensions('SYS Model Settings')/Hierarchies('SYS Model Settings')"
-	}
+	},
+	"Hierarchies@Code.links":
+	[
+		"SYS Model Settings.hierarchies/SYS Model Settings.json"
+	]
 }

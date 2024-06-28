@@ -3,17 +3,17 @@
 	"Name":"SYS Export Cube Data to CSV",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS Export Cube Data to CSV.ti",
-	"UIData":"_ParameterConstraints=e30=\f",
+	"UIData":"_ParameterConstraints=e30=€",
 	"VariablesUIData":
 	[
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f"
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=827€"
 	],
 	"DataSource":
 	{

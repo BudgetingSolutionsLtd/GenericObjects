@@ -22,6 +22,7 @@
 	],
 	"Subsets@Code.links":
 	[
-		"m_Last Modified.subsets/Flag.json"
+		"m_Last Modified.subsets/Flag.json",
+		"m_Last Modified.subsets/Object.json"
 	]
 }

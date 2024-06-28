@@ -3,7 +3,7 @@
 	"Name":"SYS File Maintenance",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS File Maintenance.ti",
-	"UIData":"_ParameterConstraints=e30=\f",
+	"UIData":"_ParameterConstraints=e30=€",
 	"DataSource":
 	{
 		"Type":"None"

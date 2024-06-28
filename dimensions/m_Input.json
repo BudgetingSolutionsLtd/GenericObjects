@@ -1,12 +1,13 @@
 {
 	"@type":"Dimension",
 	"Name":"m_Input",
-	"Hierarchies@Code.links":
-	[
-		"m_Input.hierarchies/m_Input.json"
-	],
+	"AllLeavesHierarchyName":"",
 	"DefaultHierarchy":
 	{
 		"@id":"Dimensions('m_Input')/Hierarchies('m_Input')"
-	}
+	},
+	"Hierarchies@Code.links":
+	[
+		"m_Input.hierarchies/m_Input.json"
+	]
 }

@@ -22,7 +22,7 @@ set "fullstamp=%YYYY%-%MM%-%DD%_%HH%-%Min%-%Sec%"
 rem backup first
 xcopy /s /e /y /i "%LOCAL_DATA%" "%LOCAL_DATA%_backup%fullstamp%"
 xcopy /s /e /y /i "%LOCAL_DATA%" "%LOCAL_DATA%_copy%fullstamp%"
-xcopy /s /e /y /i "%SHARE_DATA%" "%SHARE_DATA%_backup%fullstamp%"
+xcopy /s /e /y /i "e:%SHARE_DATA%" "e:%SHARE_DATA%_backup%fullstamp%"
 
 rem delete security objects
 del /s /q "%LOCAL_DATA%_copy%fullstamp%\}CAMAssociatedGroups.dim"
@@ -44,7 +44,7 @@ del /s /q "%LOCAL_DATA%_copy%fullstamp%\}ClientSettings.RUX"
 del /s /q "%LOCAL_DATA%_copy%fullstamp%\}Groups.dim"
 
 rem Copy the data from the local machine to the share drive with the /E /Y options to copy all subdirectories and overwrite existing files
-xcopy "%LOCAL_DATA%_copy" "e:%SHARE_DATA%" /E /Y
+xcopy "%LOCAL_DATA%_copy%fullstamp%" "e:%SHARE_DATA%" /E /Y
 rem Log off the share drive
 net use e: /delete
 

@@ -1,6 +1,5 @@
 {
 	"@type":"Subset",
 	"Name":"Change Log",
-	"Alias":"Caption",
 	"Expression":"{ORDER(EXCEPT(TM1FILTERBYLEVEL(TM1SUBSETALL([Change Log Field].[Change Log Field]) , 0) , {[Change Log Field].[Change Log Field].[File Last Modified]}) , [Change Log Field].[Change Log Field].CURRENTMEMBER.PROPERTIES(\"MEMBER_NAME\") , BDESC)}"
 }
