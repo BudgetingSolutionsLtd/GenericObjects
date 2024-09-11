@@ -1,0 +1,17 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Change Log Field",
+	"Elements":
+	[
+		{
+			"Name":"File Last Modified",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"Change Log Field.subsets/Change Log.json",
+		"Change Log Field.subsets/Flag.json",
+		"Change Log Field.subsets/Object.json"
+	]
+}

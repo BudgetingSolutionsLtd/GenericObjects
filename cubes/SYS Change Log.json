@@ -1,0 +1,21 @@
+{
+	"@type":"Cube",
+	"Name":"SYS Change Log",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('Change Log Field')"
+		},
+		{
+			"@id":"Dimensions('ITIT Input')"
+		},
+		{
+			"@id":"Dimensions('m_Last Modified')"
+		}
+	],
+	"Views@Code.links":
+	[
+		"SYS Change Log.views/Flag.json",
+		"SYS Change Log.views/Object.json"
+	]
+}

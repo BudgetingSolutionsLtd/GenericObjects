@@ -1,0 +1,13 @@
+{
+	"@type":"Dimension",
+	"Name":"ITIT Input",
+	"AllLeavesHierarchyName":"",
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('ITIT Input')/Hierarchies('ITIT Input')"
+	},
+	"Hierarchies@Code.links":
+	[
+		"ITIT Input.hierarchies/ITIT Input.json"
+	]
+}

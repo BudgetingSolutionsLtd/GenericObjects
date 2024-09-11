@@ -1,0 +1,13 @@
+{
+	"@type":"Dimension",
+	"Name":"m_Last Modified",
+	"AllLeavesHierarchyName":"",
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('m_Last Modified')/Hierarchies('m_Last Modified')"
+	},
+	"Hierarchies@Code.links":
+	[
+		"m_Last Modified.hierarchies/m_Last Modified.json"
+	]
+}
