@@ -1,0 +1,112 @@
+{
+	"@type":"Subset",
+	"Name":"PL Format",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Store Sales')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Online Sales')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('External Sales')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Factored Sales')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Prepaid Income')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Cost of Sales Local Materials')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Cost of Sales Foreign Materials')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Cost of Sales Other')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Cost of Sales Factored')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Commissions')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('3rd Party Consultancy Costs')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('GROSS MARGIN')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Salaries')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Benefits')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Employment Taxes')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Rent & Rates')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Light & Heat')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Telephone')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Travel')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Occupancy')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Office Stationery')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Software')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Depreciation & Amortisation')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Management Charges')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Other Expenses')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Bad Debts')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Loan Interest')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Inter-Co Expenses')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('TOTAL OVERHEADS')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('PROFIT BEFORE INTEREST & TAX')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Interest')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Tax')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('PROFIT AFTER TAX')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Dividends')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('RETAINED EARNINGS')"
+		}
+	]
+}

@@ -1,0 +1,26 @@
+{
+	"@type":"Cube",
+	"Name":"CONS_FXRates",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('CONS_Currency')"
+		},
+		{
+			"@id":"Dimensions('CONS_Scenario')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')"
+		}
+	],
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('CONS_Currency')"
+	},
+	"Views@Code.links":
+	[
+		"CONS_FXRates.views/All.json",
+		"CONS_FXRates.views/CONS_FXRates.json",
+		"CONS_FXRates.views/FX Rates.json"
+	]
+}

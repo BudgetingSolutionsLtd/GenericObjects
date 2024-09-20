@@ -1,0 +1,160 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+
+#*** Log File Name
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names', 'pExecutionId', pExecutionId,
+	'pProcess', cTM1Process, 'pControl', pControl);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+EndIf;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+#***
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Parameters: ', pDim, pSubset, pNode, pControl);
+EndIf;
+
+#***
+
+StringGlobalVariable('gIsInSubset');
+
+If (DimensionExists(pDim) = 0);
+	ProcessError;
+EndIf;
+
+If (SubsetExists(pDim, pSubset) = 0);
+	ProcessError;
+EndIf;
+
+gIsInSubset = 'N';
+#IF(1)
+If (DIMIX(pDim, pNode) <> 0);
+
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Node is in dimension', pNode, pDim);
+	EndIf;
+
+	cNodePName = DimensionElementPrincipalName(pDim, pNode);	
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Node name: ' | cNodePName);
+	EndIf;
+
+	cSubsetSize = SubsetGetSize(pDim, pSubset);
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Subset size: ' | NumberToString(cSubsetSize));
+	EndIf;
+
+	#IF(1.1)
+	If (cSubsetSize > 1);
+	
+		#*** Escape the node to ensure valid MDX
+		StringGlobalVariable('gEscapedId');
+		vReturnValue = ExecuteProcess(cControlPrefix | 'tp_util_escape_id', 
+			'pExecutionId', pExecutionId, 'pNode', cNodePName, 'pControl', pControl);
+		If (vReturnValue <> ProcessExitNormal());
+			ProcessError;
+		EndIf;
+		If (cGenerateLog @= 'Y');
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Escaped Node name: ' | gEscapedId);
+		EndIf;				
+
+		If (CubeExists(pDim) = 0);
+			vMDX = 'EXCEPT(TM1SubsetToSet([' | pDim | '], "' | pSubset | '"), {[' | pDim | '].[' | gEscapedId | ']})';
+		Else;
+			vMDX = 'EXCEPT(TM1SubsetToSet([' | pDim | '].[' | pDim | '] , "' | pSubset | '"), {[' | pDim | '].[' | gEscapedId | ']})';
+		EndIf;
+		
+		If (cGenerateLog @= 'Y');
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'MDX: ', vMDX);
+		EndIf;
+
+		cSubsetLess = 'tp_temp_less_' | pExecutionId;
+		SubsetDestroy(pDim, cSubsetLess);
+		SubsetCreateByMdx(cSubsetLess, vMDX);
+
+		If (cSubsetSize > SubsetGetSize(pDim, cSubsetLess));
+			If (cGenerateLog @= 'Y');
+				TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Node is in subset(0)');
+			EndIf;
+			gIsInSubset = 'Y';
+		Else;
+			gIsInSubset = 'N';
+		EndIf;
+
+		SubsetDestroy(pDim, cSubsetLess);
+
+	#IF(1.1)
+	ElseIf (cSubsetSize = 1);
+
+		cOnlyMember = SubsetGetElementName(pDim, pSubset, 1);
+		If (cGenerateLog @= 'Y');
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Only member: ' | cOnlyMember);
+		EndIf;
+		
+		cOnlyMemberPName = DimensionElementPrincipalName(pDim, cOnlyMember);
+		If (cOnlyMemberPName @= cNodePName);
+			If (cGenerateLog @= 'Y');
+				TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Node is in subset(1)');
+			EndIf;
+			gIsInSubset = 'Y';
+		Else;
+			gIsInSubset = 'N';
+		EndIf;
+
+	#IF(1.1)
+	Else;
+		gIsInSubset = 'N';
+	EndIf;
+
+EndIf;
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'gIsInSubset: ' | gIsInSubset);
+EndIf;
+
+#*** No error
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'The end has been reached.');
+EndIf;
+
+#endregion

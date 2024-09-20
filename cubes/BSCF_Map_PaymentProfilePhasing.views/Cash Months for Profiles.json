@@ -1,0 +1,26 @@
+{
+	"@type":"NativeView",
+	"Name":"Cash Months for Profiles",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Subsets('Months')"
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Subsets('Qtly and Annual Profiles')"
+			}
+		}
+	],
+	"Titles":[],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

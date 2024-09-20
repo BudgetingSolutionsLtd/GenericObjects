@@ -1,0 +1,216 @@
+#region Prolog
+#******
+#******
+#***BEGIN(Prolog): }tp_workflow__release__central
+#******
+
+#****** Initiate prolog
+
+#*** Initiate Log File
+cConfigDim = '}tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+StringGlobalVariable('gMetadataLog');
+
+If (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_get_log_file_names',
+		'pExecutionId', pExecutionId, 
+		'pProcess', cTM1Process, 
+		'pControl', 'Y');
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+EndIf;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cMetadataLog = gMetadataLog;
+
+#*** Set Log File
+cTM1Log = cPrologLog;
+
+#*** Write to Log File
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'),
+		'pExecutionId=' | pExecutionId,
+		'pTime=' | pTime,
+		'pAppId=' | pAppId,
+		'pNode=' | pNode);
+EndIf;
+
+#*** Get user display name
+cUserDisplayName = ATTRS('}Clients', TM1User, '}TM1_DefaultDisplayValue');
+If (cUserDisplayName @= '');
+	cUserDisplayName = TM1User;
+EndIf;
+
+#*** Get Application Attributes
+cApprovalDimension = ATTRS('}tp_applications', pAppId,  'ApprovalDimension');
+cApprovalSubset = ATTRS('}tp_applications', pAppId,  'ApprovalSubset');
+cIsActive = ATTRS('}tp_applications', pAppId,  'IsActive');
+cApprovalShadowDimension = ATTRS('}tp_applications', pAppId,  'ApprovalShadowDimension');
+cVersion = ATTRS('}tp_applications', pAppId,  'Version');
+cSecurityMethod = ATTRS('}tp_applications', pAppId,  'SecurityMethod');
+cVersionDimension = ATTRS('}tp_applications', pAppId,  'VersionDimension');
+cCubeViews = ATTRS('}tp_applications', pAppId,  'CubeViews');
+cBounceMode = ATTRS('}tp_applications', pAppId,  'BounceMode');
+
+#*** Write to Log File
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'),
+		cApprovalDimension,
+		cApprovalSubset,
+		cIsActive,
+		cApprovalShadowDimension,
+		cVersion,
+		cSecurityMethod,
+		cVersionDimension,
+		cCubeViews,
+		cBounceMode);
+EndIf;
+
+#*** Get User Permissions
+
+#*** Define global variables
+StringGlobalVariable('gEdit');
+StringGlobalVariable('gOwn');
+StringGlobalVariable('gOffline');
+
+#*** Call TI process
+tReturnValue = ExecuteProcess('}tp_get_user_root_permissions',
+	'pGuid', pExecutionId, 
+	'pAppId', pAppId, 
+	'pUser', TM1User);
+If (tReturnValue <> ProcessExitNormal());
+	ProcessError;
+EndIf;
+
+cgEdit = gEdit;
+cgOwn = gOwn;
+cgOffline = gOffline;
+
+cDimension = '}tp_applications';
+cNode = pAppId;
+
+#*** Get node type.
+
+#*** Write to Error Cube
+If (DIMIX(cDimension, cNode) = 0);
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_error_update_error_cube',
+		'pGuid', pExecutionId, 
+		'pProcess', GetProcessName(), 
+		'pErrorCode', 'TI_NODE_NOT_EXIST', 
+		'pErrorDetails', cDimension| ', ' |cNode, 
+		'pControl', 'Y');
+	ProcessError;
+EndIf;
+
+cNodeType = DTYPE(cDimension, cNode);
+
+#*** Get State Cube and Member
+cStateCube = '}tp_central_application_state';
+cStateMember = pAppId;
+
+#*** Get State Member Info
+cState = CellGetS(cStateCube, cStateMember, 'State');
+cViewed = CellGetS(cStateCube, cStateMember, 'Viewed');
+cSaved = CellGetS(cStateCube, cStateMember, 'Saved');
+cReviewed = CellGetS(cStateCube, cStateMember, 'Reviewed');
+cBeingEdited = CellGetS(cStateCube, cStateMember, 'BeingEdited');
+cOffline = CellGetS(cStateCube, cStateMember, 'Offline');
+cCurrentOwner = CellGetS(cStateCube, cStateMember, 'CurrentOwner');
+cCurrentOwnerId = CellGetS(cStateCube, cStateMember, 'CurrentOwnerId');
+cReviewer = CellGetS(cStateCube, cStateMember, 'Reviewer');
+cTakeOwnershipNode = CellGetS(cStateCube, cStateMember, 'TakeOwnershipNode');
+cStartEditingDate = CellGetS(cStateCube, cStateMember, 'StartEditingDate');
+cStateChangeUser = CellGetS(cStateCube, cStateMember, 'StateChangeUser');
+cStateChangeDate = CellGetS(cStateCube, cStateMember, 'StateChangeDate');
+cDataChangeUser = CellGetS(cStateCube, cStateMember, 'DataChangeUser');
+cDataChangeDate = CellGetS(cStateCube, cStateMember, 'DataChangeDate');
+
+#****** Start workflow business logic
+
+vVisitCount = 0;
+
+If (cNodeType @= 'S');
+	If ((cState @= '2') & (cgOwn @= 'T'));
+		vVisitCount = vVisitCount + 1;
+		If ((CellGetS('}ClientGroups', TM1User, 'ADMIN') @<> '') % (TM1User @= cCurrentOwnerId));
+
+			#*** Clear ownership
+
+			CellPutS('', cStateCube, cStateMember, 'CurrentOwner');
+			CellPutS('', cStateCube, cStateMember, 'CurrentOwnerId');
+
+			#*** Set State Member Info
+			CellPutS('', cStateCube, cStateMember, 'BeingEdited');
+
+			#*** Set State Member Info
+			CellPutS(pTime, cStateCube, cStateMember, 'StartEditingDate');
+
+			#*** Set State Member Info
+			CellPutS('', cStateCube, cStateMember, 'Offline');
+		Else;
+
+			#*** Write to Error Cube
+			If (~(CellGetS('}ClientGroups', TM1User, 'ADMIN') @<> '') & ~(TM1User @= cCurrentOwnerId));
+
+				#*** Call TI process
+				tReturnValue = ExecuteProcess('}tp_error_update_error_cube',
+					'pGuid', pExecutionId, 
+					'pProcess', GetProcessName(), 
+					'pErrorCode', 'TI_WRONG_OWNER', 
+					'pErrorDetails', TM1User|',' |cCurrentOwnerId, 
+					'pControl', 'Y');
+				ProcessError;
+			EndIf;
+		EndIf;
+
+		#*** Change node state
+
+		#*** Set State Member Info
+		CellPutS('0', cStateCube, cStateMember, 'State');
+
+		#*** Set state change user and time
+		CellPutS(cUserDisplayName, cStateCube, cStateMember, 'StateChangeUser');
+		CellPutS(pTime, cStateCube, cStateMember, 'StateChangeDate');
+	EndIf;
+
+
+EndIf;
+
+#*** Write to Error Cube
+If (vVisitCount = 0);
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_error_update_error_cube',
+		'pGuid', pExecutionId, 
+		'pProcess', GetProcessName(), 
+		'pErrorCode', 'TI_NO_PERMISSION', 
+		'pErrorDetails', 'Node=' | cNode |',' | 'State=' | cState |',' | 'EDIT=' | cgEdit |',' | 'OWN=' | cgOwn |',' | 'OFFLINE=' | cgOffline, 
+		'pControl', 'Y');
+	ProcessError;
+EndIf;
+
+#*** Write to Log File
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'),
+		'The end has been reached.');
+EndIf;
+#******
+#***END(Prolog): }tp_workflow__release__central
+#******
+#endregion

@@ -1,0 +1,5 @@
+﻿FILE_FORMAT=100
+ENTRYNAME=Consolidated Group PL Report.xlsx
+ENTRYTYPE=blob
+ENTRYREFERENCE=TM1:///blob/PUBLIC/.\}Externals\Book6.xlsx_20160826123506.xlsx
+REMOVEBLOBONDELETE=Yes

@@ -1,0 +1,139 @@
+#region Prolog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+
+#*** Log File Name
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names', 'pExecutionId', pExecutionId,
+'pProcess', cTM1Process, 'pControl', pControl);
+If (vReturnValue <> ProcessExitNormal());
+	ProcessError;
+EndIf;
+Endif;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+
+#***
+
+If (cGenerateLog @= 'Y');
+	cLogCubeText = 'Reserve slice pAppId=' | pAppId | '|pNode=' | pNode | '|pApprovalDim=' | pApprovalDim | '|pReserve=' | pReserve | '|User=' | pUser;
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+EndIf;
+
+cApplicationCubesCube = cControlPrefix | 'tp_application_cubes';
+totalCubes = DIMSIZ('}Cubes');
+indexCube = 0;
+
+If (cGenerateLog @= 'Y');
+	cLogCubeText = 'Reserve cube number cubes to check=' | NumberToString(totalCubes);
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+EndIf;
+
+While (indexCube < totalCubes);
+	cCubeName = DIMNM('}Cubes', indexCube+1);
+
+	If (cGenerateLog @= 'Y');
+		cLogCubeText = 'Getting Check Reserve cube flag ' | cCubeName;
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+	EndIf;
+
+	cIsAppCube = CellGetS(cApplicationCubesCube, pAppId, cCubeName);
+
+	If (cGenerateLog @= 'Y');
+		cLogCubeText = 'Reserve cube flag ' | cCubeName | ' is ' | cIsAppCube;
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+	EndIf;
+
+	addConcatSymbol = 0;
+	If (cIsAppCube @= 'A' % (cIsAppCube @='Y' & pApprovalDim @=''));
+		If (cGenerateLog @= 'Y');
+			## debug list reservations
+			vIndex = 1;
+			vDelim = '|';
+			vAddress = CubeDataReservationGet(vIndex, cCubeName, '', vDelim);
+			If (vAddress @= '');
+				cLogCubeText = 'There are no reservations on cube ' | cCubeName;
+				TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+			EndIf;
+			WHILE (vAddress @<> '');
+				cLogCubeText = 'There is a reservation on cube ' | cCubeName | ' for - ' | vAddress;
+				TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+				vIndex = vIndex + 1;
+				vAddress = CubeDataReservationGet(vIndex, cCubeName, '', vDelim);
+				If (vAddress @= '');
+					cLogCubeText = 'There are no more reservations on cube ' | cCubeName;
+					TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+				EndIf;
+			End;	
+		EndIf;
+
+		vReturnValue = ExecuteProcess(cControlPrefix | 'tp_workflow_util_reserve_cube_slices', 'pExecutionId', pExecutionId, 'pAppId', pAppId, 
+			'pCube', cCubeName, 'pApprovalDim', pApprovalDim, 'pNode', pNode, 'pReserve', pReserve, 'pUser', pUser, 'pControlDim','','pControlWritableSlices', '');
+		If (vReturnValue <> ProcessExitNormal());
+			ProcessError;
+		EndIf;
+
+		If (cGenerateLog @= 'Y');
+			## debug list reservations
+			vIndex = 1;
+			vDelim = '|';
+			vAddress = CubeDataReservationGet(vIndex, cCubeName, '', vDelim);
+			If (vAddress @= '');
+				cLogCubeText = 'There are no reservations on cube ' | cCubeName;
+				TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+			EndIf;
+
+			WHILE (vAddress @<> '');
+				cLogCubeText = 'There is a reservation on cube ' | cCubeName | ' for - ' | vAddress;
+				TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+				vIndex = vIndex + 1;
+				vAddress = CubeDataReservationGet(vIndex, cCubeName, '', vDelim);
+				If (vAddress @= '');
+					cLogCubeText = 'There are no more reservations on cube ' | cCubeName;
+					TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+				EndIf;
+			End;	
+		EndIf;
+	EndIf;
+
+	indexCube = indexCube + 1;
+End;
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'The end has been reached.');
+EndIf;
+#endregion

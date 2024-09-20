@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}-intDPD-hidden-1",
+	"Hierarchies@Code.links":
+	[
+		"}-intDPD-hidden-1.hierarchies/}-intDPD-hidden-1.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}-intDPD-hidden-1')/Hierarchies('}-intDPD-hidden-1')"
+	}
+}

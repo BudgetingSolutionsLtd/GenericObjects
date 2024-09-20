@@ -1,0 +1,80 @@
+{
+	"@type":"Subset",
+	"Name":"p_Month",
+	"Alias":"MthYr",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth01 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth02 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth03 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth04 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth05 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth06 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth07 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth08 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth09 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth10 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth11 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth12 Yr01')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth01 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth02 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth03 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth04 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth05 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth06 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth07 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth08 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth09 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth10 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth11 Yr02')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth12 Yr02')"
+		}
+	]
+}

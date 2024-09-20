@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_BaseCumul",
+	"Hierarchies@Code.links":
+	[
+		"CONS_BaseCumul.hierarchies/CONS_BaseCumul.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_BaseCumul')/Hierarchies('CONS_BaseCumul')"
+	}
+}

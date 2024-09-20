@@ -1,0 +1,160 @@
+{
+	"@type":"Process",
+	"Name":"BSCF_DataLoad_ProfitLoss",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"BSCF_DataLoad_ProfitLoss.ti",
+	"UIData":"CubeAction=1511€DataAction=1504€CubeLogChanges=0€_ParameterConstraints=e30€",
+	"VariablesUIData":
+	[
+		"VarType=32€ColType=825€VarDimension=BSCF_ProfitandLoss€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=BSCF_a_Company€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=827€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth01 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth02 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth03 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth04 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth05 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth06 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth07 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth08 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth09 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth10 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth11 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth12 Yr01€MeasuresElemVarType=Numeric€",
+		"IgnoredInputVarName=V16€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V17€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V18€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V19€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V20€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V21€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V22€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V23€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V24€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V25€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V26€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V27€VarType=33€ColType=1165€",
+		"VarName=vBalance€VarType=32€ColType=825€VarFormula=vBalance='Movement';:€VarFormulaDestination=DATA€VarDimension=BSCF_m_AccountBalance€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarName=vVersion€VarType=32€ColType=825€VarFormula=vVersion=CELLGETS('BSCF_Model PArameters', 'VersionToLoad','TextValue');:€VarFormulaDestination=BOTH€VarDimension=BSCF_Scenario€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€"
+	],
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"asciiDecimalSeparator":".",
+		"asciiDelimiterChar":",",
+		"asciiDelimiterType":"Character",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiThousandSeparator":",",
+		"dataSourceNameForClient":"E:\\TM1 Servers\\BSCF\\Files\\Account Data.csv",
+		"dataSourceNameForServer":"E:\\TM1 Servers\\BSCF\\Files\\Account Data.csv"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vAccount",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vCompany",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vScenario",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod1",
+			"Type":"Numeric",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod2",
+			"Type":"Numeric",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod3",
+			"Type":"Numeric",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod4",
+			"Type":"Numeric",
+			"Position":7,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod5",
+			"Type":"Numeric",
+			"Position":8,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod6",
+			"Type":"Numeric",
+			"Position":9,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod7",
+			"Type":"Numeric",
+			"Position":10,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod8",
+			"Type":"Numeric",
+			"Position":11,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod9",
+			"Type":"Numeric",
+			"Position":12,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod10",
+			"Type":"Numeric",
+			"Position":13,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod11",
+			"Type":"Numeric",
+			"Position":14,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vPeriod12",
+			"Type":"Numeric",
+			"Position":15,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

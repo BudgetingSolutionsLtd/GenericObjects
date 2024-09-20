@@ -1,0 +1,124 @@
+{
+	"@type":"Subset",
+	"Name":"Acqns and Disp",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Transaction FX Rate')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Holding')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Accounting Treatment')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Holding Acquired')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Local Currency Net Assets')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('LC Share Capital')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('LC Share Premium')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('LC Profit and Loss Reserves')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('LC Profit and Loss CYR')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('LC Other Reserves')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Cost of Investment')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Share Capital Issued')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Share Premium on Issue')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Cash')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Book Parent Co Acqn Journal')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Holding Disposed of')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Net Disposal Proceeds')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Gross Disposal Proceeds')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Tax on Disposal')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Other Costs of Disposal')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Disposal Percentage')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Book Parent Co Disposal Jnl')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('FVA Disposed Of')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Net Assets Disposed Of')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Group Profit on Disposal')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Parent Company Profit on Disposal')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Life (Years)')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Life Remaining (Days)')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Balance Cfwd')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Balance Bfwd')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Amortisation')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill for Amortisation')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Acquired')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Cost of Investment (2)')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Net Assets Acquired')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Fair Value Adjustments')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Immediately Written Off')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Revaluation of Goodwill')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Disposed Of')"
+		}
+	]
+}

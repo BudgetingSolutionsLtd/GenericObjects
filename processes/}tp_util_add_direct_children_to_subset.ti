@@ -1,0 +1,63 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2013
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+#*** Check dimension
+
+If (DimensionExists(pDim) = 0);
+	ProcessError;
+EndIf;
+
+#*** Check subset
+
+If (SubsetExists(pDim, pSubset) = 0);
+	ProcessError;
+EndIf;
+
+
+#*** Check parent
+
+If (DIMIX(pDim, pParent) = 0);
+	ProcessError;
+EndIf;
+
+#*** Check node type
+
+If (DTYPE(pDim, pParent) @<> 'C');
+	ProcessError;
+EndIf;
+
+#*** Add Children
+
+vTotalChildren = ELCOMPN(pDim, pParent);
+vIndex = 1;
+While (vIndex <= vTotalChildren);
+	vChild = ELCOMP(pDim, pParent, vIndex);
+	SubsetElementInsert(pDim, pSubset, vChild, 0);
+	
+	If (DTYPE(pDim, vChild) @= 'C');
+		vReturnValue = ExecuteProcess('}tp_util_add_direct_children_to_subset', 'pExecutionId', pExecutionId,'pDim', pDim,
+			'pSubset', pSubset, 'pParent', vChild);
+		If (vReturnValue <> ProcessExitNormal());
+			ProcessError;
+		EndIf;	
+	EndIf;
+        
+	vIndex = vIndex + 1;
+End;
+
+#endregion

@@ -1,0 +1,540 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_ReceiptandPayment",
+	"Elements":
+	[
+		{
+			"Name":"TOTAL RECEIPTS & PAYMENTS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"SALES",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Store Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Online Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Prepaid Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"External Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Factored Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"COS & STOCK",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Cost of Sales Local Materials",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Sales Foreign Materials",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Sales Other",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Sales Factored",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Local Stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Foreign Stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"OTHER P&L ITEMS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Commissions",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"3rd Party Consultancy Costs",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Salaries",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Benefits",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Employment Taxes",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Rent & Rates",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Light & Heat",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Telephone",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Travel",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Occupancy",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Office Stationery",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Software",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Depreciation & Amortisation",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Management Charges",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Expenses",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Bad Debts",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Loan Interest",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Expenses",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Gain on Disposal of Assets",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Tax",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Dividends",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ASSET ADDITIONS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Addns - Fixtures and Fittings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Addns - Buildings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Addns - PCs",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Addns - Company Cars",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Addns - Intangible Assets: Patents",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ASSET DISPOSALS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Disposal - Fixtures and Fittings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Disposal - Buildings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Disposal - PCs",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Disposal - Company Cars",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Disposal - Intangible Assets: Patents",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"OTHER ITEMS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"VAT",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Investment South Sea Bubble ltd.",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ID Credit",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Investments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Investments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Share Capital",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"TOTAL RECEIPTS & PAYMENTS",
+			"ComponentName":"SALES",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL RECEIPTS & PAYMENTS",
+			"ComponentName":"COS & STOCK",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL RECEIPTS & PAYMENTS",
+			"ComponentName":"OTHER P&L ITEMS",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL RECEIPTS & PAYMENTS",
+			"ComponentName":"ASSET ADDITIONS",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL RECEIPTS & PAYMENTS",
+			"ComponentName":"ASSET DISPOSALS",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL RECEIPTS & PAYMENTS",
+			"ComponentName":"OTHER ITEMS",
+			"Weight":1
+		},
+		{
+			"ParentName":"SALES",
+			"ComponentName":"Store Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"SALES",
+			"ComponentName":"Online Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"SALES",
+			"ComponentName":"Prepaid Income",
+			"Weight":1
+		},
+		{
+			"ParentName":"SALES",
+			"ComponentName":"External Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"SALES",
+			"ComponentName":"Factored Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"COS & STOCK",
+			"ComponentName":"Cost of Sales Local Materials",
+			"Weight":1
+		},
+		{
+			"ParentName":"COS & STOCK",
+			"ComponentName":"Cost of Sales Foreign Materials",
+			"Weight":1
+		},
+		{
+			"ParentName":"COS & STOCK",
+			"ComponentName":"Cost of Sales Other",
+			"Weight":1
+		},
+		{
+			"ParentName":"COS & STOCK",
+			"ComponentName":"Cost of Sales Factored",
+			"Weight":1
+		},
+		{
+			"ParentName":"COS & STOCK",
+			"ComponentName":"Local Stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"COS & STOCK",
+			"ComponentName":"Foreign Stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"COS & STOCK",
+			"ComponentName":"Other Stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Commissions",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"3rd Party Consultancy Costs",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Salaries",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Benefits",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Employment Taxes",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Rent & Rates",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Light & Heat",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Telephone",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Travel",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Occupancy",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Office Stationery",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Software",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Depreciation & Amortisation",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Management Charges",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Other Expenses",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Bad Debts",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Loan Interest",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Inter-Co Expenses",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Gain on Disposal of Assets",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Inter-Co Income",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Other Income",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Interest",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Tax",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER P&L ITEMS",
+			"ComponentName":"Dividends",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET ADDITIONS",
+			"ComponentName":"Addns - Fixtures and Fittings",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET ADDITIONS",
+			"ComponentName":"Addns - Buildings",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET ADDITIONS",
+			"ComponentName":"Addns - PCs",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET ADDITIONS",
+			"ComponentName":"Addns - Company Cars",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET ADDITIONS",
+			"ComponentName":"Addns - Intangible Assets: Patents",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET DISPOSALS",
+			"ComponentName":"Disposal - Fixtures and Fittings",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET DISPOSALS",
+			"ComponentName":"Disposal - Buildings",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET DISPOSALS",
+			"ComponentName":"Disposal - PCs",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET DISPOSALS",
+			"ComponentName":"Disposal - Company Cars",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET DISPOSALS",
+			"ComponentName":"Disposal - Intangible Assets: Patents",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER ITEMS",
+			"ComponentName":"VAT",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER ITEMS",
+			"ComponentName":"Investment South Sea Bubble ltd.",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER ITEMS",
+			"ComponentName":"ID Credit",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER ITEMS",
+			"ComponentName":"Other Investments",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER ITEMS",
+			"ComponentName":"Inter-Co Investments",
+			"Weight":1
+		},
+		{
+			"ParentName":"OTHER ITEMS",
+			"ComponentName":"Share Capital",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_ReceiptandPayment.subsets/AllLeaf.json"
+	]
+}

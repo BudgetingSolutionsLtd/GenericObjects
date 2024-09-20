@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}ApplicationParameters",
+	"Hierarchies@Code.links":
+	[
+		"}ApplicationParameters.hierarchies/}ApplicationParameters.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}ApplicationParameters')/Hierarchies('}ApplicationParameters')"
+	}
+}

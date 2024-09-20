@@ -1,0 +1,31 @@
+#region Prolog
+#******
+#******
+#***BEGIN(Prolog): }tp_dyn_util_instant_action
+#******
+cCognosEveryoneGroup = 'CAMID("::Everyone")';
+cTpEveryoneGroup = '}tp_Everyone';
+If (DIMIX('}Groups', cCognosEveryoneGroup) <> 0);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__enter__central', cCognosEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__own__central', cCognosEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__release__central', cCognosEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__save__central', cCognosEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__offline__central', cCognosEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__online__central', cCognosEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__leave__central', cCognosEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__execute_action__central', cCognosEveryoneGroup);
+EndIf;
+If (DIMIX('}Groups', cTpEveryoneGroup) <> 0);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__enter__central', cTpEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__own__central', cTpEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__release__central', cTpEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__save__central', cTpEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__offline__central', cTpEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__online__central', cTpEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__leave__central', cTpEveryoneGroup);
+CellPutS('READ', '}ProcessSecurity', '}tp_workflow__execute_action__central', cTpEveryoneGroup);
+EndIf;
+#******
+#***END(Prolog): }tp_dyn_util_instant_action
+#******
+#endregion

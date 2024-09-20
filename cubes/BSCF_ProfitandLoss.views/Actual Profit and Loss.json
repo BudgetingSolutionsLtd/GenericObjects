@@ -1,0 +1,225 @@
+{
+	"@type":"NativeView",
+	"Name":"Actual Profit and Loss",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')"
+				},
+				"Alias":"MthYr",
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Year01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth01 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth02 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth03 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth04 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth05 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth06 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth07 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth08 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth09 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth10 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth11 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth12 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Year02')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('External Sales')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Prepaid Income')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Cost of Sales Local Materials')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Cost of Sales Foreign Materials')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Cost of Sales Other')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Commissions')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('3rd Party Consultancy Costs')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Salaries')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Benefits')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Employment Taxes')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Rent & Rates')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Light & Heat')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Telephone')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Travel')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Occupancy')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Office Stationery')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Software')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Depreciation & Amortisation')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Management Charges')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Other Expenses')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Bad Debts')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Loan Interest')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Inter-Co Expenses')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Gain on Disposal of Assets')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Inter-Co Income')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('Other Income')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('RETAINED EARNINGS')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')"
+				},
+				"Expression":"TM1SubsetAll([BSCF_a_Company])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('GROUP TOTAL')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Budget')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Act vs Bud')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')/Elements('Movement')"
+					},
+					{
+						"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')/Elements('Balance')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')/Elements('Movement')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

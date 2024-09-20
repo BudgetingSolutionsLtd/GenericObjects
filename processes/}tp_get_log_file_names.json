@@ -1,0 +1,32 @@
+{
+	"@type":"Process",
+	"Name":"}tp_get_log_file_names",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_get_log_file_names.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pProcess",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pControl",
+			"Prompt":"",
+			"Value":"Y",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

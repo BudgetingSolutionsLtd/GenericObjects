@@ -1,0 +1,134 @@
+{
+	"@type":"Process",
+	"Name":"CONS_DATALOAD_HistAcqn",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"CONS_DATALOAD_HistAcqn.ti",
+	"UIData":"CubeAction=1500€DataAction=1503€CubeName=CONS_Holdings€CubeLogChanges=0€MeasuresDim=CONS_m_Holdings€MeasuresDimAction=As Is€MeasuresDimElemSortType=ByInput€MeasuresDimElemSortSense=ASCENDING€",
+	"VariablesUIData":
+	[
+		"VarType=32€ColType=825€VarDimension=CONS_a_Company€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_t_Month€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=826€MeasuresElemVar=Transaction Date€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Transaction FX Rate€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Holding Acquired€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=LC Share Capital€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=LC Share Premium€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=LC Reserves€MeasuresElemVarType=Numeric€",
+		"IgnoredInputVarName=V9€VarType=33€ColType=1165€",
+		"VarType=33€ColType=826€MeasuresElemVar=Fair Value Adjustments€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Cash€MeasuresElemVarType=Numeric€",
+		"IgnoredInputVarName=V12€VarType=33€ColType=1165€",
+		"VarType=33€ColType=826€MeasuresElemVar=Goodwill Immediately Written Off€MeasuresElemVarType=Numeric€",
+		"IgnoredInputVarName=V14€VarType=33€ColType=1165€",
+		"VarType=33€ColType=826€MeasuresElemVar=Life (Years)€MeasuresElemVarType=Numeric€",
+		"IgnoredInputVarName=V16€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V17€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V18€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V19€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V20€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V21€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V22€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V23€VarType=33€ColType=1165€",
+		"VarName=vScen€VarType=32€ColType=825€VarFormula=vScen='Scenario 2';:€VarFormulaDestination=BOTH€VarDimension=CONS_Scenario€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€"
+	],
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"asciiDecimalSeparator":".",
+		"asciiDelimiterChar":"\t",
+		"asciiDelimiterType":"Character",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiThousandSeparator":",",
+		"dataSourceNameForClient":"C:\\TM1 Servers\\BSCF\\Source Files Consol\\HistoricalAcq.txt",
+		"dataSourceNameForServer":"C:\\TM1 Servers\\BSCF\\Source Files Consol\\HistoricalAcq.txt"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vCo",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vMth",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vTransDAte",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vTransFXrate",
+			"Type":"Numeric",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"VHoldAcqd",
+			"Type":"Numeric",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"LCSC",
+			"Type":"Numeric",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"LCSP",
+			"Type":"Numeric",
+			"Position":7,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"LCRes",
+			"Type":"Numeric",
+			"Position":8,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"FVA",
+			"Type":"Numeric",
+			"Position":10,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"CostofInv",
+			"Type":"Numeric",
+			"Position":11,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"GwillImmWOff",
+			"Type":"Numeric",
+			"Position":13,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Life",
+			"Type":"Numeric",
+			"Position":15,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

@@ -1,0 +1,7 @@
+
+
+#['Store Sales','Movement'] =N:DB('Revenue','UK',!BSCF_t_Month,!BSCF_Scenario,'All Channels','Revenue');
+
+#['External Sales','Movement'] =N:DB('Revenue','UK',!BSCF_t_Month,!BSCF_Scenario,'Collect','Revenue');
+
+#['Online Sales','Movement'] =N:DB('Revenue','UK',!BSCF_t_Month,!BSCF_Scenario,'Deliveroo','Revenue');

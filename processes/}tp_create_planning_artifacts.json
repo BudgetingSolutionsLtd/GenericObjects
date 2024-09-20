@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"}tp_create_planning_artifacts",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_create_planning_artifacts.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pControl",
+			"Prompt":"",
+			"Value":"N",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

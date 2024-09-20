@@ -1,0 +1,119 @@
+{
+	"@type":"NativeView",
+	"Name":"Cash Summary",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Subsets('Mths and Years')"
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('TOTAL RECEIPTS & PAYMENTS')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('SALES')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('COS & STOCK')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('OTHER P&L ITEMS')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('ASSET ADDITIONS')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('ASSET DISPOSALS')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('OTHER ITEMS')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('GROUP TOTAL')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.Y')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')"
+				},
+				"Expression":"TM1SubsetAll([BSCF_m_CashPayment])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')/Elements('Cash Report')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

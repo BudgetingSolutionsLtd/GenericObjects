@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_m_CashPayment",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_m_CashPayment.hierarchies/BSCF_m_CashPayment.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')"
+	}
+}

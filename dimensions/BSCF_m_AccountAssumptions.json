@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_m_AccountAssumptions",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_m_AccountAssumptions.hierarchies/BSCF_m_AccountAssumptions.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_m_AccountAssumptions')/Hierarchies('BSCF_m_AccountAssumptions')"
+	}
+}

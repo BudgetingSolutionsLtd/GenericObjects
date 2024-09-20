@@ -1,0 +1,35 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+OldCubeLogChanges = CUBEGETLOGCHANGES('CONS_Holdings');
+CUBESETLOGCHANGES('CONS_Holdings', 0);
+#****End: Generated Statements****
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+vScen='Scenario 2';
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+vScen='Scenario 2';
+CellPutS(vTransDAte,'CONS_Holdings',vCo,vScen,vMth,'Transaction Date');
+CellPutN(vTransFXrate,'CONS_Holdings',vCo,vScen,vMth,'Transaction FX Rate');
+CellPutN(VHoldAcqd,'CONS_Holdings',vCo,vScen,vMth,'Holding Acquired');
+CellPutN(LCSC,'CONS_Holdings',vCo,vScen,vMth,'LC Share Capital');
+CellPutN(LCSP,'CONS_Holdings',vCo,vScen,vMth,'LC Share Premium');
+CellPutN(LCRes,'CONS_Holdings',vCo,vScen,vMth,'LC Reserves');
+CellPutN(FVA,'CONS_Holdings',vCo,vScen,vMth,'Fair Value Adjustments');
+CellPutN(CostofInv,'CONS_Holdings',vCo,vScen,vMth,'Cash');
+CellPutN(GwillImmWOff,'CONS_Holdings',vCo,vScen,vMth,'Goodwill Immediately Written Off');
+CellPutN(Life,'CONS_Holdings',vCo,vScen,vMth,'Life (Years)');
+#****End: Generated Statements****
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+CUBESETLOGCHANGES('CONS_Holdings', OldCubeLogChanges);
+#****End: Generated Statements****
+#endregion

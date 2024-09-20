@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"}tp_admin_application_users",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_admin_application_users.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pControl",
+			"Prompt":"",
+			"Value":"Y",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

@@ -1,0 +1,141 @@
+### Days
+
+[{'Hist 1','Hist2','Hist3','Hist4'},'Transaction date']=S:STET;
+['Transaction Date']=S:'';
+
+['Day Number']=N:IF(subst(!CONS_t_Month,1,4)@='Hist',
+IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Transaction Date')@='',
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Day Number'),
+Dayno(Dates(
+NUMBR(subst(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Transaction Date'),7,2)),
+NUMBR(subst(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Transaction Date'),4,2)),
+NUMBR(subst(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Transaction Date'),1,2))))),
+DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Closing Day Number'));
+
+['Days in Period']=N:IF(subst(!CONS_t_Month,1,6)@='Hist 1',0,
+['Day Number']-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Day Number'));
+
+
+
+##Transaction rates are the Opening rate for months
+[{'Hist 1','Hist2','Hist3','Hist4'},'Transaction FX Rate']=N:STET;
+['Transaction FX Rate']=N:DB('CONS_FXRates',DB('}ElementAttributes_CONS_a_Company',!CONS_a_Company,'Currency'),!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'));
+
+
+
+###Company Holding
+
+['Holding']=N:['Holding Acquired']-['Holding Disposed of']+
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Holding');
+
+['Disposal Percentage']=N:['Holding Disposed of']\DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Holding');
+
+['Accounting Treatment']=S:IF(['Holding']=0,'',IF(['Holding']<0.5,'Assoc / JV','Subsidiary'));
+
+['FVA Disposed Of']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'CHECK Assets less Liabilities',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Fair Value Adjustments Cumul')*['Disposal Percentage'];
+['Net Assets Disposed Of']=N:DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'Capital & Reserves',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Central Currency')*['Holding Disposed Of'];
+
+['Group Profit on Disposal']=N:IF(['Disposal Percentage']=0,0,['Net Disposal Proceeds']+['Net Assets Disposed Of']+['Goodwill Disposed Of']+['FVA Disposed Of']);
+['Profit Consol Adj Cumul']=N:['Group Profit on Disposal']-['Parent Company Profit on Disposal']+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Profit Consol Adj Cumul');
+
+['Profit Consol Adj Res Bfwd']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),'Profit Consol Adj Cumul');
+['Profit Consol Adj CYr']=N:['Profit Consol Adj Cumul']-['Profit Consol Adj Res Bfwd'];
+
+['Parent Company Profit on Disposal']=N:['Net Disposal Proceeds']+['Investment Disposed Of'];
+
+
+####Opening LC Values
+
+[{'Hist 1','Hist2','Hist3','Hist4'},{'LC Share Capital','LC Share Premium','LC Profit and Loss Reserves','LC Profit and Loss CYR','LC Other Reserves'}]=N:STET;
+['LC Share Capital']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'Share Capital',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Local Currency');
+['LC Share Premium']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'Share Premium',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Local Currency');
+['LC Profit and Loss Reserves']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'P&L Reserves Bfwd',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Local Currency');
+['LC Profit and Loss CYR']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'P&L Reserves Current Year',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Local Currency');
+['LC Other Reserves']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'Other Capital & Reserves',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Local Currency');
+
+
+###Acquisition
+
+['Net Assets Acquired']=N:['Local Currency Net Assets']*['Holding Acquired']*['Transaction FX Rate'];
+
+['Fair Value Adjustments']=N:DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'CHECK Assets less Liabilities',!CONS_t_Month,'Fair Value Adjustments');
+
+
+###Goodwill and Amortisation
+
+[{'Hist 1','Hist2','Hist3','Hist4'},'Life Remaining (Days)']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Life (Years)')=0,
+MAX(0,DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Life Remaining (Days)')
+-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Days in Period')),
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Life (Years)')*365);
+
+
+['Life Remaining (Days)']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Life (Years)')=0,
+MAX(0,DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Life Remaining (Days)')
+-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Days in Period')),
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Life (Years)')*365);
+
+['Cost of Investment (2)']=N:['Cost of Investment'];
+
+['Goodwill Balance Bfwd']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Goodwill Balance Cfwd');
+
+[{'Hist 1','Hist2','Hist3','Hist4'},'Amortisation']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Life Remaining (Days)')>0,
+-Min(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Next Month'),'Days in Period'),['Life Remaining (Days)'])
+/['Life Remaining (Days)']*(['Goodwill Balance Bfwd']+['Goodwill for Amortisation']),0);
+
+['Goodwill Disposed Of']=N:-['Goodwill Balance Bfwd']*['Disposal Percentage'];
+
+['Amortisation']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Life Remaining (Days)')>20,
+-MIN(['Days in Period'],['Life Remaining (Days)'])/['Life Remaining (Days)']*(['Goodwill Balance Bfwd']+['Goodwill for Amortisation']+['Revaluation of Goodwill']+['Goodwill Disposed Of']),
+(-['Goodwill Balance Bfwd']-['Goodwill for Amortisation']-['Revaluation of Goodwill']-['Goodwill Disposed Of']));
+
+
+###Values for Balance Sheet Adjustments
+
+['Investment Disposed Of']=N:-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Cost of Investment Cumul')*['Disposal Percentage'];
+['Cost of Investment Cumul']=N:['Cost of Investment']+['Investment Disposed Of']+
+DB('CONS_CapitalandReserves',!CONS_a_Company,'Base',!CONS_Scenario,'CAPITAL AND RESERVES',!CONS_t_Month,'LC Share Issue')*['Transaction FX Rate']+
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last  Month'),'Cost of Investment Cumul');
+
+['Goodwill for Amortisation Cumul']=N:['Goodwill for Amortisation']+['Goodwill Disposed Of']+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Goodwill for Amortisation Cumul');
+
+['Goodwill Immed WOff Cumul']=N:-['Goodwill Immediately Written Off']+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Goodwill Immed WOff Cumul');
+['Goodwill Disposed Of Cumul']=N:['Goodwill Disposed Of']+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Goodwill Disposed Of Cumul');
+['Goodwill Revaln Cumul']=N:['Revaluation of Goodwill']+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Goodwill Revaln Cumul');
+
+['Goodwill Valn to Res Bfwd']=N:-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),'Goodwill Immed WOff Cumul')-
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),'Goodwill Revaln Cumul');
+
+['Goodwill Valn to Res CYr']=N:-['Goodwill Immed WOff Cumul']-['Goodwill Revaln Cumul']-['Goodwill Valn to Res Bfwd'];
+
+['Amortisation Cumul']=N:['Amortisation']+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Amortisation Cumul');
+
+['Amortisation Res Bfwd']=N:-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),'Amortisation Cumul');
+['Amortisation Res CYr']=N:['Amortisation Cumul']+['Amortisation Res Bfwd'];
+
+
+### Parent Company Journals
+[{'Hist 1','Hist2','Hist3','Hist4'},{'PC Cost of Investment','PC Cash'}]=N:0;
+
+['PC Cost of Investment']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'PC Cost of Investment')+
+DB('CONS_CapitalandReserves',!CONS_a_Company,'Base',!CONS_Scenario,'CAPITAL AND RESERVES',!CONS_t_Month,'LC Share Issue')*['Transaction FX Rate']+
+IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Book Parent Co Acqn Journal')@='Yes',['Cost of Investment'],0)+
+IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Book Parent Co Disposal Jnl')@='Yes',['Investment Disposed Of'],0);
+
+['PC Share Capital']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'PC Share Capital')-
+IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Book Parent Co Acqn Journal')@='Yes',['Share Capital Issued'],0);
+
+['PC Share Premium']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'PC Share Premium')-
+IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Book Parent Co Acqn Journal')@='Yes',['Share Premium on Issue'],0);
+
+['PC Cash']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'PC Cash')-
+DB('CONS_CapitalandReserves',!CONS_a_Company,'Base',!CONS_Scenario,'CAPITAL AND RESERVES',!CONS_t_Month,'LC Share Issue')*['Transaction FX Rate']-
+IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Book Parent Co Acqn Journal')@='Yes',['Cash'],0)+
+IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Book Parent Co Disposal Jnl')@='Yes',['Net Disposal Proceeds'],0);
+
+['PC Profit on Disposal of Group Companies']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'PC Profit on Disposal of Group Companies')-
+IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Book Parent Co Disposal Jnl')@='Yes',['Parent Company Profit on Disposal'],0);
+
+['PC P&L on Disposal']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Book Parent Co Disposal Jnl')@='Yes',['Parent Company Profit on Disposal'],0);
+
+['PC P&L Res on Disposal']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),'PC Profit on Disposal of Group Companies');
+['PC P&L CYr on Disposal']=N:['PC Profit on Disposal of Group Companies']-['PC P&L Res on Disposal'];

@@ -1,0 +1,32 @@
+{
+	"@type":"Process",
+	"Name":"}tp_util_does_dim_have_cube_name",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_util_does_dim_have_cube_name.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pDim",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pControl",
+			"Prompt":"",
+			"Value":"Y",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

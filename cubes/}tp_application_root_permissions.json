@@ -1,0 +1,15 @@
+{
+	"@type":"Cube",
+	"Name":"}tp_application_root_permissions",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}tp_applications')"
+		},
+		{
+			"@id":"Dimensions('}tp_root_permissions')"
+		}
+	],
+	"Rules@Code.link":"}tp_application_root_permissions.rules",
+	"Views@Code.links":[]
+}

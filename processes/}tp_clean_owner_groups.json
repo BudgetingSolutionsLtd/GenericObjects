@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"}tp_clean_owner_groups",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_clean_owner_groups.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pApprovalDim",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

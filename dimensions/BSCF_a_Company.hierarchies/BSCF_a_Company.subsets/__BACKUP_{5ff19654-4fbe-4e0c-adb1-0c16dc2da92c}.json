@@ -1,0 +1,16 @@
+{
+	"@type":"Subset",
+	"Name":"__BACKUP_{5ff19654-4fbe-4e0c-adb1-0c16dc2da92c}",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('GROUP TOTAL')"
+		},
+		{
+			"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+		},
+		{
+			"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.Y')"
+		}
+	]
+}

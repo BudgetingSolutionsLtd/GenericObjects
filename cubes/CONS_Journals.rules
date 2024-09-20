@@ -1,0 +1,6 @@
+##Calculate the P&L Reserves Impact
+['Reserves Amount']=N:IF(DB('CONS_Journals',!CONS_a_Company,!CONS_Scenario,!CONS_JournalType,'Profit and Loss Account')@='',0,['Amount']*(-1));
+
+##Identify one sided journals that need to net out
+['Check Posting']=N:IF(DB('CONS_Journals',!CONS_a_Company,!CONS_Scenario,!CONS_JournalType,'Profit and Loss Account')@='' %
+DB('CONS_Journals',!CONS_a_Company,!CONS_Scenario,!CONS_JournalType,'Balance Sheet Account')@='',['Amount'],0);

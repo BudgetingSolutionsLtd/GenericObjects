@@ -1,0 +1,11 @@
+#Region System
+#FEEDSTRINGS;
+#SKIPCHECK;
+#EndRegion
+##########################################
+##Maps the Balance Sheet Accounts to the relevant Cashflow line##
+##########################################
+
+
+[]=N:IF(!BSCF_Cashflow@=DB('BSCF_Map_BalanceSheet',!BSCF_BalanceSheet,'Cashflow'),
+DB('BSCF_BalanceSheet',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_BalanceSheet,'Net Movement'),STET);

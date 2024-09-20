@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_job_info",
+	"Hierarchies@Code.links":
+	[
+		"}tp_job_info.hierarchies/}tp_job_info.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_job_info')/Hierarchies('}tp_job_info')"
+	}
+}

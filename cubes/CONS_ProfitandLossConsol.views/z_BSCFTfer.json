@@ -1,0 +1,55 @@
+{
+	"@type":"NativeView",
+	"Name":"z_BSCFTfer",
+	"Columns":[],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Subsets('Companies from BSCF')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+				},
+				"Expression":"TM1SubsetAll([CONS_Scenario])"
+			}
+		},
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Subsets('p_PLAccounts')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Subsets('Months from BSCF')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('LC Reported')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":[],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.00"
+}

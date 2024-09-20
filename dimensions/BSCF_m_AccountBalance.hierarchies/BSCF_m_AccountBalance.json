@@ -1,0 +1,55 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_m_AccountBalance",
+	"Elements":
+	[
+		{
+			"Name":"Net Movement",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Transaction",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Journals",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash Movement",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Movement",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Balance",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Net Movement",
+			"ComponentName":"Transaction",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Movement",
+			"ComponentName":"Journals",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Movement",
+			"ComponentName":"Cash Movement",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Movement",
+			"ComponentName":"Movement",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

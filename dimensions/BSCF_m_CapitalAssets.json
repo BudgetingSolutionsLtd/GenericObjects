@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_m_CapitalAssets",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_m_CapitalAssets.hierarchies/BSCF_m_CapitalAssets.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')"
+	}
+}

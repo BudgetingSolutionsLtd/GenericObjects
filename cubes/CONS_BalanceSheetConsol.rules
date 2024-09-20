@@ -1,0 +1,113 @@
+
+### Translate Local Currency to the Central Rate
+['Central Currency']=N:IF(['FX Rate Override']=0,
+DB('CONS_FXRates',DB('}ElementAttributes_CONS_a_Company',!CONS_a_Company,'Currency'),!CONS_Scenario,!CONS_t_Month),
+['FX Rate Override'])*
+['Local Currency'];
+
+### Book FX Differences to FX reserve line
+
+['Forex Reserves','Forex']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'CHECK Assets less Liabilities',!CONS_t_Month,'Central Currency')+
+(DB('CONS_DataChecks',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'FX Reserves Variance'));
+
+['P&L Reserves Current Year','Forex']=N:-DB('CONS_DataChecks',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'FX Reserves Variance');
+
+
+####Calculate the Group Position based upon Shareholding type
+[{'Share Capital','Share Premium','P&L Reserves Bfwd','P&L Reserves Current Year','Other Capital & Reserves','Forex Reserves'},'GROUP ADJUSTED']=N:(['Central Currency']+['Forex'])*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding');
+
+['Minority Interest','GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,0,
+(DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'CAPITAL & RESERVES',!CONS_t_Month,'Central Currency')+DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'CAPITAL & RESERVES',!CONS_t_Month,'Forex'))
+*(1-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')));
+
+['Share of Associate or JV','GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,
+-(DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'CAPITAL & RESERVES',!CONS_t_Month,'Central Currency')+DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'CAPITAL & RESERVES',!CONS_t_Month,'Forex'))
+*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding'),0);
+
+['GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,0,['Central Currency']+['Forex']);
+
+
+###Incorporate Journals
+[{'Local Jnl','Local Recurring Jnl','Consol Jnl','Consol Recurring Jnl'}]=N:DB('CONS_Alloc_JnltoBS',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,!CONS_m_Consolidation,!CONS_BalanceSheet);
+
+['Local Recurring Jnl Cumul']=N:['Local Recurring Jnl']+DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'Local Recurring Jnl Cumul');
+
+['P&L Reserves Bfwd','LC Journals']=N:DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'LC Journals')+
+IF(subst(!CONS_t_Month,1,5)@='Mth01',DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'P&L Reserves Current Year',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),'LC Journals'),0);
+
+['P&L Reserves Current Year','LC Journals']=N:['Local Recurring Jnl Cumul']+['Local Jnl']+
+IF(subst(!CONS_t_Month,1,5)@='Mth01',0,DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'LC Journals'));
+
+
+['LC Journals']=N:['Local Recurring Jnl Cumul']+['Local Jnl']+DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'LC Journals');
+
+['Consol Recurring Jnl Cumul']=N:['Consol Recurring Jnl']+DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'Consol Recurring Jnl Cumul');
+
+['P&L Reserves Bfwd','Consol Journals']=N:DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'Consol Journals')+
+IF(subst(!CONS_t_Month,1,5)@='Mth01',DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'P&L Reserves Current Year',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),'Consol Journals'),0);
+
+['P&L Reserves Current Year','Consol Journals']=N:['Consol Recurring Jnl Cumul']+['Consol Jnl']+
+IF(subst(!CONS_t_Month,1,5)@='Mth01',0,DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'Consol Journals'));
+
+
+['Consol Journals']=N:['Consol Recurring Jnl Cumul']+['Consol Jnl']+DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'Consol Journals');
+
+
+
+###Eliminate Inter-Co Balances
+[{'Inter-Co Debtors','Inter-Co Creditors','Inter-Co Investments','Inter-Co Loans'},'Inter Co Eliminations']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,!CONS_t_Month,'Group Adjusted')
+-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,!CONS_t_Month,'Consol Journals');
+
+['Inter Co Adj Reserves','Inter Co Eliminations']=N:-['Inter-Co Creditors']-['Inter-Co Investments']-['Inter-Co Loans']-['Inter-Co Debtors'];
+
+###Incorporate Fair Value Adjustments note cumul is reduced by any disposals that occur
+['Fair Value Adjustments Cumul']=N:['Fair Value Adjustments']+(1-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Disposal Percentage'))*
+             DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_BalanceSheet,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Fair Value Adjustments Cumul');
+
+
+
+#####Parent Company Acquisitions and Disposals
+['PARENT Co','Cost of Investment','Consolidation Adjustments']=N:DB('CONS_Holdings','GROUP Companies',!CONS_Scenario,!CONS_t_Month,'PC Cost of Investment');
+['PARENT Co','Cash','Consolidation Adjustments']=N:DB('CONS_Holdings','GROUP Companies',!CONS_Scenario,!CONS_t_Month,'PC Cash');
+['PARENT Co','Share Capital','Consolidation Adjustments']=N:DB('CONS_Holdings','GROUP Companies',!CONS_Scenario,!CONS_t_Month,'PC Share Capital');
+['PARENT Co','Share Premium','Consolidation Adjustments']=N:DB('CONS_Holdings','GROUP Companies',!CONS_Scenario,!CONS_t_Month,'PC Share Premium');
+['PARENT Co','P&L Gain Loss on Group Company','Consolidation Adjustments']=N:DB('CONS_Holdings','GROUP Companies',!CONS_Scenario,!CONS_t_Month,'PC P&L Cyr on Disposal');
+['PARENT Co','P&L Reserves Bfwd','Consolidation Adjustments']=N:DB('CONS_Holdings','GROUP Companies',!CONS_Scenario,!CONS_t_Month,'PC P&L Res on Disposal');
+
+
+
+###Acquisition Consol Journals
+['Cost of Investment','Consolidation Adjustments']=N:-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Cost of Investment Cumul');
+
+['Goodwill on Consolidation','Consolidation Adjustments']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Goodwill for Amortisation Cumul')
++DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Goodwill Revaln Cumul');
+['Goodwill on Consolidation','Goodwill Adjustments']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Amortisation Cumul');
+
+[{'Share Capital','Share Premium','Other Capital & Reserves'},'Consolidation Adjustments']=N:DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_BalanceSheet,!CONS_t_Month,'TC Pre Acqn');
+
+['P&L Reserves Bfwd','Consolidation Adjustments']=N:DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_BalanceSheet,!CONS_t_Month,'TC Pre Acqn')
++DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Goodwill Valn to Res Bfwd')
+-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Profit Consol Adj Res Bfwd');
+
+['P&L Reserves Bfwd','Goodwill Adjustments']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Amortisation Res Bfwd');
+
+['P&L Reserves Current Year','Consolidation Adjustments']=N:DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_BalanceSheet,!CONS_t_Month,'TC Pre Acqn')
++DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Goodwill Valn to Res CYr');
+
+['P&L Gain Loss on Group Company','Consolidation Adjustments']=N:-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Profit Consol Adj CYr');
+
+
+### Book FX Differences to FX reserve line
+
+[{'Share Capital','Share Premium','P&L Reserves Bfwd','Other Capital & Reserves','P&L Reserves Current Year'},'Consolidation Forex']=N:DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_BalanceSheet,!CONS_t_Month,'FX Movement');
+
+['Forex Reserves','Consolidation Forex']=N:-DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,'Capital and Reserves',!CONS_t_Month,'FX Movement');
+
+
+
+#####Amortisation of Goodwill
+['P&L Reserves Current Year','Goodwill Adjustments']=N:-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Amortisation Res CYr');
+
+
+
+

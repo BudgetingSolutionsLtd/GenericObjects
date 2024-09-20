@@ -1,0 +1,201 @@
+{
+	"@type":"NativeView",
+	"Name":"Enter Balance Sheet",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 1')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 2')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 3')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 4')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Op Bal')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth01 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth02 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth03 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth04 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth05 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth06 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth07 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth08 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth09 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth10 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth11 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth12 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth01 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth02 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth03 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth04 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth05 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth06 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth07 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth08 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth09 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth10 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth11 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth12 Yr02')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')"
+				},
+				"Expression":"TM1SubsetAll([CONS_BalanceSheet])"
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')"
+				},
+				"Expression":"TM1SubsetAll([CONS_a_Company])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co A')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Actual')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Currency')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('LC Reported')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('LC Journals')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Jnl')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Recurring Jnl')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Recurring Jnl Cumul')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('CONSOLIDATED')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('LC Reported')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

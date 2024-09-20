@@ -1,0 +1,34 @@
+{
+	"@type":"Cube",
+	"Name":"CONS_Holdings",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('CONS_a_Company')"
+		},
+		{
+			"@id":"Dimensions('CONS_Scenario')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')"
+		}
+	],
+	"Rules@Code.link":"CONS_Holdings.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('CONS_m_Holdings')"
+	},
+	"Views@Code.links":
+	[
+		"CONS_Holdings.views/All.json",
+		"CONS_Holdings.views/CONS_Holdings.json",
+		"CONS_Holdings.views/Default.json",
+		"CONS_Holdings.views/Goodwill.json",
+		"CONS_Holdings.views/Historical Acquisitions.json",
+		"CONS_Holdings.views/Ongoing Acqns and Disp.json",
+		"CONS_Holdings.views/zSource_Scenario1.json"
+	]
+}

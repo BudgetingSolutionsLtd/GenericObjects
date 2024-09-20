@@ -1,0 +1,40 @@
+{
+	"@type":"Hierarchy",
+	"Name":"PLB_m_SalesDiscounting",
+	"Elements":
+	[
+		{
+			"Name":"Sales Consultants",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Placements",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Fee per Placement",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Placement Revenue",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Invoice Discount Percent",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Amount Discounted",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Discount Cost Percent",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Discount Cost",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

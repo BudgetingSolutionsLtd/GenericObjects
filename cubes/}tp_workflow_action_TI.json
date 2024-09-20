@@ -1,0 +1,17 @@
+{
+	"@type":"Cube",
+	"Name":"}tp_workflow_action_TI",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}tp_applications')"
+		},
+		{
+			"@id":"Dimensions('}tp_workflow_actions')"
+		},
+		{
+			"@id":"Dimensions('}tp_workflow_action_TI_measures')"
+		}
+	],
+	"Views@Code.links":[]
+}

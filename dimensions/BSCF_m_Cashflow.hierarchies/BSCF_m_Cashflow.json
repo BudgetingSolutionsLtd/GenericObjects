@@ -1,0 +1,33 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_m_Cashflow",
+	"Elements":
+	[
+		{
+			"Name":"Cashflow",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Balance Sheet Mvmt",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Profit and Loss",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Cashflow",
+			"ComponentName":"Balance Sheet Mvmt",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cashflow",
+			"ComponentName":"Profit and Loss",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

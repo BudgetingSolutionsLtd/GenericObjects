@@ -1,0 +1,64 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+#*** Check dimension
+If (DimensionExists(pDim) = 0);
+ProcessError;
+EndIf;
+
+#*** Check node in dimension
+If (DIMIX(pDim, pNode) = 0);
+ProcessError;
+EndIf;
+
+cNodePName = DimensionElementPrincipalName(pDim, pNode);
+
+#*** Check depth
+
+cDepth = NUMBR(pDepth);
+If (cDepth < 0);
+ProcessError;
+Else;
+cDepth = cDepth + 1;
+EndIf;
+
+#*** Create MDX
+
+StringGlobalVariable('gMdxFindDescendants');
+
+If (pSelf @= 'Y');
+vMDX1 = 'DESCENDANTS([' | pDim | '].[' | cNodePName | '], 0, SELF_AND_AFTER)';
+Else;
+vMDX1 = 'DESCENDANTS([' | pDim | '].[' | cNodePName | '], 0, AFTER)';
+EndIf;
+
+vMDX2 = 'DESCENDANTS([' | pDim | '].[' | cNodePName | '], ' | TRIM(STR(cDepth, 5, 0)) | ', SELF_AND_AFTER)';
+vMDX3 = 'EXCEPT(' | vMDX1 | ', ' | vMDX2 | ')';
+If (SubsetExists(pDim, pSubset) = 0);
+gMdxFindDescendants = vMDX3;
+Else;
+If (CubeExists(pDim) = 0);
+vMDX4 = 'INTERSECT(TM1SubsetToSet([' | pDim | '], "' | pSubset | '"), ' | vMDX3 | ')';
+Else;
+vMDX4 = 'INTERSECT(TM1SubsetToSet([' | pDim | '].[' | pDim | '], "' | pSubset | '"), ' | vMDX3 | ')';
+EndIf;
+gMdxFindDescendants = vMDX4;
+EndIf;
+
+#endregion

@@ -1,0 +1,30 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+OldCubeLogChanges = CUBEGETLOGCHANGES('CONS_BalanceSheetConsol');
+CUBESETLOGCHANGES('CONS_BalanceSheetConsol', 0);
+VIEWZEROOUT('CONS_BalanceSheetConsol','z_BSCFTfer');
+#****End: Generated Statements****
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+LCReported='LC Reported';
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+LCReported='LC Reported';
+if (VALUE_IS_STRING=1, CellPutS(SVALUE,'CONS_BalanceSheetConsol',BSCF_a_Company,BSCF_Scenario,BSCF_BalanceSheet,BSCF_t_Month,LCReported), CellPutN(NVALUE, 'CONS_BalanceSheetConsol', BSCF_a_Company,BSCF_Scenario,BSCF_BalanceSheet,BSCF_t_Month,LCReported));
+#****End: Generated Statements****
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+CUBESETLOGCHANGES('CONS_BalanceSheetConsol', OldCubeLogChanges);
+#****End: Generated Statements****
+
+
+CUBESAVEDATA('CONS_BalanceSheetConsol');
+#endregion

@@ -1,0 +1,29 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+OldCubeLogChanges = CUBEGETLOGCHANGES('CONS_ProfitandLossConsol');
+CUBESETLOGCHANGES('CONS_ProfitandLossConsol', 0);
+VIEWZEROOUT('CONS_ProfitandLossConsol','z_BSCFTfer');
+#****End: Generated Statements****
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+LCReported='LCReported';
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+LCReported='LCReported';
+if (VALUE_IS_STRING=1, CellPutS(SVALUE,'CONS_ProfitandLossConsol',BSCF_a_Company,BSCF_Scenario,BSCF_ProfitandLoss,BSCF_t_Month,LCReported), CellPutN(NVALUE, 'CONS_ProfitandLossConsol', BSCF_a_Company,BSCF_Scenario,BSCF_ProfitandLoss,BSCF_t_Month,LCReported));
+#****End: Generated Statements****
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+CUBESETLOGCHANGES('CONS_ProfitandLossConsol', OldCubeLogChanges);
+#****End: Generated Statements****
+
+CUBESAVEDATA('CONS_ProfitandLossConsol');
+#endregion

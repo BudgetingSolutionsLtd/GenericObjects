@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}Modeling",
+	"Hierarchies@Code.links":
+	[
+		"}Modeling.hierarchies/}Modeling.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}Modeling')/Hierarchies('}Modeling')"
+	}
+}

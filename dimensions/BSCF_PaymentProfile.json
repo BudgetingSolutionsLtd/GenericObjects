@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_PaymentProfile",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_PaymentProfile.hierarchies/BSCF_PaymentProfile.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')"
+	}
+}

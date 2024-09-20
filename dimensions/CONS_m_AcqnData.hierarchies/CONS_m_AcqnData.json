@@ -1,0 +1,56 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_m_AcqnData",
+	"Elements":
+	[
+		{
+			"Name":"Local Currency",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Central Currency",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Transaction Currency",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"FX Movement",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Acquired",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Share Issue",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Pre Acqn Disposed Of",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Pre Acqn",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Post Acqn Disposed Of",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Post Acqn",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CC Pre Acqn",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"TC Pre Acqn",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

@@ -1,0 +1,25 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+OldCubeLogChanges = CUBEGETLOGCHANGES('CONS_BalanceSheetConsol');
+CUBESETLOGCHANGES('CONS_BalanceSheetConsol', 0);
+#****End: Generated Statements****
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+CellPutN(vV1,'CONS_BalanceSheetConsol',vCo,'Scenario1',vBalSheet,vTime,vConsol);
+CellPutN(vV2,'CONS_BalanceSheetConsol',vCo,'Scenario2',vBalSheet,vTime,vConsol);
+#****End: Generated Statements****
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+CUBESETLOGCHANGES('CONS_BalanceSheetConsol', OldCubeLogChanges);
+#****End: Generated Statements****
+#endregion

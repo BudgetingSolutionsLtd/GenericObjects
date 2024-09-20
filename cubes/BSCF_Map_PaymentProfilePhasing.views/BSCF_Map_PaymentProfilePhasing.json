@@ -1,0 +1,34 @@
+{
+	"@type":"NativeView",
+	"Name":"BSCF_Map_PaymentProfilePhasing",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')"
+				},
+				"Expression":"[BSCF_t_Month].MEMBERS"
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')"
+				},
+				"Expression":"[BSCF_PaymentProfile].MEMBERS"
+			}
+		}
+	],
+	"Titles":[],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.00"
+}

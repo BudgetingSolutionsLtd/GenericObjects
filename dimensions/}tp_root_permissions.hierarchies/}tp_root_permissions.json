@@ -1,0 +1,19 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}tp_root_permissions",
+	"Elements":
+	[
+		{
+			"Name":"OFFLINE",
+			"Type":"String"
+		},
+		{
+			"Name":"OWN",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"}tp_root_permissions.subsets/Default.json"
+	]
+}

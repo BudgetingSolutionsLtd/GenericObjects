@@ -1,0 +1,24 @@
+{
+	"@type":"Hierarchy",
+	"Name":"NoteDetails",
+	"Elements":
+	[
+		{
+			"Name":"Comment",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Account",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Current Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Previous Year",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

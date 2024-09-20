@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}ProgressTimings",
+	"Hierarchies@Code.links":
+	[
+		"}ProgressTimings.hierarchies/}ProgressTimings.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}ProgressTimings')/Hierarchies('}ProgressTimings')"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_node_info",
+	"Hierarchies@Code.links":
+	[
+		"}tp_node_info.hierarchies/}tp_node_info.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_node_info')/Hierarchies('}tp_node_info')"
+	}
+}

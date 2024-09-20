@@ -1,0 +1,35 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_Cashflow",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_Cashflow')"
+		}
+	],
+	"Rules@Code.link":"BSCF_Cashflow.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('BSCF_m_Cashflow')"
+	},
+	"Views@Code.links":
+	[
+		"BSCF_Cashflow.views/All.json",
+		"BSCF_Cashflow.views/BSCF_Cashflow.json",
+		"BSCF_Cashflow.views/Cashflow.json",
+		"BSCF_Cashflow.views/Cash Overview.json",
+		"BSCF_Cashflow.views/Default.json"
+	]
+}

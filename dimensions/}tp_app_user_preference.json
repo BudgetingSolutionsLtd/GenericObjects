@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_app_user_preference",
+	"Hierarchies@Code.links":
+	[
+		"}tp_app_user_preference.hierarchies/}tp_app_user_preference.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_app_user_preference')/Hierarchies('}tp_app_user_preference')"
+	}
+}

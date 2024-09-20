@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_m_AcqnData",
+	"Hierarchies@Code.links":
+	[
+		"CONS_m_AcqnData.hierarchies/CONS_m_AcqnData.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_m_AcqnData')/Hierarchies('CONS_m_AcqnData')"
+	}
+}

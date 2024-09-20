@@ -1,0 +1,122 @@
+#region Prolog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+cControlPrefix = '}';
+EndIf;
+
+#*** Log File Name
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names', 'pExecutionId', pExecutionId,
+'pProcess', cTM1Process, 'pControl', pControl);
+If (vReturnValue <> ProcessExitNormal());
+	ProcessError;
+EndIf;
+Endif;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+#*** Log Parameters
+
+If (cGenerateLog @= 'Y');
+TextOutput(cTM1Log, 'Parameters:', 
+pExecutionId, pAppId, pAttrName, pAttrValue, pControl);
+EndIf;
+
+#***
+If (cGenerateLog @= 'Y');
+TextOutput(cTM1Log, 'Check application id', pAppId);
+EndIf;
+
+cApplicationsDim = cControlPrefix | 'tp_applications';
+If (DIMIX(cApplicationsDim, pAppId) = 0);
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+'pGuid', pExecutionId, 
+'pProcess', cTM1Process, 
+'pErrorCode', 'TI_NODE_NOT_EXIST',
+'pErrorDetails', cApplicationsDim | ', ' | pAppId,
+'pControl', pControl);
+
+ProcessError;
+EndIf;
+
+#***
+If (cGenerateLog @= 'Y');
+TextOutput(cTM1Log, 'Check application attribute', pAttrName);
+EndIf;
+
+cApplicationsAttrDim = '}ElementAttributes_' | cApplicationsDim;
+If (DIMIX(cApplicationsAttrDim, pAttrName) = 0);
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+'pGuid', pExecutionId, 
+'pProcess', cTM1Process, 
+'pErrorCode', 'TI_NODE_NOT_EXIST',
+'pErrorDetails', cApplicationsAttrDim | ', ' | pAttrName,
+'pControl', pControl);
+
+ProcessError;
+EndIf;
+
+#***
+If (cGenerateLog @= 'Y');
+TextOutput(cTM1Log, 'Set application attribute', pAttrValue);
+EndIf;
+
+If (pAttrName @= 'IsRunningMaintenance');
+	If (pAttrValue @= 'Y');
+		# insure an application task is not running on this server
+		cAppsDimSize = DIMSIZ(cApplicationsDim);
+		vIndex = 1;
+		While (vIndex <= cAppsDimSize);
+			vElement = DIMNM(cApplicationsDim, vIndex);
+			currentValue = ATTRS(cApplicationsDim, vElement, 'IsRunningMaintenance');
+			If ('Y' @= currentValue);
+				vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+				'pGuid', pExecutionId, 
+				'pProcess', cTM1Process, 
+				'pErrorCode', 'TI_ATTR_ALREADY_SET',
+				'pErrorDetails', cApplicationsAttrDim | ', ' | pAttrName,
+				'pControl', pControl);
+				ProcessError;
+			EndIf;
+			vIndex = vIndex+1;
+		End;
+	EndIf;
+EndIf;
+
+AttrPutS(pAttrValue, cApplicationsDim, pAppId, pAttrName);
+
+#*** No error
+
+If (cGenerateLog @= 'Y');
+TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'The end has been reached.');
+EndIf;
+#endregion

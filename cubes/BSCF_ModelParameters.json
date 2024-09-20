@@ -1,0 +1,18 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_ModelParameters",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_ModelParameters')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Value')"
+		}
+	],
+	"Views@Code.links":
+	[
+		"BSCF_ModelParameters.views/All.json",
+		"BSCF_ModelParameters.views/ClearRecords.json"
+	]
+}

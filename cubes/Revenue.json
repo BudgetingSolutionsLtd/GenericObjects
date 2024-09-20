@@ -1,0 +1,27 @@
+{
+	"@type":"Cube",
+	"Name":"Revenue",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('Regions')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('PLB_Revenue Channel')"
+		},
+		{
+			"@id":"Dimensions('PLB_CustomerRevenue')"
+		}
+	],
+	"Rules@Code.link":"Revenue.rules",
+	"Views@Code.links":
+	[
+		"Revenue.views/Input.json"
+	]
+}

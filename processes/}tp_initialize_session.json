@@ -1,0 +1,20 @@
+{
+	"@type":"Process",
+	"Name":"}tp_initialize_session",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_initialize_session.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

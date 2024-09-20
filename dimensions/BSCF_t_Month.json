@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_t_Month",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_t_Month.hierarchies/BSCF_t_Month.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')"
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_Map_PaymentProfilePhasing",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		}
+	],
+	"Views@Code.links":
+	[
+		"BSCF_Map_PaymentProfilePhasing.views/All.json",
+		"BSCF_Map_PaymentProfilePhasing.views/BSCF_Map_PaymentProfilePhasing.json",
+		"BSCF_Map_PaymentProfilePhasing.views/Cash Months for Profiles.json"
+	]
+}

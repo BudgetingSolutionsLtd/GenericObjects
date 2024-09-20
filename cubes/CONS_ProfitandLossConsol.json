@@ -1,0 +1,40 @@
+{
+	"@type":"Cube",
+	"Name":"CONS_ProfitandLossConsol",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('CONS_a_Company')"
+		},
+		{
+			"@id":"Dimensions('CONS_Scenario')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Consolidation')"
+		}
+	],
+	"Rules@Code.link":"CONS_ProfitandLossConsol.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('CONS_m_Consolidation')"
+	},
+	"Views@Code.links":
+	[
+		"CONS_ProfitandLossConsol.views/All.json",
+		"CONS_ProfitandLossConsol.views/CONS_ProfitandLossConsol.json",
+		"CONS_ProfitandLossConsol.views/Default.json",
+		"CONS_ProfitandLossConsol.views/Enter Profit Loss.json",
+		"CONS_ProfitandLossConsol.views/Group PL Consolidation.json",
+		"CONS_ProfitandLossConsol.views/Override P&L FX Rate.json",
+		"CONS_ProfitandLossConsol.views/Variance.json",
+		"CONS_ProfitandLossConsol.views/View Company Profit Loss CONS.json",
+		"CONS_ProfitandLossConsol.views/z_BSCFTfer.json",
+		"CONS_ProfitandLossConsol.views/zSource_Scenario1.json"
+	]
+}

@@ -1,0 +1,38 @@
+#region Prolog
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+cSystemConfigDim = cControlPrefix | 'tp_system_config';
+If (DimensionExists(cSystemConfigDim) = 0);
+	ProcessError;
+EndIf;
+
+cSecurityModeNode = 'IntegratedSecurityMode';
+cConfigValueAttr = 'ConfigValue';
+vSecurityMode = ATTRS(cSystemConfigDim, cSecurityModeNode, cConfigValueAttr);
+
+#Grant DataReservation capabilities to the tp_everyone group
+
+cCapabilityCube = '}Capabilities';
+
+cCognosEveryoneGroup = 'CAMID("::Everyone")';
+cTpEveryoneGroup = cControlPrefix | 'tp_Everyone';
+If (vSecurityMode @= '5');
+
+	If (DIMIX('}Groups', cCognosEveryoneGroup) = 0);
+		ProcessError;
+	EndIf;
+	CellPutS('Grant', cCapabilityCube, 'ManageDataReservation', 'EXECUTE', cCognosEveryoneGroup);
+	CellPutS('Grant', cCapabilityCube, 'DataReservationOverride', 'EXECUTE', cCognosEveryoneGroup);
+Else;
+	If (DIMIX('}Groups', cTpEveryoneGroup) = 0);
+		ProcessError;
+	EndIf;
+	CellPutS('Grant', cCapabilityCube, 'ManageDataReservation', 'EXECUTE', cTpEveryoneGroup);
+	CellPutS('Grant', cCapabilityCube, 'DataReservationOverride', 'EXECUTE', cTpEveryoneGroup);
+EndIf;
+
+#***
+#endregion

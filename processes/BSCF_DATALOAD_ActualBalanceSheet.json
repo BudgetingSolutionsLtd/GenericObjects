@@ -1,0 +1,149 @@
+{
+	"@type":"Process",
+	"Name":"BSCF_DATALOAD_ActualBalanceSheet",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"BSCF_DATALOAD_ActualBalanceSheet.ti",
+	"UIData":"CubeAction=1500€DataAction=1503€CubeName=BSCF_BalanceSheet€CubeLogChanges=0€MeasuresDim=BSCF_t_Month€MeasuresDimAction=As Is€MeasuresDimElemSortType=ByInput€MeasuresDimElemSortSense=DESCENDING€",
+	"VariablesUIData":
+	[
+		"IgnoredInputVarName=V1€VarType=32€ColType=1165€",
+		"VarType=32€ColType=825€VarDimension=BSCF_BalanceSheet€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=BSCF_a_Company€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=33€ColType=826€MeasuresElemVar=Op Bal€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth01 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth02 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth03 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth04 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth05 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth06 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth07 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth08 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth09 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth10 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth11 Yr01€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Mth12 Yr01€MeasuresElemVarType=Numeric€",
+		"VarName=VVers€VarType=32€ColType=825€VarFormula=VVers='Actual';:€VarFormulaDestination=BOTH€VarDimension=BSCF_Scenario€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarName=vMet€VarType=32€ColType=825€VarFormula=vMet='Balance';:€VarFormulaDestination=BOTH€VarDimension=BSCF_m_AccountBalance€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€"
+	],
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"asciiDecimalSeparator":".",
+		"asciiDelimiterChar":"\t",
+		"asciiDelimiterType":"Character",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiThousandSeparator":",",
+		"dataSourceNameForClient":"E:\\Models\\BSCF\\Source Files\\ActualBS.txt",
+		"dataSourceNameForServer":"E:\\Models\\BSCF\\Source Files\\ActualBS.txt"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"BSAccount",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Company",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Op",
+			"Type":"Numeric",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd1",
+			"Type":"Numeric",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd2",
+			"Type":"Numeric",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd3",
+			"Type":"Numeric",
+			"Position":7,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd4",
+			"Type":"Numeric",
+			"Position":8,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd5",
+			"Type":"Numeric",
+			"Position":9,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd6",
+			"Type":"Numeric",
+			"Position":10,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd7",
+			"Type":"Numeric",
+			"Position":11,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd8",
+			"Type":"Numeric",
+			"Position":12,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd9",
+			"Type":"Numeric",
+			"Position":13,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd10",
+			"Type":"Numeric",
+			"Position":14,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd11",
+			"Type":"Numeric",
+			"Position":15,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Pd12",
+			"Type":"Numeric",
+			"Position":16,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

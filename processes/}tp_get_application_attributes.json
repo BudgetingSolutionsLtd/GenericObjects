@@ -1,0 +1,32 @@
+{
+	"@type":"Process",
+	"Name":"}tp_get_application_attributes",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_get_application_attributes.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pAppId",
+			"Prompt":"",
+			"Value":"MyApp",
+			"Type":"String"
+		},
+		{
+			"Name":"pControl",
+			"Prompt":"",
+			"Value":"N",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

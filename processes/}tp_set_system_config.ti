@@ -1,0 +1,55 @@
+#region Prolog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2009, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+cControlPrefix = '}';
+EndIf;
+
+vDimension =cControlPrefix | 'tp_system_config';
+vAttrConfigValue='ConfigValue';
+
+IF ( DimensionExists ( vDimension ) = 0 );
+  	DimensionCreate(vDimension);
+ENDIF;
+
+AttrInsert(vDimension, '', vAttrConfigValue, 'S');
+	
+DimensionDeleteAllElements(vDimension);
+DimensionElementInsert(vDimension, '', 'IntegratedSecurityMode', 'S');
+DimensionElementInsert(vDimension, '', 'AdminHost', 'S');
+DimensionElementInsert(vDimension, '', 'ServerCAMURI', 'S');
+DimensionElementInsert(vDimension, '', 'ClientCAMURI', 'S');
+#endregion
+#region Epilog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2009, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+AttrPutS(pIntegratedSecurityMode, vDimension, 'IntegratedSecurityMode', vAttrConfigValue);
+AttrPutS(pAdminHost, vDimension, 'AdminHost', vAttrConfigValue);
+AttrPutS(pServerCAMURI, vDimension, 'ServerCAMURI', vAttrConfigValue);
+AttrPutS(pClientCAMURI, vDimension, 'ClientCAMURI', vAttrConfigValue);
+#endregion

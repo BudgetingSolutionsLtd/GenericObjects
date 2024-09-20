@@ -1,0 +1,36 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}ProgressTimings",
+	"ElementsSortType":"ByHierarchy",
+	"Elements":
+	[
+		{
+			"Name":"CUBE-BSCF_ReceiptandPayment",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CUBE-BSCF_Assum_ReceiptandPayment",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CUBE-BSCF_Alloc_RPtoBS",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"DIMENSION-walstead",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CUBE-BSCF_CapitalAssets",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"DIMENSION-BSCF_a_Company",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"}ProgressTimings.subsets/All Members.json"
+	]
+}

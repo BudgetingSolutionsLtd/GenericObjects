@@ -1,0 +1,54 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_a_Company",
+	"Elements":
+	[
+		{
+			"Name":"GROUP TOTAL",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Co.X",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co.Y",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"C0. Z",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"GROUP TOTAL",
+			"ComponentName":"Co.X",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP TOTAL",
+			"ComponentName":"Co.Y",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP TOTAL",
+			"ComponentName":"C0. Z",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_a_Company.subsets/__BACKUP_{487fc208-ef21-464d-855c-86cb4151e97d}.json",
+		"BSCF_a_Company.subsets/__BACKUP_{4a81a8ee-316d-4791-918c-dede1a7f2872}.json",
+		"BSCF_a_Company.subsets/__BACKUP_{5ff19654-4fbe-4e0c-adb1-0c16dc2da92c}.json",
+		"BSCF_a_Company.subsets/__BACKUP_{bcf0a89f-2862-4635-ae33-0f96ee2f0121}.json",
+		"BSCF_a_Company.subsets/__BACKUP_{d00c4c88-74c8-4b9d-a6a0-9f7595800bd8}.json",
+		"BSCF_a_Company.subsets/__BACKUP_{dce0164e-a437-45fa-9e1c-9051b25eb0ed}.json",
+		"BSCF_a_Company.subsets/__BACKUP_{e76c3919-daa9-4d7e-a692-b71ee5958f8f}.json",
+		"BSCF_a_Company.subsets/__BACKUP_{f41fcf01-6b90-4ff1-b075-e2c0ee0a5efd}.json",
+		"BSCF_a_Company.subsets/All Members.json",
+		"BSCF_a_Company.subsets/Company.json"
+	]
+}

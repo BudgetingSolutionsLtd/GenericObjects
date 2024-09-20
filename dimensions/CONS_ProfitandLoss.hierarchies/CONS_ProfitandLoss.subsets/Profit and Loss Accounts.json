@@ -1,0 +1,121 @@
+{
+	"@type":"Subset",
+	"Name":"Profit and Loss Accounts",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('External Sales')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Prepaid Income')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Cost of Sales Local Materials')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Cost of Sales Foreign Materials')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Cost of Sales Other')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Commissions')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('3rd Party Consultancy Costs')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Salaries')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Benefits')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Employment Taxes')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Rent & Rates')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Light & Heat')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Telephone')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Travel')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Occupancy')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Office Stationery')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Software')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Depreciation & Amortisation')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Management Charges')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Other Expenses')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Bad Debts')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Loan Interest')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Inter-Co Expenses')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Amortisation of Goodwill')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Gain on Disposal of Assets')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Inter-Co Income')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Other Income')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Forex Difference on Exchange')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Forex Difference on Inter Company')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Interest')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Gain on Disposal of Group Companies')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Share of Associates Profit Before Tax')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Tax')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Share of Associates Tax')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Minority Interest')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Dividends')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Dividends from Subsidiaries')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Dividends from Associates \\ JV')"
+		}
+	]
+}

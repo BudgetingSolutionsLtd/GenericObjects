@@ -1,0 +1,299 @@
+{
+	"@type":"NativeView",
+	"Name":"Default",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Op Bal')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 1')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 2')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 3')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 4')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth01 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth02 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth03 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth04 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth05 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth06 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth07 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth08 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth09 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth10 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth11 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth12 Yr01')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth01 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth02 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth03 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth04 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth05 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth06 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth07 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth08 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth09 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth10 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth11 Yr02')"
+					},
+					{
+						"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth12 Yr02')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('RETAINED EARNINGS')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('PROFIT AFTER TAX')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('PROFIT BEFORE INTEREST & TAX')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('GROSS MARGIN')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('TOTAL OVERHEADS')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Salaries')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Benefits')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Employment Taxes')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Rent & Rates')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Light & Heat')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Telephone')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Travel')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Occupancy')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Office Stationery')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Software')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Depreciation & Amortisation')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Management Charges')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Other Expenses')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Bad Debts')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Loan Interest')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Inter-Co Expenses')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Amortisation of Goodwill')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('TOTAL OTHER INCOME')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Gain on Disposal of Assets')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Inter-Co Income')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Other Income')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Forex Difference on Exchange')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Forex Difference on Inter Company')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Interest')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Gain on Disposal of Group Companies')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Share of Associates Profit Before Tax')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Tax')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Share of Associates Tax')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Minority Interest')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Dividends')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Dividends from Subsidiaries')"
+					},
+					{
+						"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')/Elements('Dividends from Associates \\ JV')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')"
+				},
+				"Expression":"TM1SubsetAll([CONS_a_Company])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('GROUP TOTAL')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Currency')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('CONSOLIDATED')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('CONSOLIDATED')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

@@ -1,0 +1,333 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_Cashflow",
+	"Elements":
+	[
+		{
+			"Name":"Cash per Balance Sheet",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash Check",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"CASH, END OF PERIOD",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"NET INCREASE IN  CASH",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"NET CASH FLOW FROM OPERATIONS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Operating Profit before Tax & Interest",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Add Depreciation",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Subtract Profit on Disposals",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Movement in Trade Debtors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Debtors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Debtors>1 Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Prepayments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Trade Creditors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Creditors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accruals",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Prepaid Income Accruals",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"VAT Liability",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Creditors>1 Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"NET CASH FLOW FROM CAPITAL & INVESTMENTS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Fixed & Intangible Assets",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Investments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"NET CASHFLOW FROM FINANCING",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Short Term Financing",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Long Term Financing",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Share Capital",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Capital & Reserves",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest Payments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Tax Payments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Dividend Payments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"NET CASHFLOW FROM INTER-COMPANY",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Inter-Co Debtors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Creditors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Loans",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Investments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CASH, BEGINNING OF PERIOD",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Cash Check",
+			"ComponentName":"CASH, END OF PERIOD",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cash Check",
+			"ComponentName":"Cash per Balance Sheet",
+			"Weight":-1
+		},
+		{
+			"ParentName":"CASH, END OF PERIOD",
+			"ComponentName":"NET INCREASE IN  CASH",
+			"Weight":1
+		},
+		{
+			"ParentName":"CASH, END OF PERIOD",
+			"ComponentName":"CASH, BEGINNING OF PERIOD",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET INCREASE IN  CASH",
+			"ComponentName":"NET CASH FLOW FROM OPERATIONS",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET INCREASE IN  CASH",
+			"ComponentName":"NET CASH FLOW FROM CAPITAL & INVESTMENTS",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET INCREASE IN  CASH",
+			"ComponentName":"NET CASHFLOW FROM FINANCING",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET INCREASE IN  CASH",
+			"ComponentName":"NET CASHFLOW FROM INTER-COMPANY",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Operating Profit before Tax & Interest",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Add Depreciation",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Subtract Profit on Disposals",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Movement in Trade Debtors",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Other Debtors",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Debtors>1 Year",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Prepayments",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Trade Creditors",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Other Creditors",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Accruals",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Prepaid Income Accruals",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"VAT Liability",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM OPERATIONS",
+			"ComponentName":"Creditors>1 Year",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM CAPITAL & INVESTMENTS",
+			"ComponentName":"Fixed & Intangible Assets",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASH FLOW FROM CAPITAL & INVESTMENTS",
+			"ComponentName":"Investments",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM FINANCING",
+			"ComponentName":"Short Term Financing",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM FINANCING",
+			"ComponentName":"Long Term Financing",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM FINANCING",
+			"ComponentName":"Share Capital",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM FINANCING",
+			"ComponentName":"Other Capital & Reserves",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM FINANCING",
+			"ComponentName":"Interest Payments",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM FINANCING",
+			"ComponentName":"Tax Payments",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM FINANCING",
+			"ComponentName":"Dividend Payments",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM INTER-COMPANY",
+			"ComponentName":"Inter-Co Debtors",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM INTER-COMPANY",
+			"ComponentName":"Inter-Co Creditors",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM INTER-COMPANY",
+			"ComponentName":"Inter-Co Loans",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET CASHFLOW FROM INTER-COMPANY",
+			"ComponentName":"Inter-Co Investments",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_Cashflow.subsets/AllLeaf.json"
+	]
+}

@@ -1,0 +1,35 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+
+OldCubeLogChanges = CUBEGETLOGCHANGES('CONS_ProfitandLossConsol');
+CUBESETLOGCHANGES('CONS_ProfitandLossConsol', 0);
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+
+Value  = Value * CELLGETN('CONS_Holdings', CONs_a_Company, 'Budget', CONS_t_Month,'Change Percent');
+
+vTargetVersion='Budget';
+#if (VALUE_IS_STRING=1, CellPutS(SVALUE,'CONS_ProfitandLossConsol',CONS_a_Company,vTargetVersion,CONS_ProfitandLoss,CONS_t_Month,CONS_m_Consolidation), CellPutN(NVALUE, 'CONS_ProfitandLossConsol', CONS_a_Company,vTargetVersion,CONS_ProfitandLoss,CONS_t_Month,CONS_m_Consolidation));
+
+CellPutN(Value, 'CONS_ProfitandLossConsol', CONS_a_Company,vTargetVersion,CONS_ProfitandLoss,CONS_t_Month,CONS_m_Consolidation);
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+
+CUBESETLOGCHANGES('CONS_ProfitandLossConsol', OldCubeLogChanges);
+#endregion

@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_m_Consolidation",
+	"Hierarchies@Code.links":
+	[
+		"CONS_m_Consolidation.hierarchies/CONS_m_Consolidation.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')"
+	}
+}

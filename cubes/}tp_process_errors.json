@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"}tp_process_errors",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}tp_process_guids')"
+		},
+		{
+			"@id":"Dimensions('}tp_process_error_measures')"
+		}
+	],
+	"Views@Code.links":[]
+}

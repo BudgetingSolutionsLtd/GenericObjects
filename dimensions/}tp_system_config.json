@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_system_config",
+	"Hierarchies@Code.links":
+	[
+		"}tp_system_config.hierarchies/}tp_system_config.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_system_config')/Hierarchies('}tp_system_config')"
+	}
+}

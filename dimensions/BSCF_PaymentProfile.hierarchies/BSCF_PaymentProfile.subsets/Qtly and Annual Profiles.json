@@ -1,0 +1,64 @@
+{
+	"@type":"Subset",
+	"Name":"Qtly and Annual Profiles",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Qtly Arrears 1 4 7 10')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Qtly Arrears 2 5 8 11')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Qtly Arrears 3 6 9 12')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Qtly Advance 1 4 7 10')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Qtly Advance 2 5 8 11')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Qtly Advance 3 6 9 12')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 1')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 2')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 3')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 4')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 5')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 6')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 7')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 8')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 9')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 10')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 11')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 12')"
+		},
+		{
+			"@id":"Dimensions('BSCF_PaymentProfile')/Hierarchies('BSCF_PaymentProfile')/Elements('Annual 25% Pd6 75% Pd12')"
+		}
+	]
+}

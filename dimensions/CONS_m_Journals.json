@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_m_Journals",
+	"Hierarchies@Code.links":
+	[
+		"CONS_m_Journals.hierarchies/CONS_m_Journals.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')"
+	}
+}

@@ -1,0 +1,45 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+#*** Check dimension
+If (DimensionExists(pDim) = 0);
+ProcessError;
+EndIf;
+
+#*** Check node in dimension
+If (DIMIX(pDim, pNode) = 0);
+ProcessError;
+EndIf;
+
+cNodePName = DimensionElementPrincipalName(pDim, pNode);
+
+
+#*** Create MDX
+
+StringGlobalVariable('gMdxFindConsolidateDescendants');
+
+vMdxCon = '{INTERSECT(EXCEPT(DESCENDANTS([' | pDim | '].[' | cNodePName  | ']),';
+vMdxCon = vMdxCon | 'TM1FILTERBYLEVEL(DESCENDANTS([' | pDim | '].[' | cNodePName | ']),0)),';
+vMdxCon = vMdxCon | '{TM1SubsetToSet([' | pDim | '],"' | pSubset | '")}),';
+vMdxCon = vMdxCon | '[' | pDim | '].[' | cNodePName | ']}';
+gMdxFindConsolidateDescendants = vMdxCon;
+
+
+
+#endregion

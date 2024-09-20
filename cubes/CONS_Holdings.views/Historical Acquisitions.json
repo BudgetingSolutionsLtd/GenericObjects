@@ -1,0 +1,63 @@
+{
+	"@type":"NativeView",
+	"Name":"Historical Acquisitions",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Subsets('Company')"
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Subsets('Historical Acqns')"
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Subsets('Historical')"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Hist 1')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

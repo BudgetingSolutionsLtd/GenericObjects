@@ -1,0 +1,22 @@
+{
+	"@type":"Subset",
+	"Name":"Assets Disposed",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')/Elements('Gain (Loss) on Sale')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')/Elements('Sale Proceeds ex VAT')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')/Elements('Net Book Value of Assets Sold')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')/Elements('Original Cost of Assets Sold (GBV)')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')/Elements('Accumulated Depn of Assets Sold')"
+		}
+	]
+}

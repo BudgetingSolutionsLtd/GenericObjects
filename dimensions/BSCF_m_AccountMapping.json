@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_m_AccountMapping",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_m_AccountMapping.hierarchies/BSCF_m_AccountMapping.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_m_AccountMapping')/Hierarchies('BSCF_m_AccountMapping')"
+	}
+}

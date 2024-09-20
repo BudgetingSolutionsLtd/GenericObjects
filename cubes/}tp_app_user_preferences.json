@@ -1,0 +1,17 @@
+{
+	"@type":"Cube",
+	"Name":"}tp_app_user_preferences",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Clients')"
+		},
+		{
+			"@id":"Dimensions('}tp_applications')"
+		},
+		{
+			"@id":"Dimensions('}tp_app_user_preference')"
+		}
+	],
+	"Views@Code.links":[]
+}

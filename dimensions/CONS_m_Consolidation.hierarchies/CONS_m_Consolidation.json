@@ -1,0 +1,179 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_m_Consolidation",
+	"Elements":
+	[
+		{
+			"Name":"Local Currency",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"LC Reported",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Journals",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Local Jnl",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Local Recurring Jnl",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Local Recurring Jnl Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"FX Rate Override",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Central Currency",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Forex",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CONSOLIDATED",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"GROUP ADJUSTED",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter Co Eliminations",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Fair Value Adjustments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Fair Value Adjustments Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consolidation Adjustments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consolidation Forex",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Adjustments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consol Journals",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consol Jnl",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consol Recurring Jnl",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consol Recurring Jnl Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Notes",
+			"Type":"String"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Local Currency",
+			"ComponentName":"LC Reported",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Currency",
+			"ComponentName":"LC Journals",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Currency",
+			"ComponentName":"Local Jnl",
+			"Weight":0
+		},
+		{
+			"ParentName":"Local Currency",
+			"ComponentName":"Local Recurring Jnl",
+			"Weight":0
+		},
+		{
+			"ParentName":"Local Currency",
+			"ComponentName":"Local Recurring Jnl Cumul",
+			"Weight":0
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"GROUP ADJUSTED",
+			"Weight":1
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Inter Co Eliminations",
+			"Weight":1
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Fair Value Adjustments",
+			"Weight":0
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Fair Value Adjustments Cumul",
+			"Weight":1
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Consolidation Adjustments",
+			"Weight":1
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Consolidation Forex",
+			"Weight":1
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Goodwill Adjustments",
+			"Weight":1
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Consol Journals",
+			"Weight":1
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Consol Jnl",
+			"Weight":0
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Consol Recurring Jnl",
+			"Weight":0
+		},
+		{
+			"ParentName":"CONSOLIDATED",
+			"ComponentName":"Consol Recurring Jnl Cumul",
+			"Weight":0
+		}
+	],
+	"Subsets@Code.links":[]
+}

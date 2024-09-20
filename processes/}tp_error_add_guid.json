@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"}tp_error_add_guid",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_error_add_guid.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pGuid",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pControl",
+			"Prompt":"",
+			"Value":"N",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

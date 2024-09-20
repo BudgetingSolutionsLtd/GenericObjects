@@ -1,0 +1,26 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+OldCubeLogChanges = CUBEGETLOGCHANGES('CONS_Holdings');
+CUBESETLOGCHANGES('CONS_Holdings', 0);
+#****End: Generated Statements****
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+vTargetVersion='Budget';
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+vTargetVersion='Budget';
+if (VALUE_IS_STRING=1, CellPutS(SVALUE,'CONS_Holdings',CONS_a_Company,vTargetVersion,CONS_t_Month,CONS_m_Holdings), CellPutN(NVALUE, 'CONS_Holdings', CONS_a_Company,vTargetVersion,CONS_t_Month,CONS_m_Holdings));
+#****End: Generated Statements****
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+CUBESETLOGCHANGES('CONS_Holdings', OldCubeLogChanges);
+#****End: Generated Statements****
+#endregion

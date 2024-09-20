@@ -1,0 +1,58 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+sFilepath = CELLGETS('BSCF_ModelParameters','Filepath','TextValue');
+
+sFilename = CELLGETS('BSCF_ModelParameters','Filename','TextValue');
+
+sCompany = CELLGETS('BSCF_ModelParameters','CompanyToLoad','TextValue');
+
+sVersion = CELLGETS('BSCF_ModelParameters','VersionToLoad','TextValue');
+
+
+DatasourceNameForServer= sFilepath | sFilename;
+
+nRecordCount = 0;
+
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+vVersion=CELLGETS('BSCF_Model PArameters', 'VersionToLoad','TextValue');
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+vBalance='Movement';
+vVersion=CELLGETS('BSCF_Model PArameters', 'VersionToLoad','TextValue');
+#****End: Generated Statements****
+
+vBalance='Movement';
+vVersion=CELLGETS('BSCF_Model PArameters', 'VersionToLoad','TextValue');
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth01 Yr01',vAccount,vBalance)+vPeriod1,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth01 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth02 Yr01',vAccount,vBalance)+vPeriod2,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth02 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth03 Yr01',vAccount,vBalance)+vPeriod3,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth03 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth04 Yr01',vAccount,vBalance)+vPeriod4,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth04 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth05 Yr01',vAccount,vBalance)+vPeriod5,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth05 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth06 Yr01',vAccount,vBalance)+vPeriod6,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth06 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth07 Yr01',vAccount,vBalance)+vPeriod7,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth07 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth08 Yr01',vAccount,vBalance)+vPeriod8,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth08 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth09 Yr01',vAccount,vBalance)+vPeriod9,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth09 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth10 Yr01',vAccount,vBalance)+vPeriod10,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth10 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth11 Yr01',vAccount,vBalance)+vPeriod11,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth11 Yr01',vAccount,vBalance);
+CellPutN(CellGetN('BSCF_ProfitandLoss',vCompany,vVersion,'Mth12 Yr01',vAccount,vBalance)+vPeriod12,'BSCF_ProfitandLoss',vCompany,vVersion,'Mth12 Yr01',vAccount,vBalance);
+
+
+
+nRecordCount  = nRecordCount + 1;
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+CELLPUTN(nRecordCount, 'BSCF_ModelParameters','RecordsLoaded', 'NumericValue');
+#endregion

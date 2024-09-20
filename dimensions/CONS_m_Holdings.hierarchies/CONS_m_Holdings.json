@@ -1,0 +1,410 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_m_Holdings",
+	"Elements":
+	[
+		{
+			"Name":"Transaction Date",
+			"Type":"String"
+		},
+		{
+			"Name":"Day Number",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Days in Period",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Transaction FX Rate",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Holding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accounting Treatment",
+			"Type":"String"
+		},
+		{
+			"Name":"Holding Acquired",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Local Currency Net Assets",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"LC Share Capital",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Share Premium",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Profit and Loss Reserves",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Profit and Loss CYR",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Other Reserves",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Investment",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Share Capital Issued",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Share Premium on Issue",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Book Parent Co Acqn Journal",
+			"Type":"String"
+		},
+		{
+			"Name":"Holding Disposed of",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Net Disposal Proceeds",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Gross Disposal Proceeds",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Tax on Disposal",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Costs of Disposal",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Disposal Percentage",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Book Parent Co Disposal Jnl",
+			"Type":"String"
+		},
+		{
+			"Name":"FVA Disposed Of",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Net Assets Disposed Of",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Group Profit on Disposal",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Parent Company Profit on Disposal",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Profit Consol Adj Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Profit Consol Adj CYr",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Profit Consol Adj Res Bfwd",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Life (Years)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Life Remaining (Days)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Balance Cfwd",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Goodwill Balance Bfwd",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Amortisation",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill for Amortisation",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Goodwill Acquired",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Cost of Investment (2)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Net Assets Acquired",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Fair Value Adjustments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Immediately Written Off",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Revaluation of Goodwill",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Disposed Of",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Investment Disposed Of",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Investment Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill for Amortisation Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Immed WOff Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Disposed Of Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Revaln Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Valn to Res Bfwd",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Goodwill Valn to Res CYr",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Amortisation Cumul",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Amortisation Res Bfwd",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Amortisation Res CYr",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Parent Company Journals",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"PC Cost of Investment",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PC Share Capital",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PC Share Premium",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PC Cash",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PC Profit on Disposal of Group Companies",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PC P&L on Disposal",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PC P&L CYr on Disposal",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PC P&L Res on Disposal",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Change Percent",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Local Currency Net Assets",
+			"ComponentName":"LC Share Capital",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Currency Net Assets",
+			"ComponentName":"LC Share Premium",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Currency Net Assets",
+			"ComponentName":"LC Profit and Loss Reserves",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Currency Net Assets",
+			"ComponentName":"LC Profit and Loss CYR",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Currency Net Assets",
+			"ComponentName":"LC Other Reserves",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cost of Investment",
+			"ComponentName":"Share Capital Issued",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cost of Investment",
+			"ComponentName":"Share Premium on Issue",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cost of Investment",
+			"ComponentName":"Cash",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Disposal Proceeds",
+			"ComponentName":"Gross Disposal Proceeds",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Disposal Proceeds",
+			"ComponentName":"Tax on Disposal",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Net Disposal Proceeds",
+			"ComponentName":"Other Costs of Disposal",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Goodwill Balance Cfwd",
+			"ComponentName":"Goodwill Balance Bfwd",
+			"Weight":1
+		},
+		{
+			"ParentName":"Goodwill Balance Cfwd",
+			"ComponentName":"Amortisation",
+			"Weight":1
+		},
+		{
+			"ParentName":"Goodwill Balance Cfwd",
+			"ComponentName":"Goodwill for Amortisation",
+			"Weight":1
+		},
+		{
+			"ParentName":"Goodwill Balance Cfwd",
+			"ComponentName":"Revaluation of Goodwill",
+			"Weight":1
+		},
+		{
+			"ParentName":"Goodwill Balance Cfwd",
+			"ComponentName":"Goodwill Disposed Of",
+			"Weight":1
+		},
+		{
+			"ParentName":"Goodwill for Amortisation",
+			"ComponentName":"Goodwill Acquired",
+			"Weight":1
+		},
+		{
+			"ParentName":"Goodwill for Amortisation",
+			"ComponentName":"Goodwill Immediately Written Off",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Goodwill Acquired",
+			"ComponentName":"Cost of Investment (2)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Goodwill Acquired",
+			"ComponentName":"Net Assets Acquired",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Goodwill Acquired",
+			"ComponentName":"Fair Value Adjustments",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Parent Company Journals",
+			"ComponentName":"PC Cost of Investment",
+			"Weight":1
+		},
+		{
+			"ParentName":"Parent Company Journals",
+			"ComponentName":"PC Share Capital",
+			"Weight":1
+		},
+		{
+			"ParentName":"Parent Company Journals",
+			"ComponentName":"PC Share Premium",
+			"Weight":1
+		},
+		{
+			"ParentName":"Parent Company Journals",
+			"ComponentName":"PC Cash",
+			"Weight":1
+		},
+		{
+			"ParentName":"Parent Company Journals",
+			"ComponentName":"PC Profit on Disposal of Group Companies",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"CONS_m_Holdings.subsets/Acqns and Disp.json",
+		"CONS_m_Holdings.subsets/Goodwill.json",
+		"CONS_m_Holdings.subsets/Historical Acqns.json"
+	]
+}

@@ -1,0 +1,78 @@
+###Calculate Cumul from Base for initial currency data
+['Cumul',{'Local Currency','Central Currency','Transaction Currency'}]=IF(['Base']=0,
+      DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),!CONS_m_AcqnData),['Base']);
+
+### FX movement compares the amount translated at current rates with the original transaction
+['FX Movement','Cumul']=N:IF(subst(!CONS_t_Month,1,4)@='Hist',0,['CC Pre Acqn','Cumul']-['TC Pre Acqn', 'Cumul']);
+
+## Translate the P&L reserves using the month by month avg rates and reset to zero for Mth 01
+['CC Pre Acqn','P&L Reserves Current Year','Base']=N:DB('CONS_DataChecks',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Central Profit and Loss YTD')*
+(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding Acquired')-
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding Disposed Of'))-
+IF(subst(!CONS_t_Month,1,5)@='Mth01',DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),!CONS_m_AcqnData),0);
+
+['CC Pre Acqn','P&L Reserves Current Year','Cumul']=N:['Base']
++DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),!CONS_m_AcqnData);
+
+###This rule works for a 2 year timescale, would need modifying if a 3rd year is added###
+['CC Pre Acqn','P&L Reserves Bfwd','Cumul']=N:(['LC Acquired','Cumul']+['Cumul','LC Share Issue']-['Cumul','LC Pre Acqn Disposed Of']-['Cumul','LC Post Acqn Disposed Of'])*
+  DB('CONS_FXRates',DB('}ElementAttributes_CONS_a_Company',!CONS_a_Company,'Currency'),!CONS_Scenario,!CONS_t_Month)+
+DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,'P&L Reserves Current Year',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),!CONS_m_AcqnData);
+
+['CC Pre Acqn','Cumul']=N:(['LC Acquired','Cumul']+['Cumul','LC Share Issue']-['Cumul','LC Pre Acqn Disposed Of']-['Cumul','LC Post Acqn Disposed Of'])*
+DB('CONS_FXRates',DB('}ElementAttributes_CONS_a_Company',!CONS_a_Company,'Currency'),!CONS_Scenario,!CONS_t_Month);
+
+
+####Opening Values from the data enttry into the Holdings cube
+[{'Hist 1','Hist2','Hist3','Hist4'},'Share Capital', 'Local Currency']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'LC Share Capital');
+[{'Hist 1','Hist2','Hist3','Hist4'},'Share Premium', 'Local Currency']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'LC Share Premium');
+[{'Hist 1','Hist2','Hist3','Hist4'},'P&L Reserves Bfwd', 'Local Currency']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'LC Profit and Loss Reserves');
+[{'Hist 1','Hist2','Hist3','Hist4'},'P&L Reserves Current Year', 'Local Currency']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'LC Profit and Loss CYR');
+[{'Hist 1','Hist2','Hist3','Hist4'},'Other Capital & Reserves', 'Local Currency']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'LC Other Reserves');
+
+###Other values from the local and translated balance sheets
+[{'Local Currency','Central Currency'},'Base']=N:-DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),!CONS_m_AcqnData);
+
+['Transaction Currency','Base']=N:['Local Currency']*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Transaction FX Rate');
+
+####Transaction Calculations in Local Currency
+
+['Base','LC Acquired']=N:['Local Currency']*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding Acquired');
+
+['Base',{'Share Capital','Share Premium'},'LC Share Issue']=N:(DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Next Month'),'Local Currency')
+-['Cumul','Local Currency'])*
+	DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding');
+
+['Base','LC Pre Acqn']=N:['LC Acquired']-
+	DB('CONS_CapitalandReserves',!CONS_a_Company,'Base',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'LC Pre Acqn Disposed Of');
+
+['Base','LC Pre Acqn Disposed Of']=N:DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,!CONS_t_Month,'LC Pre Acqn')*
+		DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Disposal Percentage');
+
+['Base','LC Post Acqn','Hist 1']=N:0;
+
+['Base','LC Post Acqn']=N:(['Local Currency','Cumul']-DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Local Currency'))*
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'Holding')-
+DB('CONS_CapitalandReserves',!CONS_a_Company,'Base',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),'LC Post Acqn Disposed Of');
+
+['Base','LC Post Acqn Disposed Of']=N:DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,!CONS_t_Month,'LC Post Acqn')*
+		DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Disposal Percentage');
+
+###Transaction Calculations in Transaction Currency
+
+['TC Pre Acqn','Base','P&L Reserves Current Year']=N:(['LC Acquired']+['LC Share Issue']-['LC Pre Acqn Disposed Of']-['LC Post Acqn Disposed Of'])*
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Transaction FX Rate')-
+IF(subst(!CONS_t_Month,1,5)@='Mth01',DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),!CONS_m_AcqnData),0);
+
+['TC Pre Acqn','Base','P&L Reserves Bfwd']=N:(['LC Acquired']+['LC Share Issue']-['LC Pre Acqn Disposed Of']-['LC Post Acqn Disposed Of'])*
+DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Transaction FX Rate')+
+IF(subst(!CONS_t_Month,1,5)@='Mth01',DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,'P&L Reserves Current Year',DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Amort Reserves'),!CONS_m_AcqnData),0);
+
+['TC Pre Acqn','Base']=N:(['LC Acquired']+['LC Share Issue']-['LC Pre Acqn Disposed Of']-['LC Post Acqn Disposed Of'])*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Transaction FX Rate');
+
+
+### Cumulative is Base aggregated for all other lines
+
+['Cumul']=N:['Base']+DB('CONS_CapitalandReserves',!CONS_a_Company,'Cumul',!CONS_Scenario,!CONS_CapitalandReserves,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Holding Last Month'),!CONS_m_AcqnData);
+
+

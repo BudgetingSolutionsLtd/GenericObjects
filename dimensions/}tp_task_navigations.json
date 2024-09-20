@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_task_navigations",
+	"Hierarchies@Code.links":
+	[
+		"}tp_task_navigations.hierarchies/}tp_task_navigations.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_task_navigations')/Hierarchies('}tp_task_navigations')"
+	}
+}

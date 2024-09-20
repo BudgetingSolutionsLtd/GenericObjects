@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}DeployedLinkRecord",
+	"Hierarchies@Code.links":
+	[
+		"}DeployedLinkRecord.hierarchies/}DeployedLinkRecord.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}DeployedLinkRecord')/Hierarchies('}DeployedLinkRecord')"
+	}
+}

@@ -1,0 +1,25 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+OldCubeLogChanges = CUBEGETLOGCHANGES('CONS_ProfitandLossConsol');
+CUBESETLOGCHANGES('CONS_ProfitandLossConsol', 0);
+#****End: Generated Statements****
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+CellPutN(VV1,'CONS_ProfitandLossConsol',vCo,'Scenario1',vPandL,VMth,vConsol);
+CellPutN(VV2,'CONS_ProfitandLossConsol',vCo,'Scenario2',vPandL,VMth,vConsol);
+#****End: Generated Statements****
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+CUBESETLOGCHANGES('CONS_ProfitandLossConsol', OldCubeLogChanges);
+#****End: Generated Statements****
+#endregion

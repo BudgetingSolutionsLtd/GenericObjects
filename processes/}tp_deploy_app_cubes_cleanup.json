@@ -1,0 +1,32 @@
+{
+	"@type":"Process",
+	"Name":"}tp_deploy_app_cubes_cleanup",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_deploy_app_cubes_cleanup.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pAppId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pCubeName",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

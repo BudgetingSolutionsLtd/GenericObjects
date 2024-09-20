@@ -1,0 +1,145 @@
+{
+	"@type":"NativeView",
+	"Name":"Group BS Consolidation",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Subsets('FinancialMonths')"
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CHECK Assets less Liabilities')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('NET ASSETS')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('FIXED ASSETS  NBV')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('INVESTMENTS')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('STOCK')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('DEBTORS < 1 YEAR')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CASH AT BANK AND IN HAND')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CREDITORS < 1 Year')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('NON CURRENT ASSETS')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('NON CURRENT LIABILITIES')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CAPITAL & RESERVES')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CAPITAL')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('RESERVES')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('GROUP TOTAL')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('PARENT Co')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('GROUP Companies')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('GROUP TOTAL')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Currency')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('CONSOLIDATED')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('CONSOLIDATED')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":true,
+	"SuppressEmptyRows":true,
+	"FormatString":"0.#########"
+}

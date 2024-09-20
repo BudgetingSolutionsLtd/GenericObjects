@@ -1,0 +1,119 @@
+#region Prolog
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+pControl = 'Y';
+ cControlPrefix = '}';
+
+
+#*** Log File Name
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names', 'pExecutionId', pExecutionId,
+'pProcess', cTM1Process, 'pControl', pControl);
+If (vReturnValue <> ProcessExitNormal());
+	ProcessError;
+EndIf;
+Endif;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+#*** update element level security
+cPermissionsCube = '}CellSecurity_' | cControlPrefix | 'tp_application_permission}' | pAppId;
+cSecurityRead = 'READ';
+cSecurityWrite = 'WRITE';
+cSecurityLock = 'WRITE';
+
+cApprovalSubsetSize = SubsetGetSize(pApprovalDim, pApprovalSubset);
+vIndex = cApprovalSubsetSize;
+
+cGroupsDim = '}Groups';
+
+While ( vIndex > 0 );
+	cApprovalElement = SubsetGetElementName (pApprovalDim, pApprovalSubset, vIndex);
+	vIsLeafNode = 'T';
+	If (DTYPE(pApprovalDim, cApprovalElement) @= 'C');
+		vIsLeafNode = 'F';
+	Else;
+		vIsLeafNode = 'T';
+	EndIf;
+	
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Found Element ', cApprovalElement, ' isLeaf=', vIsLeafNode);
+	EndIf;
+	
+
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Loop through groups on leaf node ', cGroupsDim);
+	EndIf;
+	groupLooper = 1;
+	cGroupName =  DIMNM(cGroupsDim,groupLooper);
+	While (cGroupName @<> '');
+		If (cGenerateLog @= 'Y');
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Get permission for group ', cGroupName, cPermissionsCube);
+		EndIf;
+		cView = CellGetS(cPermissionsCube, cApprovalElement, 'VIEW', cGroupName);
+		cEdit = CellGetS(cPermissionsCube, cApprovalElement, 'EDIT', cGroupName);
+		cSubmit = CellGetS(cPermissionsCube, cApprovalElement, 'SUBMIT', cGroupName);
+		If (cGenerateLog @= 'Y');
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'EDIT permission for group ', cGroupName, ' is ', cEdit);
+		EndIf;
+
+		If (vIsLeafNode @= 'T');
+			If (cEdit @= 'READ' );
+				If (cGenerateLog @= 'Y');
+					TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Change Element security to WRITE', cApprovalElement);
+				EndIf;
+				ElementSecurityPut (cSecurityWrite, pApprovalDim, cApprovalElement, cGroupName);
+			EndIf;
+
+			If (cSubmit @= 'READ' );
+				If (cGenerateLog @= 'Y');
+					TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Change Element security to WRITE', cApprovalElement);
+				EndIf;
+				ElementSecurityPut (cSecurityLock, pApprovalDim, cApprovalElement, cGroupName);
+			EndIf;
+		Else;
+			If (cView @= 'READ' );
+				If (cGenerateLog @= 'Y');
+					TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Change Element security to WRITE', cApprovalElement);
+				EndIf;
+				ElementSecurityPut (cSecurityWrite, pApprovalDim, cApprovalElement, cGroupName);
+			EndIf;
+		EndIf;
+
+		groupLooper = groupLooper + 1;
+		cGroupName =  DIMNM(cGroupsDim,groupLooper);
+	End;
+
+	
+	vIndex = vIndex - 1;
+End;
+#endregion

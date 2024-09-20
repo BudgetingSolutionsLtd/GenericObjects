@@ -1,0 +1,60 @@
+#region Prolog
+
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 0);
+	ProcessError;
+EndIf;
+
+cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+
+#*** Log File Name
+cTM1Process = cControlPrefix | 'tp_set_state_reviewers_all';
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names',
+'pExecutionId', pExecutionId, 'pProcess', cTM1Process, 'pControl', pControl);
+If (vReturnValue <> ProcessExitNormal());
+ProcessError;
+EndIf;
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Parameters:',
+	pExecutionId, pControl);
+EndIf;
+
+
+
+cApplicationsDim = cControlPrefix | 'tp_applications';
+cAppAttrDim = '}ElementAttributes_' | cApplicationsDim;
+
+cAppsDimSize = DIMSIZ(cApplicationsDim);
+vIndex = 1;
+While (vIndex <= cAppsDimSize);
+	cAppId = DIMNM(cApplicationsDim, vIndex);
+	cVersion = ATTRS(cApplicationsDim, cAppId, 'Version');
+	cApproval = ATTRS(cApplicationsDim, cAppId, 'ApprovalDimension');
+	If (cVersion @= '10.2.2' & cApproval @<> '');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Set reviewers for app:',
+			cAppId);
+		vReturnValue = ExecuteProcess(cControlPrefix | 'tp_set_state_reviewers',
+			'pExecutionId', pExecutionId, 'pAppId', cAppId, 'pControl', pControl);
+		If (vReturnValue <> ProcessExitNormal());
+			ProcessError;
+		EndIf;
+	EndIf;
+	vIndex = vIndex + 1;
+End;
+
+  
+#endregion

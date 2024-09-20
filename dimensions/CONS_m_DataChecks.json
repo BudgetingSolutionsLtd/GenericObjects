@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_m_DataChecks",
+	"Hierarchies@Code.links":
+	[
+		"CONS_m_DataChecks.hierarchies/CONS_m_DataChecks.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_m_DataChecks')/Hierarchies('CONS_m_DataChecks')"
+	}
+}

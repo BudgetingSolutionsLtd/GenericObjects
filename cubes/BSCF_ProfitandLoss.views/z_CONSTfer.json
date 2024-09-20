@@ -1,0 +1,55 @@
+{
+	"@type":"NativeView",
+	"Name":"z_CONSTfer",
+	"Columns":[],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Subsets('Company')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+				},
+				"Expression":"TM1SubsetAll([BSCF_Scenario])"
+			}
+		},
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Subsets('Months to CONS')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Subsets('AllLeaf')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')/Elements('Net Movement')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":[],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.00"
+}

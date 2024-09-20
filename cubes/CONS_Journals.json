@@ -1,0 +1,33 @@
+{
+	"@type":"Cube",
+	"Name":"CONS_Journals",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('CONS_a_Company')"
+		},
+		{
+			"@id":"Dimensions('CONS_Scenario')"
+		},
+		{
+			"@id":"Dimensions('CONS_JournalType')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Journals')"
+		}
+	],
+	"Rules@Code.link":"CONS_Journals.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('CONS_m_Journals')"
+	},
+	"Views@Code.links":
+	[
+		"CONS_Journals.views/All.json",
+		"CONS_Journals.views/CONS_Journals.json",
+		"CONS_Journals.views/Consolidation Journals.json",
+		"CONS_Journals.views/Consolidation Recurring Journals.json",
+		"CONS_Journals.views/Local Currency Journals.json",
+		"CONS_Journals.views/Local Currency Recurring Journals.json"
+	]
+}

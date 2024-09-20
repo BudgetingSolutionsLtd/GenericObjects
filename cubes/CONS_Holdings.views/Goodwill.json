@@ -1,0 +1,102 @@
+{
+	"@type":"NativeView",
+	"Name":"Goodwill",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Subsets('All Financial Months')"
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Subsets('Goodwill')"
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('GROUP TOTAL')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co A')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co B')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co C')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co D')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co E')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co F')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co G')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co.X')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co.Y')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co H')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co A')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

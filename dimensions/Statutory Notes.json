@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"Statutory Notes",
+	"Hierarchies@Code.links":
+	[
+		"Statutory Notes.hierarchies/Statutory Notes.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('Statutory Notes')/Hierarchies('Statutory Notes')"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_m_AccountMapping",
+	"Elements":
+	[
+		{
+			"Name":"Balance Sheet",
+			"Type":"String"
+		},
+		{
+			"Name":"Cash Account",
+			"Type":"String"
+		},
+		{
+			"Name":"Cashflow",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

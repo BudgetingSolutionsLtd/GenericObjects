@@ -1,0 +1,63 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_Scenario",
+	"Elements":
+	[
+		{
+			"Name":"Actual",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Budget",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Forecast",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Last Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Actual vs Budget",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Budget vs Scenario",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Scenario2",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Scenario1",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Actual vs Budget",
+			"ComponentName":"Actual",
+			"Weight":1
+		},
+		{
+			"ParentName":"Actual vs Budget",
+			"ComponentName":"Budget",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Budget vs Scenario",
+			"ComponentName":"Budget",
+			"Weight":1
+		},
+		{
+			"ParentName":"Budget vs Scenario",
+			"ComponentName":"Scenario1",
+			"Weight":-1
+		}
+	],
+	"Subsets@Code.links":[]
+}

@@ -1,0 +1,48 @@
+#region Prolog
+
+
+#*** Define global variables
+StringGlobalVariable('gEscapedId');
+
+#*** Call a TI process.
+vReturnValue = ExecuteProcess('}tp_util_escape_id',
+	'pExecutionId', pExecutionId, 
+	'pNode', pNode, 
+	'pControl', 'Y');
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+
+vEscapedNode = gEscapedId;
+
+If (SubsetExists(pDim, pSubset) = 0);
+	ProcessError;
+EndIf;
+
+If (DTYPE(pDim, pNode) @<> 'C');
+    ProcessError;
+EndIf;
+
+If (SubsetExists(pDim, pNewSubset) <> 0);
+	SubsetDestroy(pDim, pNewSubset);
+EndIf;
+
+vMDX = '{INTERSECT(TM1FILTERBYLEVEL({DESCENDANTS([' | pDim
+	| '].[' | vEscapedNode | ']) }, 0), TM1SUBSETTOSET([' | pDim
+	| '], "' | pSubset |'")), ['| pDim | '].[' | vEscapedNode | ']}';
+
+SubsetCreateByMdx(pNewSubset, vMDX);
+
+#*** Call a TI process.
+vReturnValue = ExecuteProcess('}tp_util_delete_subset_element',
+	'pDim', pDim, 
+	'pSubset', pNewSubset, 
+	'pNode', pNode);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+
+
+
+
+#endregion

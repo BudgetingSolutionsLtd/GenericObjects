@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"}PlanningControl",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}ApplicationNames')"
+		},
+		{
+			"@id":"Dimensions('}ApplicationParameters')"
+		}
+	],
+	"Views@Code.links":[]
+}

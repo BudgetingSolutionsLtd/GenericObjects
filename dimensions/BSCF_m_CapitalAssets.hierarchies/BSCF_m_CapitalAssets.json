@@ -1,0 +1,77 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_m_CapitalAssets",
+	"Elements":
+	[
+		{
+			"Name":"Capital less Residual",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Assets Added ex VAT",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Residual Value of Assets Added",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Sale Proceeds ex VAT",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Net Book Value of Assets Sold",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Original Cost of Assets Sold (GBV)",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accumulated Depn of Assets Sold",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Gain (Loss) on Sale",
+			"Type":"Consolidated"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Capital less Residual",
+			"ComponentName":"Assets Added ex VAT",
+			"Weight":1
+		},
+		{
+			"ParentName":"Capital less Residual",
+			"ComponentName":"Residual Value of Assets Added",
+			"Weight":-1
+		},
+		{
+			"ParentName":"Net Book Value of Assets Sold",
+			"ComponentName":"Original Cost of Assets Sold (GBV)",
+			"Weight":1
+		},
+		{
+			"ParentName":"Net Book Value of Assets Sold",
+			"ComponentName":"Accumulated Depn of Assets Sold",
+			"Weight":1
+		},
+		{
+			"ParentName":"Gain (Loss) on Sale",
+			"ComponentName":"Sale Proceeds ex VAT",
+			"Weight":1
+		},
+		{
+			"ParentName":"Gain (Loss) on Sale",
+			"ComponentName":"Net Book Value of Assets Sold",
+			"Weight":-1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_m_CapitalAssets.subsets/Assets Added.json",
+		"BSCF_m_CapitalAssets.subsets/Assets Disposed.json"
+	]
+}

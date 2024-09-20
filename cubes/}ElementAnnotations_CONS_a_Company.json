@@ -1,0 +1,17 @@
+{
+	"@type":"Cube",
+	"Name":"}ElementAnnotations_CONS_a_Company",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Annotation_ApplicationID')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')"
+		},
+		{
+			"@id":"Dimensions('}AnnotationMeasures')"
+		}
+	],
+	"Views@Code.links":[]
+}

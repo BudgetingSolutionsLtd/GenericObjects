@@ -1,0 +1,16 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_BaseCumul",
+	"Elements":
+	[
+		{
+			"Name":"Base",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cumul",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

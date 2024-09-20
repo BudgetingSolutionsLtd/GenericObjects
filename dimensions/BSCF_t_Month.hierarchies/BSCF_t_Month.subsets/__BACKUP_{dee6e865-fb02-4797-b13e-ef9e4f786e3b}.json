@@ -1,0 +1,86 @@
+{
+	"@type":"Subset",
+	"Name":"__BACKUP_{dee6e865-fb02-4797-b13e-ef9e4f786e3b}",
+	"Alias":"MthYr",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Year01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth01 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth02 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth03 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth04 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth05 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth06 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth07 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth08 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth09 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth10 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth11 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth12 Yr01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Year02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth01 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth02 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth03 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth04 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth05 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth06 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth07 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth08 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth09 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth10 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth11 Yr02')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth12 Yr02')"
+		}
+	]
+}

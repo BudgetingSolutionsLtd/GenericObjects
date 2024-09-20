@@ -1,0 +1,10 @@
+
+
+## Link to Group Consolidation account data
+
+#['Current Year','Values'] =N:IF(DB('Statutory Notes',!InputLines,!CONS_Scenario,'Account','Nominal') @=DB('CONS_BalanceSheetConsol','Co A',!CONS_Scenario,!CONS_BalanceSheet,'Year02','LC Reported'), DB('CONS_BalanceSheetConsol','Co A',!CONS_Scenario,!CONS_BalanceSheet,'Year02','LC Reported'), STET);
+
+
+#['Current Year','Values'] =N:IF(DB('Statutory Notes',!InputLines,!CONS_Scenario,'Account','Nominal') @=!CONS_BalanaceSheet,
+
+#		DB('CONS_BalanceSheetConsol','Co A',!CONS_Scenario,!CONS_BalanceSheet,'Year02','LC Reported, STET);

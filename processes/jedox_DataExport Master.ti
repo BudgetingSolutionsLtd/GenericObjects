@@ -1,0 +1,29 @@
+#region Prolog
+
+# Create a list of all cubes to loop through
+sDim = '}Cubes';
+sSubset = GetProcessName;
+nTemp = 1;
+
+SubsetDestroy( sDim, sSubset );
+SubsetCreate( sDim, sSubset, nTemp );
+SubsetMDXSet( sDim, sSubset, 'TM1Filterbylevel(TM1SubsetAll(['| sDim |']),0)' );
+SubsetMDXSet( sDim, sSubset, '' );
+
+DatasourceDimensionSubset = sSubset;
+DatasourceNameForClient = sDim;
+DatasourceNameForServer = sDim;
+DataSourceType = 'SUBSET';
+#endregion
+#region Data
+sCube = vCube;
+
+
+        ExecuteProcess( 'jedox_DataExport Part 2', 'pCube', sCube);
+
+        sFileLocation = GetProcessErrorFileDirectory;
+        sFileLocation = Subst(sFileLocation, 1, LONG( sFileLocation )-5)|'Data\Model_Upload\';
+        sFileName = sCube | ' Extract.csv';
+
+ 
+#endregion

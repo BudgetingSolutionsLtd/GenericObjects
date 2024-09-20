@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_Cashflow",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_Cashflow.hierarchies/BSCF_Cashflow.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')"
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"}tp_custom_TI_delete_error_code",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_custom_TI_delete_error_code.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pErrorCode",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

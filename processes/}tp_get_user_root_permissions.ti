@@ -1,0 +1,97 @@
+#region Prolog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2014
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+### This utility process is used by central applications. 
+### Approval applications can also use it to get the OFFLINE permission.
+
+## Check if the user has permissions on EDIT, OWN, OFFLINE.
+StringGlobalVariable('gEdit');
+StringGlobalVariable('gOwn');
+StringGlobalVariable('gOffline');
+
+gEdit = 'F';
+gOwn = 'F';
+gOffline = 'F';
+
+cApplicationDim = '}tp_applications';
+If (DIMIX(cApplicationDim, pAppId) = 0);
+    ProcessError;
+EndIf;
+
+cApplicationElementSecurityCube = '}ElementSecurity_' | cApplicationDim;
+If (CubeExists(cApplicationElementSecurityCube) = 0);
+    ProcessError;
+EndIf;
+
+cRootPermissionsCube = '}tp_application_root_permissions';
+cRootPermissionsCellSecurityCube = '}CellSecurity_' | cRootPermissionsCube;
+If (CubeExists(cRootPermissionsCellSecurityCube) = 0);
+    ProcessError;
+EndIf;
+
+If (DIMIX('}Clients', pUser) > 0);
+	pUser = DimensionElementPrincipalName('}Clients', pUser);
+Else;
+	ProcessError;
+EndIf;
+
+vSubset='user_group_' | pGuid;
+If (subsetExists('}Groups', vSubset)<>0);
+	SubsetDestroy('}Groups', vSubset);
+EndIf;
+
+# If a mdx return zero item, SubsetsetCreateByMdx will throw an error
+# workaround, add SecurityAdmin as a dummy member
+vMDX = '{FILTER ([}Groups].Members, [}ClientGroups].( [}Clients].[' | pUser | ']) <> "" ), [}Groups].[SecurityAdmin]}';
+subsetCreateByMdx(vSubset, vMDX);
+SubsetElementInsert('}Groups', vSubset, 'SecurityAdmin', 0);
+
+looper = 1;
+vSubsetSize = SubsetGetSize('}Groups', vSubset);
+While (looper <= vSubsetSize);
+	vGroup = SubsetGetElementName ('}Groups', vSubset, looper);
+	If (UPPER(vGroup) @= 'ADMIN' % UPPER(vGroup) @= 'DATAADMIN');
+		gEdit = 'T';
+		gOwn = 'T';
+		gOffline = 'T';
+	Else;
+		#EDIT permission
+		vSecurity = CellGetS(cApplicationElementSecurityCube, pAppId, vGroup);
+		If (vSecurity @= 'READ');
+			gEdit = 'T';
+		EndIf;
+
+		#OWN permission
+		vSecurity = CellGetS(cRootPermissionsCellSecurityCube, pAppId, 'OWN', vGroup);
+		If (vSecurity @= 'READ');
+			gOwn = 'T';
+		EndIf;
+		
+		#OFFLINE permission
+		vSecurity = CellGetS(cRootPermissionsCellSecurityCube, pAppId, 'OFFLINE', vGroup);
+		If (vSecurity @= 'READ');
+			gOffline = 'T';
+		EndIf;
+	EndIf;
+	
+	looper = looper + 1;
+End;
+
+If (SubsetExists('}Groups', vSubset) = 1);
+	SubsetDestroy('}Groups', vSubset);
+EndIf;
+
+#endregion

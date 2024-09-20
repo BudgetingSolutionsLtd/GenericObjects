@@ -1,0 +1,40 @@
+#Region System
+#FEEDSTRINGS;
+#SKIPCHECK;
+#EndRegion
+
+##################################
+##Set up the Cash Balances from the Balance Sheet##
+##################################
+
+['Op Bal','CASH, BEGINNING OF PERIOD','Balance Sheet Mvmt']=N:DB('BSCF_BalanceSheet',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'CASH AT BANK AND IN HAND','Balance');
+['CASH, BEGINNING OF PERIOD']=N:DB('BSCF_Cashflow',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'AC Last Month'),'CASH, END OF PERIOD',!BSCF_m_Cashflow);
+
+['Cash per Balance Sheet','Balance Sheet Mvmt']=N:DB('BSCF_BalanceSheet',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'CASH AT BANK AND IN HAND','Balance');
+
+
+[{'Year01','Year 02'},{'Cash per Balance Sheet','CASH, END OF PERIOD'}]=C:DB('BSCF_Cashflow',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'ClosingMth'),!BSCF_Cashflow,!BSCF_m_Cashflow);
+[{'Year01','Year 02'},'CASH, BEGINNING OF PERIOD']=C:DB('BSCF_Cashflow',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'OpeningMth'),'CASH, BEGINNING OF PERIOD',!BSCF_m_Cashflow);
+
+
+###############################
+##Obtain the movements from the Balance Sheet##
+################################
+
+['Balance Sheet Mvmt']=N:DB('BSCF_Alloc_BStoCF',!BSCF_a_Company,!BSCF_Scenario,!BSCF_Cashflow,'CHECK Assets less Liabilities',!BSCF_t_Month)*(-1);
+
+
+################################
+##Map the P&L adjustments onto the Cashflow###
+################################
+
+['Add Depreciation','Profit and Loss']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Depreciation & Amortisation','Net Movement')*(-1);
+['Subtract Profit on Disposals','Profit and Loss']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Gain on Disposal of Assets','Net Movement')*(-1);
+['Interest Payments','Profit and Loss']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Interest','Net Movement');
+['Tax Payments','Profit and Loss']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Tax','Net Movement');
+['Dividend Payments','Profit and Loss']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Dividends','Net Movement');
+
+['Operating Profit before Tax & Interest','Profit and Loss']=N:-['Interest Payments']-['Tax Payments']-['Dividend Payments'];
+
+['Fixed & Intangible Assets','Profit and Loss']=N:-['Add Depreciation']-['Subtract Profit on Disposals'];
+

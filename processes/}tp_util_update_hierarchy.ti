@@ -1,0 +1,227 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+cControlPrefix = '}';
+
+#*** Check dimension
+
+If (DimensionExists(pDim) = 0);
+	ProcessError;
+EndIf;
+
+#*** Check subset
+
+cSubsetSize = 0;
+If (pSubset @<> '');
+	If (SubsetExists(pDim, pSubset) = 0);
+		ProcessError;
+	EndIf;
+	
+	cSubsetSize = SubsetGetSize(pDim, pSubset);
+EndIf;
+
+#*** Check parent
+
+cParentPName = '';
+cParentDimIndex = 0;
+cParentSubsetIndex = 0;
+If (pParent @<> '');
+	cParentDimIndex = DIMIX(pDim, pParent);
+	If (cParentDimIndex = 0);
+		ProcessError;
+	EndIf;
+	#If (DTYPE(pDim, pParent) @<> 'C');
+	#	ProcessError;
+	#EndIf;
+	cParentPName = DimensionElementPrincipalName(pDim, pParent);
+	
+	If (pSubset @<> '');
+		vIndex = 1;
+		while (vIndex <= cSubsetSize);
+			vElement = SubsetGetElementName(pDim, pSubset, vIndex);
+			vElementPName = DimensionElementPrincipalName(pDim, vElement);
+			If (cParentPName @= vElementPName);
+				cParentSubsetIndex = vIndex;
+				vIndex = cSubsetSize;
+			EndIf;
+			vIndex = vIndex +1;
+		End;
+		
+		If (cParentSubsetIndex = 0);
+			ProcessError;
+		EndIf;
+	EndIf;
+EndIf;
+
+#*** Check Node
+
+If (pNode @= '');
+	ProcessError;
+EndIf;
+
+cNodeDimIndex = 0;
+cNodeSubsetIndex = 0;
+cNodePName = DimensionElementPrincipalName(pDim, pNode);
+cNodeDimIndex = DIMIX(pDim, pNode);
+If (cNodeDimIndex > 0);
+	vIndex = 1;
+	while (vIndex <= cSubsetSize);
+		vElement = SubsetGetElementName(pDim, pSubset, vIndex);
+		vElementPName = DimensionElementPrincipalName(pDim, vElement);
+		If (cNodePName @= vElementPName);
+			cNodeSubsetIndex = vIndex;
+			vIndex = cSubsetSize;
+		EndIf;
+		vIndex = vIndex +1;
+	End;
+EndIf;
+
+#*** Check node type
+
+If (pNodeType @<> 'N' & pNodeType @<> 'C' & pNodeType @<> 'S');
+	ProcessError;
+EndIf;
+
+#*** Convert weight
+
+cWeight = StringToNumber(pWeight);
+
+#*** Action
+
+If (pAction @= 'ADD');
+
+	If (cNodeDimIndex = 0);
+
+		If (cParentDimIndex = 0);
+			DimensionElementInsert(pDim, '', pNode, pNodeType);
+		Else;
+			vNode = DIMNM(pDim, cParentDimIndex + 1);
+			If (vNode @<> '');
+				DimensionElementInsert(pDim, vNode, pNode, pNodeType);
+			Else;
+				DimensionElementInsert(pDim, '', pNode, pNodeType);
+			EndIf;
+		EndIf;
+
+	Else;
+		ProcessError;
+	EndIf;
+
+	If (cParentPName @<> '');
+		DimensionElementComponentAdd(pDim, cParentPName, pNode, cWeight);
+	EndIf;
+
+ElseIf (pAction @= 'DELETE');
+
+	If (cNodeDimIndex = 0);
+		ProcessError;
+	EndIf;
+
+	DimensionElementDelete(pDim, pNode);
+ElseIf (pAction @= 'REMOVE_PARENT');
+	If (cParentDimIndex > 0);
+		DimensionElementComponentDelete(pDim, pParent, pNode);
+	EndIf;
+	
+	If (pSubset @<> '' & cNodeSubsetIndex > 0);
+		SubsetElementDelete(pDim, pSubset, cNodeSubsetIndex);
+	EndIf;
+ElseIf (pAction @= 'INSERT_CHILD');
+	If (cParentDimIndex > 0);
+		If (pNodeType @<> DTYPE(pDim, pNode));
+			DimensionElementDelete(pDim, pNode);
+			vNode = DIMNM(pDim, cParentDimIndex + 1);
+			If (vNode @<> '');
+				DimensionElementInsert(pDim, vNode, pNode, pNodeType);
+			Else;
+				DimensionElementInsert(pDim, '', pNode, pNodeType);
+    		EndIf;
+		EndIf;
+		
+		DimensionElementComponentAdd(pDim, cParentPName, pNode, cWeight);
+	Else;
+		DimensionElementInsert(pDim, '', pNode, pNodeType);
+	EndIf;
+ElseIf (pAction @= 'MODIFY_WEIGHT');
+	If (cNodeDimIndex > 0);
+	    If (cParentDimIndex > 0 & ELISPAR(pDim, pParent, pNode) = 1);
+			DimensionElementComponentDelete(pDim, cParentPName, pNode);
+			DimensionElementComponentAdd(pDim, cParentPName, pNode, cWeight);
+		Else;
+			ProcessError;
+		EndIf;
+	Else;
+		ProcessError;
+	EndIf;
+Else;
+	ProcessError;
+EndIf;
+#endregion
+#region Epilog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+
+#*** Action
+
+If (pAction @= 'ADD');
+
+	If (cParentPName @<> '');
+		If (pSubset @<> '');
+		    If (pNode @<> SubsetGetElementName(pDim, pSubset, cParentSubsetIndex + 1));
+				SubsetElementInsert(pDim, pSubset, pNode, cParentSubsetIndex + 1);
+			EndIf;
+		EndIf;
+	EndIf;
+
+ElseIf (pAction @= 'DELETE');
+	# Do nothing
+ElseIf (pAction @= 'REMOVE_PARENT');
+	# Do nothing
+ElseIf (pAction @= 'INSERT_CHILD');
+	If (cParentDimIndex > 0);
+		If (pSubset @<> '');
+			If (pNode @<> SubsetGetElementName(pDim, pSubset, cParentSubsetIndex + 1));
+				SubsetElementInsert(pDim, pSubset, pNode, cParentSubsetIndex + 1);
+			EndIf;
+		EndIf;
+	Else;
+		SubsetElementInsert(pDim, pSubset, pNode, cParentSubsetIndex + 1);
+	EndIf;
+ElseIf (pAction @= 'MODIFY_WEIGHT');
+	# Do nothing
+Else;
+	ProcessError;
+EndIf;
+#endregion

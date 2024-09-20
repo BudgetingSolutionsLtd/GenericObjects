@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"jedox_DataExport Master",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"jedox_DataExport Master.ti",
+	"UIData":"_ParameterConstraints=e30=€",
+	"VariablesUIData":
+	[
+		"VarType=32€ColType=827€"
+	],
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForClient":"}Cubes:}Cubes",
+		"dataSourceNameForServer":"}Cubes:}Cubes",
+		"subset":"All"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vCube",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

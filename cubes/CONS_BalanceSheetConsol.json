@@ -1,0 +1,39 @@
+{
+	"@type":"Cube",
+	"Name":"CONS_BalanceSheetConsol",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('CONS_a_Company')"
+		},
+		{
+			"@id":"Dimensions('CONS_Scenario')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Consolidation')"
+		}
+	],
+	"Rules@Code.link":"CONS_BalanceSheetConsol.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('CONS_m_Consolidation')"
+	},
+	"Views@Code.links":
+	[
+		"CONS_BalanceSheetConsol.views/All.json",
+		"CONS_BalanceSheetConsol.views/CONS_BalanceSheetConsol.json",
+		"CONS_BalanceSheetConsol.views/Enter Balance Sheet.json",
+		"CONS_BalanceSheetConsol.views/Group BS Consolidation.json",
+		"CONS_BalanceSheetConsol.views/Historical FVA.json",
+		"CONS_BalanceSheetConsol.views/Ongoing FVA.json",
+		"CONS_BalanceSheetConsol.views/Override Bal Sheet FX Rates.json",
+		"CONS_BalanceSheetConsol.views/View Company Balance Sheet CONS.json",
+		"CONS_BalanceSheetConsol.views/z_BSCFTfer.json"
+	]
+}

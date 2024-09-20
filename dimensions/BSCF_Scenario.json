@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_Scenario",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_Scenario.hierarchies/BSCF_Scenario.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+	}
+}

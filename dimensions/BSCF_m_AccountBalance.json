@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_m_AccountBalance",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_m_AccountBalance.hierarchies/BSCF_m_AccountBalance.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')"
+	}
+}

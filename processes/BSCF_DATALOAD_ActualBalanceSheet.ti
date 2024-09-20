@@ -1,0 +1,42 @@
+#region Prolog
+
+#****Begin: Generated Statements***
+OldCubeLogChanges = CUBEGETLOGCHANGES('BSCF_BalanceSheet');
+CUBESETLOGCHANGES('BSCF_BalanceSheet', 0);
+#****End: Generated Statements****
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+VVers='Actual';
+vMet='Balance';
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+VVers='Actual';
+vMet='Balance';
+CellPutN(Op,'BSCF_BalanceSheet',Company,VVers,'Op Bal',BSAccount,vMet);
+CellPutN(Pd1,'BSCF_BalanceSheet',Company,VVers,'Mth01 Yr01',BSAccount,vMet);
+CellPutN(Pd2,'BSCF_BalanceSheet',Company,VVers,'Mth02 Yr01',BSAccount,vMet);
+CellPutN(Pd3,'BSCF_BalanceSheet',Company,VVers,'Mth03 Yr01',BSAccount,vMet);
+CellPutN(Pd4,'BSCF_BalanceSheet',Company,VVers,'Mth04 Yr01',BSAccount,vMet);
+CellPutN(Pd5,'BSCF_BalanceSheet',Company,VVers,'Mth05 Yr01',BSAccount,vMet);
+CellPutN(Pd6,'BSCF_BalanceSheet',Company,VVers,'Mth06 Yr01',BSAccount,vMet);
+CellPutN(Pd7,'BSCF_BalanceSheet',Company,VVers,'Mth07 Yr01',BSAccount,vMet);
+CellPutN(Pd8,'BSCF_BalanceSheet',Company,VVers,'Mth08 Yr01',BSAccount,vMet);
+CellPutN(Pd9,'BSCF_BalanceSheet',Company,VVers,'Mth09 Yr01',BSAccount,vMet);
+CellPutN(Pd10,'BSCF_BalanceSheet',Company,VVers,'Mth10 Yr01',BSAccount,vMet);
+CellPutN(Pd11,'BSCF_BalanceSheet',Company,VVers,'Mth11 Yr01',BSAccount,vMet);
+CellPutN(Pd12,'BSCF_BalanceSheet',Company,VVers,'Mth12 Yr01',BSAccount,vMet);
+#****End: Generated Statements****
+#endregion
+#region Epilog
+
+#****Begin: Generated Statements***
+CUBESETLOGCHANGES('BSCF_BalanceSheet', OldCubeLogChanges);
+#****End: Generated Statements****
+
+
+#endregion

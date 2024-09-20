@@ -1,0 +1,24 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}tp_system_config",
+	"Elements":
+	[
+		{
+			"Name":"IntegratedSecurityMode",
+			"Type":"String"
+		},
+		{
+			"Name":"AdminHost",
+			"Type":"String"
+		},
+		{
+			"Name":"ServerCAMURI",
+			"Type":"String"
+		},
+		{
+			"Name":"ClientCAMURI",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

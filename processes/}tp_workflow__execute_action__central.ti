@@ -1,0 +1,141 @@
+#region Prolog
+#******
+#******
+#***BEGIN(Prolog): }tp_workflow__execute_action__central
+#******
+
+#****** Initiate prolog
+
+#*** Initiate Log File
+cConfigDim = '}tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+StringGlobalVariable('gMetadataLog');
+
+If (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_get_log_file_names',
+		'pExecutionId', pExecutionId, 
+		'pProcess', cTM1Process, 
+		'pControl', 'Y');
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+EndIf;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cMetadataLog = gMetadataLog;
+
+#*** Set Log File
+cTM1Log = cPrologLog;
+
+#*** Write to Log File
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'),
+		'pExecutionId=' | pExecutionId,
+		'pTime=' | pTime,
+		'pAppId=' | pAppId,
+		'pNode=' | pNode,
+		'pAction=' | pAction);
+EndIf;
+
+#****** Action Dispatcher
+If (pAction @= 'ENTER');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_workflow__enter__central',
+		'pExecutionId', pExecutionId, 
+		'pTime', pTime, 
+		'pAppId', pAppId, 
+		'pNode', pNode);
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+ElseIf (pAction @= 'OWN');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_workflow__own__central',
+		'pExecutionId', pExecutionId, 
+		'pTime', pTime, 
+		'pAppId', pAppId, 
+		'pNode', pNode);
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+ElseIf (pAction @= 'RELEASE');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_workflow__release__central',
+		'pExecutionId', pExecutionId, 
+		'pTime', pTime, 
+		'pAppId', pAppId, 
+		'pNode', pNode);
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+ElseIf (pAction @= 'SAVE');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_workflow__save__central',
+		'pExecutionId', pExecutionId, 
+		'pTime', pTime, 
+		'pAppId', pAppId, 
+		'pNode', pNode);
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+ElseIf (pAction @= 'OFFLINE');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_workflow__offline__central',
+		'pExecutionId', pExecutionId, 
+		'pTime', pTime, 
+		'pAppId', pAppId, 
+		'pNode', pNode);
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+ElseIf (pAction @= 'ONLINE');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_workflow__online__central',
+		'pExecutionId', pExecutionId, 
+		'pTime', pTime, 
+		'pAppId', pAppId, 
+		'pNode', pNode);
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+ElseIf (pAction @= 'LEAVE');
+
+	#*** Call TI process
+	tReturnValue = ExecuteProcess('}tp_workflow__leave__central',
+		'pExecutionId', pExecutionId, 
+		'pTime', pTime, 
+		'pAppId', pAppId, 
+		'pNode', pNode);
+	If (tReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+EndIf;
+
+#*** Write to Log File
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'),
+		'The end has been reached.');
+EndIf;
+#******
+#***END(Prolog): }tp_workflow__execute_action__central
+#******
+#endregion

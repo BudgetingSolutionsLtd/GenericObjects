@@ -1,0 +1,75 @@
+				#Region System
+#FEEDSTRINGS;
+#SKIPCHECK;
+#EndRegion
+####################
+##Keep Actuals for data load##
+####################
+
+['Actual']=N:STET;
+
+#['ID Credit','Transaction'] =N: DB('PLB_SalesDiscounting',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Amount Discounted') * -1											 ;
+
+[]=IF(DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Actual ?')@='Yes',DB('BSCF_BalanceSheet',!BSCF_a_Company,'Actual',!BSCF_t_Month,!BSCF_BalanceSheet,!BSCF_m_AccountBalance),CONTINUE);
+
+[{'Year01','Year02'},'Balance']=C:DB('BSCF_BalanceSheet',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'ClosingMth'),!BSCF_BalanceSheet,!BSCF_m_AccountBalance);
+
+
+##########################
+##Retained Earnings from P&L#######
+##########################
+
+['P&L Reserves Current Year','Movement']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'RETAINED EARNINGS','Movement')*(-1);
+['P&L Reserves Bfwd','Transaction']=N:DB('BSCF_BalanceSheet',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'ReservesTfer'),'P&L Reserves Current Year','Balance');
+['P&L Reserves CurrentYear','Transaction']=N:DB('BSCF_BalanceSheet',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'ReservesTfer'),'P&L Reserves Current Year','Balance')*(-1);
+
+
+##########################
+##Asset Additions and Disposals######
+##########################
+
+['Fixed & Intangible Assets GBV','Transaction']=N:DB('BSCF_CapitalAssets',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'ASSET TOTAL','Assets Added ex VAT')
+-DB('BSCF_CapitalAssets',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'ASSET TOTAL','Original Cost of Assets Sold (GBV)');
+['Depreciation & Amortisation Balance','Transaction']=N:DB('BSCF_CapitalAssets',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'ASSET TOTAL','Accumulated Depn of Assets Sold')*(-1);
+
+['Check Asset Gains on Disposals','Transaction']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Gain on Disposal of Assets','Net Movement')*(-1);
+
+################################
+##Cash movements from Receipts and Payments##
+################################
+
+['Petty Cash','Cash Movement']=N:DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'TOTAL RECEIPTS & PAYMENTS','Petty Cash Account');
+['Treasury Account','Cash Movement']=N:DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'TOTAL RECEIPTS & PAYMENTS','Treasury Account');
+['Cash','Cash Movement']=N:DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'TOTAL RECEIPTS & PAYMENTS','Cash')
+-['Petty Cash']-['Treasury Account'];
+
+[{'Cash Movement','Movement'}]=N:DB('BSCF_Alloc_RPtoBS',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'TOTAL RECEIPTS & PAYMENTS',!BSCF_BalanceSheet,!BSCF_m_AccountBalance);
+
+#####################
+##Journals from Profit and Loss##
+#####################
+
+['P&L Reserves Current Year','Journals']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'RETAINED EARNINGS','Journals')*(-1);
+
+
+############plb
+## Journal to pay ID Creditor out of CASH receieved from ID Debtor
+
+['ID Credit','Journals'] = N:IF (DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month												,'Factored Sales','Calculated Cash') <> 0,
+
+			DB('PLB_SalesDiscounting',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),'Amount Discounted'), STET);
+
+['Cash','Journals']  =N: IF (DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Factored Sales','Calculated Cash') <> 0,
+
+			- DB('PLB_SalesDiscounting',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),'Amount Discounted'), STET);
+
+
+
+
+######################
+##Balance Sheet Closing Balance##
+######################
+
+['Op Bal','Balance']=STET;
+
+['Balance']=N:['Net Movement']+DB('BSCF_BalanceSheet',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'AC Last Month'),!BSCF_BalanceSheet,'Balance');

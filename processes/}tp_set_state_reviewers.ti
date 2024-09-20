@@ -1,0 +1,65 @@
+#region Prolog
+
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 0);
+	ProcessError;
+EndIf;
+
+cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+
+#*** Log File Name
+cTM1Process = cControlPrefix | 'tp_set_state_reviewers';
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names',
+'pExecutionId', pExecutionId, 'pProcess', cTM1Process, 'pControl', pControl);
+If (vReturnValue <> ProcessExitNormal());
+ProcessError;
+EndIf;
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Parameters:',
+	pExecutionId, pControl, pAppId);
+EndIf;
+
+
+
+cApplicationsDim = cControlPrefix | 'tp_applications';
+cAppAttrDim = '}ElementAttributes_' | cApplicationsDim;
+cShadowApprovalDim = '}tp_tasks}' | pAppId;
+cPermissionsSecurityCube = '}CellSecurity_}tp_application_permission}'|pAppId;
+cStateCube = '}tp_application_state}'|pAppId;
+cGroupsDimension = '}Groups';
+vGroupsSize = DIMSIZ(cGroupsDimension);
+
+cApprovalDimSize = DIMSIZ(cShadowApprovalDim);
+vIndex = 1;
+While (vIndex <= cApprovalDimSize);
+	cNodeId = DIMNM(cShadowApprovalDim, vIndex);
+	cReviewer = '';
+	vGroupIndex = 1;
+	While (vGroupIndex <= vGroupsSize & cReviewer @= '');
+		cGroupId = DIMNM(cGroupsDimension, vGroupIndex);
+		vPermValue = CellGetS(cPermissionsSecurityCube, cNodeId, 'REJECT', cGroupId);
+		If (vPermValue @= 'READ');
+			cReviewer = cGroupId; 
+		EndIf;
+		vGroupIndex = vGroupIndex + 1;
+	End;
+	CellPutS(cReviewer, cStateCube, cNodeId, 'Reviewer'); 
+	vIndex = vIndex + 1;
+End;
+
+  
+#endregion

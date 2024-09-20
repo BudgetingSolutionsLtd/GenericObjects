@@ -1,0 +1,214 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+#*** Change the password of admin user
+
+If (pAdminPassword @<> '');
+AssignClientPassword('admin', pAdminPassword);
+EndIf;
+
+#*** Create test users
+
+vClient = 'tp_Smith';
+AddClient(vClient);
+
+vClient = 'tp_Dale';
+AddClient(vClient);
+
+vClient = 'tp_Larry';
+AddClient(vClient);
+
+vClient = 'tp_Mike';
+AddClient(vClient);
+
+vClient = 'tp_Mary';
+AddClient(vClient);
+
+vClient = 'tp_Susan';
+AddClient(vClient);
+
+vClient = 'tp_Lisa';
+AddClient(vClient);
+
+vClient = 'tp_Jane';
+AddClient(vClient);
+
+vClient = 'tp_UK_user';
+AddClient(vClient);
+
+vClient = 'tp_Germany_user';
+AddClient(vClient);
+
+vClient = 'tp_Europe_user';
+AddClient(vClient);
+
+#*** Create test groups
+
+vGroup = 'tp_Manager_Review';
+AddGroup(vGroup);
+
+vGroup = 'tp_Manager_Submit';
+AddGroup(vGroup);
+
+vGroup = 'tp_Corporate_Edit';
+AddGroup(vGroup);
+
+vGroup = 'tp_Corporate_Submit';
+AddGroup(vGroup);
+
+vGroup = 'tp_Operations_Edit';
+AddGroup(vGroup);
+
+vGroup = 'tp_Operations_Submit';
+AddGroup(vGroup);
+
+vGroup = 'tp_UK_submit';
+AddGroup(vGroup);
+
+vGroup = 'tp_Germany_submit';
+AddGroup(vGroup);
+
+vGroup = 'tp_Europe_submit';
+AddGroup(vGroup);
+#endregion
+#region Epilog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+#*** Dimensions security cube
+
+sGroupsDim = '}Groups';
+sDimensionsDim = '}Dimensions';
+sDimensionSecurityCube = '}DimensionSecurity';
+If (CubeExists(sDimensionSecurityCube) = 0);
+CubeCreate(sDimensionSecurityCube, sDimensionsDim, sGroupsDim);
+CubeSetLogChanges(sDimensionSecurityCube, 1);
+EndIf;
+
+#*** Cubes security cube
+
+sCubesDim = '}Cubes';
+sCubeSecurityCube = '}CubeSecurity';
+If (CubeExists(sCubeSecurityCube) = 0);
+CubeCreate(sCubeSecurityCube, sCubesDim, sGroupsDim);
+CubeSetLogChanges(sCubeSecurityCube, 1);
+EndIf;
+
+#*** Processes security cube
+
+sProcessesDim = '}Processes';
+sProcessSecurityCube = '}ProcessSecurity';
+If (CubeExists(sProcessSecurityCube) = 0);
+CubeCreate(sProcessSecurityCube, sProcessesDim, sGroupsDim);
+CubeSetLogChanges(sProcessSecurityCube, 1);
+EndIf;
+
+#*** Assign password to test users
+
+vClient = 'tp_Smith';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Dale';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Larry';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Mike';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Mary';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Susan';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Lisa';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Jane';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_UK_user';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Germany_user';
+AssignClientPassword(vClient, 'apple');
+
+vClient = 'tp_Europe_user';
+AssignClientPassword(vClient, 'apple');
+
+#*** Assign test users to test groups
+
+vGroup = 'tp_Manager_Review';
+AssignClientToGroup('tp_Smith', vGroup);
+AssignClientToGroup('tp_Mary', vGroup);
+
+vGroup = 'tp_Manager_Submit';
+AssignClientToGroup('tp_Smith', vGroup);
+AssignClientToGroup('tp_Mike', vGroup);
+
+AssignClientToGroup('tp_Mary', vGroup);
+AssignClientToGroup('tp_Susan', vGroup);
+
+vGroup = 'tp_Corporate_Edit';
+AssignClientToGroup('tp_Smith', vGroup);
+AssignClientToGroup('tp_Mike', vGroup);
+AssignClientToGroup('tp_Dale', vGroup);
+
+AssignClientToGroup('tp_Mary', vGroup);
+AssignClientToGroup('tp_Susan', vGroup);
+
+vGroup = 'tp_Corporate_Submit';
+AssignClientToGroup('tp_Mike', vGroup);
+AssignClientToGroup('tp_Dale', vGroup);
+
+AssignClientToGroup('tp_Susan', vGroup);
+
+vGroup = 'tp_Operations_Edit';
+AssignClientToGroup('tp_Lisa', vGroup);
+
+vGroup = 'tp_Operations_Submit';
+AssignClientToGroup('tp_Dale', vGroup);
+AssignClientToGroup('tp_Larry', vGroup);
+
+AssignClientToGroup('tp_Jane', vGroup);
+
+vGroup = 'tp_UK_submit';
+AssignClientToGroup('tp_UK_user', vGroup);
+
+vGroup = 'tp_Germany_submit';
+AssignClientToGroup('tp_Germany_user', vGroup);
+
+vGroup = 'tp_Europe_submit';
+AssignClientToGroup('tp_Europe_user', vGroup);
+
+#endregion

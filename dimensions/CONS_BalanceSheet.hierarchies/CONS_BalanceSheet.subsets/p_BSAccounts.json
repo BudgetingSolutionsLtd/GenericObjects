@@ -1,0 +1,118 @@
+{
+	"@type":"Subset",
+	"Name":"p_BSAccounts",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Accruals')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Amortisation of Goodwill')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Bad Debt Provisions')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Cash')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Cost of Investment')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Customer Accrued Income')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Debtors > 1 Year')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Depreciation & Amortisation Balance')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Dividend Accrual')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Fixed & Intangible Assets GBV')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Foreign Stock')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Forex Reserves')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Goodwill on Consolidation')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Inter-Co Creditors')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Inter-Co Debtors')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Inter-Co Investments')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Inter-Co Loans')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Interest Accrual')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Investment South Sea Bubble ltd.')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Local Stock')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Long Term Liabilities')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Minority Interest')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Other Capital & Reserves')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Other Creditors < 1 Year')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Other Debtors < 1 Year')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Other Investments')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Other Stock')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Petty Cash')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Prepayments')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Share Capital')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Share of Associate or JV')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Share Premium')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Tax Accrual')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Trade Creditors')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Trade Debtors')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('Treasury Account')"
+		},
+		{
+			"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('VAT liability')"
+		}
+	]
+}

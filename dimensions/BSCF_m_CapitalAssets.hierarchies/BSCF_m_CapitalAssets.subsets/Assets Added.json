@@ -1,0 +1,16 @@
+{
+	"@type":"Subset",
+	"Name":"Assets Added",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')/Elements('Capital less Residual')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')/Elements('Assets Added ex VAT')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')/Hierarchies('BSCF_m_CapitalAssets')/Elements('Residual Value of Assets Added')"
+		}
+	]
+}

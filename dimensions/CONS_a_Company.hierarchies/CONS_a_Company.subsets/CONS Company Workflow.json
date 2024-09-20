@@ -1,0 +1,40 @@
+{
+	"@type":"Subset",
+	"Name":"CONS Company Workflow",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('GROUP Companies')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co A')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co B')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co C')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co D')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co E')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co F')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co G')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co H')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co.X')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co.Y')"
+		}
+	]
+}

@@ -1,0 +1,32 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_Currency",
+	"Elements":
+	[
+		{
+			"Name":"GBP",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"EUR",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"USD",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"AVG GBP",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"AVG EUR",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"AVG USD",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

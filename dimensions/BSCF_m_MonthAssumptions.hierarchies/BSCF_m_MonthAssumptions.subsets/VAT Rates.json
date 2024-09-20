@@ -1,0 +1,16 @@
+{
+	"@type":"Subset",
+	"Name":"VAT Rates",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_m_MonthAssumptions')/Hierarchies('BSCF_m_MonthAssumptions')/Elements('Standard VAT')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_MonthAssumptions')/Hierarchies('BSCF_m_MonthAssumptions')/Elements('Reduced VAT')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_MonthAssumptions')/Hierarchies('BSCF_m_MonthAssumptions')/Elements('Zero VAT')"
+		}
+	]
+}

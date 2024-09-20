@@ -1,0 +1,243 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_JournalType",
+	"Elements":
+	[
+		{
+			"Name":"Local Jnl",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"LJ 01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LJ 02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LJ 03",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LJ 04",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LJ 05",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LJ 06",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Local Recurring Jnl",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"LRJ 01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LRJ02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LRJ 03",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LRJ 04",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LRJ 05",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LRJ 06",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consol Jnl",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"CJ 01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CJ 02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CJ 03",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CJ 04",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CJ 05",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CJ 06",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consol Recurring Jnl",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"CRJ 01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CRJ 02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CRJ 03",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CRJ 04",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CRJ 05",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CRJ 06",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Local Jnl",
+			"ComponentName":"LJ 01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Jnl",
+			"ComponentName":"LJ 02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Jnl",
+			"ComponentName":"LJ 03",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Jnl",
+			"ComponentName":"LJ 04",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Jnl",
+			"ComponentName":"LJ 05",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Jnl",
+			"ComponentName":"LJ 06",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Recurring Jnl",
+			"ComponentName":"LRJ 01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Recurring Jnl",
+			"ComponentName":"LRJ02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Recurring Jnl",
+			"ComponentName":"LRJ 03",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Recurring Jnl",
+			"ComponentName":"LRJ 04",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Recurring Jnl",
+			"ComponentName":"LRJ 05",
+			"Weight":1
+		},
+		{
+			"ParentName":"Local Recurring Jnl",
+			"ComponentName":"LRJ 06",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Jnl",
+			"ComponentName":"CJ 01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Jnl",
+			"ComponentName":"CJ 02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Jnl",
+			"ComponentName":"CJ 03",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Jnl",
+			"ComponentName":"CJ 04",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Jnl",
+			"ComponentName":"CJ 05",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Jnl",
+			"ComponentName":"CJ 06",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Recurring Jnl",
+			"ComponentName":"CRJ 01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Recurring Jnl",
+			"ComponentName":"CRJ 02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Recurring Jnl",
+			"ComponentName":"CRJ 03",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Recurring Jnl",
+			"ComponentName":"CRJ 04",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Recurring Jnl",
+			"ComponentName":"CRJ 05",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consol Recurring Jnl",
+			"ComponentName":"CRJ 06",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

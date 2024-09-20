@@ -1,0 +1,40 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_ProfitandLoss",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ProfitandLoss')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_AccountBalance')"
+		}
+	],
+	"Rules@Code.link":"BSCF_ProfitandLoss.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('BSCF_m_AccountBalance')"
+	},
+	"Views@Code.links":
+	[
+		"BSCF_ProfitandLoss.views/Actual Profit and Loss.json",
+		"BSCF_ProfitandLoss.views/All.json",
+		"BSCF_ProfitandLoss.views/BSCF_ProfitandLoss.json",
+		"BSCF_ProfitandLoss.views/ChartView.json",
+		"BSCF_ProfitandLoss.views/Default.json",
+		"BSCF_ProfitandLoss.views/LeafData.json",
+		"BSCF_ProfitandLoss.views/P&L Journals.json",
+		"BSCF_ProfitandLoss.views/Profit and Loss.json",
+		"BSCF_ProfitandLoss.views/z_CONSTfer.json",
+		"BSCF_ProfitandLoss.views/zClearActualTB.json"
+	]
+}

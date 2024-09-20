@@ -1,0 +1,13 @@
+{
+	"@type":"Subset",
+	"Name":"__BACKUP_Years",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Year01')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Year02')"
+		}
+	]
+}

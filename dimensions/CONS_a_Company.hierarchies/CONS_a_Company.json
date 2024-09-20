@@ -1,0 +1,137 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_a_Company",
+	"Elements":
+	[
+		{
+			"Name":"GROUP TOTAL",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"PARENT Co",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"GROUP Companies",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Co A",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co B",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co C",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co D",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co E",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co F",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co G",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co H",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co.X",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co.Y",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Co.Z",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"GROUP TOTAL",
+			"ComponentName":"PARENT Co",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP TOTAL",
+			"ComponentName":"GROUP Companies",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co A",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co B",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co C",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co D",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co E",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co F",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co G",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co H",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co.X",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co.Y",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROUP Companies",
+			"ComponentName":"Co.Z",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"CONS_a_Company.subsets/Companies from BSCF.json",
+		"CONS_a_Company.subsets/Company.json",
+		"CONS_a_Company.subsets/CONS Company Workflow.json"
+	]
+}

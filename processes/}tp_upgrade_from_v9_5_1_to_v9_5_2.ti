@@ -1,0 +1,205 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+### Add element: TakeOwnershipNode
+cNodeInfoDim = cControlPrefix | 'tp_node_info';
+If (DimensionExists(cNodeInfoDim) = 0);
+	ProcessError;
+EndIf;
+
+cTakeOwnershipNode = 'TakeOwnershipNode';
+cStartEditingDate = 'StartEditingDate';
+If (DIMIX(cNodeInfoDim, cTakeOwnershipNode) = 0);
+	DimensionElementInsert(cNodeInfoDim, cStartEditingDate, cTakeOwnershipNode, 'S');
+EndIf;
+
+### Add attribute: Version
+cApplicationsDim = cControlPrefix | 'tp_applications';
+cApplicationsAttributesDim = '}ElementAttributes_' | cApplicationsDim;
+
+If (DimensionExists(cApplicationsDim) = 0 % DimensionExists(cApplicationsAttributesDim) = 0);
+	ProcessError;
+EndIf;
+
+cApprovalDimensionAttr = 'ApprovalDimension';
+cVersionAttr = 'Version';
+If (DIMIX(cApplicationsAttributesDim, cVersionAttr) = 0);
+	AttrInsert(cApplicationsDim, cApprovalDimensionAttr, cVersionAttr, 'S');
+EndIf;
+#endregion
+#region Epilog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+### Set value to version attribute
+If (DIMIX(cApplicationsDim, pAppId) = 0);
+	ProcessError;
+EndIf;
+
+AttrPutS(pVersion, cApplicationsDim, pAppId, cVersionAttr);
+
+cTM1Process = cControlPrefix | 'tp_update_from_v9_5_1_to_v9_5_2';
+
+### Get Approval dimension and subset
+
+#* declare global variables
+StringGlobalVariable('gApprovalDim');
+StringGlobalVariable('gApprovalSubset');
+
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_application_attributes', 'pExecutionId', pExecutionId, 'pAppId', pAppId, 'pControl',  pControl);
+If (vReturnValue <> ProcessExitNormal());
+	ProcessError;
+EndIf;
+
+cApprovalDim = gApprovalDim;
+cApprovalSubset = gApprovalSubset;
+
+If (DimensionExists(cApprovalDim) = 0);
+	ProcessError;
+EndIf;
+
+
+### Write taking ownership nodes 
+cStateCube = cControlPrefix | 'tp_application_state}' | pAppId;
+If (CubeExists(cStateCube) = 0);
+	ProcessError;
+EndIf;
+
+cCurrentOwner = 'CurrentOwner';
+cTakeOwnershipNode = 'TakeOwnerShipNode';
+
+cApprovalDimSize = DIMSIZ(cApprovalDim);
+vIndex = 1;
+While (vIndex <= cApprovalDimSize);
+	vNode = DIMNM(cApprovalDim, vIndex);
+	
+	vCurrentOwnerValue = CellGetS(cStateCube, vNode, cCurrentOwner);
+	vTakeOwnershipNode = CellGetS(cStateCube, vNode, cTakeOwnershipNode);
+	If (vCurrentOwnerValue @<> '' & vTakeOwnershipNode @= '');
+		If (CellIsUpdateable(cStateCube, vNode, cTakeOwnershipNode) = 0);
+			vDetail=INSRT(cTakeOwnershipNode,')',1);
+			vDetail=INSRT(',',vDetail,1);
+			vDetail=INSRT(vNode,vDetail,1);
+			vDetail=INSRT('(',vDetail,1);
+			vDetail=INSRT(cStateCube,vDetail,1);
+			vReturnValue = ExecuteProcess('|tp_error_update_error_cube', 
+			'pGuid', pExecutionId, 
+			'pProcess', cTM1Process, 
+			'pErrorCode', 'TI_APPLICATION_NOT_UPDATEABLE',
+			'pErrorDetails', vDetail,
+			'pControl', pControl);
+			ProcessError;
+		EndIf;
+		CellPutS(vNode, cStateCube, vNode, cTakeOwnershipNode);
+	EndIf;
+	
+	vIndex = vIndex + 1;
+End;
+
+### Create "everyone" group
+
+cSystemConfigDim = cControlPrefix | 'tp_system_config';
+If (DimensionExists(cSystemConfigDim) = 0);
+	ProcessError;
+EndIf;
+
+cSecurityModeNode = 'IntegratedSecurityMode';
+cConfigValueAttr = 'ConfigValue';
+vSecurityMode = ATTRS(cSystemConfigDim, cSecurityModeNode, cConfigValueAttr);
+
+cCognosEveryoneGroup = 'CAMID("::Everyone")';
+cTpEveryoneGroup = cControlPrefix | 'tp_Everyone';
+If (vSecurityMode @= '5');
+
+	If (DIMIX('}Groups', cCognosEveryoneGroup) = 0);
+		ProcessError;
+	EndIf;
+	
+	If (DIMIX('}Groups', cTpEveryoneGroup) <> 0);
+		DeleteGroup(cTpEveryoneGroup);
+	EndIf;
+	
+	cEveryoneGroup = cCognosEveryoneGroup;
+
+Else;
+
+	cEveryoneGroup = cTpEveryoneGroup;
+	
+	If (DIMIX('}Groups', cEveryoneGroup) = 0);
+		AddGroup(cEveryoneGroup);
+	EndIf;
+
+EndIf;
+
+### Give everyone access to process: tp_workflow_submit_leaf_children
+
+sProcessesDim = '}Processes';
+sProcessSecurityCube = '}ProcessSecurity';
+If (CubeExists(sProcessSecurityCube) = 0);
+	
+	CubeCreate(sProcessSecurityCube, sProcessesDim, '}Groups');
+	CubeSetLogChanges(sProcessSecurityCube, 1);
+EndIf;
+
+cSubmitLeafChildrenProc = cControlPrefix | 'tp_workflow_submit_leaf_children';
+If (DIMIX(sProcessesDim, cSubmitLeafChildrenProc) = 0);
+	ProcessError;
+Else;
+	cCurrentCellValue = CellGetS(sProcessSecurityCube, cSubmitLeafChildrenProc, cEveryoneGroup); 
+	If (cCurrentCellValue @= '' % cCurrentCellValue @= 'NONE');
+		If (CellIsUpdateable(sProcessSecurityCube, cSubmitLeafChildrenProc, cEveryoneGroup) = 0);
+			vDetail=INSRT(cEveryoneGroup,')',1);
+			vDetail=INSRT(',',vDetail,1);
+			vDetail=INSRT(cSubmitLeafChildrenProc,vDetail,1);
+			vDetail=INSRT('(',vDetail,1);
+			vDetail=INSRT(sProcessSecurityCube,vDetail,1);
+			vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+			'pGuid', pExecutionId, 
+			'pProcess', cTM1Process, 
+			'pErrorCode', 'TI_SEMAPHORE_NOT_UPDATEABLE',
+			'pErrorDetails', vDetail,
+			'pControl', pControl);
+			ProcessError;
+		EndIf;
+		CellPutS('Read', sProcessSecurityCube, cSubmitLeafChildrenProc, cEveryoneGroup);
+	EndIf;
+EndIf;
+
+#endregion

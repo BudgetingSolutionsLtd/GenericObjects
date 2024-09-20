@@ -1,0 +1,62 @@
+{
+	"@type":"Process",
+	"Name":"zConsHoldings copy Scenario 1 to",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"zConsHoldings copy Scenario 1 to.ti",
+	"UIData":"CubeAction=1500€DataAction=1503€CubeName=CONS_Holdings€CubeLogChanges=0€",
+	"VariablesUIData":
+	[
+		"VarType=32€ColType=825€VarDimension=CONS_a_Company€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=827€",
+		"VarType=32€ColType=825€VarDimension=CONS_t_Month€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_m_Holdings€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=826€",
+		"VarName=vTargetVersion€VarType=32€ColType=825€VarFormula=vTargetVersion='Budget';:€VarFormulaDestination=BOTH€VarDimension=CONS_Scenario€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€"
+	],
+	"DataSource":
+	{
+		"Type":"TM1CubeView",
+		"dataSourceNameForClient":"CONS_Holdings",
+		"dataSourceNameForServer":"CONS_Holdings",
+		"view":"zSource_Scenario1"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"CONS_a_Company",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"CONS_Scenario",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"CONS_t_Month",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"CONS_m_Holdings",
+			"Type":"String",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Value",
+			"Type":"String",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

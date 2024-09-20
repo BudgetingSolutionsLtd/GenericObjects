@@ -1,0 +1,150 @@
+{
+	"@type":"NativeView",
+	"Name":"ChartView",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')"
+				},
+				"Alias":"MthYr",
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth01 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth02 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth03 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth04 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth05 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth06 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth07 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth08 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth09 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth10 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth11 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth12 Yr01')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('External Sales')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('GROSS MARGIN')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')/Elements('TOTAL OVERHEADS')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('GROUP TOTAL')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.Y')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')"
+				},
+				"Expression":"TM1SubsetAll([BSCF_m_AccountBalance])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')/Elements('Net Movement')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

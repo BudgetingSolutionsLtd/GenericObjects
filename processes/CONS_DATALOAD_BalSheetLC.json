@@ -1,0 +1,74 @@
+{
+	"@type":"Process",
+	"Name":"CONS_DATALOAD_BalSheetLC",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"CONS_DATALOAD_BalSheetLC.ti",
+	"UIData":"CubeAction=1500€DataAction=1503€CubeName=CONS_BalanceSheetConsol€CubeLogChanges=0€MeasuresDim=CONS_Scenario€MeasuresDimAction=As Is€MeasuresDimElemSortType=ByInput€MeasuresDimElemSortSense=ASCENDING€",
+	"VariablesUIData":
+	[
+		"VarType=32€ColType=825€VarDimension=CONS_BalanceSheet€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_m_Consolidation€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_a_Company€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_t_Month€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=33€ColType=826€MeasuresElemVar=Scenario1€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Scenario2€MeasuresElemVarType=Numeric€"
+	],
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"asciiDecimalSeparator":".",
+		"asciiDelimiterChar":"\t",
+		"asciiDelimiterType":"Character",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiThousandSeparator":",",
+		"dataSourceNameForClient":"C:\\TM1 Servers\\BSCF\\Source Files Consol\\LocalBS.txt",
+		"dataSourceNameForServer":"C:\\TM1 Servers\\BSCF\\Source Files Consol\\LocalBS.txt"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vBalSheet",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vConsol",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vCo",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vTime",
+			"Type":"String",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vV1",
+			"Type":"Numeric",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vV2",
+			"Type":"Numeric",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

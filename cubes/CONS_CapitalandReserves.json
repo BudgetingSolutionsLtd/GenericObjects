@@ -1,0 +1,36 @@
+{
+	"@type":"Cube",
+	"Name":"CONS_CapitalandReserves",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('CONS_a_Company')"
+		},
+		{
+			"@id":"Dimensions('CONS_BaseCumul')"
+		},
+		{
+			"@id":"Dimensions('CONS_Scenario')"
+		},
+		{
+			"@id":"Dimensions('CONS_CapitalandReserves')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_AcqnData')"
+		}
+	],
+	"Rules@Code.link":"CONS_CapitalandReserves.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('CONS_m_AcqnData')"
+	},
+	"Views@Code.links":
+	[
+		"CONS_CapitalandReserves.views/All.json",
+		"CONS_CapitalandReserves.views/CONS_CapitalandReserves.json",
+		"CONS_CapitalandReserves.views/Default.json"
+	]
+}

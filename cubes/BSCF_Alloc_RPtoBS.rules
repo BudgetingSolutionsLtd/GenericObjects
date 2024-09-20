@@ -1,0 +1,17 @@
+#Region System
+#FEEDSTRINGS;
+#SKIPCHECK;
+#EndRegion
+##############################################################
+##Allocates the Receipts and Payments movements and the cash to the relevant Balance Sheet Lines##
+##############################################################
+
+
+['Movement']=N:IF(!BSCF_BalanceSheet@=DB('BSCF_Map_ReceiptandPayment',!BSCF_ReceiptandPayment,'Balance Sheet'),
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_ReceiptandPayment,'Amount inc VAT on Account')
++DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_ReceiptandPayment,'VAT on Cash')
+,STET);
+
+['Cash Movement']=N:IF(!BSCF_BalanceSheet@=DB('BSCF_Map_ReceiptandPayment',!BSCF_ReceiptandPayment,'Balance Sheet'),
+-DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_ReceiptandPayment,'Cash')
+,STET);

@@ -1,0 +1,431 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_BalanceSheet",
+	"Elements":
+	[
+		{
+			"Name":"CHECK Assets less Liabilities",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"NET ASSETS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"FIXED ASSETS  NBV",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Fixed & Intangible Assets GBV",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Depreciation & Amortisation Balance",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"STOCK",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Local Stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Foreign Stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Stock",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"DEBTORS < 1 YEAR",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Trade Debtors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Debtors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Prepayments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ID Debtor",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Debtors < 1 Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CASH AT BANK AND IN HAND",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Petty Cash",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Treasury Account",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CREDITORS < 1 Year",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Trade Creditors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Creditors",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Bad Debt Provisions",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"VAT liability",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Accruals",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Customer Accrued Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ID Credit",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Creditors < 1 Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Interest Accrual",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Tax Accrual",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Dividend Accrual",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"NON CURRENT ASSETS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Investment South Sea Bubble ltd.",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Investments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Investments",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Debtors > 1 Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"NON CURRENT LIABILITIES",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Long Term Liabilities",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Loans",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CAPITAL & RESERVES",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"CAPITAL",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Share Capital",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Capital & Reserves",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"RESERVES",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"P&L Reserves Bfwd",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"P&L Reserves Current Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Check Asset Gains on Disposals",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"CHECK Assets less Liabilities",
+			"ComponentName":"NET ASSETS",
+			"Weight":1
+		},
+		{
+			"ParentName":"CHECK Assets less Liabilities",
+			"ComponentName":"CAPITAL & RESERVES",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET ASSETS",
+			"ComponentName":"FIXED ASSETS  NBV",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET ASSETS",
+			"ComponentName":"STOCK",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET ASSETS",
+			"ComponentName":"DEBTORS < 1 YEAR",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET ASSETS",
+			"ComponentName":"CASH AT BANK AND IN HAND",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET ASSETS",
+			"ComponentName":"CREDITORS < 1 Year",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET ASSETS",
+			"ComponentName":"NON CURRENT ASSETS",
+			"Weight":1
+		},
+		{
+			"ParentName":"NET ASSETS",
+			"ComponentName":"NON CURRENT LIABILITIES",
+			"Weight":1
+		},
+		{
+			"ParentName":"FIXED ASSETS  NBV",
+			"ComponentName":"Fixed & Intangible Assets GBV",
+			"Weight":1
+		},
+		{
+			"ParentName":"FIXED ASSETS  NBV",
+			"ComponentName":"Depreciation & Amortisation Balance",
+			"Weight":1
+		},
+		{
+			"ParentName":"STOCK",
+			"ComponentName":"Local Stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"STOCK",
+			"ComponentName":"Foreign Stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"STOCK",
+			"ComponentName":"Other Stock",
+			"Weight":1
+		},
+		{
+			"ParentName":"DEBTORS < 1 YEAR",
+			"ComponentName":"Trade Debtors",
+			"Weight":1
+		},
+		{
+			"ParentName":"DEBTORS < 1 YEAR",
+			"ComponentName":"Inter-Co Debtors",
+			"Weight":1
+		},
+		{
+			"ParentName":"DEBTORS < 1 YEAR",
+			"ComponentName":"Prepayments",
+			"Weight":1
+		},
+		{
+			"ParentName":"DEBTORS < 1 YEAR",
+			"ComponentName":"ID Debtor",
+			"Weight":1
+		},
+		{
+			"ParentName":"DEBTORS < 1 YEAR",
+			"ComponentName":"Other Debtors < 1 Year",
+			"Weight":1
+		},
+		{
+			"ParentName":"CASH AT BANK AND IN HAND",
+			"ComponentName":"Petty Cash",
+			"Weight":1
+		},
+		{
+			"ParentName":"CASH AT BANK AND IN HAND",
+			"ComponentName":"Cash",
+			"Weight":1
+		},
+		{
+			"ParentName":"CASH AT BANK AND IN HAND",
+			"ComponentName":"Treasury Account",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Trade Creditors",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Inter-Co Creditors",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Bad Debt Provisions",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"VAT liability",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Accruals",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Customer Accrued Income",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"ID Credit",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Other Creditors < 1 Year",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Interest Accrual",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Tax Accrual",
+			"Weight":1
+		},
+		{
+			"ParentName":"CREDITORS < 1 Year",
+			"ComponentName":"Dividend Accrual",
+			"Weight":1
+		},
+		{
+			"ParentName":"NON CURRENT ASSETS",
+			"ComponentName":"Investment South Sea Bubble ltd.",
+			"Weight":1
+		},
+		{
+			"ParentName":"NON CURRENT ASSETS",
+			"ComponentName":"Other Investments",
+			"Weight":1
+		},
+		{
+			"ParentName":"NON CURRENT ASSETS",
+			"ComponentName":"Inter-Co Investments",
+			"Weight":1
+		},
+		{
+			"ParentName":"NON CURRENT ASSETS",
+			"ComponentName":"Debtors > 1 Year",
+			"Weight":1
+		},
+		{
+			"ParentName":"NON CURRENT LIABILITIES",
+			"ComponentName":"Long Term Liabilities",
+			"Weight":1
+		},
+		{
+			"ParentName":"NON CURRENT LIABILITIES",
+			"ComponentName":"Inter-Co Loans",
+			"Weight":1
+		},
+		{
+			"ParentName":"CAPITAL & RESERVES",
+			"ComponentName":"CAPITAL",
+			"Weight":1
+		},
+		{
+			"ParentName":"CAPITAL & RESERVES",
+			"ComponentName":"RESERVES",
+			"Weight":1
+		},
+		{
+			"ParentName":"CAPITAL",
+			"ComponentName":"Share Capital",
+			"Weight":1
+		},
+		{
+			"ParentName":"CAPITAL",
+			"ComponentName":"Other Capital & Reserves",
+			"Weight":1
+		},
+		{
+			"ParentName":"RESERVES",
+			"ComponentName":"P&L Reserves Bfwd",
+			"Weight":1
+		},
+		{
+			"ParentName":"RESERVES",
+			"ComponentName":"P&L Reserves Current Year",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_BalanceSheet.subsets/AllLeaf.json",
+		"BSCF_BalanceSheet.subsets/All Leaf plus Total.json",
+		"BSCF_BalanceSheet.subsets/CashAccounts.json",
+		"BSCF_BalanceSheet.subsets/Other Forecast Items.json",
+		"BSCF_BalanceSheet.subsets/Stock.json"
+	]
+}

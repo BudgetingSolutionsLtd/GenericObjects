@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_ModelParameters",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_ModelParameters.hierarchies/BSCF_ModelParameters.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_ModelParameters')/Hierarchies('BSCF_ModelParameters')"
+	}
+}

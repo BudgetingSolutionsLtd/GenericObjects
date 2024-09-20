@@ -1,0 +1,16 @@
+{
+	"@type":"Subset",
+	"Name":"CashAccounts",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Petty Cash')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Cash')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Treasury Account')"
+		}
+	]
+}

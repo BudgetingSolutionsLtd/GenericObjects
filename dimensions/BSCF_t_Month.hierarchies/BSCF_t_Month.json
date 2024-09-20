@@ -1,0 +1,259 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_t_Month",
+	"Elements":
+	[
+		{
+			"Name":"Op Bal",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Year01",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Mth01 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth02 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth03 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth04 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth05 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth06 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth07 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth08 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth09 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth10 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth11 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth12 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth13 Yr01",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Year02",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Mth01 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth02 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth03 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth04 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth05 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth06 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth07 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth08 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth09 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth10 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth11 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth12 Yr02",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Mth13 Yr02",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth01 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth02 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth03 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth04 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth05 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth06 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth07 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth08 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth09 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth10 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth11 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year01",
+			"ComponentName":"Mth12 Yr01",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth01 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth02 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth03 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth04 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth05 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth06 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth07 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth08 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth09 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth10 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth11 Yr02",
+			"Weight":1
+		},
+		{
+			"ParentName":"Year02",
+			"ComponentName":"Mth12 Yr02",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_t_Month.subsets/__BACKUP_Months.json",
+		"BSCF_t_Month.subsets/__BACKUP_Months BS.json",
+		"BSCF_t_Month.subsets/__BACKUP_Years.json",
+		"BSCF_t_Month.subsets/__BACKUP_{32267f65-f142-484f-9591-7d302e308e89}.json",
+		"BSCF_t_Month.subsets/__BACKUP_{dee6e865-fb02-4797-b13e-ef9e4f786e3b}.json",
+		"BSCF_t_Month.subsets/Months.json",
+		"BSCF_t_Month.subsets/Months BS.json",
+		"BSCF_t_Month.subsets/Months to CONS.json",
+		"BSCF_t_Month.subsets/Mths and Years.json",
+		"BSCF_t_Month.subsets/Years.json"
+	]
+}

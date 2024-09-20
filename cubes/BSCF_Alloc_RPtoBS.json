@@ -1,0 +1,32 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_Alloc_RPtoBS",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ReceiptandPayment')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_AccountBalance')"
+		}
+	],
+	"Rules@Code.link":"BSCF_Alloc_RPtoBS.rules",
+	"Views@Code.links":
+	[
+		"BSCF_Alloc_RPtoBS.views/All.json",
+		"BSCF_Alloc_RPtoBS.views/BSCF_Alloc_RPtoBS.json",
+		"BSCF_Alloc_RPtoBS.views/Default.json"
+	]
+}

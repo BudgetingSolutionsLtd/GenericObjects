@@ -1,0 +1,28 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_Alloc_BStoCF",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		}
+	],
+	"Rules@Code.link":"BSCF_Alloc_BStoCF.rules",
+	"Views@Code.links":
+	[
+		"BSCF_Alloc_BStoCF.views/All.json",
+		"BSCF_Alloc_BStoCF.views/BSCF_Alloc_BStoCF.json"
+	]
+}

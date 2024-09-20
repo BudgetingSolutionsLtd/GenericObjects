@@ -1,0 +1,35 @@
+{
+	"@type":"NativeView",
+	"Name":"Balance Sheet Mapping",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_AccountMapping')/Hierarchies('BSCF_m_AccountMapping')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_m_AccountMapping')/Hierarchies('BSCF_m_AccountMapping')/Elements('Cashflow')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Subsets('AllLeaf')"
+			}
+		}
+	],
+	"Titles":[],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

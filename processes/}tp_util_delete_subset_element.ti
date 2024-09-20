@@ -1,0 +1,25 @@
+#region Prolog
+
+
+vSubsetSize = SubsetGetSize(pDim, pSubset);
+If (vSubsetSize = 1);
+	SubsetElementDelete(pDim, pSubset, 1);
+ElseIf (vSubsetSize > 1);
+	vNodeIndex = 0;
+	vTempIndex = 1;
+	while(vTempIndex <= vSubsetSize);
+		vTempNode = SubsetGetElementName(pDim, pSubset, vTempIndex);
+		If (DimensionElementPrincipalName(pDim, pNode) @= 
+			DimensionElementPrincipalName(pDim, vTempNode));
+			vNodeIndex = vTempIndex;
+			vTempIndex = vSubsetSize;
+		EndIf;
+
+		vTempIndex = vTempIndex + 1;
+	End;
+
+	If (vNodeIndex > 0);
+		SubsetElementDelete(pDim, pSubset, vNodeIndex);
+	EndIf;
+EndIf;
+#endregion

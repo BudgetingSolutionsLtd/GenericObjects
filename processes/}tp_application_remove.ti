@@ -1,0 +1,244 @@
+#region Prolog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+#*** Log File Name
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names', 'pExecutionId', pExecutionId,
+'pProcess', cTM1Process, 'pControl', pControl);
+If (vReturnValue <> ProcessExitNormal());
+	ProcessError;
+EndIf;
+Endif;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+#***
+cApprovalDim =  ATTRS('}tp_applications', pAppId,  'ApprovalDimension');
+cApprovalSubset =ATTRS('}tp_applications', pAppId,  'ApprovalSubset');
+cIsActive =ATTRS('}tp_applications', pAppId, 'IsActive');
+cShadowApprovalDim =ATTRS('}tp_applications', pAppId, 'ApprovalShadowDimension');
+cVersionDim = ATTRS('}tp_applications', pAppId, 'VersionDimension');
+cSecurityMethod = ATTRS('}tp_applications', pAppId, 'SecurityMethod');
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, 'get application attributes', cApprovalDim, cApprovalSubset, cIsActive,cShadowApprovalDim,cVersionDim);
+EndIf;
+
+
+#*** Log Parameters
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Parameters:', pExecutionId, pAppId, pControl);
+EndIf;
+
+cApplicationsDim = cControlPrefix | 'tp_applications';
+cIntermediateAppDim = '}tp_intermediate_security_applications';
+If (DIMIX(cApplicationsDim, pAppId) <> 0);
+
+	#***
+	
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Release all data reservations', pAppId);
+	EndIf;
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_reserve_release_all', 'pExecutionId', pExecutionId, 
+			'pAppId', pAppId, 'pControl', pControl);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+
+	#***Remove all persisted views for this application
+	vReturnValue = ExecuteProcess('}tp_reset_views',
+		'pExecutionId', pExecutionId, 'pAppId', pAppId);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+		
+	#***
+	If (cApprovalDim @<> '');
+
+		cPermissionCube = cControlPrefix | 'tp_application_permission}' | pAppId;
+		cCellSecurityCube = '}CellSecurity_' | cPermissionCube;
+	
+		If (cGenerateLog @= 'Y');
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Destroy permissions cubes');
+		EndIf;
+	
+		CubeDestroy(cPermissionCube);
+		CubeDestroy(cCellSecurityCube);
+	
+		cStateCube = cControlPrefix | 'tp_application_state}' | pAppId;
+		CubeDestroy(cStateCube);
+
+		#***
+		cApprovalElementSecurityCube = '}ElementSecurity_' | cShadowApprovalDim;
+		CubeDestroy(cApprovalElementSecurityCube);
+
+		IF (cSecurityMethod @= 'ELEMENT_SECURITY');
+			cElementSecurityCubeOnApproval = '}ElementSecurity_' | cApprovalDim;
+			CubeDestroy(cElementSecurityCubeOnApproval);
+		Endif;
+
+		#***Remove Shadow approval dimension
+		DimensionDestroy(cShadowApprovalDim);
+
+		cSecurityCube = cControlPrefix | 'tp_application_security}' | pAppId;
+		CubeDestroy(cSecurityCube);
+	
+		cSecurityUpdateCube = cControlPrefix | 'tp_application_security_update}' | pAppId;
+		CubeDestroy(cSecurityUpdateCube);
+
+		#***Remove task navigation cube
+		cTaskNavigationCube = '}tp_task_navigations}' | pAppId;
+		CubeDestroy(cTaskNavigationCube);
+
+		#***Remove task navigation dimension
+		cTaskNavigationDim = '}tp_task_navigation_dims}' | pAppId;
+		DimensionDestroy(cTaskNavigationDim);
+
+		#Finally, remove element security cube, and IM element security cube  for an approval dimension 
+		#if no other applications are using the same approval dimension
+		vTotalApplications = DIMSIZ(cApplicationsDim);
+		vDeleteElementSecurity = 'Y';
+		looper =1;
+		While (looper <= vTotalApplications);
+			vOtherAppId = DIMNM(cApplicationsDim, looper);
+			IF (vOtherAppId @<> pAppId);
+				vOtherAppApprovalDim =ATTRS('}tp_applications', vOtherAppId,  'ApprovalDimension');
+				IF (vOtherAppApprovalDim @= cApprovalDim);
+					vDeleteElementSecurity = 'N';
+					looper = vTotalApplications;
+				Endif;
+
+			Endif;
+			looper = looper +1;
+		End;
+
+		IF (vDeleteElementSecurity @= 'Y');
+			vElementSecurityOnApprovalDim = '}ElementSecurity_' | cApprovalDim;
+			IF (CubeExists(vElementSecurityOnApprovalDim)>0);
+				CubeDestroy(vElementSecurityOnApprovalDim);
+			Endif;
+			vIMElementSecurityOnApprovalDim = '}tp_intermediate_ElementSecurity}' | cApprovalDim;
+			IF (CubeExists(vIMElementSecurityOnApprovalDim)>0);
+				CubeDestroy(vIMElementSecurityOnApprovalDim);
+			Endif;
+		Endif;
+
+	EndIf;
+
+	#***Remove application related cubes
+	cApplicationCubesCube = cControlPrefix | 'tp_application_cubes';
+	
+	totalCubes = DIMSIZ('}Cubes');
+	indexCube = totalCubes;
+	
+	While (indexCube >= 1);
+		cCubeName = DIMNM('}Cubes', indexCube);
+	
+		cIsAppCube = CellGetS(cApplicationCubesCube, pAppId, cCubeName);
+
+		IF (cIsAppCube @= 'A' % (cIsAppCube @<> '' & cApprovalDim @= ''));
+			vReturnValue = ExecuteProcess('}tp_deploy_app_cubes_cleanup', 'pExecutionId', pExecutionId,'pAppId', pAppId, 'pCubeName', cCubeName);
+			If (vReturnValue <> ProcessExitNormal());
+				ProcessError;
+			EndIf;
+		Endif;
+		
+		indexCube = indexCube - 1;
+	End;
+
+	#***
+	
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Remove application node: ' | pAppId);
+	EndIf;
+
+	DimensionElementDelete(cApplicationsDim, pAppId);
+	DimensionElementDelete(cIntermediateAppDim, pAppId);
+
+	#*** Remove sandboxes associated with the application
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_delete_sandboxes',
+		'pExecutionId', pExecutionId, 'pAppId', pAppId, 'pControl', pControl);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+
+	#Remove all blb files created by this applications
+	vBlbFile = 'tp_AdminBkup_' | pAppId | '.blb';
+	AsciiDelete(vBlbFile);
+	vBlbFile = 'tp_SecurityBkup_' | pAppId | '.blb';
+	AsciiDelete(vBlbFile);
+	vBlbFile = 'tp_ModelBkup_' | pAppId |  '.blb';
+	AsciiDelete(vBlbFile);
+	vBlbFile = '}tp_tasks}' | pAppId | '_weighted_struct.blb';
+	AsciiDelete(vBlbFile);
+	vBlbFile = 'tp_app_approval_hierarchy}' | pAppId | '.blb';
+	AsciiDelete(vBlbFile);
+	vBlbFile = 'tp_app_full_security}' | pAppId | '.blb';
+	AsciiDelete(vBlbFile);
+	vBlbFile = 'tp_app_full_security}' | pAppId | '_alias.blb';
+	AsciiDelete(vBlbFile);
+	vBlbFile = 'tp_app_security}' | pAppId | '.blb';
+	AsciiDelete(vBlbFile);
+
+	#**remove control subset filter
+	#vDimensions = '}Dimensions';
+	#vTotalDimensions = DIMSIZ(vDimensions);
+	#looper = vTotalDimensions;
+	#
+	#While (looper >= 1);
+	#	vDimension = DIMNM(vDimensions, looper);
+	#	IF (SUBST(vDimension, 1,1) @<> '}');
+	#		vSubset = 'tp_' | pAppId;
+	#		IF (SubsetExists(vDimension, vSubset) >0);
+	#			SubsetDestroy(vDimension, vSubset);
+	#		Endif;
+	#	Endif;
+	#	looper = looper -1;
+	#End;
+Else;
+
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Application does not exist: ' | pAppId);
+	EndIf;
+
+EndIf;
+
+#*** No error
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'The end has been reached.');
+EndIf;
+#endregion

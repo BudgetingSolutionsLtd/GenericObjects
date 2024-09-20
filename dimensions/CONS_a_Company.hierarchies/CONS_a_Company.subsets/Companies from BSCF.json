@@ -1,0 +1,13 @@
+{
+	"@type":"Subset",
+	"Name":"Companies from BSCF",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co.X')"
+		},
+		{
+			"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co.Y')"
+		}
+	]
+}

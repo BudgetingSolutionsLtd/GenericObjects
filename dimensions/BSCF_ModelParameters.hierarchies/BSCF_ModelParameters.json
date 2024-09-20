@@ -1,0 +1,32 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_ModelParameters",
+	"Elements":
+	[
+		{
+			"Name":"VersionToLoad",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Filepath",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Filename",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"CompanyToLoad",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"RecordsLoaded",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Errors",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

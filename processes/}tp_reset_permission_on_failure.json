@@ -1,0 +1,32 @@
+{
+	"@type":"Process",
+	"Name":"}tp_reset_permission_on_failure",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_reset_permission_on_failure.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pGuid",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pAppId",
+			"Prompt":"",
+			"Value":"MyApp",
+			"Type":"String"
+		},
+		{
+			"Name":"pControl",
+			"Prompt":"",
+			"Value":"N",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

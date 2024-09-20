@@ -1,0 +1,46 @@
+{
+	"@type":"Subset",
+	"Name":"Goodwill",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Life (Years)')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Life Remaining (Days)')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Balance Cfwd')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Balance Bfwd')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Amortisation')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill for Amortisation')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Acquired')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Cost of Investment (2)')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Net Assets Acquired')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Fair Value Adjustments')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Immediately Written Off')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Revaluation of Goodwill')"
+		},
+		{
+			"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')/Elements('Goodwill Disposed Of')"
+		}
+	]
+}

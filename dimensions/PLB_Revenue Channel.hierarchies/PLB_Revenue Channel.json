@@ -1,0 +1,42 @@
+{
+	"@type":"Hierarchy",
+	"Name":"PLB_Revenue Channel",
+	"Elements":
+	[
+		{
+			"Name":"All Channels",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"In Store",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Collect",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Deliveroo",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"All Channels",
+			"ComponentName":"In Store",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Channels",
+			"ComponentName":"Collect",
+			"Weight":1
+		},
+		{
+			"ParentName":"All Channels",
+			"ComponentName":"Deliveroo",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

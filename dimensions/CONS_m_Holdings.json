@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_m_Holdings",
+	"Hierarchies@Code.links":
+	[
+		"CONS_m_Holdings.hierarchies/CONS_m_Holdings.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_m_Holdings')/Hierarchies('CONS_m_Holdings')"
+	}
+}

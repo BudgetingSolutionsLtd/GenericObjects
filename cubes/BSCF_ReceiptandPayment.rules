@@ -1,0 +1,201 @@
+																												#Region System
+#FEEDSTRINGS;
+#SKIPCHECK;
+#EndRegion
+#####################
+## Calculations for the Actuals##
+#####################
+['Actual']=N:STET;
+['Cash Report']=N:IF(DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Actual ?')@='Yes',
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,'Actual',!BSCF_t_Month,!BSCF_ReceiptandPayment,'Cash Report'),
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_ReceiptandPayment,'Cash'));
+
+##################
+## VAT on VAT set to Zero##
+##################
+
+['VAT',{'VAT on Account','VAT on Cash'}]=N:0;
+
+
+
+####################################################
+##Obtain the Amounts from the appropriate source BS, Capital Assets, P&Lor VAT##
+####################################################
+
+##Balance Sheet Transactions
+['Amount']=N:
+IF(DIMIX('BSCF_BalanceSheet',!BSCF_ReceiptandPayment)=0,CONTINUE,DB('BSCF_BalanceSheet',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_ReceiptandPayment,'Transaction')*(-1));
+
+##Capital Additions
+['Amount']=N:
+IF(subst(!BSCF_ReceiptandPayment,1,5)@='Addns',DB('BSCF_CapitalAssets',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,subst(!BSCF_ReceiptandPayment,9,100),'Assets Added ex VAT')*(-1),CONTINUE);
+
+##Capital Disposals
+['Amount']=N:
+IF(subst(!BSCF_ReceiptandPayment,1,8)@='Disposal',DB('BSCF_CapitalAssets',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,subst(!BSCF_ReceiptandPayment,12,100),'Sale Proceeds ex VAT'),CONTINUE);
+
+##VAT
+['VAT','Amount']=N:['TOTAL RECEIPTS & PAYMENTS','VAT Total']*(-1);
+
+##P&L
+['Amount']=N:DB('BSCF_ProfitandLoss',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_ReceiptandPayment,'Movement');
+
+
+#######################################
+##Calculate VAT where it is recognised on an Accounts Basis##
+#######################################
+
+['VAT on Account']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'VAT Recognition')@='Account',
+['Amount']*DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'VAT Rate')),
+0);
+
+#############################################
+##Calculate the Balance outstanding where the payment profile is DSO##
+#############################################
+['Balance Outstanding']=C:0;
+
+['Balance Outstanding']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile')@='Days Outstanding',
+#This Month
+MIN(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Days Outstanding'),
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Days for DSO'))\
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Days for DSO')*['Amount inc VAT on Account']+
+#Month -1
+MAX(0,MIN((DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Days Outstanding')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Days for DSO')),
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),'Days for DSO')))\
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),'Days for DSO')*
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+#Month -2
+MAX(0,MIN((DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Days Outstanding')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Days for DSO')),
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R'),'Days for DSO')))\
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R'),'Days for DSO')*
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+#Month -3
+MAX(0,MIN((DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Days Outstanding')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R','Days for DSO'))-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Days for DSO')),
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),'Days for DSO')))\
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),'Days for DSO')*
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+#Month -4
+MAX(0,MIN((DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Days Outstanding')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Days for DSO')),
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -4R'),'Days for DSO')))\
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -4R'),'Days for DSO')*
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -4R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+#Month-5
+MAX(0,MIN((DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Days Outstanding')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -4R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Days for DSO')),
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -5R'),'Days for DSO')))\
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -5R'),'Days for DSO')*
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -5R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+#Month-6
+MAX(0,MIN((DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Days Outstanding')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -5R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -4R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),'Days for DSO')-
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,'Days for DSO')),
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -6R'),'Days for DSO')))\
+DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -6R'),'Days for DSO')*
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -6R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account'),
+#Else
+0);
+
+
+
+##################
+##Calculate the Cash##
+##################
+
+#None
+[{'Calculated Cash','Adjust Cash'}]=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile')@='NO CASH',0,CONTINUE);
+
+##Period Same
+['Calculated Cash']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile')@='Period Same',['Amount inc VAT on Account'],CONTINUE);
+
+##Period Next
+['Calculated Cash']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile')@='Period Next',
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario, ATTRS('BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account'),
+
+#DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account'),
+
+CONTINUE);
+
+##Period +2
+['Calculated Cash']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile')@='Period +2',
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account'),
+CONTINUE);
+
+##Period +3
+['Calculated Cash']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile')@='Period +3',
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -3R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account'),
+CONTINUE);
+
+##Period +4
+['Calculated Cash']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile')@='Period +4',
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -4R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account'),
+CONTINUE);
+
+##Days Outstanding
+['Calculated Cash']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile')@='Days Outstanding',
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),!BSCF_ReceiptandPayment,'Balance Outstanding')+['Amount inc VAT on Account']-['Balance Outstanding'],
+CONTINUE);
+
+
+##Annual
+['Calculated Cash']=N:IF(subst(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile'),1,6)@='Annual',
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,ELPAR('BSCF_t_Month',!BSCF_t_Month,1),!BSCF_ReceiptandPayment,'Amount inc VAT on Account')*
+DB('BSCF_Map_PaymentProfilePhasing',DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile'),!BSCF_t_Month),
+CONTINUE);
+
+##Quarterly in Advance
+['Calculated Cash']=N:IF(subst(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile'),1,12)@='Qtly Advance',
+(DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth +1R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth +2R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account'))*
+DB('BSCF_Map_PaymentProfilePhasing',DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile'),!BSCF_t_Month),
+CONTINUE);
+##Quarterly in Arrears
+['Calculated Cash']=N:IF(subst(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile'),1,12)@='Qtly Arrears',
+(DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -1R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account')+
+DB('BSCF_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,DB('}ElementAttributes_BSCF_t_Month',!BSCF_t_Month,'Mth -2R'),!BSCF_ReceiptandPayment,'Amount inc VAT on Account'))*
+DB('BSCF_Map_PaymentProfilePhasing',DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'Payment Profile'),!BSCF_t_Month),
+CONTINUE);
+
+
+
+## Now Adjust cash to settle ID Credit from CASH on payment of Factores Sales Debtor
+
+##['ID Credit','Adjust Cash'] =
+
+
+
+############
+##VAT on Cash##
+############
+
+
+
+['VAT on Cash']=N:IF(DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'VAT Recognition')@='Cash',
+(['Calculated Cash']+['Adjust Cash'])*DB('BSCF_Assum_Monthly',!BSCF_a_Company,!BSCF_Scenario,!BSCF_t_Month,DB('BSCF_Assum_ReceiptandPayment',!BSCF_a_Company,!BSCF_Scenario,!BSCF_ReceiptandPayment,'VAT Rate')),
+0);
+
+#######################
+## Analysis by Cash Account Type##
+#######################
+
+['Petty Cash Account']=N:IF(DB('BSCF_Map_ReceiptandPayment',!BSCF_ReceiptandPayment,'Cash Account')@='Petty Cash',['Cash'],0);
+['Treasury Account']=N:IF(DB('BSCF_Map_ReceiptandPayment',!BSCF_ReceiptandPayment,'Cash Account')@='Treasury Account',['Cash'],0);

@@ -1,0 +1,35 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_CapitalAssets",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		},
+		{
+			"@id":"Dimensions('BSCF_AssetCategory')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CapitalAssets')"
+		}
+	],
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('BSCF_m_CapitalAssets')"
+	},
+	"Views@Code.links":
+	[
+		"BSCF_CapitalAssets.views/All.json",
+		"BSCF_CapitalAssets.views/Annual Additions and Disposals.json",
+		"BSCF_CapitalAssets.views/Asset Additions.json",
+		"BSCF_CapitalAssets.views/Asset Disposals.json",
+		"BSCF_CapitalAssets.views/Asset Transactions.json",
+		"BSCF_CapitalAssets.views/BSCF_CapitalAssets.json"
+	]
+}

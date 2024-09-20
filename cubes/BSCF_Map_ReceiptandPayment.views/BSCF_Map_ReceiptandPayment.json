@@ -1,0 +1,34 @@
+{
+	"@type":"NativeView",
+	"Name":"BSCF_Map_ReceiptandPayment",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_AccountMapping')/Hierarchies('BSCF_m_AccountMapping')"
+				},
+				"Expression":"[BSCF_m_AccountMapping].MEMBERS"
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')"
+				},
+				"Expression":"[BSCF_ReceiptandPayment].MEMBERS"
+			}
+		}
+	],
+	"Titles":[],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.00"
+}

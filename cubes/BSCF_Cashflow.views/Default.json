@@ -1,0 +1,198 @@
+{
+	"@type":"NativeView",
+	"Name":"Default",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Budget')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Act vs Bud')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario2')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario 3')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual TB')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Cash per Balance Sheet')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Cash Check')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('CASH, END OF PERIOD')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('NET INCREASE IN  CASH')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('NET CASH FLOW FROM OPERATIONS')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Operating Profit before Tax & Interest')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Add Depreciation')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Subtract Profit on Disposals')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Movement in Trade Debtors')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Other Debtors')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Debtors>1 Year')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Stock')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Prepayments')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Trade Creditors')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Other Creditors')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Accruals')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Prepaid Income Accruals')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('VAT Liability')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Creditors>1 Year')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('NET CASH FLOW FROM CAPITAL & INVESTMENTS')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('NET CASHFLOW FROM FINANCING')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('NET CASHFLOW FROM INTER-COMPANY')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('CASH, BEGINNING OF PERIOD')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('GROUP TOTAL')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.Y')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('C0. Z')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_Cashflow')/Hierarchies('BSCF_m_Cashflow')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_m_Cashflow')/Hierarchies('BSCF_m_Cashflow')/Elements('Cashflow')"
+					},
+					{
+						"@id":"Dimensions('BSCF_m_Cashflow')/Hierarchies('BSCF_m_Cashflow')/Elements('Balance Sheet Mvmt')"
+					},
+					{
+						"@id":"Dimensions('BSCF_m_Cashflow')/Hierarchies('BSCF_m_Cashflow')/Elements('Profit and Loss')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_m_Cashflow')/Hierarchies('BSCF_m_Cashflow')/Elements('Balance Sheet Mvmt')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')"
+				},
+				"Alias":"MthYr",
+				"Expression":"TM1SubsetAll([BSCF_t_Month])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Op Bal')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

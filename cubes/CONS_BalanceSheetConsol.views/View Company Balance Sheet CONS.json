@@ -1,0 +1,182 @@
+{
+	"@type":"NativeView",
+	"Name":"View Company Balance Sheet CONS",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Currency')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('LC Reported')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('LC Journals')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Jnl')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Recurring Jnl')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Local Recurring Jnl Cumul')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('CONSOLIDATED')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('GROUP ADJUSTED')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Inter Co Eliminations')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Fair Value Adjustments')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Fair Value Adjustments Cumul')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Consolidation Adjustments')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Consolidation Forex')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Goodwill Adjustments')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Consol Journals')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Consol Jnl')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Consol Recurring Jnl')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Consolidation')/Hierarchies('CONS_m_Consolidation')/Elements('Consol Recurring Jnl Cumul')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CHECK Assets less Liabilities')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('NET ASSETS')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('FIXED ASSETS  NBV')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('INVESTMENTS')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('STOCK')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('DEBTORS < 1 YEAR')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CASH AT BANK AND IN HAND')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CREDITORS < 1 Year')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('NON CURRENT ASSETS')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('NON CURRENT LIABILITIES')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CAPITAL & RESERVES')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('CAPITAL')"
+					},
+					{
+						"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')/Elements('RESERVES')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')"
+				},
+				"Expression":"TM1SubsetAll([CONS_a_Company])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co A')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Subsets('FinancialMonths')"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_t_Month')/Hierarchies('CONS_t_Month')/Elements('Mth05 Yr01')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

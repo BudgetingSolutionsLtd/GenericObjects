@@ -1,0 +1,20 @@
+###Check Initial Local Currency Balance Sheet reconciles to P&L
+['LC Balance Sheet Reserves']=N:DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'P&L Reserves Current Year',!CONS_t_Month,'LC Reported');
+
+['LC Profit and Loss']=N:DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'RETAINED EARNINGS',!CONS_t_Month,'LC Reported');
+['LC Profit and Loss YTD']=N:['LC Profit and Loss']+DB('CONS_DataChecks',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Reserves Last Month'),'LC Profit and Loss YTD');
+
+##Calculate the FX implications of P&L v BS Translation for booking in the balance sheet
+['Central Balance Sheet Reserves']=N:DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'P&L Reserves Current Year',!CONS_t_Month,'Central Currency');
+
+['Central Profit and Loss']=N:DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'RETAINED EARNINGS',!CONS_t_Month,'Central Currency');
+['Central Profit and Loss YTD']=N:['Central Profit and Loss']+DB('CONS_DataChecks',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Reserves Last Month'),'Central Profit and Loss YTD');
+
+### Check Consolidated Balance Sheet reconciles to P&L
+['Consolidated Balance Sheet Reserves']=N:DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'P&L Reserves Current Year',!CONS_t_Month,'CONSOLIDATED')+
+DB('CONS_BalanceSheetConsol',!CONS_a_Company,!CONS_Scenario,'P&L Gain Loss on Group Company',!CONS_t_Month,'CONSOLIDATED');
+
+['Consolidated Profit and Loss']=N:DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'RETAINED EARNINGS',!CONS_t_Month,'CONSOLIDATED');
+['Consolidated Profit and Loss YTD']=N:['Consolidated Profit and Loss']+DB('CONS_DataChecks',!CONS_a_Company,!CONS_Scenario,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'Reserves Last Month'),'Consolidated Profit and Loss YTD');
+
+

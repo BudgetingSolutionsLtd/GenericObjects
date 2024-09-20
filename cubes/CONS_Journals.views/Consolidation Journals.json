@@ -1,0 +1,156 @@
+{
+	"@type":"NativeView",
+	"Name":"Consolidation Journals",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')/Elements('Description')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')/Elements('Period')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')/Elements('Amount')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')/Elements('Profit and Loss Account')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')/Elements('Balance Sheet Account')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')/Elements('Reserves Amount')"
+					},
+					{
+						"@id":"Dimensions('CONS_m_Journals')/Hierarchies('CONS_m_Journals')/Elements('Check Posting')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_JournalType')/Hierarchies('CONS_JournalType')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_JournalType')/Hierarchies('CONS_JournalType')/Elements('Consol Jnl')"
+					},
+					{
+						"@id":"Dimensions('CONS_JournalType')/Hierarchies('CONS_JournalType')/Elements('CJ 01')"
+					},
+					{
+						"@id":"Dimensions('CONS_JournalType')/Hierarchies('CONS_JournalType')/Elements('CJ 02')"
+					},
+					{
+						"@id":"Dimensions('CONS_JournalType')/Hierarchies('CONS_JournalType')/Elements('CJ 03')"
+					},
+					{
+						"@id":"Dimensions('CONS_JournalType')/Hierarchies('CONS_JournalType')/Elements('CJ 04')"
+					},
+					{
+						"@id":"Dimensions('CONS_JournalType')/Hierarchies('CONS_JournalType')/Elements('CJ 05')"
+					},
+					{
+						"@id":"Dimensions('CONS_JournalType')/Hierarchies('CONS_JournalType')/Elements('CJ 06')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('GROUP TOTAL')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co A')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co B')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co C')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co D')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co E')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co F')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co G')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co.X')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co.Y')"
+					},
+					{
+						"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co H')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_a_Company')/Hierarchies('CONS_a_Company')/Elements('Co A')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')/Elements('Scenario1')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

@@ -1,0 +1,218 @@
+{
+	"@type":"NativeView",
+	"Name":"Input",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario2')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario 3')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')"
+				},
+				"Alias":"MthYr",
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Year01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth01 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth02 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth03 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth04 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth05 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth06 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth07 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth08 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth09 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth10 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth11 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth12 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth13 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Year02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth01 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth02 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth03 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth04 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth05 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth06 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth07 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth08 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth09 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth10 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth11 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth12 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth13 Yr02')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('PLB_CustomerRevenue')/Hierarchies('PLB_CustomerRevenue')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('PLB_CustomerRevenue')/Hierarchies('PLB_CustomerRevenue')/Elements('No Customers')"
+					},
+					{
+						"@id":"Dimensions('PLB_CustomerRevenue')/Hierarchies('PLB_CustomerRevenue')/Elements('Average Spend')"
+					},
+					{
+						"@id":"Dimensions('PLB_CustomerRevenue')/Hierarchies('PLB_CustomerRevenue')/Elements('Revenue')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('PLB_CustomerRevenue')/Hierarchies('PLB_CustomerRevenue')/Elements('No Customers')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('PLB_Revenue Channel')/Hierarchies('PLB_Revenue Channel')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('PLB_Revenue Channel')/Hierarchies('PLB_Revenue Channel')/Elements('All Channels')"
+					},
+					{
+						"@id":"Dimensions('PLB_Revenue Channel')/Hierarchies('PLB_Revenue Channel')/Elements('In Store')"
+					},
+					{
+						"@id":"Dimensions('PLB_Revenue Channel')/Hierarchies('PLB_Revenue Channel')/Elements('Collect')"
+					},
+					{
+						"@id":"Dimensions('PLB_Revenue Channel')/Hierarchies('PLB_Revenue Channel')/Elements('Deliveroo')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('PLB_Revenue Channel')/Hierarchies('PLB_Revenue Channel')/Elements('Deliveroo')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('Regions')/Hierarchies('Regions')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('Regions')/Hierarchies('Regions')/Elements('UK')"
+					},
+					{
+						"@id":"Dimensions('Regions')/Hierarchies('Regions')/Elements('Midlands')"
+					},
+					{
+						"@id":"Dimensions('Regions')/Hierarchies('Regions')/Elements('North')"
+					},
+					{
+						"@id":"Dimensions('Regions')/Hierarchies('Regions')/Elements('SouthEast')"
+					},
+					{
+						"@id":"Dimensions('Regions')/Hierarchies('Regions')/Elements('West')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('Regions')/Hierarchies('Regions')/Elements('UK')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

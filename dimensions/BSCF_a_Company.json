@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_a_Company",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_a_Company.hierarchies/BSCF_a_Company.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')"
+	}
+}

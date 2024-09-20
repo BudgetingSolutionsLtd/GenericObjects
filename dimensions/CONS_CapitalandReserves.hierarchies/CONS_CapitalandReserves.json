@@ -1,0 +1,60 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_CapitalandReserves",
+	"Elements":
+	[
+		{
+			"Name":"CAPITAL AND RESERVES",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Share Capital",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Share Premium",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"P&L Reserves Bfwd",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"P&L Reserves Current Year",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Capital & Reserves",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"CAPITAL AND RESERVES",
+			"ComponentName":"Share Capital",
+			"Weight":1
+		},
+		{
+			"ParentName":"CAPITAL AND RESERVES",
+			"ComponentName":"Share Premium",
+			"Weight":1
+		},
+		{
+			"ParentName":"CAPITAL AND RESERVES",
+			"ComponentName":"P&L Reserves Bfwd",
+			"Weight":1
+		},
+		{
+			"ParentName":"CAPITAL AND RESERVES",
+			"ComponentName":"P&L Reserves Current Year",
+			"Weight":1
+		},
+		{
+			"ParentName":"CAPITAL AND RESERVES",
+			"ComponentName":"Other Capital & Reserves",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_workflow_actions",
+	"Hierarchies@Code.links":
+	[
+		"}tp_workflow_actions.hierarchies/}tp_workflow_actions.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_workflow_actions')/Hierarchies('}tp_workflow_actions')"
+	}
+}

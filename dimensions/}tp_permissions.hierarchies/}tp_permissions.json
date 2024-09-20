@@ -1,0 +1,31 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}tp_permissions",
+	"Elements":
+	[
+		{
+			"Name":"VIEW",
+			"Type":"String"
+		},
+		{
+			"Name":"ANNOTATE",
+			"Type":"String"
+		},
+		{
+			"Name":"EDIT",
+			"Type":"String"
+		},
+		{
+			"Name":"REJECT",
+			"Type":"String"
+		},
+		{
+			"Name":"SUBMIT",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"}tp_permissions.subsets/Default.json"
+	]
+}

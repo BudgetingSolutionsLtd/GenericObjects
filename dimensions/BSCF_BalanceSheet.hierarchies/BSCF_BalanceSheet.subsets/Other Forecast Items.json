@@ -1,0 +1,19 @@
+{
+	"@type":"Subset",
+	"Name":"Other Forecast Items",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Investment South Sea Bubble ltd.')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Other Investments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Inter-Co Investments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Share Capital')"
+		}
+	]
+}

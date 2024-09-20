@@ -1,0 +1,60 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_AssetCategory",
+	"Elements":
+	[
+		{
+			"Name":"ASSET TOTAL",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Fixtures and Fittings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Buildings",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"PCs",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Company Cars",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Intangible Assets: Patents",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"ASSET TOTAL",
+			"ComponentName":"Fixtures and Fittings",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET TOTAL",
+			"ComponentName":"Buildings",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET TOTAL",
+			"ComponentName":"PCs",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET TOTAL",
+			"ComponentName":"Company Cars",
+			"Weight":1
+		},
+		{
+			"ParentName":"ASSET TOTAL",
+			"ComponentName":"Intangible Assets: Patents",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

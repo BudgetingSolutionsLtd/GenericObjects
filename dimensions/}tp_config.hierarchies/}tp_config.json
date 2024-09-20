@@ -1,0 +1,28 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}tp_config",
+	"Elements":
+	[
+		{
+			"Name":"TI Message Expiration (Days)",
+			"Type":"String"
+		},
+		{
+			"Name":"Generate TI Log",
+			"Type":"String"
+		},
+		{
+			"Name":"Log Directory",
+			"Type":"String"
+		},
+		{
+			"Name":"EnableElementSecurityOnApproval",
+			"Type":"String"
+		},
+		{
+			"Name":"ApplicationMaintenanceRunning",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

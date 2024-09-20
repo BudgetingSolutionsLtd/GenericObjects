@@ -1,0 +1,216 @@
+{
+	"@type":"NativeView",
+	"Name":"Actual Balance Sheet",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')"
+				},
+				"Alias":"MthYr",
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Op Bal')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth01 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth02 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth03 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth04 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth05 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth06 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth07 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth08 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth09 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth10 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth11 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth12 Yr01')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth01 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth02 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth03 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth04 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth05 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth06 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth07 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth08 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth09 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth10 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth11 Yr02')"
+					},
+					{
+						"@id":"Dimensions('BSCF_t_Month')/Hierarchies('BSCF_t_Month')/Elements('Mth12 Yr02')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('CHECK Assets less Liabilities')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('NET ASSETS')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('FIXED ASSETS  NBV')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('STOCK')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('DEBTORS < 1 YEAR')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('CASH AT BANK AND IN HAND')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('CREDITORS < 1 Year')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('NON CURRENT ASSETS')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('NON CURRENT LIABILITIES')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('CAPITAL & RESERVES')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('CAPITAL')"
+					},
+					{
+						"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('RESERVES')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('GROUP TOTAL')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+					},
+					{
+						"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.Y')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')"
+				},
+				"Expression":"TM1SubsetAll([BSCF_m_AccountBalance])"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_m_AccountBalance')/Hierarchies('BSCF_m_AccountBalance')/Elements('Balance')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.#########"
+}

@@ -1,0 +1,20 @@
+{
+	"@type":"Hierarchy",
+	"Name":"PLB_CustomerRevenue",
+	"Elements":
+	[
+		{
+			"Name":"No Customers",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Average Spend",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Revenue",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

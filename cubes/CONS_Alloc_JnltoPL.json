@@ -1,0 +1,32 @@
+{
+	"@type":"Cube",
+	"Name":"CONS_Alloc_JnltoPL",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('CONS_a_Company')"
+		},
+		{
+			"@id":"Dimensions('CONS_Scenario')"
+		},
+		{
+			"@id":"Dimensions('CONS_t_Month')"
+		},
+		{
+			"@id":"Dimensions('CONS_JournalType')"
+		},
+		{
+			"@id":"Dimensions('CONS_ProfitandLoss')"
+		}
+	],
+	"Rules@Code.link":"CONS_Alloc_JnltoPL.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('CONS_JournalType')"
+	},
+	"Views@Code.links":
+	[
+		"CONS_Alloc_JnltoPL.views/All.json",
+		"CONS_Alloc_JnltoPL.views/CONS_Alloc_JnltoPL.json"
+	]
+}

@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_BalanceSheet",
+	"Hierarchies@Code.links":
+	[
+		"CONS_BalanceSheet.hierarchies/CONS_BalanceSheet.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_BalanceSheet')/Hierarchies('CONS_BalanceSheet')"
+	}
+}

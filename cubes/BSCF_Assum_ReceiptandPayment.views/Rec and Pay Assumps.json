@@ -1,0 +1,236 @@
+{
+	"@type":"NativeView",
+	"Name":"Rec and Pay Assumps",
+	"Columns":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_m_AccountAssumptions')/Hierarchies('BSCF_m_AccountAssumptions')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_m_AccountAssumptions')/Hierarchies('BSCF_m_AccountAssumptions')/Elements('Payment Profile')"
+					},
+					{
+						"@id":"Dimensions('BSCF_m_AccountAssumptions')/Hierarchies('BSCF_m_AccountAssumptions')/Elements('Days Outstanding')"
+					},
+					{
+						"@id":"Dimensions('BSCF_m_AccountAssumptions')/Hierarchies('BSCF_m_AccountAssumptions')/Elements('VAT Recognition')"
+					},
+					{
+						"@id":"Dimensions('BSCF_m_AccountAssumptions')/Hierarchies('BSCF_m_AccountAssumptions')/Elements('VAT Rate')"
+					}
+				]
+			}
+		}
+	],
+	"Rows":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('External Sales')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Factored Sales')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Prepaid Income')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Cost of Sales Local Materials')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Cost of Sales Foreign Materials')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Cost of Sales Other')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Local Stock')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Foreign Stock')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Other Stock')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Commissions')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('3rd Party Consultancy Costs')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Salaries')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Benefits')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Employment Taxes')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Rent & Rates')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Light & Heat')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Telephone')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Travel')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Occupancy')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Office Stationery')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Software')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Depreciation & Amortisation')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Management Charges')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Other Expenses')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Bad Debts')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Loan Interest')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Inter-Co Expenses')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Gain on Disposal of Assets')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Inter-Co Income')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Other Income')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Interest')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Tax')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Dividends')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Addns - Fixtures and Fittings')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Addns - Buildings')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Addns - PCs')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Addns - Company Cars')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Addns - Intangible Assets: Patents')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Disposal - Fixtures and Fittings')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Disposal - Buildings')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Disposal - PCs')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Disposal - Company Cars')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Disposal - Intangible Assets: Patents')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('VAT')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Investment South Sea Bubble ltd.')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Other Investments')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Inter-Co Investments')"
+					},
+					{
+						"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')/Elements('Share Capital')"
+					}
+				]
+			}
+		}
+	],
+	"Titles":
+	[
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')"
+				},
+				"Alias":"Description",
+				"Expression":"[BSCF_a_Company].MEMBERS"
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_a_Company')/Hierarchies('BSCF_a_Company')/Elements('Co.X')"
+			}
+		},
+		{
+			"Subset":
+			{
+				"Hierarchy":
+				{
+					"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')"
+				},
+				"Elements":
+				[
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Actual')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+					},
+					{
+						"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario2')"
+					}
+				]
+			},
+			"Selected":
+			{
+				"@id":"Dimensions('BSCF_Scenario')/Hierarchies('BSCF_Scenario')/Elements('Scenario1')"
+			}
+		}
+	],
+	"SuppressEmptyColumns":false,
+	"SuppressEmptyRows":false,
+	"FormatString":"0.00"
+}

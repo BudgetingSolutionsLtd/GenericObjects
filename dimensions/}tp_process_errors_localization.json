@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_process_errors_localization",
+	"Hierarchies@Code.links":
+	[
+		"}tp_process_errors_localization.hierarchies/}tp_process_errors_localization.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_process_errors_localization')/Hierarchies('}tp_process_errors_localization')"
+	}
+}

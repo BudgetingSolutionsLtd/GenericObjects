@@ -1,0 +1,91 @@
+{
+	"@type":"Subset",
+	"Name":"AllLeaf",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Operating Profit before Tax & Interest')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Add Depreciation')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Subtract Profit on Disposals')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Movement in Trade Debtors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Other Debtors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Debtors>1 Year')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Stock')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Prepayments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Trade Creditors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Other Creditors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Accruals')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Prepaid Income Accruals')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('VAT Liability')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Creditors>1 Year')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Fixed & Intangible Assets')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Investments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Short Term Financing')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Long Term Financing')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Share Capital')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Other Capital & Reserves')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Interest Payments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Tax Payments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Dividend Payments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Inter-Co Debtors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Inter-Co Creditors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Inter-Co Loans')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('Inter-Co Investments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Cashflow')/Hierarchies('BSCF_Cashflow')/Elements('CASH, BEGINNING OF PERIOD')"
+		}
+	]
+}

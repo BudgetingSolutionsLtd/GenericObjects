@@ -1,0 +1,40 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_BalanceSheet",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_AccountBalance')"
+		}
+	],
+	"Rules@Code.link":"BSCF_BalanceSheet.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('BSCF_m_AccountBalance')"
+	},
+	"Views@Code.links":
+	[
+		"BSCF_BalanceSheet.views/Actual Balance Sheet.json",
+		"BSCF_BalanceSheet.views/All.json",
+		"BSCF_BalanceSheet.views/AnalyseItemBalance.json",
+		"BSCF_BalanceSheet.views/Balance Sheet.json",
+		"BSCF_BalanceSheet.views/Balance Sheet Journals.json",
+		"BSCF_BalanceSheet.views/BSCF_BalanceSheet.json",
+		"BSCF_BalanceSheet.views/Default.json",
+		"BSCF_BalanceSheet.views/Other Forecast Transactions.json",
+		"BSCF_BalanceSheet.views/Stock Purchases.json",
+		"BSCF_BalanceSheet.views/z_CONSTFer.json"
+	]
+}

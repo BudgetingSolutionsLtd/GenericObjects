@@ -1,0 +1,72 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2013
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+cShadowApprovalDim = '}tp_tasks}' | pAppId;
+
+If (DimensionExists(pApprovalDim) = 0);
+	ProcessError;
+EndIf;
+
+If (SubsetExists(pApprovalDim, pApprovalSubset) = 0);
+	ProcessError;
+EndIf;
+
+If (DimensionExists(cShadowApprovalDim) = 0);
+	ProcessError;
+EndIf;
+
+If (SubsetExists(cShadowApprovalDim, pApprovalSubset) = 0);
+	ProcessError;
+EndIf;
+
+cHierarchySize = SubsetGetSize(pApprovalDim, pApprovalSubset);
+
+If (cHierarchySize = SubsetGetSize(cShadowApprovalDim, pApprovalSubset));
+
+	isSame = 'T';
+	vIndex = 1;
+	While (vIndex <= cHierarchySize);
+		vElement = SubsetGetElementName(pApprovalDim, pApprovalSubset, vIndex);
+		vShadowElement = SubsetGetElementName(cShadowApprovalDim, pApprovalSubset, vIndex);
+		If (vElement @<> vShadowElement);
+			isSame = 'F';
+			vIndex = cHierarchySize;
+		ENdIf;
+
+		vIndex = vIndex + 1;
+	End;
+
+	If (isSame @= 'F');
+		SubsetDeleteAllElements(cShadowApprovalDim, pApprovalSubset);
+	
+		vIndex = 1;
+		While (vIndex <= cHierarchySize);
+			vElement = SubsetGetElementName(pApprovalDim, pApprovalSubset, vIndex);
+			If (DIMIX(cShadowApprovalDim, vElement) <> 0);
+				SubsetElementInsert(cShadowApprovalDim, pApprovalSubset, vElement, vIndex);
+			Else;
+				ProcessError;
+			EndIf;
+		
+			vIndex = vIndex + 1;
+		End;
+	EndIf;
+
+EndIf;
+#endregion

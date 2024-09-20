@@ -1,0 +1,5 @@
+{
+	"@type":"Subset",
+	"Name":"Historical",
+	"Expression":"{TM1FILTERBYPATTERN( {TM1SUBSETALL( [CONS_t_Month] )}, \"H*\")}"
+}

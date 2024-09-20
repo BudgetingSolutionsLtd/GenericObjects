@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_ProfitandLoss",
+	"Hierarchies@Code.links":
+	[
+		"CONS_ProfitandLoss.hierarchies/CONS_ProfitandLoss.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_ProfitandLoss')/Hierarchies('CONS_ProfitandLoss')"
+	}
+}

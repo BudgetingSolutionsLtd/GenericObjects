@@ -1,0 +1,25 @@
+{
+	"@type":"Subset",
+	"Name":"CashandVAT",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')/Elements('Amount')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')/Elements('Cash')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')/Elements('Calculated Cash')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')/Elements('Adjust Cash')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')/Elements('VAT on Cash')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CashPayment')/Hierarchies('BSCF_m_CashPayment')/Elements('VAT Total')"
+		}
+	]
+}

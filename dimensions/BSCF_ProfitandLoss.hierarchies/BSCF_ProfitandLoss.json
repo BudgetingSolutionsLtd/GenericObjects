@@ -1,0 +1,364 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_ProfitandLoss",
+	"Elements":
+	[
+		{
+			"Name":"Salaries",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Benefits",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Employment Taxes",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Rent & Rates",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Light & Heat",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Telephone",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Travel",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Occupancy",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Office Stationery",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Software",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Depreciation & Amortisation",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Management Charges",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Expenses",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Bad Debts",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Loan Interest",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Expenses",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Gain on Disposal of Assets",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Inter-Co Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Other Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"RETAINED EARNINGS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"PROFIT AFTER TAX",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"PROFIT BEFORE INTEREST & TAX",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"GROSS MARGIN",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"External Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Factored Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Prepaid Income",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Sales Local Materials",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Sales Foreign Materials",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Sales Other",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cost of Sales Factored",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Commissions",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"3rd Party Consultancy Costs",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Store Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Online Sales",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"TOTAL OVERHEADS",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"TOTAL OTHER INCOME",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Interest",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Tax",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Dividends",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"RETAINED EARNINGS",
+			"ComponentName":"PROFIT AFTER TAX",
+			"Weight":1
+		},
+		{
+			"ParentName":"RETAINED EARNINGS",
+			"ComponentName":"Dividends",
+			"Weight":1
+		},
+		{
+			"ParentName":"PROFIT AFTER TAX",
+			"ComponentName":"PROFIT BEFORE INTEREST & TAX",
+			"Weight":1
+		},
+		{
+			"ParentName":"PROFIT AFTER TAX",
+			"ComponentName":"Interest",
+			"Weight":1
+		},
+		{
+			"ParentName":"PROFIT AFTER TAX",
+			"ComponentName":"Tax",
+			"Weight":1
+		},
+		{
+			"ParentName":"PROFIT BEFORE INTEREST & TAX",
+			"ComponentName":"GROSS MARGIN",
+			"Weight":1
+		},
+		{
+			"ParentName":"PROFIT BEFORE INTEREST & TAX",
+			"ComponentName":"TOTAL OVERHEADS",
+			"Weight":1
+		},
+		{
+			"ParentName":"PROFIT BEFORE INTEREST & TAX",
+			"ComponentName":"TOTAL OTHER INCOME",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"External Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Factored Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Prepaid Income",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Cost of Sales Local Materials",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Cost of Sales Foreign Materials",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Cost of Sales Other",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Cost of Sales Factored",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Commissions",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"3rd Party Consultancy Costs",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Store Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"GROSS MARGIN",
+			"ComponentName":"Online Sales",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Salaries",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Benefits",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Employment Taxes",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Rent & Rates",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Light & Heat",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Telephone",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Travel",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Occupancy",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Office Stationery",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Software",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Depreciation & Amortisation",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Management Charges",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Other Expenses",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Bad Debts",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Loan Interest",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OVERHEADS",
+			"ComponentName":"Inter-Co Expenses",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OTHER INCOME",
+			"ComponentName":"Gain on Disposal of Assets",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OTHER INCOME",
+			"ComponentName":"Inter-Co Income",
+			"Weight":1
+		},
+		{
+			"ParentName":"TOTAL OTHER INCOME",
+			"ComponentName":"Other Income",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_ProfitandLoss.subsets/__BACKUP_{09d935aa-8f57-40c1-9619-cdc6c6f3f20c}.json",
+		"BSCF_ProfitandLoss.subsets/__BACKUP_{0d435cb6-fb37-438b-838f-f9d9c52257db}.json",
+		"BSCF_ProfitandLoss.subsets/AllLeaf.json",
+		"BSCF_ProfitandLoss.subsets/All Leaf and Total.json",
+		"BSCF_ProfitandLoss.subsets/PL Format.json"
+	]
+}

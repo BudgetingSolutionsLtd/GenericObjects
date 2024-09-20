@@ -1,0 +1,104 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_m_DataChecks",
+	"Elements":
+	[
+		{
+			"Name":"Consolidated Check P&L Reserves",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Consolidated Profit and Loss",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consolidated Profit and Loss YTD",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Consolidated Balance Sheet Reserves",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Check P&L Reserves",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"LC Profit and Loss",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Profit and Loss YTD",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"LC Balance Sheet Reserves",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"FX Reserves Variance",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Central Profit and Loss",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Central Profit and Loss YTD",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Central Balance Sheet Reserves",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Consolidated Check P&L Reserves",
+			"ComponentName":"Consolidated Profit and Loss",
+			"Weight":0
+		},
+		{
+			"ParentName":"Consolidated Check P&L Reserves",
+			"ComponentName":"Consolidated Profit and Loss YTD",
+			"Weight":1
+		},
+		{
+			"ParentName":"Consolidated Check P&L Reserves",
+			"ComponentName":"Consolidated Balance Sheet Reserves",
+			"Weight":1
+		},
+		{
+			"ParentName":"LC Check P&L Reserves",
+			"ComponentName":"LC Profit and Loss",
+			"Weight":0
+		},
+		{
+			"ParentName":"LC Check P&L Reserves",
+			"ComponentName":"LC Profit and Loss YTD",
+			"Weight":1
+		},
+		{
+			"ParentName":"LC Check P&L Reserves",
+			"ComponentName":"LC Balance Sheet Reserves",
+			"Weight":1
+		},
+		{
+			"ParentName":"FX Reserves Variance",
+			"ComponentName":"Central Profit and Loss",
+			"Weight":0
+		},
+		{
+			"ParentName":"FX Reserves Variance",
+			"ComponentName":"Central Profit and Loss YTD",
+			"Weight":1
+		},
+		{
+			"ParentName":"FX Reserves Variance",
+			"ComponentName":"Central Balance Sheet Reserves",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

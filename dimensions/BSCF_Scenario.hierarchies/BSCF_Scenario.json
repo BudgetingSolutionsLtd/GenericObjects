@@ -1,0 +1,36 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_Scenario",
+	"Elements":
+	[
+		{
+			"Name":"Actual",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Budget",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Act vs Bud",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Scenario1",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Scenario2",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Scenario 3",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Actual TB",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

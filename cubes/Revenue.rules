@@ -1,0 +1,7 @@
+
+
+
+['Revenue'] =N:['No Customers'] * ['Average Spend'];
+
+
+['Average Spend'] =C:['Revenue'] \ ['No Customers'];

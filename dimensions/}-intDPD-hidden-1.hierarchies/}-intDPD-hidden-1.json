@@ -1,0 +1,15 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}-intDPD-hidden-1",
+	"Elements":
+	[
+		{
+			"Name":"hidden",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"}-intDPD-hidden-1.subsets/All Members.json"
+	]
+}

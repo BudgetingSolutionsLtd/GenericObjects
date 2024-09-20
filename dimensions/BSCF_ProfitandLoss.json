@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_ProfitandLoss",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_ProfitandLoss.hierarchies/BSCF_ProfitandLoss.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_ProfitandLoss')/Hierarchies('BSCF_ProfitandLoss')"
+	}
+}

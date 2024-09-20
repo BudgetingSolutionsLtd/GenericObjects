@@ -1,0 +1,124 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+cControlPrefix = '}';
+EndIf;
+
+
+#***Create error cube and dimensions
+vCube=cControlPrefix | 'tp_process_errors';
+vGuidDim =cControlPrefix |  'tp_process_guids';
+vMeasureDim =cControlPrefix | 'tp_process_error_measures';
+
+if (CubeExists(vCube)=1);
+CubeDestroy(vCube);
+endif;
+
+if (DimensionExists(vGuidDim) = 1);
+DimensionDestroy(vGuidDim);
+endif;
+
+if (DimensionExists(vMeasureDim)=1);
+DimensionDestroy(vMeasureDim);
+endif;
+
+DimensionCreate(vGuidDim);
+DimensionCreate(vMeasureDim);
+
+#add meatures to error measure dimension
+DimensionElementInsert(vMeasureDim, '', 'UserName','S');
+DimensionElementInsert(vMeasureDim, '', 'SourceProcess','S');
+DimensionElementInsert(vMeasureDim, '', 'Status','S');
+DimensionElementInsert(vMeasureDim, '', 'StartTime','S');
+DimensionElementInsert(vMeasureDim, '', 'ClientStartTime','S');
+DimensionElementInsert(vMeasureDim, '', 'EndTime','S');
+DimensionElementInsert(vMeasureDim, '', 'PrologFile','S');
+DimensionElementInsert(vMeasureDim, '', 'MetadataFile','S');
+DimensionElementInsert(vMeasureDim, '', 'DataFile','S');
+DimensionElementInsert(vMeasureDim, '', 'EpilogFile','S');
+DimensionElementInsert(vMeasureDim, '', 'ErrorCode','S');
+DimensionElementInsert(vMeasureDim, '', 'ErrorDetails','S');
+
+DimensionElementInsert(vGuidDim, '', 'All', 'S');
+CubeCreate(vCube, vGuidDim, vMeasureDim);
+CubeSetLogChanges(vCube, 1);
+
+#***Update tp_config dimension
+
+#***Create tp_cofig dimension if it doesn't exist
+vConfigDim =cControlPrefix | 'tp_config';
+if (DimensionExists(vConfigDim)=0);
+DimensionCreate(vConfigDim);
+AttrInsert(vConfigDim, '', 'Numeric Value', 'N');
+AttrInsert(vConfigDim, '', 'String Value', 'S');
+endif;
+
+#***add attribute to set number of days that errors expire
+vElem = 'TI Message Expiration (Days)';
+if (DIMIX(vConfigDim, vElem) = 0);
+DimensionElementInsert(vConfigDim, '', vElem, 'S');
+endif;
+
+#***add attribute: whether we will generate log file or not
+vElem = 'Generate TI Log';
+if (DIMIX(vConfigDim, vElem) = 0);
+DimensionElementInsert(vConfigDim, '', vElem, 'S');
+endif;
+
+#***set log directory
+vElem = 'Log Directory';
+if (DIMIX(vConfigDim, vElem) = 0);
+DimensionElementInsert(vConfigDim, '', vElem, 'S');
+endif;
+
+
+
+
+#endregion
+#region Epilog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+#***Set initial default value for "errors expiration days"
+vElem = 'TI Message Expiration (Days)';
+if (DIMIX(vConfigDim, vElem) = 1);
+AttrPutN(3, vConfigDim, vElem, 'NumericValue');
+endif;
+
+#***Set initial default value for "Generate TI Log"
+vElem = 'Generate TI Log';
+if (DIMIX(vConfigDim, vElem) = 1);
+AttrPutS('Y', vConfigDim, vElem, 'StringValue');
+endif;
+#endregion

@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"}tp_application_jobs",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}tp_jobs')"
+		},
+		{
+			"@id":"Dimensions('}tp_job_info')"
+		}
+	],
+	"Views@Code.links":[]
+}

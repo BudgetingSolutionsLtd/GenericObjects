@@ -1,0 +1,57 @@
+#region Prolog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+cControlPrefix = '}';
+EndIf;
+
+
+#*** get the number of days for expiration from the control cube (attribute)
+vConfigDim =cControlPrefix | 'tp_config';
+vDaysExpire = AttrN ( vConfigDim, 'TI Message Expiration (Days)', 'NumericValue' );
+
+#*** get today's date
+vToday = TODAY(1);
+#get the day number for today
+vTodayDay = DAYNO( vToday );
+
+#*** get all children from the 'All' consolidation in the tp_process_guids dimension
+vDim =cControlPrefix | 'tp_process_guids';
+vAll = 'All';
+vElem = '';
+vElem1 = '';
+
+#*** delete date elements that are expired and all their children elements
+vLooper = ELCOMPN ( vDim, vAll );
+
+WHILE ( vLooper > 0 );
+  vElem = ELCOMP ( vDim, vAll, vLooper );
+  vElemDay = DAYNO( vElem );
+  IF ( vTodayDay - vElemDay >= vDaysExpire );
+    vLooper1 = ELCOMPN ( vDim, vElem );
+    WHILE ( vLooper1 > 0 );
+      vElem1 = ELCOMP ( vDim, vElem, vLooper1 );
+      DimensionElementDelete ( vDim, vElem1 );
+      vLooper1 = vLooper1 - 1;
+    END;
+  DimensionElementDelete ( vDim, vElem );
+  ENDIF;
+  vLooper = vLooper - 1;
+END;
+#endregion

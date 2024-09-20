@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_process_error_measures",
+	"Hierarchies@Code.links":
+	[
+		"}tp_process_error_measures.hierarchies/}tp_process_error_measures.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_process_error_measures')/Hierarchies('}tp_process_error_measures')"
+	}
+}

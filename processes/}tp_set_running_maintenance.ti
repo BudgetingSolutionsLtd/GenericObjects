@@ -1,0 +1,30 @@
+#region Prolog
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 0);
+	ProcessError;
+EndIf;
+
+cServerMaintenanceRunning = 'ApplicationMaintenanceRunning';
+If (pValue @= 'Y');
+	vRunningMaintenanceMode = ATTRS(cConfigDim, cServerMaintenanceRunning, 'String Value');
+	If (vRunningMaintenanceMode @= 'Y');
+		vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+				'pGuid', pExecutionId, 
+				'pProcess', 'tp_set_running_maintenance', 
+				'pErrorCode', 'TI_ATTR_ALREADY_SET',
+				'pErrorDetails', 'ApplicationMaintenanceRunning',
+				'pControl', pControl);
+		ProcessError;
+	EndIf;
+EndIf;
+	
+
+AttrPutS(pValue, cConfigDim, cServerMaintenanceRunning, 'StringValue');
+
+
+#endregion

@@ -1,0 +1,176 @@
+#region Prolog
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+cControlPrefix = '}';
+
+#*** Log File Name
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names', 'pExecutionId', pExecutionId,
+'pProcess', cTM1Process, 'pControl', 'Y');
+If (vReturnValue <> ProcessExitNormal());
+	ProcessError;
+EndIf;
+Endif;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+#***
+cTaskNavDimensions = '}tp_task_navigation_dims}' | pAppId;
+cTaskNavigationCube = '}tp_task_navigations}' | pAppId;
+
+#***
+IF (pControlDim @='');
+cVersionDim = ATTRS('}tp_applications', pAppId, 'VersionDimension');
+Else;
+cVersionDim = pControlDim;
+Endif;
+
+IF (pControlWritableSlices @='');
+cVersionSlicesWrite =ATTRS('}tp_applications', pAppId, 'VersionSlicesWrite');
+Else;
+cVersionSlicesWrite = pControlWritableSlices;
+Endif;
+
+#***
+
+If (cGenerateLog @= 'Y');
+	cLogCubeText = 'Reserve slice pAppId=' | pAppId | 'pCube= ' |pCube |  '|pNode=' | pNode | '|pApprovalDim=' | pApprovalDim | '|pReserve=' | pReserve | '|User=' | pUser;
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+EndIf;
+
+versionSeparater = '|';
+vPosVersion = 0;
+vStringToScan = cVersionSlicesWrite;
+IF (cVersionSlicesWrite @<> '');
+	vPosVersion = SCAN(versionSeparater, vStringToScan);
+Else;
+	vPosVersion = 1;
+Endif;
+
+While (vPosVersion >0);
+	vVersionSlice  = SUBST(vStringToScan, 1, vPosVersion-1);
+	vStringToScan = SUBST(vStringToScan, vPosVersion +1, LONG(vStringToScan)-vPosVersion);
+	vPosVersion = SCAN(versionSeparater, vStringToScan);
+	cCubeAddress = '';
+	addConcatSymbol = 0;
+
+	dimensionIndex = 1;
+	While (dimensionIndex > 0 ); 
+		cCubeDimensionName = TABDIM(pCube, dimensionIndex);
+		If (cCubeDimensionName @= '');
+			dimensionIndex = -1;
+		Else;
+			If (addConcatSymbol > 0);
+				cCubeAddress = cCubeAddress | '|';
+			Else;
+				addConcatSymbol = 1;
+			EndIf; 
+
+			IF (cCubeDimensionName @=cVersionDim & vVersionSlice @<> '');
+				IF (DIMIX(cVersionDim, vVersionSlice)=0);
+					vReturnValue = ExecuteProcess('}tp_error_update_error_cube',
+						'pGuid', pExecutionId,
+						'pProcess', cTM1Process,
+						'pErrorCode', 'TI_WRITABLE_SLICE_NOT_EXISTS',
+						'pErrorDetails', cVersionDim  | '.' | vVersionSlice | ', ' |  pAppId,
+						'pControl', 'Y');
+	
+					ProcessError;
+				Endif;
+				cCubeAddress = cCubeAddress | vVersionSlice; 
+			Endif;
+
+			vTotalNavDimensions = DIMSIZ(cTaskNavDimensions);
+			vNavLooper = 1;
+			While (vNavLooper <= vTotalNavDimensions);
+				vNavDimension = DIMNM(cTaskNavDimensions, vNavLooper);
+				IF (cCubeDimensionName @= vNavDimension & pNode @<> '');
+					vNavElem = CellGetS(cTaskNavigationCube, pNode, vNavDimension, 'NavigationElement');
+					IF (vNavElem @<>'');
+						cCubeAddress = cCubeAddress | vNavElem;
+					Endif;
+				Endif;
+
+				vNavLooper = vNavLooper +1;
+			End;
+
+			#IF (pApprovalDim @<> '');
+			#	IF (cCubeDimensionName @= pApprovalDim & pNode @<> '');
+			#		cCubeAddress = cCubeAddress | pNode;
+			#	Endif;
+			#Endif;
+
+		EndIf;
+			
+		If (cGenerateLog @= 'Y');
+			cLogCubeText = 'Reserve address = ' | cCubeAddress;
+				TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+		EndIf;
+		dimensionIndex = dimensionIndex + 1;
+	End;
+
+	If (pReserve @= 'Y');
+
+		If (cGenerateLog @= 'Y');
+			cLogCubeText = 'Calling CubeDataReservationAcquire(' | pCube | ',' | pUser | ',' | cCubeAddress | ')';
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+		EndIf;
+                        	IF (DIMIX('}Clients', pUser) >0);
+			CubeDataReservationAcquire(pCube, pUser, 0, cCubeAddress);
+                        	EndIf;
+
+	Else;
+		If (cGenerateLog @= 'Y');
+			cLogCubeText = 'Calling CubeDataReservationRelease(' | pCube | ',' | pUser | ',' | cCubeAddress | ')';
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), cLogCubeText);
+		EndIf;
+
+                        	IF (DIMIX('}Clients', pUser) >0);
+			CubeDataReservationRelease(pCube, pUser, cCubeAddress);
+                        	EndIf;
+		
+		IF (pUser @= '');
+			vTotalClients = DIMSIZ('}Clients');
+			vLooperClient = 1;
+			While (vLooperClient <= vTotalClients);
+				vClient = DIMNM('}Clients', vLooperClient);
+				CubeDataReservationReleaseAll(pCube,vClient,cCubeAddress);
+				vLooperClient = vLooperClient +1;
+			End;
+		Endif;
+	EndIf;
+	
+End;
+
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'The end has been reached.');
+EndIf;
+#endregion

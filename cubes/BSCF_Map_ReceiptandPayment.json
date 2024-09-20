@@ -1,0 +1,23 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_Map_ReceiptandPayment",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_ReceiptandPayment')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_AccountMapping')"
+		}
+	],
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('BSCF_m_AccountMapping')"
+	},
+	"Views@Code.links":
+	[
+		"BSCF_Map_ReceiptandPayment.views/All.json",
+		"BSCF_Map_ReceiptandPayment.views/BSCF_Map_ReceiptandPayment.json",
+		"BSCF_Map_ReceiptandPayment.views/Receipt and Payment Mapping.json"
+	]
+}

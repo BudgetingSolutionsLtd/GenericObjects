@@ -1,0 +1,24 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_m_AccountAssumptions",
+	"Elements":
+	[
+		{
+			"Name":"Payment Profile",
+			"Type":"String"
+		},
+		{
+			"Name":"Days Outstanding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"VAT Recognition",
+			"Type":"String"
+		},
+		{
+			"Name":"VAT Rate",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

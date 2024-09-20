@@ -1,0 +1,32 @@
+{
+	"@type":"Process",
+	"Name":"}tp_util_convert_dynamic_subset_to_static",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_util_convert_dynamic_subset_to_static.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pDim",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pSubset",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

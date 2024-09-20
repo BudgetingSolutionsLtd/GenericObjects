@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_intermediate_security_measures",
+	"Hierarchies@Code.links":
+	[
+		"}tp_intermediate_security_measures.hierarchies/}tp_intermediate_security_measures.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_intermediate_security_measures')/Hierarchies('}tp_intermediate_security_measures')"
+	}
+}

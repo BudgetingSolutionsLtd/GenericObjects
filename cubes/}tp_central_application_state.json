@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"}tp_central_application_state",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}tp_applications')"
+		},
+		{
+			"@id":"Dimensions('}tp_node_info')"
+		}
+	],
+	"Views@Code.links":[]
+}

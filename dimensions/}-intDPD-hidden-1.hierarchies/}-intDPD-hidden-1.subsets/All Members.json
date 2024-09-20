@@ -1,0 +1,10 @@
+{
+	"@type":"Subset",
+	"Name":"All Members",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('}-intDPD-hidden-1')/Hierarchies('}-intDPD-hidden-1')/Elements('hidden')"
+		}
+	]
+}

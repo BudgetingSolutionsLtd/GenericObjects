@@ -1,0 +1,39 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_ReceiptandPayment",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('BSCF_t_Month')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ReceiptandPayment')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_CashPayment')"
+		}
+	],
+	"Rules@Code.link":"BSCF_ReceiptandPayment.rules",
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('BSCF_m_CashPayment')"
+	},
+	"Views@Code.links":
+	[
+		"BSCF_ReceiptandPayment.views/Actual Cash.json",
+		"BSCF_ReceiptandPayment.views/Adjust Cash.json",
+		"BSCF_ReceiptandPayment.views/All.json",
+		"BSCF_ReceiptandPayment.views/BSCF_ReceiptandPayment.json",
+		"BSCF_ReceiptandPayment.views/Cash Summary.json",
+		"BSCF_ReceiptandPayment.views/ChartView.json",
+		"BSCF_ReceiptandPayment.views/Default.json",
+		"BSCF_ReceiptandPayment.views/Receipts and Payments.json",
+		"BSCF_ReceiptandPayment.views/walstead.json"
+	]
+}

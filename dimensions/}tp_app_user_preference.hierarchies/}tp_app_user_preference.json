@@ -1,0 +1,12 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}tp_app_user_preference",
+	"Elements":
+	[
+		{
+			"Name":"WorkflowLayout",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

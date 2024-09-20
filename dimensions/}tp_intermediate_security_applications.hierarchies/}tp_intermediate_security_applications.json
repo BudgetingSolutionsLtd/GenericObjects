@@ -1,0 +1,24 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}tp_intermediate_security_applications",
+	"Elements":
+	[
+		{
+			"Name":"all_applications",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"{90fa37f6-4083-4641-8a20-81e123ce6856}",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"all_applications",
+			"ComponentName":"{90fa37f6-4083-4641-8a20-81e123ce6856}",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":[]
+}

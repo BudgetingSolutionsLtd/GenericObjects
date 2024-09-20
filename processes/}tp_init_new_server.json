@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"}tp_init_new_server",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_init_new_server.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pAdminPassword",
+			"Prompt":"",
+			"Value":"apple",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

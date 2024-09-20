@@ -1,0 +1,36 @@
+{
+	"@type":"Hierarchy",
+	"Name":"CONS_m_Journals",
+	"Elements":
+	[
+		{
+			"Name":"Description",
+			"Type":"String"
+		},
+		{
+			"Name":"Period",
+			"Type":"String"
+		},
+		{
+			"Name":"Amount",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Profit and Loss Account",
+			"Type":"String"
+		},
+		{
+			"Name":"Balance Sheet Account",
+			"Type":"String"
+		},
+		{
+			"Name":"Reserves Amount",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Check Posting",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

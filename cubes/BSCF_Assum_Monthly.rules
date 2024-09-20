@@ -1,0 +1,5 @@
+#Region System
+FEEDSTRINGS;
+SKIPCHECK;
+#EndRegion
+['Zero VAT']=N:0;

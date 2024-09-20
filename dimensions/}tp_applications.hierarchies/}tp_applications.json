@@ -1,0 +1,15 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}tp_applications",
+	"Elements":
+	[
+		{
+			"Name":"{90fa37f6-4083-4641-8a20-81e123ce6856}",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"}tp_applications.subsets/Default.json"
+	]
+}

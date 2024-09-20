@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"}tp_update_application",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}tp_update_application.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pExecutionId",
+			"Prompt":"",
+			"Value":"None",
+			"Type":"String"
+		},
+		{
+			"Name":"pAppId",
+			"Prompt":"",
+			"Value":"MyApp",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

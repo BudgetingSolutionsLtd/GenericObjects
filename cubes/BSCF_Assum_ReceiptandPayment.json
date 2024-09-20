@@ -1,0 +1,29 @@
+{
+	"@type":"Cube",
+	"Name":"BSCF_Assum_ReceiptandPayment",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('BSCF_a_Company')"
+		},
+		{
+			"@id":"Dimensions('BSCF_Scenario')"
+		},
+		{
+			"@id":"Dimensions('BSCF_ReceiptandPayment')"
+		},
+		{
+			"@id":"Dimensions('BSCF_m_AccountAssumptions')"
+		}
+	],
+	"MeasuresDimension":
+	{
+		"@id":"Dimensions('BSCF_m_AccountAssumptions')"
+	},
+	"Views@Code.links":
+	[
+		"BSCF_Assum_ReceiptandPayment.views/All.json",
+		"BSCF_Assum_ReceiptandPayment.views/BSCF_Assum_ReceiptandPayment.json",
+		"BSCF_Assum_ReceiptandPayment.views/Rec and Pay Assumps.json"
+	]
+}

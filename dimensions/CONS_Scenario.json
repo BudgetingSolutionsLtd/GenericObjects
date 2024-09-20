@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_Scenario",
+	"Hierarchies@Code.links":
+	[
+		"CONS_Scenario.hierarchies/CONS_Scenario.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_Scenario')/Hierarchies('CONS_Scenario')"
+	}
+}

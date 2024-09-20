@@ -1,0 +1,16 @@
+{
+	"@type":"Subset",
+	"Name":"Stock",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Local Stock')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Foreign Stock')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Other Stock')"
+		}
+	]
+}

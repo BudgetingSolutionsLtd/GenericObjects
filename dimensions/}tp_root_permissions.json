@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}tp_root_permissions",
+	"Hierarchies@Code.links":
+	[
+		"}tp_root_permissions.hierarchies/}tp_root_permissions.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}tp_root_permissions')/Hierarchies('}tp_root_permissions')"
+	}
+}

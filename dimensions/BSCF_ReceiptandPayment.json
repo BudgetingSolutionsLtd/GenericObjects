@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_ReceiptandPayment",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_ReceiptandPayment.hierarchies/BSCF_ReceiptandPayment.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_ReceiptandPayment')/Hierarchies('BSCF_ReceiptandPayment')"
+	}
+}

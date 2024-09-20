@@ -1,0 +1,161 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+#*** Log File Name
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names', 'pExecutionId', pExecutionId,
+		'pProcess', cTM1Process, 'pControl', pControl);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+Endif;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+
+#*** Log Parameters
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Parameters:',
+		pExecutionId, pAppId, pUserName, pOldUserName, pControl);
+EndIf;
+
+#***
+
+cApprovalDim =  ATTRS('}tp_applications', pAppId,  'ApprovalDimension');
+cApprovalSubset =ATTRS('}tp_applications', pAppId,  'ApprovalSubset');
+cIsActive =ATTRS('}tp_applications', pAppId, 'IsActive');
+cShadowApprovalDim =ATTRS('}tp_applications', pAppId, 'ApprovalShadowDimension');
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, 'get application attributes', cApprovalDim, cApprovalSubset, cIsActive,cShadowApprovalDim );
+EndIf;
+
+#***
+If (cShadowApprovalDim @= '');
+	cStateCube = cControlPrefix | 'tp_central_application_state';
+Else;
+	cStateCube = cControlPrefix | 'tp_application_state}' | pAppId;
+EndIf;
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, 'Check state cube: ' | cStateCube);
+EndIf;
+
+If (CubeExists(cStateCube) = 0);
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+		'pGuid', pExecutionId, 
+		'pProcess', cTM1Process, 
+		'pErrorCode', 'TI_CUBE_NOT_EXIST',
+		'pErrorDetails', cStateCube,
+		'pControl', pControl);
+	
+	ProcessError;
+EndIf;
+
+#*** 
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Update user name in state cube');
+EndIf;
+
+cCurrentOwner = 'CurrentOwner';
+cCurrentOwnerId = 'CurrentOwnerId';
+cStateChangeUser = 'StateChangeUser';
+cDataChangeUser = 'DataChangeUser';
+
+If (cShadowApprovalDim @= '');
+	vOwnerValue = CellGetS(cStateCube, pAppId, cCurrentOwner);
+	vOwnerIdValue = CellGetS(cStateCube, pAppId, cCurrentOwnerId);
+	vStateChangeUserValue = CellGetS(cStateCube, pAppId, cStateChangeUser);
+	vDataChangeUserValue = CellGetS(cStateCube, pAppId, cDataChangeUser);
+
+	If (vOwnerIdValue @= TM1User);
+		If (vOwnerValue @<> pUserName);
+			CellPutS(pUserName, cStateCube, pAppId, cCurrentOwner);
+		EndIf;
+	EndIf;
+
+	If (vStateChangeUserValue @= pOldUserName);
+		CellPutS(pUserName, cStateCube, pAppId, cStateChangeUser);
+	EndIf;
+
+	If (vDataChangeUserValue @= pOldUserName);
+		CellPutS(pUserName, cStateCube, pAppId, cDataChangeUser);
+	EndIf;
+Else;
+	cApprovalDimSize = DIMSIZ(cShadowApprovalDim);
+	vIndex = 1;
+	While (vIndex <= cApprovalDimSize);
+		vNodePName = DIMNM(cShadowApprovalDim, vIndex);
+		
+		vOwnerValue = CellGetS(cStateCube, vNodePName, cCurrentOwner);
+		vOwnerIdValue = CellGetS(cStateCube, vNodePName, cCurrentOwnerId);
+		vStateChangeUserValue = CellGetS(cStateCube, vNodePName, cStateChangeUser);
+		vDataChangeUserValue = CellGetS(cStateCube, vNodePName, cDataChangeUser);
+	
+		If (vOwnerIdValue @= TM1User);
+			If (vOwnerValue @<> pUserName);
+				CellPutS(pUserName, cStateCube, vNodePName, cCurrentOwner);
+			EndIf;
+		EndIf;
+	
+		If (vStateChangeUserValue @= pOldUserName);
+			CellPutS(pUserName, cStateCube, vNodePName, cStateChangeUser);
+		EndIf;
+	
+		If (vDataChangeUserValue @= pOldUserName);
+			CellPutS(pUserName, cStateCube, vNodePName, cDataChangeUser);
+		EndIf;
+	
+		vIndex = vIndex + 1;
+	End;
+EndIf;
+
+#*** 
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Update user name in }Clients');
+EndIf;
+
+vDisplayUserName = ATTRS('}Clients', TM1User, '}TM1_DefaultDisplayValue');
+If (vDisplayUserName @<> pUserName);
+	AttrPutS(pUserName, '}Clients', TM1User, '}TM1_DefaultDisplayValue');
+EndIf;
+
+#endregion

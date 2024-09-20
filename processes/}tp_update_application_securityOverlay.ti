@@ -1,0 +1,137 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+#*** Log File Name
+cConfigDim = '}tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+	vReturnValue = ExecuteProcess('}tp_get_log_file_names', 'pExecutionId', pExecutionId,
+	'pProcess', cTM1Process, 'pControl', 'Y');
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+EndIf;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+#***
+
+cApprovalDim =  ATTRS('}tp_applications', pAppId,  'ApprovalDimension');
+cShadowApprovalDim = ATTRS('}tp_applications', pAppId, 'ApprovalShadowDimension');
+cControlDim = ATTRS('}tp_applications', pAppId,  'VersionDimension');
+cWritableSlicesOld = ATTRS('}tp_applications', pAppId,  'VersionSlicesWriteOld');
+cWritableSlicesNew = ATTRS('}tp_applications', pAppId,  'VersionSlicesWrite');
+cStateCube = '}tp_application_state}' | pAppId;
+cNodeInfoDim = '}tp_node_info';
+cStateField = 'State';
+cOwnerIdField = 'CurrentOwnerId';
+cOwnershipNodeField = 'TakeOwnershipNode';
+vSingleQ = '''';
+
+IF (cWritableSlicesOld @<> cWritableSlicesNew);
+	vMdx = '{FILTER([' | cShadowApprovalDim | '].MEMBERS, [' | cStateCube | '].[' | cNodeInfoDim | '].[' | cStateField | '] =' | vSingleQ | '4' | vSingleQ | ')}';
+	vSubsetLockedNodes = 'tp_temp_locked_nodes';
+	IF (SubsetExists(cShadowApprovalDim, vSubsetLockedNodes) =1);
+		SubsetDestroy(cShadowApprovalDim,vSubsetLockedNodes);
+	Endif;
+
+	SubsetCreateByMdx(vSubsetLockedNodes, vMdx, cShadowApprovalDim);
+
+	vTotalLockedNodes = SubsetGetSize(cShadowApprovalDim,vSubsetLockedNodes );
+
+	vLooper =1 ;
+
+	While (vLooper <= vTotalLockedNodes);
+		vLockedNode = SubsetGetElementName(cShadowApprovalDim, vSubsetLockedNodes, vLooper);
+
+		#now update security overlay cube
+		#first remove all locks on old slices
+		#then apply locks on new slices
+		vReturnValue = ExecuteProcess('}tp_workflow_util_lock_cube_slices', 'pExecutionId', pExecutionId, 
+			'pAppId', pAppId, 'pCube', pCube, 'pApprovalDim', cApprovalDIM, 'pNode', vLockedNode, 
+			'pLock', 'N', 'pControlDim', cControlDim, 'pControlWritableSlices',cWritableSlicesOld );
+		If (vReturnValue <> ProcessExitNormal());
+			ProcessError;
+		EndIf;
+
+		If (cGenerateLog @= 'Y');
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Lock removed on node: ' | vLockedNode | ', cube: ' | pCube);
+		EndIf;
+
+		vReturnValue = ExecuteProcess('}tp_workflow_util_lock_cube_slices', 'pExecutionId', pExecutionId, 
+			'pAppId', pAppId, 'pCube', pCube, 'pApprovalDim', cApprovalDIM, 'pNode', vLockedNode, 
+			'pLock', 'Y', 'pControlDim', cControlDim, 'pControlWritableSlices',cWritableSlicesNew );
+		If (vReturnValue <> ProcessExitNormal());
+			ProcessError;
+		EndIf;
+		If (cGenerateLog @= 'Y');
+			TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Lock re-acquired on node: ' | vLockedNode | ', cube:' | pCube);
+		EndIf;
+
+
+		vLooper = vLooper +1;
+	End;
+
+Endif;
+#***
+If (cGenerateLog @= 'Y');
+TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'The end has been reached.');
+EndIf;
+#endregion
+#region Epilog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+#*** Log File Name
+cTM1Log = cEpilogLog;
+
+#***
+IF (SubsetExists(cShadowApprovalDim, vSubsetLockedNodes) =1);
+SubsetDestroy(cShadowApprovalDim,vSubsetLockedNodes);
+Endif;
+
+#*** No error
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'The end has been reached.');
+EndIf;
+#endregion

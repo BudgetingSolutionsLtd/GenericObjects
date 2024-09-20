@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"CONS_CapitalandReserves",
+	"Hierarchies@Code.links":
+	[
+		"CONS_CapitalandReserves.hierarchies/CONS_CapitalandReserves.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('CONS_CapitalandReserves')/Hierarchies('CONS_CapitalandReserves')"
+	}
+}

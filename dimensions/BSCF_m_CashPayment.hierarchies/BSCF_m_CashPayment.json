@@ -1,0 +1,97 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_m_CashPayment",
+	"Elements":
+	[
+		{
+			"Name":"Cash Report",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Amount inc VAT on Account",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Amount",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Balance Outstanding",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Cash",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"Calculated Cash",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Adjust Cash",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"VAT Total",
+			"Type":"Consolidated"
+		},
+		{
+			"Name":"VAT on Account",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"VAT on Cash",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Petty Cash Account",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Treasury Account",
+			"Type":"Numeric"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Amount inc VAT on Account",
+			"ComponentName":"Amount",
+			"Weight":1
+		},
+		{
+			"ParentName":"Amount inc VAT on Account",
+			"ComponentName":"VAT on Account",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cash",
+			"ComponentName":"Calculated Cash",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cash",
+			"ComponentName":"Adjust Cash",
+			"Weight":1
+		},
+		{
+			"ParentName":"Cash",
+			"ComponentName":"VAT on Cash",
+			"Weight":1
+		},
+		{
+			"ParentName":"VAT Total",
+			"ComponentName":"VAT on Account",
+			"Weight":1
+		},
+		{
+			"ParentName":"VAT Total",
+			"ComponentName":"VAT on Cash",
+			"Weight":1
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_m_CashPayment.subsets/CashandVAT.json"
+	]
+}

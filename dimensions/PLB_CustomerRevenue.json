@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"PLB_CustomerRevenue",
+	"Hierarchies@Code.links":
+	[
+		"PLB_CustomerRevenue.hierarchies/PLB_CustomerRevenue.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('PLB_CustomerRevenue')/Hierarchies('PLB_CustomerRevenue')"
+	}
+}

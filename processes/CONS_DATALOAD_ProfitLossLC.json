@@ -1,0 +1,84 @@
+{
+	"@type":"Process",
+	"Name":"CONS_DATALOAD_ProfitLossLC",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"CONS_DATALOAD_ProfitLossLC.ti",
+	"UIData":"CubeAction=1500€DataAction=1503€CubeName=CONS_ProfitandLossConsol€CubeLogChanges=0€MeasuresDim=CONS_Scenario€MeasuresDimAction=As Is€MeasuresDimElemSortType=ByInput€MeasuresDimElemSortSense=DESCENDING€",
+	"VariablesUIData":
+	[
+		"VarType=32€ColType=825€VarDimension=CONS_ProfitandLoss€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_m_Consolidation€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_a_Company€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_t_Month€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=33€ColType=826€MeasuresElemVar=Scenario1€MeasuresElemVarType=Numeric€",
+		"VarType=33€ColType=826€MeasuresElemVar=Scenario2€MeasuresElemVarType=Numeric€",
+		"IgnoredInputVarName=V7€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V8€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V9€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V10€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V11€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V12€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V13€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V14€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V15€VarType=33€ColType=1165€",
+		"IgnoredInputVarName=V16€VarType=33€ColType=1165€"
+	],
+	"DataSource":
+	{
+		"Type":"ASCII",
+		"asciiDecimalSeparator":".",
+		"asciiDelimiterChar":"\t",
+		"asciiDelimiterType":"Character",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiThousandSeparator":",",
+		"dataSourceNameForClient":"E:\\Models\\BSCF\\Source Files\\PLFcast.txt",
+		"dataSourceNameForServer":"E:\\Models\\BSCF\\Source Files\\PLFcast.txt"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vPandL",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vConsol",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"vCo",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"VMth",
+			"Type":"String",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"VV1",
+			"Type":"Numeric",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"VV2",
+			"Type":"Numeric",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

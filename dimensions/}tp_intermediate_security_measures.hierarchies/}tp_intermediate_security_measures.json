@@ -1,0 +1,24 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}tp_intermediate_security_measures",
+	"Elements":
+	[
+		{
+			"Name":"StaticRights",
+			"Type":"String"
+		},
+		{
+			"Name":"Rights",
+			"Type":"String"
+		},
+		{
+			"Name":"WriteCount",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"ReadCount",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

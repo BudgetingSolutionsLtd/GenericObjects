@@ -1,0 +1,112 @@
+{
+	"@type":"Subset",
+	"Name":"AllLeaf",
+	"Elements":
+	[
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Fixed & Intangible Assets GBV')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Depreciation & Amortisation Balance')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Trade Debtors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Inter-Co Debtors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Prepayments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('ID Debtor')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Other Debtors < 1 Year')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Petty Cash')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Cash')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Treasury Account')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Local Stock')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Foreign Stock')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Other Stock')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Trade Creditors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Inter-Co Creditors')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Bad Debt Provisions')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('VAT liability')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Accruals')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Customer Accrued Income')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('ID Credit')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Other Creditors < 1 Year')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Interest Accrual')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Tax Accrual')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Dividend Accrual')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Investment South Sea Bubble ltd.')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Other Investments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Inter-Co Investments')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Debtors > 1 Year')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Long Term Liabilities')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Inter-Co Loans')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Share Capital')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Other Capital & Reserves')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('P&L Reserves Bfwd')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('P&L Reserves Current Year')"
+		},
+		{
+			"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')/Elements('Check Asset Gains on Disposals')"
+		}
+	]
+}

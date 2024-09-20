@@ -1,0 +1,12 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}ApplicationNames",
+	"Elements":
+	[
+		{
+			"Name":"}Control",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

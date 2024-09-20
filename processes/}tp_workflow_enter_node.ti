@@ -1,0 +1,267 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+
+#*** Log File Name
+cConfigDim = cControlPrefix | 'tp_config';
+If (DimensionExists(cConfigDim) = 1);
+	cGenerateLog = ATTRS(cConfigDim, 'Generate TI Log', 'String Value');
+Else;
+	cGenerateLog = 'N';
+EndIf;
+
+cTM1Process = GetProcessName();
+StringGlobalVariable('gPrologLog');
+StringGlobalVariable('gEpilogLog');
+StringGlobalVariable('gDataLog');
+
+IF (cGenerateLog @= 'Y' % cGenerateLog @= 'T');
+vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_log_file_names', 'pExecutionId', pExecutionId,
+'pProcess', cTM1Process, 'pControl', pControl);
+If (vReturnValue <> ProcessExitNormal());
+	ProcessError;
+EndIf;
+Endif;
+
+cPrologLog = gPrologLog;
+cEpilogLog = gEpilogLog;
+cDataLog = gDataLog;
+cTM1Log = cPrologLog;
+
+
+#*** Log Parameters
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Parameters:', pExecutionId, pTime, pAppId, pNode, pControl);
+EndIf;
+
+#***
+
+cDisplayUserName = ATTRS('}Clients', TM1User, '}TM1_DefaultDisplayValue');
+If (cDisplayUserName @= '');
+	cDisplayUserName = TM1User;
+EndIf;
+
+#*** 
+
+cApprovalDim =  ATTRS('}tp_applications', pAppId,  'ApprovalDimension');
+cApprovalSubset =ATTRS('}tp_applications', pAppId,  'ApprovalSubset');
+cIsActive =ATTRS('}tp_applications', pAppId, 'IsActive');
+cShadowApprovalDim =ATTRS('}tp_applications', pAppId, 'ApprovalShadowDimension');
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, 'get application attributes', cApprovalDim, cApprovalSubset, cIsActive,cShadowApprovalDim );
+EndIf;
+
+
+If (cIsActive @<> 'Y');
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+		'pGuid', pExecutionId, 
+		'pProcess', cTM1Process, 
+		'pErrorCode', 'TI_APP_NOT_ACTIVE',
+		'pErrorDetails', pAppId,
+		'pControl', pControl);
+	
+	ProcessError;
+EndIf;
+
+
+#***
+
+if (cShadowApprovalDim @= '');
+	cStateCube = cControlPrefix | 'tp_central_application_state';
+	cStateMember = pAppId;
+Else;
+
+	#* Check node
+	If (DIMIX(cShadowApprovalDim, pNode) = 0);
+		ProcessError;
+	EndIf;
+	
+	cStateCube = cControlPrefix | 'tp_application_state}' | pAppId;
+	cStateMember = pNode;
+EndIf;
+
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, 'Check state cube: ' | cStateCube);
+EndIf;
+
+If (CubeExists(cStateCube) = 0);
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+		'pGuid', pExecutionId, 
+		'pProcess', cTM1Process, 
+		'pErrorCode', 'TI_CUBE_NOT_EXIST',
+		'pErrorDetails', cStateCube,
+		'pControl', pControl);
+	
+	ProcessError;
+EndIf;
+
+#*** Check user view privilege
+if (cShadowApprovalDim @<> '');
+	StringGlobalVariable('gView');
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_user_permissions', 
+		'pGuid', pExecutionId, 'pApplication', pAppId, 'pNode', pNode, 'pUser', TM1User, 'pControl', pControl);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+	
+	If (gView @= 'F');
+		vReturnValue = ExecuteProcess(cControlPrefix | 'tp_error_update_error_cube', 
+			'pGuid', pExecutionId, 
+			'pProcess', cTM1Process, 
+			'pErrorCode', 'TI_NO_PERMISSION',
+			'pErrorDetails', 'VIEW' | ', ' | pNode,
+			'pControl', pControl);
+		
+		ProcessError;
+	EndIf;
+EndIf;
+
+#*** Set state viewed
+cViewed = 'Viewed';
+CellPutS('Y', cStateCube, cStateMember, cViewed);
+
+#*** Set state reviewed
+
+cLocked = '4';
+cState = 'State';
+vValue = CellGetS(cStateCube, cStateMember, cState);
+
+if (cShadowApprovalDim @<> '');
+	StringGlobalVariable('gReject');
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_get_user_permissions', 
+		'pGuid', pExecutionId, 'pApplication', pAppId, 'pNode', pNode, 'pUser', TM1User, 'pControl', pControl);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+	
+	If (vValue @= cLocked & gReject @= 'T');
+		cReviewed = 'Reviewed';
+		CellPutS('Y', cStateCube, cStateMember, cReviewed);
+	EndIf;
+EndIf;
+
+#*** Check owner
+cWorkInProgress = '2';
+cState = 'State';
+cBeingEdited = 'BeingEdited';
+cStartEditingDate = 'StartEditingDate';
+cOffline = 'Offline';
+If (cShadowApprovalDim @= '' % DTYPE(cShadowApprovalDim, pNode) @= 'N');
+	vValue = CellGetS(cStateCube, cStateMember, cState);
+	If (vValue @= cWorkInProgress);
+		cCurrentOwner = 'CurrentOwnerId';
+		cOwner = CellGetS(cStateCube, cStateMember, cCurrentOwner);
+		If (TM1User @= cOwner);
+	
+			CellPutS('Y', cStateCube, cStateMember, cBeingEdited);
+			CellPutS(pTime, cStateCube, cStateMember, cStartEditingDate);
+			
+			#*** Clear offline status
+			CellPutS('', cStateCube, cStateMember, cOffline);
+	
+		EndIf;
+	EndIf;
+ElseIf (cShadowApprovalDim @<> '');
+	
+	#*** Escape the node to ensure valid MDX
+	StringGlobalVariable('gEscapedId');
+	vReturnValue = ExecuteProcess(cControlPrefix | 'tp_util_escape_id', 
+		'pExecutionId', pExecutionId, 'pNode', pNode, 'pControl', pControl);
+	If (vReturnValue <> ProcessExitNormal());
+		ProcessError;
+	EndIf;
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'Escaped Node name: ' | gEscapedId);
+	EndIf;
+						
+	### Enter all leaf nodes under consolidation node
+	vMDX = '{INTERSECT(TM1FILTERBYLEVEL({DESCENDANTS([' | cShadowApprovalDim | '].[' | gEscapedId | ']) }, 0), TM1SUBSETTOSET([' | cShadowApprovalDim | '], "' | cApprovalSubset |'")), ['
+		| cShadowApprovalDim | '].[' | gEscapedId | ']}';
+	vSubset = 'enterNode_onConsolidation_' | pExecutionId;
+	If (SubsetExists(cShadowApprovalDim, vSubset) <> 0);
+		SubsetDestroy(cShadowApprovalDim, vSubset);
+	EndIf;
+	If (cGenerateLog @= 'Y');
+		TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'SubsetCreateByMdx(vSubset, vMDX);:', vMDX);
+	EndIf;
+	SubsetCreateByMdx(vSubset, vMDX);
+	SubsetElementInsert(cShadowApprovalDim, vSubset, pNode, 0);
+
+	vSize = SubsetGetSize(cShadowApprovalDim, vSubset);
+	looper = vSize;
+	While (looper >=1);
+		vNode = SubsetGetElementName(cShadowApprovalDim, vSubset, looper);
+
+		IF (vNode @<> pNode);
+			If (cGenerateLog @= 'Y');
+				TextOutput(cTM1Log, 'Enter descendant node ' | vNode);
+			EndIf;
+
+			vState = CellGetS(cStateCube, vNode, cState);	
+			cCurrentOwner = 'CurrentOwnerId';
+			cOwner = CellGetS(cStateCube, vNode, cCurrentOwner);
+			If (TM1User @= cOwner & vState @= cWorkInProgress);
+	
+				CellPutS('Y', cStateCube, vNode, cBeingEdited);
+				CellPutS(pTime, cStateCube, vNode, cStartEditingDate);
+			
+				#*** Clear offline status
+				CellPutS('', cStateCube, vNode, cOffline);
+			EndIf;
+		EndIf;
+		
+		looper = looper -1;
+	End;
+EndIf;
+
+#*** No error
+
+If (cGenerateLog @= 'Y');
+	TextOutput(cTM1Log, TIMST(NOW, '\Y-\m-\d \h:\i:\s'), 'The end has been reached.');
+EndIf;
+#endregion
+#region Epilog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+IF (SubsetExists(cShadowApprovalDim, vSubset) <>0);
+	SubsetDestroy(cShadowApprovalDim, vSubset);
+ENDIF;
+#endregion

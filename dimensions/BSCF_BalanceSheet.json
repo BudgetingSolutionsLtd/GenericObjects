@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSCF_BalanceSheet",
+	"Hierarchies@Code.links":
+	[
+		"BSCF_BalanceSheet.hierarchies/BSCF_BalanceSheet.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSCF_BalanceSheet')/Hierarchies('BSCF_BalanceSheet')"
+	}
+}

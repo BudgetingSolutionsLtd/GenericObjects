@@ -1,0 +1,44 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+# Make sure dimension and subset exist
+If (DimensionExists(pDim) = 0);
+ProcessError;
+EndIf;
+
+If (SubsetExists(pDim, pSubset) = 0);
+ProcessError;
+EndIf;
+ 
+If (SubsetGetSize(pDim, pSubset) = 0);
+
+#do nothing
+else;
+
+# Get the first element from subset
+cFirstElem = SubsetGetElementName(pDim, pSubset, 1);
+
+# Insert this element back to the subset at the end
+SubsetElementInsert(pDim, pSubset, cFirstElem, SubsetGetSize(pDim, pSubset) + 1);
+
+# Remove this inserted element
+SubsetElementDelete(pDim, pSubset, SubsetGetSize(pDim, pSubset));
+
+ENdIf;
+#endregion

@@ -1,0 +1,77 @@
+###Ignore historical values
+[{'Op Bal','Hist 1','Hist 2','Hist 3','Hist 4'}]=N:0;
+
+
+###Incorporate Journals
+[{'Local Jnl','Local Recurring Jnl','Consol Jnl','Consol Recurring Jnl'}]=N:DB('CONS_Alloc_JnltoPL',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,!CONS_m_Consolidation,!CONS_ProfitandLoss);
+
+['Local Recurring Jnl Cumul']=['Local Recurring Jnl']+DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,!CONS_ProfitandLoss,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'Local Recurring Jnl Cumul');
+
+['LC Journals']=['Local Recurring Jnl Cumul']+['Local Jnl'];
+
+['Consol Recurring Jnl Cumul']=['Consol Recurring Jnl']+DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,!CONS_ProfitandLoss,DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'AC Last Month'),'Consol Recurring Jnl Cumul');
+
+['Consol Journals']=['Consol Recurring Jnl Cumul']+['Consol Jnl'];
+
+
+
+### Translate into Central Currency
+['Central Currency']=N:IF(['FX Rate Override']=0,
+DB('CONS_FXRates','AVG '|DB('}ElementAttributes_CONS_a_Company',!CONS_a_Company,'Currency'),!CONS_Scenario,!CONS_t_Month),
+['FX Rate Override'])*
+['Local Currency'];
+
+
+####Consolidation Implications
+['Minority Interest','GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,0,
+DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'RETAINED EARNINGS',!CONS_t_Month,'Central Currency')*(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')-1));
+
+['Share of Associates Profit Before Tax','GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,
+(DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'PROFIT AFTER TAX',!CONS_t_Month,'Central Currency')+DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'Interest',!CONS_t_Month,'Central Currency'))
+*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')-['Share of Associates Tax','GROUP ADJUSTED'],0);
+
+['Share of Associates Tax','GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,
+DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'TAX',!CONS_t_Month,'Central Currency')
+*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding'),0);
+
+['PARENT Co',{'Dividends from Subsidiaries','Dividends from Associates \ JV'},'GROUP ADJUSTED']=N:['Central Currency'];
+
+
+['Dividends from Associates \ JV','GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,
+DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'Dividends',!CONS_t_Month,'Central Currency')
+*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding'),0);
+
+
+['Dividends','GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,0,
+DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'Dividends',!CONS_t_Month,'Central Currency')
+*(1-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')));
+
+['Dividends from Subsidiaries','GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,0,
+DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,'Dividends',!CONS_t_Month,'Central Currency')
+*DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding'));
+
+
+['GROUP ADJUSTED']=N:IF(DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Holding')<0.5,0,
+['Central Currency']);
+
+#### Eliminate Inter Co Income and Expenses
+[{'Inter-Co Expenses','Inter-Co Income'},'Inter Co Eliminations']=N:-DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,!CONS_ProfitandLoss,!CONS_t_Month,'Group Adjusted')
+-DB('CONS_ProfitandLossConsol',!CONS_a_Company,!CONS_Scenario,!CONS_ProfitandLoss,!CONS_t_Month,'Consol Journals');
+
+['Forex Difference on Inter Company','Inter Co Eliminations']=N:-['Inter-Co Expenses']-['Inter-Co Income'];
+
+###Disposal of Group Companies
+['PARENT Co','Gain on Disposal of Group Companies','Consolidation Adjustments']=N:DB('CONS_Holdings','GROUP Companies',!CONS_Scenario,!CONS_t_Month,'PC P&L on Disposal');
+
+
+['Gain on Disposal of Group Companies','Consolidation Adjustments']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Group Profit on Disposal')
+-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Parent Company Profit on Disposal');
+
+
+###Goodwill Valuation amd Write Offs
+['Amortisation of Goodwill','Consolidation Adjustments']=N:-DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Goodwill Immediately Written Off')
++DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Revaluation of Goodwill');
+
+###Amortisation of Goodwill
+['Amortisation of Goodwill','Goodwill Adjustments']=N:DB('CONS_Holdings',!CONS_a_Company,!CONS_Scenario,!CONS_t_Month,'Amortisation');
+

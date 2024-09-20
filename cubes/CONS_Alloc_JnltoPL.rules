@@ -1,0 +1,4 @@
+
+[]=N:IF(!CONS_ProfitandLoss@=DB('CONS_Journals',!CONS_a_Company,!CONS_Scenario,!CONS_JournalType,'Profit and Loss Account') &
+DB('}ElementAttributes_CONS_t_Month',!CONS_t_Month,'MthYr')@=DB('CONS_Journals',!CONS_a_Company,!CONS_Scenario,!CONS_JournalType,'Period'),
+DB('CONS_Journals',!CONS_a_Company,!CONS_Scenario,!CONS_JournalType,'Amount'),0);

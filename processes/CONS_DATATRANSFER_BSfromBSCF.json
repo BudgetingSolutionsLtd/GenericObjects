@@ -1,0 +1,63 @@
+{
+	"@type":"Process",
+	"Name":"CONS_DATATRANSFER_BSfromBSCF",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"CONS_DATATRANSFER_BSfromBSCF.ti",
+	"UIData":"CubeAction=1500€DataAction=1503€CubeName=CONS_BalanceSheetConsol€ZeroOut=1€ViewName=z_BSCFTfer€CubeLogChanges=0€",
+	"VariablesUIData":
+	[
+		"VarType=32€ColType=825€VarDimension=CONS_a_Company€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_Scenario€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_t_Month€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"VarType=32€ColType=825€VarDimension=CONS_BalanceSheet€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€",
+		"IgnoredInputVarName=BSCF_m_AccountBalance€VarType=32€ColType=1165€",
+		"VarType=33€ColType=826€",
+		"VarName=LCReported€VarType=32€ColType=825€VarFormula=LCReported='LC Reported';:€VarFormulaDestination=BOTH€VarDimension=CONS_m_Consolidation€VarDimAction=As Is€VarElemType=Numeric€VarDimElemSortType=BYINPUT€VarDimElemSortSense=ASCENDING€"
+	],
+	"DataSource":
+	{
+		"Type":"TM1CubeView",
+		"dataSourceNameForClient":"BSCF_BalanceSheet",
+		"dataSourceNameForServer":"BSCF_BalanceSheet",
+		"view":"z_CONSTFer"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"BSCF_a_Company",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"BSCF_Scenario",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"BSCF_t_Month",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"BSCF_BalanceSheet",
+			"Type":"String",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"Value",
+			"Type":"Numeric",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

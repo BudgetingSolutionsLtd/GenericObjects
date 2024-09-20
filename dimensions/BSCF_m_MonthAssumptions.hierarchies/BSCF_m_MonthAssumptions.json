@@ -1,0 +1,35 @@
+{
+	"@type":"Hierarchy",
+	"Name":"BSCF_m_MonthAssumptions",
+	"Elements":
+	[
+		{
+			"Name":"Actual ?",
+			"Type":"String"
+		},
+		{
+			"Name":"Days for DSO",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Standard VAT",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Reduced VAT",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Zero VAT",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Corporation Tax",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":
+	[
+		"BSCF_m_MonthAssumptions.subsets/VAT Rates.json"
+	]
+}

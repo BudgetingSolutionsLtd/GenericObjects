@@ -1,0 +1,108 @@
+#region Prolog
+
+
+#################################################################
+## IBM Confidential
+##
+## OCO Source Materials
+##
+## BI and PM: pmpsvc
+##
+## (C) Copyright IBM Corp. 2008, 2009, 2010
+##
+## The source code for this program is not published or otherwise
+## divested of its trade secrets, irrespective of what has been
+## deposited with the U.S. Copyright Office.
+#################################################################
+
+
+
+cControlPrefix = '';
+If (pControl @= 'Y');
+	cControlPrefix = '}';
+EndIf;
+
+#*** declare global variables
+StringGlobalVariable('gApprovalDim');
+StringGlobalVariable('gApprovalSubset');
+StringGlobalVariable('gIsActive');
+StringGlobalVariable('gStoreId');
+StringGlobalVariable('gSecuritySet');
+StringGlobalVariable('gVersionDimension');
+StringGlobalVariable('gApprovalSubsetComplementMdx');
+
+#* Check application
+
+cApplicationsDim = cControlPrefix | 'tp_applications';
+If (DIMIX(cApplicationsDim, pAppId) = 0);
+	ProcessError;
+EndIf;
+
+#*** Get Application attributes
+
+cApprovalDimensionAttr = 'ApprovalDimension';
+cApprovalSubsetAttr = 'ApprovalSubset';
+cApprovalShadowDimAttr = 'ApprovalShadowDimension';
+cIsActiveAttr = 'IsActive';
+cStoreIdAttr = 'StoreId';
+cSecuritySetAttr = 'SecuritySet';
+cVersionAttr = 'Version';
+cCubeViewsAttr = 'CubeViews';
+cMaintenanceAttr = 'IsRunningMaintenance';
+cVersionSlicesWrite = 'VersionSlicesWrite';
+cVersionSlicesRead = 'VersionSlicesRead';
+cVersionDimension = 'VersionDimension';
+cApplicationType = 'ApplicationType';
+
+gIsActive = ATTRS(cApplicationsDim, pAppId, cIsActiveAttr);
+gStoreId = ATTRS(cApplicationsDim, pAppId, cStoreIdAttr);
+gSecuritySet = ATTRS(cApplicationsDim, pAppId, cSecuritySetAttr);
+gApprovalDim = ATTRS(cApplicationsDim, pAppId, cApprovalDimensionAttr);
+gApprovalSubset = ATTRS(cApplicationsDim, pAppId, cApprovalSubsetAttr);
+gVersionDimension = ATTRS(cApplicationsDim, pAppId, cVersionDimension);
+
+#* Check approval dimension
+If (gApprovalDim @= '');
+		gApprovalSubset = '';
+		gApprovalSubsetComplementMdx = '';
+Else;
+
+	If (gApprovalSubset @= '');
+		ProcessError;
+	EndIf;
+
+	If (DimensionExists(gApprovalDim) = 0);
+		ProcessError;
+	EndIf;
+
+	#* Check approval subset
+	
+	If (SubsetExists(gApprovalDim, gApprovalSubset) <> 0);
+
+		cApprovalSubsetSize = SubsetGetSize(gApprovalDim, gApprovalSubset);
+
+		#* Subset Complement
+		gApprovalSubsetComplementMdx = '';
+		If (DIMSIZ(gApprovalDim) > cApprovalSubsetSize);
+			If (cApprovalSubsetSize = 0);
+				ProcessError;
+			ElseIf (cApprovalSubsetSize = 1);
+				vNode = SubsetGetElementName(gApprovalDim, gApprovalSubset, 1);
+				vMDX = 'EXCEPT([' | gApprovalDim | '].MEMBERS, {[' | gApprovalDim | '].[' | vNode | ']})';
+				gApprovalSubsetComplementMdx = vMDX;
+			Else;
+				If (CubeExists(gApprovalDim) = 0);
+					vMDX = 'EXCEPT([' | gApprovalDim | '].MEMBERS, TM1SubsetToSet([' | gApprovalDim | '], "' | gApprovalSubset | '"))';
+				Else;
+					vMDX = 'EXCEPT([' | gApprovalDim | '].MEMBERS, TM1SubsetToSet([' | gApprovalDim | '].[' | gApprovalDim | '], "' | gApprovalSubset | '"))';
+				EndIf;
+				gApprovalSubsetComplementMdx = vMDX;
+			EndIf;
+		EndIf;
+	Else;
+		gApprovalSubset = '';
+		gApprovalSubsetComplementMdx = '';
+	EndIf;
+EndIf;
+
+#endregion
