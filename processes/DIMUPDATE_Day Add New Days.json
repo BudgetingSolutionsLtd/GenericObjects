@@ -1,0 +1,27 @@
+{
+	"@type":"Process",
+	"Name":"DIMUPDATE_Day Add New Days",
+	"HasSecurityAccess":true,
+	"Code@Code.link":"DIMUPDATE_Day Add New Days.ti",
+	"UIData":"CubeAction=1511\fDataAction=1503\fCubeLogChanges=0\f_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pStartDate",
+			"Prompt":"Date to add new days from (dd/mm/yyyy)",
+			"Value":"01/10/2022",
+			"Type":"String"
+		},
+		{
+			"Name":"pEndDate",
+			"Prompt":"Date to add new days to (dd/mm/yyyy)",
+			"Value":"31/09/2032",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

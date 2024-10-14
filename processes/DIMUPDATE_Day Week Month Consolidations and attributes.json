@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"DIMUPDATE_Day Week Month Consolidations and attributes",
+	"HasSecurityAccess":true,
+	"Code@Code.link":"DIMUPDATE_Day Week Month Consolidations and attributes.ti",
+	"UIData":"CubeAction=1511\fDataAction=1503\fCubeLogChanges=0\f_ParameterConstraints=e30=\f",
+	"VariablesUIData":
+	[
+		"VarType=32\fColType=827\f"
+	],
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForClient":"Day",
+		"dataSourceNameForServer":"Day",
+		"subset":"All"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vDay",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

@@ -1,0 +1,189 @@
+#region Prolog
+dimName = 't_Days';
+
+If(DimensionExists( dimName )=1);
+    DimensionDeleteAllElements( dimName );
+else;
+    DimensionCreate( dimName );
+endif;
+
+if(HierarchyExists( dimName, 'Weeks' )=1);
+    HierarchyDeleteAllElements( dimName, 'Weeks' );
+else;
+    HierarchyCreate( dimName, 'Weeks' );
+endif;
+
+if(HierarchyExists( dimName, 'Periods' )=1);
+    HierarchyDeleteAllElements( dimName, 'Periods' );
+else;
+    HierarchyCreate( dimName, 'Periods' );
+endif; 
+
+AttrInsert( dimName, '', 'Index', 'N' );
+AttrInsert( dimName, '', 'Serial', 'N' );
+AttrInsert( dimName, '', 'Calendar Year', 'S' );
+AttrInsert( dimName, '', 'Calendar Month', 'S' );
+AttrInsert( dimName, '', 'Day of Month', 'S' );
+AttrInsert( dimName, '', 'Financial Year', 'S' );
+AttrInsert( dimName, '', 'Financial Period', 'S' );
+AttrInsert( dimName, '', 'Previous', 'S' );
+AttrInsert( dimName, '', 'Next', 'S' );
+AttrInsert( dimName, '', 'Day String', 'S' );
+#AttrInsert( dimName, '', 'Previous Week', 'S' );
+#AttrInsert( dimName, '', 'Next Week', 'S' );
+#AttrInsert( dimName, '', 'Previous Period', 'S' );
+#AttrInsert( dimName, '', 'Next Period', 'S' );
+
+sStartDay = SUBST( pStartDate, 1, 2 ); nStartDay = numbr(sStartDay);
+sStartMonth = SUBST( pStartDate, 4, 2 ); nStartMonth = numbr(sStartMonth);
+sStartYear = SUBST( pStartDate, 7, 2 ); nStartYear = numbr(sStartYear);
+nFinYrStart = NUMBR( pFinYrStart );
+
+### Set time span
+nTimeSpan = 10;
+
+
+serialStartDate = DayNo(Dates( nStartYear, nStartMonth, nStartDay ));
+serialEndDate = DayNo(Dates( nStartYear+nTimeSpan, nStartMonth, nStartDay ))-1;
+
+serialDate = serialStartDate;
+index = 1;
+sFinYrPrev = '';
+nWeekNo = 1;
+
+ while(serialDate<serialEndDate);
+    sYear =  SUBST(Date( serialDate ), 1, 2 ); nYear =  numbr(SUBST(Date( serialDate ), 1, 2 ));
+    sMonth = SUBST( Date( serialDate ), 4, 2 ); nMonth = numbr(SUBST( Date( serialDate ), 4, 2 ));
+    sDay = SUBST( Date( serialDate ), 7, 2 );  nDay = numbr(SUBST( Date( serialDate ), 7, 2 ));
+    sDate = sDay |'/'| sMonth | '/' | sYear ;
+    if(nMonth<nFinYrStart);
+        nFinYrDelta = 13-nFinYrStart;
+        sFinYr = 'FY' | numbertostring(nYear-1) |'/'| sYear;
+        sFinPd = NumberToString(nMonth+nFinYrDelta);
+        sFinPd = if(long(sFinPd)=1, 'P0' | sFinPd | ' ' | sFinYr, 'P' | sFinPd | ' ' | sFinYr);
+    else;
+        nFinYrDelta = 1-nFinYrStart;
+        sFinYr = 'FY' | numbertostring(nYear) |'/'| numbertostring(nYear+1);
+        sFinPd = NumberToString(nMonth+nFinYrDelta);
+        sFinPd = if(long(sFinPd)=1, 'P0' | sFinPd | ' ' | sFinYr, 'P' | sFinPd | ' ' | sFinYr);
+    endif;
+
+    nDayofWeek = Mod( DayNo( TimSt(serialDate, '\Y-\m-\d')) + 21916, 7);	
+	sDayString = '';
+
+	IF( nDayofWeek = 0);	sDayString = 'Saturday'; 	EndIF;
+	IF( nDayofWeek = 1);	sDayString = 'Sunday';   	EndIF;
+	IF( nDayofWeek = 2);	sDayString = 'Monday';  	EndIF;
+	IF( nDayofWeek = 3);	sDayString = 'Tuesday'; 	EndIF;
+	IF( nDayofWeek = 4);	sDayString = 'Wednesday'; 	EndIF;
+	IF( nDayofWeek = 5);	sDayString = 'Thursday'; 	EndIF;
+	IF( nDayofWeek = 6);	sDayString = 'Friday'; 		EndIF;
+	IF( nDayofWeek = 7);	sDayString = 'Saturday'; 	EndIF;
+
+    # Set week start day
+    if(nDayOfWeek=2);
+        nWeekNo=nWeekNo + 1;
+    endif;
+
+    if(sFinYr@<>sFinYrPrev);
+        nWeekNo = 1;
+    endif;
+
+    sWeek = sFinYr | ' Week ' | Numbertostring(nWeekNo);
+    
+    DimensionElementInsertDirect( dimName, '', sDate, 'N' );
+  #  DimensionElementInsertDirect( dimName, '', sWeek, 'C' );
+   # DimensionElementInsertDirect( dimName, '', sFinPd, 'C' );
+    DimensionElementInsertDirect( dimName, '', sFinYr, 'C' );
+
+    index = index + 1;
+    serialDate = serialDate +1;
+    sFinYrPrev = sFinYr;
+ end;
+
+# WeekNo = 1;
+# FinYr = ATTRS( 'Day', vDay, 'Financial Year' );
+# FinYrPrev = FinYr;
+#endregion
+#region Epilog
+serialDate = serialStartDate;
+index = 1;
+sPrevFinYr = '';
+sPrevWeek = '';
+sPrevFinPd = '';
+nWeekNo = 1;
+
+while(serialDate<serialEndDate);
+    sYear =  SUBST(Date( serialDate ), 1, 2 ); nYear =  numbr(SUBST(Date( serialDate ), 1, 2 ));
+    sMonth = SUBST( Date( serialDate ), 4, 2 ); nMonth = numbr(SUBST( Date( serialDate ), 4, 2 ));
+    sDay = SUBST( Date( serialDate ), 7, 2 );  nDay = numbr(SUBST( Date( serialDate ), 7, 2 ));
+    sDate = sDay |'/'| sMonth | '/' | sYear ;
+    if(nMonth<nFinYrStart);
+        nFinYrDelta = 13-nFinYrStart;
+        sFinYr = 'FY' | numbertostring(nYear-1) |'/'| sYear;
+        sFinPd = NumberToString(nMonth+nFinYrDelta);
+        sFinPd = if(long(sFinPd)=1, 'P0' | sFinPd | ' ' | sFinYr, 'P' | sFinPd | ' ' | sFinYr);
+    else;
+        nFinYrDelta = 1-nFinYrStart;
+        sFinYr = 'FY' | numbertostring(nYear) |'/'| numbertostring(nYear+1);
+        sFinPd = NumberToString(nMonth+nFinYrDelta);
+        sFinPd = if(long(sFinPd)=1, 'P0' | sFinPd | ' ' | sFinYr, 'P' | sFinPd | ' ' | sFinYr);
+    endif;
+
+    nDayofWeek = Mod( DayNo( TimSt(serialDate, '\Y-\m-\d')) + 21916, 7);	
+	sDayString = '';
+
+	IF( nDayofWeek = 0);	sDayString = 'Saturday'; 	EndIF;
+	IF( nDayofWeek = 1);	sDayString = 'Sunday';   	EndIF;
+	IF( nDayofWeek = 2);	sDayString = 'Monday';  	EndIF;
+	IF( nDayofWeek = 3);	sDayString = 'Tuesday'; 	EndIF;
+	IF( nDayofWeek = 4);	sDayString = 'Wednesday'; 	EndIF;
+	IF( nDayofWeek = 5);	sDayString = 'Thursday'; 	EndIF;
+	IF( nDayofWeek = 6);	sDayString = 'Friday'; 		EndIF;
+	IF( nDayofWeek = 7);	sDayString = 'Saturday'; 	EndIF;
+
+    # Set week start day
+    if(nDayOfWeek=2);
+        nWeekNo=nWeekNo + 1;
+    endif;
+
+    
+    if(sFinYr@<>sPrevFinYr);
+        nWeekNo = 1;
+    endif;
+    
+    sNextWeek = sFinYr | ' Week ' | Numbertostring(nWeekNo+1);
+    sWeek = sFinYr | ' Week ' | Numbertostring(nWeekNo);
+
+    
+    HierarchyElementInsertDirect( dimName, 'Weeks', '', sWeek, 'C' );
+    HierarchyElementInsertDirect( dimName, 'Weeks', '', sFinYr, 'C' );
+    HierarchyElementInsertDirect( dimName, 'Periods', '', sFinPd, 'C' );
+    HierarchyElementInsertDirect( dimName, 'Periods', '', sFinYr, 'C' );
+    HierarchyElementComponentAddDirect( dimName, 'Weeks', sWeek, sDate, 1);
+    HierarchyElementComponentAddDirect( dimName, 'Weeks', sFinYr, sWeek, 1);
+    HierarchyElementComponentAddDirect( dimName, 'Periods', sFinPd, sDate, 1);
+    HierarchyElementComponentAddDirect( dimName, 'Periods', sFinYr, sFinPd, 1);
+    DimensionElementComponentAddDirect( dimName, sFinYr, sDate, 1 );
+    #DimensionElementComponentAddDirect( dimName, sFinPd, sDate, 1 ); 
+    AttrPutN( index, dimName, sDate, 'Index' );
+    AttrPutN( serialDate, dimName, sDate, 'Serial' );
+    AttrPutS( '20' | sYear, dimName, sDate, 'Calendar Year' );
+    AttrPutS( sMonth, dimName, sDate, 'Calendar Month' );
+    AttrPutS( sDay, dimName, sDate, 'Day of Month' );
+    AttrPutS( sFinYr, dimName, sDate, 'Financial Year' );
+    AttrPutS( sFinPd, dimName, sDate, 'Financial Period' );
+    AttrPutS( TimSt(serialDate-1, '\d/\m/\Y'), dimName, sDate, 'Previous' );
+    AttrPutS( TimSt(serialDate+1, '\d/\m/\Y'), dimName, sDate, 'Next' );
+   # AttrPutS( sPrevWeek, dimName, sDate, 'Previous Week' );
+  #  AttrPutS( sNextWeek, dimName, sDate, 'Next Week' );
+  #  AttrPutS( sPrevFinPd, dimName, sDate, 'Previous Period' );
+ #   AttrPutS( TimSt(serialDate+1, '\d/\m/\Y'), dimName, sDate, 'Next Period' );
+    AttrPutS( sDayString, dimName, sDate, 'Day String' );
+    index = index + 1;
+    serialDate = serialDate +1;
+    sPrevFinYr = sFinYr;
+    sPrevWeek = sWeek;
+    sPrevFinPd = sFinPd;
+end;
+#endregion

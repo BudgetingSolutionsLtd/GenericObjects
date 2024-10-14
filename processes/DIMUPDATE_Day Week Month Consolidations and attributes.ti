@@ -1,0 +1,429 @@
+#region Prolog
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+vSubset = GetProcessName | '_Subset';
+vDefaultSubset = 'Default';
+
+vDimPrd = 'Month';
+vDimDay = 'Day';
+vCubCalendar = 'Calendar';
+vCubePrdAttr = '}ElementAttributes_Month';
+vCubeDayAttr = '}ElementAttributes_Day';
+
+# Day
+# Period
+
+	IF(DimensionExists(vDimPrd)=0);
+		DimensionCreate(vDimPrd);
+		AttrInsert(vDimPrd, '', 'Month Index', 'n');
+		AttrInsert(vDimPrd, '', 'Next Month', 's');
+		AttrInsert(vDimPrd, '', 'Previous Month', 's');
+		AttrInsert(vDimPrd, '', 'Calendar Year (yyyy)', 's');
+		AttrInsert(vDimPrd, '', 'Calendar Year (yy)', 's');
+		AttrInsert(vDimPrd, '', 'Month (mmmm)', 's');
+		AttrInsert(vDimPrd, '', 'Month (mmm)', 's');
+		AttrInsert(vDimPrd, '', 'Month (mm)', 's');
+		AttrInsert(vDimPrd, '', 'Month (m)', 's');
+		AttrInsert(vDimPrd, '', 'Financial Year', 's');
+		AttrInsert(vDimPrd, '', 'Financial Quarter', 's');
+		AttrInsert(vDimPrd, '', 'Financial Month', 's');
+		AttrInsert(vDimPrd, '', 'Calendar Month', 'a');
+        AttrInsert(vDimPrd, '', 'Financial Period', 'a');
+    else;
+        AttrInsert(vDimPrd, '', 'Month Index', 'n');
+		AttrInsert(vDimPrd, '', 'Next Month', 's');
+		AttrInsert(vDimPrd, '', 'Previous Month', 's');
+		AttrInsert(vDimPrd, '', 'Calendar Year (yyyy)', 's');
+		AttrInsert(vDimPrd, '', 'Calendar Year (yy)', 's');
+		AttrInsert(vDimPrd, '', 'Month (mmmm)', 's');
+		AttrInsert(vDimPrd, '', 'Month (mmm)', 's');
+		AttrInsert(vDimPrd, '', 'Month (mm)', 's');
+		AttrInsert(vDimPrd, '', 'Month (m)', 's');
+		AttrInsert(vDimPrd, '', 'Financial Year', 's');
+		AttrInsert(vDimPrd, '', 'Financial Quarter', 's');
+		AttrInsert(vDimPrd, '', 'Financial Month', 's');
+		AttrInsert(vDimPrd, '', 'Calendar Month', 'a');
+        AttrInsert(vDimPrd, '', 'Financial Period', 'a');
+	EndIF;
+
+# Create Subset to be used as source
+#----------------------------------------
+
+	IF(SubsetExists(vDimDay, vSubset)=0);
+		SubsetCreate(vDimDay, vSubset);
+	EndIF;
+
+	SubsetMDXSet(vDimDay, vSubset, '{Except({TM1Sort({TM1FilterByLevel({TM1SubsetAll([' | vDimDay | '])}, 0)}, ASC)}, {[' | vDimDay | '].[Unallocated Day]})}');
+	SubsetMDXSet(vDimDay, vSubset, '{Except({Except({TM1Sort({TM1FilterByLevel({TM1SubsetAll([' | vDimDay | '])}, 0)}, ASC)}, {[' | vDimDay | '].[Unallocated Day]})},{TM1FilterByPattern({TM1SubsetAll([' | vDimDay |'])}, "P13*")})}');
+SubsetMDXSet(vDimDay, vSubset, '');
+
+	DataSourceDimensionSubset = vSubset;
+
+# Destroy Alternative Hierarchies so they can be repopulated
+
+# Create Alternative Hierarchy
+#---------------------------------------
+
+	# Financial Period
+	#------------------------------
+		IF( HierarchyExists( vDimPrd, 'Financial Period') = 1);
+			HierarchyDeleteAllElements( vDimPrd, 'Financial Period');
+		Else;
+			HierarchyCreate( vDimPrd, 'Financial Period');
+		EndIF;
+		HierarchyElementInsert( vDimPrd, 'Financial Period','', 'All Financial Periods', 'C');
+
+	# Financial Year
+	#------------------------------
+		IF( HierarchyExists( vDimPrd, 'Financial Year') = 1);
+			HierarchyDeleteAllElements( vDimPrd, 'Financial Year');
+		Else;
+			HierarchyCreate( vDimPrd, 'Financial Year');
+		EndIF;	
+		HierarchyElementInsert( vDimPrd, 'Financial Year','', 'All Financial Years', 'C');
+
+	# Calendar Month
+	#------------------------------
+		IF( HierarchyExists( vDimPrd, 'Calendar Month') = 1);	
+			HierarchyDeleteAllElements( vDimPrd, 'Calendar Month');
+		Else;
+			HierarchyCreate( vDimPrd, 'Calendar Month');
+		EndIF;
+		HierarchyElementInsert( vDimPrd, 'Calendar Month','', 'All Calendar Months', 'C');
+
+	# Calendar Year
+	#------------------------------
+
+		IF( HierarchyExists( vDimPrd, 'Calendar Year') = 1);
+			HierarchyDeleteAllElements( vDimPrd, 'Calendar Year');
+		Else;
+			HierarchyCreate( vDimPrd, 'Calendar Year');
+		EndIF;
+			HierarchyElementInsert( vDimPrd, 'Calendar Year','', 'All Calendar Years', 'C');
+#endregion
+#region Metadata
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+sFinancialMonth	= CellGetS(vCubCalendar, vDay, 'Financial Month');
+sFinancialQuarter	= CellGetS(vCubCalendar, vDay, 'Financial Quarter');
+sFinancialYear 	= CellGetS(vCubCalendar, vDay, 'Financial Year');
+sFinancialPeriod	= CellGetS(vCubCalendar, vDay, 'Financial Period');
+sMonthm		= CellGetS(vCubCalendar, vDay, 'Month (m)');
+sMonthmm	= CellGetS(vCubCalendar, vDay, 'Month (mm)');
+sMonthmmm	= CellGetS(vCubCalendar, vDay, 'Month (mmm)');
+sMonthmmmm	= CellGetS(vCubCalendar, vDay, 'Month (mmmm)');
+sCalenderYearyy	= CellGetS(vCubCalendar, vDay, 'Calendar Year (yy)');
+sCalendarYearyyyy	= CellGetS(vCubCalendar, vDay, 'Calendar Year (yyyy)');
+
+sFinancialYearInput = sFinancialYear | ' Entry';
+
+# Create Elements
+#------------------------------
+
+	IF ( DIMIX(vDimDay, sFinancialPeriod) = 0); 	DimensionElementInsert( vDimDay, '', sFinancialPeriod, 'c'); 	EndIF;
+    IF(sFinancialMonth@='P12'); 					DimensionElementInsert( vDimDay, '', 'P13 ' | sFinancialYear, 'n'); EndIF;
+
+    IF ( DIMIX(vDimDay, sFinancialQuarter) = 0); 	DimensionElementInsert( vDimDay, '', sFinancialQuarter, 'c'); 	EndIF;
+    IF ( DIMIX(vDimDay, sFinancialYear) = 0); 		DimensionElementInsert( vDimDay, '', sFinancialYear,  'c'); 	EndIF;
+	IF ( DIMIX(vDimDay, 'All Financial Years')=0);	DimensionElementInsert( vDimDay, '', 'All Financial Years', 'c');	EndIF;
+	IF ( DIMIX(vDimDay, 'All Weeks')=0);			DimensionElementInsert( vDimDay, '', 'All Days', 'c');	EndIF;
+
+	IF ( DIMIX(vDimPrd, sFinancialPeriod) = 0); 	DimensionElementInsert( vDimPrd, '', sFinancialPeriod, 'n'); 	EndIF;
+    IF(sFinancialMonth@='P12'); 					DimensionElementInsert( vDimPrd, '', 'P13 ' | sFinancialYear, 'n'); EndIF;
+    IF ( DIMIX(vDimPrd, sFinancialQuarter) = 0); 	DimensionElementInsert( vDimPrd, '', sFinancialQuarter, 'c'); 	EndIF;
+	IF ( DIMIX(vDimPrd, sFinancialYear) = 0); 		DimensionElementInsert( vDimPrd, '', sFinancialYear,  'c'); 	EndIF;
+	IF ( DIMIX(vDimPrd, 'All Financial Years')=0);	DimensionElementInsert( vDimPrd, '', 'All Financial Years', 'c');	EndIF;
+	IF ( DIMIX(vDimPrd, 'All Periods') = 0); 		DimensionElementInsert( vDimPrd, '', 'All Periods',  'c'); 	EndIF;
+
+# Create points to enter at a yearly level to allow additional planning techniques
+	IF ( DIMIX(vDimPrd, 'Year Level Entry') = 0); 		DimensionElementInsert( vDimPrd, '', 'Year Level Entry',  'c');	EndIF;
+	IF ( DIMIX(vDimPrd, sFinancialYearInput) = 0); 		DimensionElementInsert( vDimPrd, '', sFinancialYearInput,  'n');	DimensionElementComponentAdd( vDimPrd, 'Year Level Entry', sFinancialYearInput, 1 ); EndIF;
+
+# Unwind Leaf Elements from Consolidations
+#------------------------------
+
+	iDayParents = ELPARN( vDimDay, vDay);
+	While ( iDayParents > 0);
+		DimensionElementComponentDelete ( vDimDay, ELPAR( vDimDay, vDay, iDayParents), vDay);
+		iDayParents = iDayParents - 1;
+	End;
+
+	iPrdParents = ELPARN( vDimPrd, sFinancialPeriod);
+	While ( iPrdParents > 0);
+		DimensionElementComponentDelete ( vDimPrd, ELPAR( vDimPrd, sFinancialPeriod, iPrdParents), sFinancialPeriod);
+		iPrdParents = iPrdParents - 1;
+	End;
+
+
+
+# Create Hierarchy structure
+#------------------------------
+
+	DimensionElementComponentAdd( vDimDay, sFinancialPeriod, vDay, 1);
+	DimensionElementComponentAdd( vDimDay, sFinancialQuarter, sFinancialPeriod, 1);
+	DimensionElementComponentAdd( vDimDay, sFinancialYear, sFinancialQuarter, 1);
+    IF(sFinancialMonth@='P12');DimensionElementComponentAdd( vDimDay, sFinancialYear, 'P13 ' | sFinancialYear, 1); EndIF;
+	DimensionElementComponentAdd( vDimDay, 'All Financial Years', sFinancialYear, 1);
+	DimensionElementComponentAdd( vDimDay, 'All Days', vDay, 1);
+
+	DimensionElementComponentAdd( vDimPrd, sFinancialQuarter, sFinancialPeriod, 1);
+	DimensionElementComponentAdd( vDimPrd, sFinancialYear, sFinancialQuarter, 1);
+    IF(sFinancialMonth@='P12');DimensionElementComponentAdd( vDimPrd, sFinancialYear, 'P13 ' | sFinancialYear, 1); EndIF;
+    DimensionElementComponentAdd( vDimPrd, 'All Financial Years', sFinancialYear, 1);
+	DimensionElementComponentAdd( vDimPrd, 'All Periods', sFinancialPeriod, 1);
+
+# Create Alternative Hierarchy Structure
+#---------------------------
+
+	# Financial Period Hierarchy
+
+		IF( HierarchyElementExists( vDimPrd, 'Financial Period', sFinancialMonth)=0);
+			HierarchyElementInsert( vDimPrd, 'Financial Period', '', sFinancialMonth, 'C');
+			HierarchyElementComponentAdd( vDimPrd, 'Financial Period', 'All Financial Periods', sFinancialMonth, 1);
+		EndIF; 
+
+		IF( HierarchyElementExists( vDimPrd, 'Financial Period', sFinancialPeriod)=0);
+			HierarchyElementInsert( vDimPrd, 'Financial Period', '', sFinancialPeriod, 'N');
+			HierarchyElementComponentAdd( vDimPrd, 'Financial Period', sFinancialMonth, sFinancialPeriod, 1);
+		EndIF;
+        
+        IF(sFinancialMonth@='P12'); 
+            sP13Month = 'P13';
+            sP13Period = 'P13 ' | sFinancialYear;
+            
+           		IF( HierarchyElementExists( vDimPrd, 'Financial Period', sP13Month)=0);
+                    HierarchyElementInsert( vDimPrd, 'Financial Period', '', sP13Month, 'C');
+                    HierarchyElementComponentAdd( vDimPrd, 'Financial Period', 'All Financial Periods', sP13Month, 1);
+                EndIF; 
+ 
+                IF( HierarchyElementExists( vDimPrd, 'Financial Period', sP13Period)=0);
+                    HierarchyElementInsert( vDimPrd, 'Financial Period', '', sP13Period, 'N');
+                    HierarchyElementComponentAdd( vDimPrd, 'Financial Period', sP13Month, sP13Period, 1);
+                EndIF;
+        EndIF;
+        
+		
+	# Financial Year Hierarchy
+
+		IF( HierarchyElementExists( vDimPrd, 'Financial Year', sFinancialYear)=0);
+			HierarchyElementInsert( vDimPrd, 'Financial Year', '', sFinancialYear, 'C');
+			HierarchyElementComponentAdd( vDimPrd, 'Financial Year', 'All Financial Years', sFinancialYear, 1);
+		EndIF; 
+
+		IF( HierarchyElementExists( vDimPrd, 'Financial Year', sFinancialPeriod)=0);
+			HierarchyElementInsert( vDimPrd, 'Financial Year', '', sFinancialPeriod, 'N');
+			HierarchyElementComponentAdd( vDimPrd, 'Financial Year', sFinancialYear, sFinancialPeriod, 1);
+		EndIF;
+
+
+        IF(sFinancialMonth@='P12'); 
+            sP13Month = 'P13';
+            sP13Period = 'P13 ' | sFinancialYear;
+ 
+                IF( HierarchyElementExists( vDimPrd, 'Financial Year', sP13Period)=0);
+                    HierarchyElementInsert( vDimPrd, 'Financial Year', '', sP13Period, 'N');
+                    HierarchyElementComponentAdd( vDimPrd, 'Financial Year', sFinancialYear, sP13Period, 1);
+                EndIF;
+        EndIF;
+
+	# Calendar Month Hierarchy
+
+		IF( HierarchyElementExists( vDimPrd, 'Calendar Month', sMonthmmm)=0);
+			HierarchyElementInsert( vDimPrd, 'Calendar Month', '', sMonthmmm, 'C');
+			HierarchyElementComponentAdd( vDimPrd, 'Calendar Month', 'All Calendar Months', sMonthmmm, 1);
+		EndIF; 
+
+		IF( HierarchyElementExists( vDimPrd, 'Calendar Month', sFinancialPeriod)=0);
+			HierarchyElementInsert( vDimPrd, 'Calendar Month', '', sFinancialPeriod, 'N');
+			HierarchyElementComponentAdd( vDimPrd, 'Calendar Month', sMonthmmm, sFinancialPeriod, 1);
+		EndIF;
+
+        IF(sFinancialMonth@='P12'); 
+            sP13Month = 'P13';
+            sP13Period = 'P13 ' | sFinancialYear;
+            
+           		IF( HierarchyElementExists( vDimPrd, 'Calendar Month', sP13Month)=0);
+                    HierarchyElementInsert( vDimPrd, 'Calendar Month', '', sP13Month, 'C');
+                    HierarchyElementComponentAdd( vDimPrd, 'Calendar Month', 'All Calendar Months', sP13Month, 1);
+                EndIF; 
+ 
+                IF( HierarchyElementExists( vDimPrd, 'Calendar Month', sP13Period)=0);
+                    HierarchyElementInsert( vDimPrd, 'Calendar Month', '', sP13Period, 'N');
+                    HierarchyElementComponentAdd( vDimPrd, 'Calendar Month', sP13Month, sP13Period, 1);
+                EndIF;
+        EndIF;
+        
+	# Calendar Year Hierarchy
+
+		IF( HierarchyElementExists( vDimPrd, 'Calendar Year', sCalendarYearyyyy)=0);
+			HierarchyElementInsert( vDimPrd, 'Calendar Year', '', sCalendarYearyyyy, 'C');
+			HierarchyElementComponentAdd( vDimPrd, 'Calendar Year', 'All Calendar Years', sCalendarYearyyyy, 1);
+		EndIF; 
+
+		IF( HierarchyElementExists( vDimPrd, 'Calendar Year', sFinancialPeriod)=0);
+			HierarchyElementInsert( vDimPrd, 'Calendar Year', '', sFinancialPeriod, 'N');
+			HierarchyElementComponentAdd( vDimPrd, 'Calendar Year', sCalendarYearyyyy, sFinancialPeriod, 1);
+		EndIF;
+
+        IF(sFinancialMonth@='P12'); 
+            sP13Month = 'P13';
+            sP13Period = 'P13 ' | sFinancialYear;
+ 
+                IF( HierarchyElementExists( vDimPrd, 'Calendar Year', sP13Period)=0);
+                    HierarchyElementInsert( vDimPrd, 'Calendar Year', '', sP13Period, 'N');
+                    HierarchyElementComponentAdd( vDimPrd, 'Calendar Year', sCalendarYearyyyy, sP13Period, 1);
+                EndIF;
+        EndIF;
+
+#endregion
+#region Data
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+# Update Attributes
+#------------------------------
+
+sFinancialMonth	= CellGetS(vCubCalendar, vDay, 'Financial Month');
+sFinancialQuarter	= CellGetS(vCubCalendar, vDay, 'Financial Quarter');
+sFinancialYear 	= CellGetS(vCubCalendar, vDay, 'Financial Year');
+sFinancialPeriod	= CellGetS(vCubCalendar, vDay, 'Financial Period');
+sMonthm		= CellGetS(vCubCalendar, vDay, 'Month (m)');
+sMonthmm	= CellGetS(vCubCalendar, vDay, 'Month (mm)');
+sMonthmmm	= CellGetS(vCubCalendar, vDay, 'Month (mmm)');
+sMonthmmmm	= CellGetS(vCubCalendar, vDay, 'Month (mmmm)');
+sCalendarYearyy	= CellGetS(vCubCalendar, vDay, 'Calendar Year (yy)');
+sCalendarYearyyyy	= CellGetS(vCubCalendar, vDay, 'Calendar Year (yyyy)');
+sPreviousFinancialMonth 	= CellGetS(vCubCalendar, vDay, 'Previous Financial Month');
+sNextFinancialMonth 	= CellGetS(vCubCalendar, vDay, 'Next Financial Month');
+sCalendarMonth 		= sMonthmmm | ' ' | sCalendarYearyyyy;
+
+# Update Day Attributes for consolidations
+#------------------------------
+	CellPutS( sFinancialMonth, vCubeDayAttr, sFinancialPeriod, 'Financial Month');
+	CellPutS( sFinancialQuarter, vCubeDayAttr, sFinancialPeriod, 'Financial Quarter');
+	CellPutS( sFinancialYear, vCubeDayAttr, sFinancialPeriod, 'Financial Year');
+	CellPutS( sFinancialPeriod, vCubeDayAttr, sFinancialPeriod, 'Financial Period');
+	CellPutS( sMonthm, vCubeDayAttr, sFinancialPeriod, 'Month (m)');
+	CellPutS( sMonthmm, vCubeDayAttr, sFinancialPeriod, 'Month (mm)');
+	CellPutS( sMonthmmm, vCubeDayAttr, sFinancialPeriod, 'Month (mmm)');
+	CellPutS( sMonthmmmm, vCubeDayAttr, sFinancialPeriod, 'Month (mmmm)');
+	CellPutS( sCalendarYearyy, vCubeDayAttr, sFinancialPeriod, 'Calendar Year (yy)');
+	CellPutS( sCalendarYearyyyy, vCubeDayAttr, sFinancialPeriod, 'Calendar Year (yyyy)');
+
+	CellPutS( sFinancialQuarter, vCubeDayAttr, sFinancialQuarter, 'Financial Quarter');
+	CellPutS( sFinancialYear, vCubeDayAttr, sFinancialQuarter, 'Financial Year');
+
+	CellPutS( sFinancialYear, vCubeDayAttr, sFinancialYear, 'Financial Year');
+    
+    IF(sFinancialMonth@='P12'); 
+        sP13Month = 'P13';
+        sP13Period = 'P13 ' | sFinancialYear;
+        	CellPutS( sP13Month, vCubeDayAttr, sP13Period, 'Financial Month');
+            CellPutS( sFinancialQuarter, vCubeDayAttr, sP13Period, 'Financial Quarter');
+            CellPutS( sFinancialYear, vCubeDayAttr, sP13Period, 'Financial Year');
+            CellPutS( sP13Period, vCubeDayAttr, sP13Period, 'Financial Period');
+            CellPutS( sCalendarYearyy, vCubeDayAttr, sP13Period, 'Calendar Year (yy)');
+            CellPutS( sCalendarYearyyyy, vCubeDayAttr, sP13Period, 'Calendar Year (yyyy)');
+    EndIF;
+
+# Update Period Attributes for elements and consolidations
+#------------------------------
+
+	CellPutS( sFinancialMonth, vCubePrdAttr, sFinancialPeriod, 'Financial Month');
+	CellPutS( sFinancialQuarter, vCubePrdAttr, sFinancialPeriod, 'Financial Quarter');
+	CellPutS( sFinancialYear, vCubePrdAttr, sFinancialPeriod, 'Financial Year');
+	CellPutS( sFinancialPeriod, vCubePrdAttr, sFinancialPeriod, 'Financial Period');
+	CellPutS( sMonthm, vCubePrdAttr, sFinancialPeriod, 'Month (m)');
+	CellPutS( sMonthmm, vCubePrdAttr, sFinancialPeriod, 'Month (mm)');
+	CellPutS( sMonthmmm, vCubePrdAttr, sFinancialPeriod, 'Month (mmm)');
+	CellPutS( sMonthmmmm, vCubePrdAttr, sFinancialPeriod, 'Month (mmmm)');
+	CellPutS( sCalendarYearyy, vCubePrdAttr, sFinancialPeriod, 'Calendar Year (yy)');
+	CellPutS( sCalendarYearyyyy, vCubePrdAttr, sFinancialPeriod, 'Calendar Year (yyyy)');
+
+	CellPutS( sFinancialQuarter, vCubePrdAttr, sFinancialQuarter, 'Financial Quarter');
+	CellPutS( sFinancialYear, vCubePrdAttr, sFinancialQuarter, 'Financial Year');
+
+	CellPutS( sPreviousFinancialMonth, vCubePrdAttr, sFinancialPeriod, 'Previous Month');
+	CellPutS( sNextFinancialMonth, vCubePrdAttr, sFinancialPeriod, 'Next Month');
+
+	CellPutS( sCalendarMonth, vCubePrdAttr, sFinancialPeriod, 'Calendar Month');
+
+    IF(sFinancialMonth@='P12'); 
+        sP13Month = 'P13';
+        sP13Period = 'P13 ' | sFinancialYear;
+        	CellPutS( sP13Month, vCubePrdAttr, sP13Period, 'Financial Month');
+            CellPutS( sFinancialQuarter, vCubePrdAttr, sP13Period, 'Financial Quarter');
+            CellPutS( sFinancialYear, vCubePrdAttr, sP13Period, 'Financial Year');
+            CellPutS( sP13Period, vCubePrdAttr, sP13Period, 'Financial Period');
+            CellPutS( sCalendarYearyy, vCubePrdAttr, sP13Period, 'Calendar Year (yy)');
+            CellPutS( sCalendarYearyyyy, vCubePrdAttr, sP13Period, 'Calendar Year (yyyy)');
+#            CellPutS( sP13Month, vCubePrdAttr, sP13Period, 'Calendar Month');
+    EndIF;
+
+
+#endregion
+#region Epilog
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+SubsetDestroy( vDimDay, vSubset);
+
+# Create Month Index in Period dimension
+#--------------------------
+SubsetCreate( vDimPrd, vSubset);
+
+	IF(SubsetExists(vDimPrd, vSubset)=0);
+		SubsetCreate(vDimPrd, vSubset);
+	EndIF;
+
+	vMDX = '{TM1FILTERBYLEVEL( {TM1DRILLDOWNMEMBER( {[' | vDimPrd | '].[All Periods]}, ALL, RECURSIVE )}, 0)}';
+
+	SubsetMDXSet(vDimPrd, vSubset, vMDX);
+	SubsetMDXSet(vDimPrd, vSubset, '');
+
+	iSubsetMAX=SubsetGetSize(vDimPrd, vSubset);
+	iSubset=1;
+
+	While ( iSubset <= iSubsetMAX);
+		CellPutN( iSubset, '}ElementAttributes_' | vDimPrd, SubsetGetElementName( vDimPrd, vSubset, iSubset), 'Month Index');		
+	iSubset = iSubset + 1;
+	End;
+	
+
+SubsetDestroy(vDimPrd, vSubset);
+
+# Populate Period Index Mapping Dimension
+#--------------------------
+	ExecuteProcess('DIMUPDATE_Month Index Mapping');
+
+# Clears up consolidations with no children, may need to be run multiple times to completely remove a consolidation tree
+#--------------------------
+
+#ExecuteProcess('Dim Update - Day Week Period Clear Orphan Consolidations');
+
+
+# Create Default Subsets
+#--------------------------
+
+# Day Dimension Default
+
+	IF(SubsetExists(vDimDay, vDefaultSubset)=0);
+		SubsetCreate(vDimDay, vDefaultSubset);
+	EndIF;
+
+	SubsetMDXSet(vDimDay, vDefaultSubset, '{[Day].[All Financial Years].Children}');
+	SubsetMDXSet(vDimDay, vDefaultSubset, '');
+
+# Period Dimension Default
+
+	IF(SubsetExists(vDimPrd, vDefaultSubset)=0);
+		SubsetCreate(vDimPrd, vDefaultSubset);
+	EndIF;
+
+	SubsetMDXSet(vDimPrd, vDefaultSubset, '{[Month].[All Financial Years].Children}');
+	SubsetMDXSet(vDimPrd, vDefaultSubset, '');
+
+RefreshMDXHierarchy('');
+#endregion

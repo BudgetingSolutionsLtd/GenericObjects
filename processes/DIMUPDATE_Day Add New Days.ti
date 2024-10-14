@@ -1,0 +1,247 @@
+#region Prolog
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+# This process creates the day dimension and adds new elements to that dimension
+# ------------------------------------------------
+
+#Cubecleardata('Calendar');
+#DimensionDeleteAllElements('Day');
+
+
+
+IF(pStartDate @= '');
+	ItemReject('pStartDate ' | pStartDate | ' is invalid, please use the format DD/MM/yyyy 01/07/2020');
+	ProcessError;
+EndIF;
+
+IF(pEndDate @= '');
+	ItemReject('pEndDate ' | pEndDate | ' is invalid, please use the format DD/MM/yyyy 01/07/2020');
+	ProcessError;
+EndIF;
+
+vDim = 'Day';
+
+sStartDate = subst(pStartDate, 7, 4) | '-' | subst(pStartDate, 4,2) | '-' | subst(pStartDate, 1, 2);
+sEndDate = subst(pEndDate, 7, 4) | '-' | subst(pEndDate, 4,2) | '-' | subst(pEndDate, 1, 2);
+
+nStartDate = DayNo( sStartDate );
+nEndDate = DayNo( sEndDate );
+nCurrentDate = nStartDate;
+
+# Build Dimensions and Calendar Cube
+# ------------------------------------------------
+
+	IF(DimensionExists(vDim)=0); 
+		DimensionCreate(vDim); 
+		AttrInsert(vDim, '', 'Next Day', 's');
+		AttrInsert(vDim, '', 'Previous Day', 's');
+		AttrInsert(vDim, '', 'Calendar Year (yyyy)', 's');
+		AttrInsert(vDim, '', 'Calendar Year (yy)', 's');
+		AttrInsert(vDim, '', 'Month (mmmm)', 's');
+		AttrInsert(vDim, '', 'Month (mmm)', 's');
+		AttrInsert(vDim, '', 'Month (mm)', 's');
+		AttrInsert(vDim, '', 'Month (m)', 's');
+		AttrInsert(vDim, '', 'Day (dddd)', 's');
+		AttrInsert(vDim, '', 'Day (ddd)', 's');
+		AttrInsert(vDim, '', 'Day (dd)', 's');
+		AttrInsert(vDim, '', 'Day (d)', 's');
+		AttrInsert(vDim, '', 'Serial Date', 'a');
+		AttrInsert(vDim, '', 'Date (ddmmmyyyy)', 'a');
+		AttrInsert(vDim, '', 'Financial Period', 's');
+		AttrInsert(vDim, '', 'Financial Year', 's');
+		AttrInsert(vDim, '', 'Financial Quarter', 's');
+		AttrInsert(vDim, '', 'Financial Month', 's');
+		AttrInsert(vDim, '', 'Financial Week', 's');
+	EndIF;
+
+	IF(DimensionExists('Calendar Measures')=0); 
+		DimensionCreate('Calendar Measures');
+		DimensionElementInsert('Calendar Measures', '', 'Financial Month', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Financial Quarter', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Financial Year', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Financial Period', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Date (ddmmmyyyy)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Serial Date', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Day (d)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Day (dd)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Day (ddd)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Day (dddd)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Month (m)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Month (mm)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Month (mmm)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Month (mmmm)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Calendar Year (yy)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Calendar Year (yyyy)', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Previous Day', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Next Day', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Next Financial Month', 's');
+		DimensionElementInsert('Calendar Measures', '', 'Previous Financial Month', 's');
+
+	EndIF;
+
+	IF(CubeExists('Calendar')=0); CubeCreate ('Calendar', vDim, 'Calendar Measures'); EndIF;
+
+
+# Adds new dates to day dimension
+# ------------------------------------------------
+
+		DimensionElementInsert( vDim, '', 'All Days', 'c' );
+
+nCurrentDate = nStartDate;
+While ( nCurrentDate <= nEndDate);
+	sDate = timst( nCurrentDate, '\Y\m\d');
+
+		DimensionElementInsert( vDim, '', sDate, 'n' );
+		DimensionElementComponentAdd(vDim, 'All Days', sDate, 1);
+
+	nCurrentDate = nCurrentDate + 1;
+End;
+
+
+#endregion
+#region Metadata
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+#endregion
+#region Data
+
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+#endregion
+#region Epilog
+#****Begin: Generated Statements***
+#****End: Generated Statements****
+
+# Insert Attributes
+# -----------------------------	
+
+
+
+sAttrCube = '}ElementAttributes_Day';
+nCurrentDate = nStartDate;
+
+
+
+
+While ( nCurrentDate <= nEndDate);
+
+	# Retrieve date element name
+	# -----------------------------	
+
+	sDate = timst( nCurrentDate, '\Y\m\d');
+
+	# Calculate Day of Week # 0 = Saturday, 2 = Monday to 6 = Friday
+	# -----------------------------	
+
+		iDayofWeek = Mod( DayNo( TimSt(nCurrentDate, '\Y-\m-\d')) + 21916, 7);	
+		sDayShort = '';
+		sDayFull = '';
+
+		IF( iDayofWeek = 0);	sDayShort = 'Sat';	sDayFull = 'Saturday'; 	EndIF;
+		IF( iDayofWeek = 1);	sDayShort = 'Sun';	sDayFull = 'Sunday'; 	EndIF;
+		IF( iDayofWeek = 2);	sDayShort = 'Mon';	sDayFull = 'Monday'; 	EndIF;
+		IF( iDayofWeek = 3);	sDayShort = 'Tue';	sDayFull = 'Tuesday'; 	EndIF;
+		IF( iDayofWeek = 4);	sDayShort = 'Wed';	sDayFull = 'Wednesday'; 	EndIF;
+		IF( iDayofWeek = 5);	sDayShort = 'Thu';	sDayFull = 'Thursday'; 	EndIF;
+		IF( iDayofWeek = 6);	sDayShort = 'Fri';	sDayFull = 'Friday'; 		EndIF;
+		IF( iDayofWeek = 7);	sDayShort = 'Sat';	sDayFull = 'Saturday'; 	EndIF;
+
+
+	# Calculate Months
+	# -----------------------------	
+
+	nMonthInt = Month(TimSt(nCurrentDate, '\Y-\m-\d'));
+
+	sMonthShort = '';
+	sMonthLong = '';
+
+	IF( nMonthInt = 1);		sMonthShort = 'Jan';	sMonthLong = 'January';	EndIF;
+	IF( nMonthInt = 2);		sMonthShort = 'Feb';	sMonthLong = 'February';	EndIF;
+	IF( nMonthInt = 3);		sMonthShort = 'Mar';	sMonthLong = 'March';	EndIF;
+	IF( nMonthInt = 4);		sMonthShort = 'Apr';	sMonthLong = 'April';	EndIF;
+	IF( nMonthInt = 5);		sMonthShort = 'May';	sMonthLong = 'May';	EndIF;
+	IF( nMonthInt = 6);		sMonthShort = 'Jun';	sMonthLong = 'June';	EndIF;
+	IF( nMonthInt = 7);		sMonthShort = 'Jul';		sMonthLong = 'July';	EndIF;
+	IF( nMonthInt = 8);		sMonthShort = 'Aug';	sMonthLong = 'August';	EndIF;
+	IF( nMonthInt = 9);		sMonthShort = 'Sep';	sMonthLong = 'September';	EndIF;
+	IF( nMonthInt = 10);		sMonthShort = 'Oct';	sMonthLong = 'October';	EndIF;
+	IF( nMonthInt = 11);		sMonthShort = 'Nov';	sMonthLong = 'November';	EndIF;
+	IF( nMonthInt = 12);		sMonthShort = 'Dec';	sMonthLong = 'December';	EndIF;
+
+	# Add attributes
+	# -----------------------------	
+
+	sAttrValue = TimSt(nCurrentDate, '\d/\m/\Y');		CellPutS( sAttrValue, sAttrCube, sDate, 'Date (ddmmmyyyy)' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Date (ddmmmyyyy)');
+	sAttrValue = numbertostring(nCurrentDate);		CellPutS( sAttrValue, sAttrCube, sDate, 'Serial Date' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Serial Date');
+	sAttrValue = TimSt(nCurrentDate, '\D');			CellPutS( sAttrValue, sAttrCube, sDate, 'Day (d)' );			CellPutS( sAttrValue, 'Calendar', sDate, 'Day (d)');
+	sAttrValue = TimSt(nCurrentDate, '\d');			CellPutS( sAttrValue, sAttrCube, sDate, 'Day (dd)' );			CellPutS( sAttrValue, 'Calendar', sDate, 'Day (dd)');
+	sAttrValue = TimSt(nCurrentDate, '\m');			CellPutS( sAttrValue, sAttrCube, sDate, 'Month (mm)' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Month (mm)');
+	sAttrValue = TimSt(nCurrentDate, '\y');			CellPutS( sAttrValue, sAttrCube, sDate, 'Calendar Year (yy)' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Calendar Year (yy)');
+	sAttrValue = TimSt(nCurrentDate, '\Y');			CellPutS( sAttrValue, sAttrCube, sDate, 'Calendar Year (yyyy)' );	CellPutS( sAttrValue, 'Calendar', sDate, 'Calendar Year (yyyy)');
+	sAttrValue = TimSt((nCurrentDate - 1), '\d/\m/\Y');		CellPutS( sAttrValue, sAttrCube, sDate, 'Previous Day' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Previous Day');
+	sAttrValue = TimSt((nCurrentDate + 1), '\d/\m/\Y');		CellPutS( sAttrValue, sAttrCube, sDate, 'Next Day' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Next Day');
+
+	sAttrValue = sDayShort;				CellPutS( sAttrValue, sAttrCube, sDate, 'Day (ddd)' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Day (ddd)');
+	sAttrValue = sDayFull;				CellPutS( sAttrValue, sAttrCube, sDate, 'Day (dddd)' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Day (dddd)');
+
+	sAttrValue = Numbertostring(nMonthInt);			CellPutS( sAttrValue, sAttrCube, sDate, 'Month (m)' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Month (m)');
+	sAttrValue = sMonthShort;				CellPutS( sAttrValue, sAttrCube, sDate, 'Month (mmm)' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Month (mmm)');
+	sAttrValue = sMonthLong;				CellPutS( sAttrValue, sAttrCube, sDate, 'Month (mmmm)' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Month (mmmm)');
+
+	# Add financial year attributes (custom to client)
+	# -----------------------------	
+	
+	sFinancialWeek = '';
+	sFinancialMonth = '';
+	sFinancialQuarter = '';
+	sFinancialYear = '';
+
+	iYear = TimSt(nCurrentDate, '\Y');
+	iPreviousYear = Numbertostring(Stringtonumber(iYear) - 1);
+	iNextYear =  Numbertostring(Stringtonumber(iYear) + 1);
+	iPreviousYear2 = Numbertostring(Stringtonumber(iYear) - 2);
+	iNextYear2 =  Numbertostring(Stringtonumber(iYear) + 2);
+
+	nMonthInt = Month(TimSt(nCurrentDate, '\Y-\m-\d'));
+
+	IF( nMonthInt = 10);		sFinancialYear = 'FY' | iYear | '/' | subst( iNextYear, 3, 2);		sFinancialPeriod = 'P01 ' | sFinancialYear ;	sFinancialMonth = 'P01';	sFinancialQuarter = 'Q1 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P12 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sNextFinancialMonth = 'P02 FY' | iYear | '/' | subst( iNextYear, 3, 2);	EndIF;
+	IF( nMonthInt = 11);		sFinancialYear = 'FY' | iYear | '/' | subst( iNextYear, 3, 2);		sFinancialPeriod = 'P02 ' | sFinancialYear ;	sFinancialMonth = 'P02';	sFinancialQuarter = 'Q1 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P01 FY' | iYear | '/' | subst( iNextYear, 3, 2);		sNextFinancialMonth = 'P03 FY' | iYear | '/' | subst( iNextYear, 3, 2);	EndIF;
+	IF( nMonthInt = 12);	sFinancialYear = 'FY' | iYear | '/' | subst( iNextYear, 3, 2);		sFinancialPeriod = 'P03 ' | sFinancialYear ;	sFinancialMonth = 'P03';	sFinancialQuarter = 'Q1 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P02 FY' | iYear | '/' | subst( iNextYear, 3, 2);		sNextFinancialMonth = 'P04 FY' | iYear | '/' | subst( iNextYear, 3, 2);	EndIF;
+	IF( nMonthInt = 1);	sFinancialYear = 'FY' | iYear | '/' | subst( iNextYear, 3, 2);		sFinancialPeriod = 'P04 ' | sFinancialYear ;	sFinancialMonth = 'P04';	sFinancialQuarter = 'Q2 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P03 FY' | iYear | '/' | subst( iNextYear, 3, 2);		sNextFinancialMonth = 'P05 FY' | iYear | '/' | subst( iNextYear, 3, 2);	EndIF;
+	IF( nMonthInt = 2);	sFinancialYear = 'FY' | iYear | '/' | subst( iNextYear, 3, 2);		sFinancialPeriod = 'P05 ' | sFinancialYear ;	sFinancialMonth = 'P05';	sFinancialQuarter = 'Q2 ' | sFinancialYear ;	sPreviousFinancialMonth = 'P04 FY' | iYear | '/' | subst( iNextYear, 3, 2);		sNextFinancialMonth = 'P06 FY' | iYear | '/' | subst( iNextYear, 3, 2);	EndIF;
+
+	IF( nMonthInt = 3);		sFinancialYear = 'FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sFinancialPeriod = 'P06 ' | sFinancialYear ;	sFinancialMonth = 'P06';	sFinancialQuarter = 'Q2 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P05 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sNextFinancialMonth = 'P07 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	EndIF;
+	IF( nMonthInt = 4);		sFinancialYear = 'FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sFinancialPeriod = 'P07 ' | sFinancialYear ;	sFinancialMonth = 'P07';	sFinancialQuarter = 'Q3 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P06 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sNextFinancialMonth = 'P08 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	EndIF;
+	IF( nMonthInt = 5);		sFinancialYear = 'FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sFinancialPeriod = 'P08 ' | sFinancialYear ;	sFinancialMonth = 'P08';	sFinancialQuarter = 'Q3 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P07 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sNextFinancialMonth = 'P09 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	EndIF;
+	IF( nMonthInt = 6);		sFinancialYear = 'FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sFinancialPeriod = 'P09 ' | sFinancialYear ;	sFinancialMonth = 'P09';	sFinancialQuarter = 'Q3 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P08 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sNextFinancialMonth = 'P10 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	EndIF;
+	IF( nMonthInt = 7);		sFinancialYear = 'FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sFinancialPeriod = 'P10 ' | sFinancialYear ;	sFinancialMonth = 'P10';	sFinancialQuarter = 'Q4 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P09 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sNextFinancialMonth = 'P11 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	EndIF;
+	IF( nMonthInt = 8);		sFinancialYear = 'FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sFinancialPeriod = 'P11 ' | sFinancialYear ;	sFinancialMonth = 'P11';	sFinancialQuarter = 'Q4 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P10 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sNextFinancialMonth = 'P12 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	EndIF;
+	IF( nMonthInt = 9);		sFinancialYear = 'FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sFinancialPeriod = 'P12 ' | sFinancialYear ;	sFinancialMonth = 'P12';	sFinancialQuarter = 'Q4 ' | sFinancialYear ; 	sPreviousFinancialMonth = 'P11 FY' | iPreviousYear | '/' | subst( iYear, 3, 2);	sNextFinancialMonth = 'P01 FY' | iYear | '/' | subst( iNextYear, 3, 2);	EndIF;
+
+
+	sAttrValue = sFinancialYear;				CellPutS( sAttrValue, sAttrCube, sDate, 'Financial Year' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Financial Year');
+	sAttrValue = sFinancialPeriod;				CellPutS( sAttrValue, sAttrCube, sDate, 'Financial Period' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Financial Period');
+	sAttrValue = sFinancialMonth;				CellPutS( sAttrValue, sAttrCube, sDate, 'Financial Month' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Financial Month');
+	sAttrValue = sFinancialQuarter;			CellPutS( sAttrValue, sAttrCube, sDate, 'Financial Quarter' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Financial Quarter');
+	sAttrValue = sPreviousFinancialMonth;			CellPutS( sAttrValue, 'Calendar', sDate, 'Previous Financial Month');
+	sAttrValue = sNextFinancialMonth;			CellPutS( sAttrValue, 'Calendar', sDate, 'Next Financial Month');
+
+	# Calculate financial week (custom to client)
+	# -----------------------------	
+# Friday
+	iDay = stringtonumber(TimSt(nCurrentDate, '\D'));
+
+#		IF( iDay <= 6 );		WeekNo = '1';	EndIF;
+#		IF( iDay > 6 & iDay <= 13 );	WeekNo = '2';	EndIF;
+#		IF( iDay > 13 & iDay <= 20 );	WeekNo = '3';	EndIF;
+#		IF( iDay > 20 & iDay <= 27 );	WeekNo = '4';	EndIF;
+#		IF( iDay > 27 & iDay <= 31 );	WeekNo = '5';	EndIF;
+
+#	sWeek = 'Week ' | WeekNo | ' ' | sFinancialPeriod;
+#	sAttrValue = sWeek;				CellPutS( sAttrValue, sAttrCube, sDate, 'Financial Week' );		CellPutS( sAttrValue, 'Calendar', sDate, 'Financial Week');
+
+	nCurrentDate = nCurrentDate + 1;
+End;
+#endregion

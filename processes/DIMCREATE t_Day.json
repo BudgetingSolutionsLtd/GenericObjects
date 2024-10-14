@@ -1,0 +1,27 @@
+{
+	"@type":"Process",
+	"Name":"DIMCREATE t_Day",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"DIMCREATE t_Day.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pStartDate",
+			"Prompt":"Start date (dd/mm/yy)",
+			"Value":"05/06/24",
+			"Type":"String"
+		},
+		{
+			"Name":"pFinYrStart",
+			"Prompt":"Financial year start month (mm)",
+			"Value":"10",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}
