@@ -1,0 +1,24 @@
+{
+	"@type":"Hierarchy",
+	"Name":"m_SYS Attribute Dimensions",
+	"Elements":
+	[
+		{
+			"Name":"AttributeDimName",
+			"Type":"String"
+		},
+		{
+			"Name":"AttributeCubeName",
+			"Type":"String"
+		},
+		{
+			"Name":"Copy Dimension",
+			"Type":"String"
+		},
+		{
+			"Name":"Copy Data",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

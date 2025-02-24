@@ -1,0 +1,116 @@
+#region Prolog
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Define environment variables
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Global settings for the client
+host = CellGetS( 'SYS PA API Credentials', 'Input', 'host' );
+apiKey =  CellGetS( 'SYS PA API Credentials', 'Input', 'apiKey' );
+
+# Convert apiKey to base 64 encoding
+apiKey = Base64Encode( 'apikey:'| apiKey);
+
+# Tenant ID's for the instances that exist
+DevTenant =CellGetS( 'SYS PA API Credentials', 'Input', 'DevTenant' );
+ProdTenant = CellGetS( 'SYS PA API Credentials', 'Input', 'ProdTenant' );
+
+# Select which tenant to use for the source
+If(pSourceInstance @= 'Dev');
+    SourceTenant = DevTenant;
+elseif( pSourceInstance @= 'Prod' );
+    SourceTenant = ProdTenant;
+endif;
+
+# Select which tenant to use for the destination
+If(pDestInstance @= 'Dev');
+    DestinationTenant = DevTenant;
+elseif( pDestInstance @= 'Prod' );
+    DestinationTenant = ProdTenant;
+endif;
+
+# Set databases to copy from and to
+SourceDB = pSourceDB;
+DestinationDB = pDestDB;
+
+# Define the root URL for the source and destination for the API calls
+SourceRoot = host |'/api/' |SourceTenant | '/v0/tm1/' |SourceDB|'/api/v1/'; 
+DestinationRoot = host | '/api/' | DestinationTenant | '/v0/tm1/' | DestinationDB | '/api/v1/';
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# GET DATA FROM SOURCE DB
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Request a session cookie that means further requests don't need authentication token
+SourceHeader = '-h Authorization: Basic ' | apiKey;
+ExecuteHttpRequest('GET', host | '/api/' | SourceTenant | '/v0/rolemgmt/v1/users/me', SourceHeader);
+
+# Check the response and end the process if authentication failed
+responseBody = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+If(status <> 200);
+    ItemReject('Error authenticating to source environment: ' | responseBody);
+EndIf;
+
+
+# Get Process data from source database
+url = SourceRoot  | 'Cubes(''' | pSourceName | ''')';
+ExecuteHttpRequest('GET', url, Sourceheader);
+SourceData = HttpResponseGetBody();
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus > 299);
+       ItemReject('Error receiving process '|pSourceName|' in  '|pSourceDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+EndIf;
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# POST DATA TO TARGET DB
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Request a session cookie that means further requests don't need authentication token 
+# This isn't needed if the source and target databases are on the same instance, but when copy from one instance to another it is, so just do it anyway.
+DestinationHeader = '-h Authorization: Basic ' | apiKey;
+ExecuteHttpRequest('GET', host | '/api/' | DestinationTenant | '/v0/rolemgmt/v1/users/me', DestinationHeader);
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus <> 200);
+    ItemReject('Error authenticating to destination environment: ' | ResponseBody);
+EndIf;
+
+# Define header
+DataHeader = '-H Content-Type: application/json; charset=utf-8';
+
+# Define endpoint
+pTargetName = pSourceName;
+url = DestinationRoot | 'Cubes(''' | pTargetName | ''')';
+
+# Prepare data
+TargetData = SourceData;
+JsonRemove( TargetData, 'Attributes' );
+
+# PATCH the process
+ExecuteHttpRequest('PATCH', url, DataHeader,  '-d ' | SourceData );
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus <> 200);
+       ItemReject('Error updating cube '|pTargetName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+EndIf;
+
+test =1;
+
+
+
+#endregion
+#region Data
+
+
+#endregion
+#region Epilog
+
+
+
+#endregion

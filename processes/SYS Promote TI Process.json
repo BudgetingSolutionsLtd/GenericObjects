@@ -1,0 +1,47 @@
+{
+	"@type":"Process",
+	"Name":"SYS Promote TI Process",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Promote TI Process.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pSourceName",
+			"Prompt":"Process to copy",
+			"Value":"zTest",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source DB",
+			"Value":"Development",
+			"Type":"String"
+		},
+		{
+			"Name":"pDestInstance",
+			"Prompt":"Destination instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pDestDB",
+			"Prompt":"Destination DB",
+			"Value":"Dev2",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1739447995000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

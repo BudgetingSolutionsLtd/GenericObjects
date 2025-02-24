@@ -1,0 +1,18 @@
+#region Prolog
+ExecuteProcess( 'SYS Promote - Update SYS Attribute Dimension' );
+
+#endregion
+#region Data
+vCopyDimension = CellGetS( 'SYS Attribute Dimensions', vDimName, 'Copy Dimension' );
+If (vCopyDimension @<> 'y');
+    Itemskip;
+Endif;
+
+ExecuteProcess( 'SYS Promote Dimension Attributes',
+	'pDimName', vDimName,
+    'pSourceInstance', pSourceInstance,
+	'pSourceDB', pSourceDB,
+	'pDestInstance', pDestInstance,
+	'pDestDB', pDestDB );
+
+#endregion
