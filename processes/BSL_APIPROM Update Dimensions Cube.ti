@@ -1,29 +1,30 @@
 #region Prolog
-# Process to update the SYS Atribute dimension Cube
-# This cube is used to determin which attribute dimensions to export when promoting to another environment
+# This process creates and updates the 'BSL_APIPROM Attribute Dimensions' cube
+# This cube is used to determine which attribute dimensions to export when promoting to another environment
 
 #############################################################################################################################
 # CHANGE LOG
-# 07/02/2025 | Helen Heaton | Process created
+# 24/02/2025 | Helen Heaton | Process created
 #############################################################################################################################
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Define Process Parameters
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Define variables
-DimName = 'SYS Attribute Dimensions';
-CubeName = 'SYS Attribute Dimensions';
-MeasureDimName = 'm_SYS Attribute Dimensions';
+DimName = 'BSL_APIPROM Attribute Dimensions';
+MeasureDimName = 'BSL_APIPROM Attribute Dimension Measures';
+CubeName = 'BSL_APIPROM Attribute Dimensions';
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Create Dimensions if they don't already exist
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# SYS Attribute Dimensions
+# Attribute Dimensions
 IF(DimensionExists( DimName ) = 0);
     DimensionCreate( DimName );
 Endif;
 
-# m_SYS Attribute Dimensions
+# Measures Dimension
 IF(DimensionExists( MeasureDimName ) = 0);
     DimensionCreate( MeasureDimName );
     DimensionElementInsert( MeasureDimName, '', 'AttributeDimName', 's' );

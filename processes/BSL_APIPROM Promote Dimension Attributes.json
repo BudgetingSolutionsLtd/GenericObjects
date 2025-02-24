@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"SYS Promote Dimension Attributes",
+	"Name":"BSL_APIPROM Promote Dimension Attributes",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"SYS Promote Dimension Attributes.ti",
+	"Code@Code.link":"BSL_APIPROM Promote Dimension Attributes.ti",
 	"DataSource":
 	{
 		"Type":"None"
@@ -41,7 +41,6 @@
 		}
 	],
 	"Variables":[],
-	"UID": "1738944318000",
 	"UIData": "_ParameterConstraints=e30=\f",
 	"VariablesUIData": []
 }

@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"SYS Promote TI Process",
+	"Name":"BSL_APIPROM Promote Cube and rules",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"SYS Promote TI Process.ti",
+	"Code@Code.link":"BSL_APIPROM Promote Cube and rules.ti",
 	"DataSource":
 	{
 		"Type":"None"
@@ -11,8 +11,8 @@
 	[
 		{
 			"Name":"pSourceName",
-			"Prompt":"Process to copy",
-			"Value":"zTest",
+			"Prompt":"Cube to copy",
+			"Value":"Model Parameters",
 			"Type":"String"
 		},
 		{
@@ -41,7 +41,6 @@
 		}
 	],
 	"Variables":[],
-	"UID": "1739447995000",
 	"UIData": "_ParameterConstraints=e30=\f",
 	"VariablesUIData": []
 }

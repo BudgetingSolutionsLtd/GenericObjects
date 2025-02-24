@@ -2,16 +2,16 @@
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Define environment variables
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Global settings for the client
-host = CellGetS( 'SYS PA API Credentials', 'Input', 'host' );
-apiKey =  CellGetS( 'SYS PA API Credentials', 'Input', 'apiKey' );
+# Global settings for the client 
+host = CellGetS( 'BSL_APIPROM Credentials', 'Input', 'host' );
+apiKey =  CellGetS( 'BSL_APIPROM Credentials', 'Input', 'apiKey' );
 
 # Convert apiKey to base 64 encoding
 apiKey = Base64Encode( 'apikey:'| apiKey);
 
 # Tenant ID's for the instances that exist
-DevTenant =CellGetS( 'SYS PA API Credentials', 'Input', 'DevTenant' );
-ProdTenant = CellGetS( 'SYS PA API Credentials', 'Input', 'ProdTenant' );
+DevTenant =CellGetS( 'BSL_APIPROM Credentials', 'Input', 'DevTenant' );
+ProdTenant = CellGetS( 'BSL_APIPROM Credentials', 'Input', 'ProdTenant' );
 
 # Select which tenant to use for the source
 If(pSourceInstance @= 'Dev');

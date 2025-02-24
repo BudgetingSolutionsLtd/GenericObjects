@@ -1,0 +1,21 @@
+#region Prolog
+# Process to create and update cubes required for the API promotion tool
+
+#############################################################################################################################
+# CHANGE LOG
+# 24/02/2025 | Helen Heaton | Process created
+#############################################################################################################################
+
+# Create credentials cube
+ExecuteProcess( 'BSL_APIPROM Update Credentials Cube',
+	'pHost', pHost,
+	'pAPIKey', pAPIKey,
+	'pDevTenant', pDevTenant,
+	'pProdTenant', pProdTenant );
+
+# Create Dimensions cube
+ExecuteProcess( 'BSL_APIPROM Update Dimensions Cube' );
+
+
+
+#endregion

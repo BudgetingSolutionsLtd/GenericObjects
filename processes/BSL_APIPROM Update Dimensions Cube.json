@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"SYS Promote - Update SYS Attribute Dimension",
+	"Name":"BSL_APIPROM Update Dimensions Cube",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"SYS Promote - Update SYS Attribute Dimension.ti",
+	"Code@Code.link":"BSL_APIPROM Update Dimensions Cube.ti",
 	"DataSource":
 	{
 		"Type":"TM1DimensionSubset",
@@ -21,7 +21,6 @@
 			"EndByte":0
 		}
 	],
-	"UID": "1738928230000",
 	"UIData": "_ParameterConstraints=e30=\f",
 	"VariablesUIData": [
 		"VarType=32\fColType=827\f"
