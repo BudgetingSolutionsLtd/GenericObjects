@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"SYS User Parameters",
+	"Hierarchies@Code.links":
+	[
+		"SYS User Parameters.hierarchies/SYS User Parameters.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('SYS User Parameters')/Hierarchies('SYS User Parameters')"
+	}
+}

@@ -3,29 +3,17 @@
 	"Name":"SYS Import Cube Data from CSV",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS Import Cube Data from CSV.ti",
-	"UIData":"_ParameterConstraints=e30=€",
-	"VariablesUIData":
-	[
-		"VarType=32€ColType=827€",
-		"VarType=32€ColType=827€",
-		"VarType=32€ColType=827€",
-		"VarType=32€ColType=827€",
-		"VarType=32€ColType=827€",
-		"VarType=32€ColType=827€",
-		"VarType=32€ColType=827€",
-		"VarType=32€ColType=827€"
-	],
 	"DataSource":
 	{
 		"Type":"ASCII",
-		"asciiDecimalSeparator":".",
-		"asciiDelimiterChar":",",
-		"asciiDelimiterType":"Character",
+		"dataSourceNameForServer":"model_upload\\Income - Rental Income Extract.csv",
+		"dataSourceNameForClient":"model_upload\\Income - Rental Income Extract.csv",
 		"asciiHeaderRecords":1,
 		"asciiQuoteCharacter":"\"",
+		"asciiDecimalSeparator":".",
 		"asciiThousandSeparator":",",
-		"dataSourceNameForClient":"model_upload\\Income - Rental Income Extract.csv",
-		"dataSourceNameForServer":"model_upload\\Income - Rental Income Extract.csv"
+		"asciiDelimiterType":"Character",
+		"asciiDelimiterChar":","
 	},
 	"Parameters":
 	[
@@ -33,18 +21,6 @@
 			"Name":"pCube",
 			"Prompt":"Cube Name",
 			"Value":"Income - Rental Income",
-			"Type":"String"
-		},
-		{
-			"Name":"pYear",
-			"Prompt":"Year to Load to",
-			"Value":"FY2022/23",
-			"Type":"String"
-		},
-		{
-			"Name":"pVersion",
-			"Prompt":"Version to Load to",
-			"Value":"CathyTest",
 			"Type":"String"
 		}
 	],
@@ -106,5 +82,17 @@
 			"StartByte":0,
 			"EndByte":0
 		}
-	]
+	],
+	"UID": "172805710700041",
+	"VariablesUIData": [
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f"
+	],
+	"UIData": "_ParameterConstraints=e30=\f"
 }

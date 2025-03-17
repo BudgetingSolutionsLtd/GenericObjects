@@ -2,6 +2,7 @@
 # Imports leaf level data from CSV
 # Programmed for up to 9 dimensions
 
+
 #Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
 pPrologNow = Now; 
 # Catch errors with if statement and do nErrors = nErrors+1;
@@ -12,15 +13,24 @@ sMessage1 = '';
 sMessage2 = '';
 sMessage3 = '';
 # Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
-pParameters ='pCube: '|pCube; 
+pParameters ='pCube: '|pCube|', pYear: '|pYear|', pVersion: '|pVersion; 
 #EndRegion
 
 
+# If the version doesn't exist, add it in
+IF(Dimix('Version', pVersion)=0);
+  DimensionElementInsertDirect( 'Version', '', pVersion, 'N' );
+  DimensionElementComponentAdd( 'Version', 'Static Versions', pVersion, 1 );
+  ExecuteProcess( 'ADMIN - Logging - Admin - Dimension Changes Log', 'pProcess', GetProcessName(), 'pDimension', 'Version', 'pElement', pVersion);
+Endif;
 
 
 sView = GetProcessName|pCube;
 sSubset = GetProcessName|pCube;
 nTemp = 1;
+
+# nCubeLogging = CubeGetLogChanges( pCube );
+# CubeSetLogChanges( pCube, 0 );
 
 # Create Target view and clear data
 
@@ -41,6 +51,20 @@ While (iDim <= nDim);
 iDim = iDim+1;
 End;
 
+IF(pYear@<>'');
+    sDim = 'Period';
+    SubsetDeleteAllElements( sDim, sSubset );
+    SubsetMDXSet( sDim, sSubset, 'TM1FILTERBYLEVEL(TM1DRILLDOWNMEMBER({[Period].[' | pYear | ']} , all , recursive) , 0)' );
+    SubsetMDXSet( sDim, sSubset, '' );
+Endif;
+
+IF(pVersion@<>'');
+    sDim = 'Version';
+    SubsetDeleteAllElements( sDim, sSubset );
+    SubsetMDXSet( sDim, sSubset, '{[' | sDim | '].[' | pVersion | ']}' );
+    SubsetMDXSet( sDim, sSubset, '' );
+Endif;
+
 ViewZeroOut( pCube, sView );
 
 # Define source file
@@ -56,6 +80,55 @@ DatasourceNameForServer = sFileLocation |'\'| sFileName;
 DatasourceASCIIHeaderRecords = 1;
 #endregion
 #region Data
+#Region  Data
+IF(pVersion@<>'');
+IF(TABDIM( pCube, 1)@='Version');
+  v1=pVersion;
+ElseIf(TABDIM( pCube, 2)@='Version');
+  v2=pVersion;
+ElseIf(TABDIM( pCube, 3)@='Version');
+  v3=pVersion;
+ElseIf(TABDIM( pCube, 4)@='Version');
+  v4=pVersion;
+ElseIf(TABDIM( pCube, 5)@='Version');
+  v5=pVersion;
+ElseIf(TABDIM( pCube, 6)@='Version');
+  v6=pVersion;
+ElseIf(TABDIM( pCube, 7)@='Version');
+  v7=pVersion;
+# ElseIf(TABDIM( pCube, 8)@='Version');
+#   v8=pVersion;  
+# ElseIf(TABDIM( pCube, 9)@='Version');
+#   v9=pVersion;  
+Else;
+  ProcessError;
+Endif;
+Endif;
+
+IF(pYear@<>'');
+IF(TABDIM( pCube, 1)@='Period');
+  v1=Subst(v1, 1, 4)|pYear;
+ElseIf(TABDIM( pCube, 2)@='Period');
+  v2=Subst(v2, 1, 4)|pYear;
+ElseIf(TABDIM( pCube, 3)@='Period');
+  v3=Subst(v3, 1, 4)|pYear;
+ElseIf(TABDIM( pCube, 4)@='Period');
+  v4=Subst(v4, 1, 4)|pYear;
+ElseIf(TABDIM( pCube, 5)@='Period');
+  v5=Subst(v5, 1, 4)|pYear;
+ElseIf(TABDIM( pCube, 6)@='Period');
+  v6=Subst(v6, 1, 4)|pYear;
+ElseIf(TABDIM( pCube, 7)@='Period');
+  v7=Subst(v7, 1, 4)|pYear;
+# ElseIf(TABDIM( pCube, 8)@='Period');
+#   v8=Subst(v8, 1, 4)|pYear;
+# ElseIf(TABDIM( pCube, 9)@='Period');
+#   v9=Subst(v9, 1, 4)|pYear;
+Else;
+  ProcessError;
+Endif;
+Endif;
+
 IF(nDim = 2);
   #  IF(CellIsUpdateable(  pCube, v1, v2 )<>0);
         If(ElementType( TabDim(pCube, 2), TabDim(pCube, 2), v2 )@='S');
@@ -132,6 +205,8 @@ Endif;
 
 #endregion
 #region Epilog
+# CubeSetLogChanges( pCube, nCubeLogging );
+
 #Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
 # Put messages here to explain exceptions to user
 if(nErrors>0);
@@ -140,4 +215,5 @@ endif;
 ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
 ####### pMessage and nErrors must be defined in the process to log with exeption handling.
 #EndRegion
+
 #endregion

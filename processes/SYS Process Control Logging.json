@@ -3,7 +3,6 @@
 	"Name":"SYS Process Control Logging",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS Process Control Logging.ti",
-	"UIData":"_ParameterConstraints=e30=€",
 	"DataSource":
 	{
 		"Type":"None"
@@ -39,7 +38,16 @@
 			"Prompt":"pMessage",
 			"Value":"0",
 			"Type":"String"
+		},
+		{
+			"Name":"pParameters",
+			"Prompt":"pParameters",
+			"Value":"0",
+			"Type":"String"
 		}
 	],
-	"Variables":[]
+	"Variables":[],
+	"UID": "172805710700043",
+	"VariablesUIData": [],
+	"UIData": "_ParameterConstraints=e30=\f"
 }

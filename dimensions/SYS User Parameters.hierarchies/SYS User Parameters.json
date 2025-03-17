@@ -1,0 +1,12 @@
+{
+	"@type":"Hierarchy",
+	"Name":"SYS User Parameters",
+	"Elements":
+	[
+		{
+			"Name":"NominalCodeForGenOverheads",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

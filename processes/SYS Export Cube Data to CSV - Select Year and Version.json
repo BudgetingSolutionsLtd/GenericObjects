@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"SYS Export Cube Data to CSV",
+	"Name":"SYS Export Cube Data to CSV - Select Year and Version",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"SYS Export Cube Data to CSV.ti",
+	"Code@Code.link":"SYS Export Cube Data to CSV - Select Year and Version.ti",
 	"DataSource":
 	{
 		"Type":"TM1CubeView",
@@ -15,7 +15,19 @@
 		{
 			"Name":"pCube",
 			"Prompt":"Cube Name",
-			"Value":"REV - Department - Assumptions",
+			"Value":"Income - Rental Income",
+			"Type":"String"
+		},
+		{
+			"Name":"pYear",
+			"Prompt":"Financial Year (FY20xx/xx)",
+			"Value":"FY2023/24",
+			"Type":"String"
+		},
+		{
+			"Name":"pVersion",
+			"Prompt":"Version to Extract",
+			"Value":"Forecast",
 			"Type":"String"
 		}
 	],
@@ -78,7 +90,7 @@
 			"EndByte":0
 		}
 	],
-	"UID": "172805710700039",
+	"UID": "1739274763000",
 	"VariablesUIData": [
 		"VarType=32\fColType=827\f",
 		"VarType=32\fColType=827\f",

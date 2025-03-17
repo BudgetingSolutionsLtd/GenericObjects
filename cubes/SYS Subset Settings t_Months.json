@@ -1,0 +1,15 @@
+{
+	"@type":"Cube",
+	"Name":"SYS Subset Settings t_Months",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('InputLines')"
+		},
+		{
+			"@id":"Dimensions('m_t_Months Subset Settings')"
+		}
+	],
+	"Rules@Code.link":"SYS Subset Settings t_Months.rules",
+	"Views@Code.links":[]
+}

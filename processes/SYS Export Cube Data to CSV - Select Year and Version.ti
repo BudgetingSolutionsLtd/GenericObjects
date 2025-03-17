@@ -16,8 +16,9 @@ sMessage1 = '';
 sMessage2 = '';
 sMessage3 = '';
 # Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
-pParameters ='pCube: '|pCube; 
+pParameters ='pCube: ' | pCube | ', pYear: '| pYear |', pVersion: '|pVersion; 
 #EndRegion
+
 
 
 # Create view for exporting
@@ -46,7 +47,19 @@ While (iDim <= nDim);
 iDim = iDim+1;
 End;
 
+IF(pYear@<>'');
+    sDim = 'Period';
+    SubsetDeleteAllElements( sDim, sSubset );
+    SubsetMDXSet( sDim, sSubset, 'TM1FILTERBYLEVEL(TM1DRILLDOWNMEMBER({[Period].[' | pYear | ']} , all , recursive) , 0)' );
+    SubsetMDXSet( sDim, sSubset, '' );
+Endif;
 
+IF(pVersion@<>'');
+    sDim = 'Version';
+    SubsetDeleteAllElements( sDim, sSubset );
+    SubsetMDXSet( sDim, sSubset, '{[' | sDim | '].[' | pVersion | ']}' );
+    SubsetMDXSet( sDim, sSubset, '' );
+Endif;
 
 # Update Source view
 ViewExtractSkipCalcsSet (pCube, sView, 0);
@@ -116,5 +129,4 @@ endif;
 ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
 ####### pMessage and nErrors must be defined in the process to log with exeption handling.
 #EndRegion
-
 #endregion

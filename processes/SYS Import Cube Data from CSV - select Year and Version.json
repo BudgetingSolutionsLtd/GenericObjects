@@ -1,21 +1,38 @@
 {
 	"@type":"Process",
-	"Name":"SYS Export Cube Data to CSV",
+	"Name":"SYS Import Cube Data from CSV - select Year and Version",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"SYS Export Cube Data to CSV.ti",
+	"Code@Code.link":"SYS Import Cube Data from CSV - select Year and Version.ti",
 	"DataSource":
 	{
-		"Type":"TM1CubeView",
-		"dataSourceNameForServer":"Income - Rental Income",
-		"dataSourceNameForClient":"Income - Rental Income",
-		"view":"Process View"
+		"Type":"ASCII",
+		"dataSourceNameForServer":"model_upload\\Income - Rental Income Extract.csv",
+		"dataSourceNameForClient":"model_upload\\Income - Rental Income Extract.csv",
+		"asciiHeaderRecords":1,
+		"asciiQuoteCharacter":"\"",
+		"asciiDecimalSeparator":".",
+		"asciiThousandSeparator":",",
+		"asciiDelimiterType":"Character",
+		"asciiDelimiterChar":","
 	},
 	"Parameters":
 	[
 		{
 			"Name":"pCube",
 			"Prompt":"Cube Name",
-			"Value":"REV - Department - Assumptions",
+			"Value":"Income - Rental Income",
+			"Type":"String"
+		},
+		{
+			"Name":"pYear",
+			"Prompt":"Year to Load to",
+			"Value":"FY2022/23",
+			"Type":"String"
+		},
+		{
+			"Name":"pVersion",
+			"Prompt":"Version to Load to",
+			"Value":"CathyTest",
 			"Type":"String"
 		}
 	],
@@ -43,28 +60,28 @@
 			"EndByte":0
 		},
 		{
-			"Name":"V4",
+			"Name":"v4",
 			"Type":"String",
 			"Position":4,
 			"StartByte":0,
 			"EndByte":0
 		},
 		{
-			"Name":"V5",
+			"Name":"v5",
 			"Type":"String",
 			"Position":5,
 			"StartByte":0,
 			"EndByte":0
 		},
 		{
-			"Name":"V6",
+			"Name":"v6",
 			"Type":"String",
 			"Position":6,
 			"StartByte":0,
 			"EndByte":0
 		},
 		{
-			"Name":"V7",
+			"Name":"v7",
 			"Type":"String",
 			"Position":7,
 			"StartByte":0,
@@ -78,7 +95,7 @@
 			"EndByte":0
 		}
 	],
-	"UID": "172805710700039",
+	"UID": "1739289112000",
 	"VariablesUIData": [
 		"VarType=32\fColType=827\f",
 		"VarType=32\fColType=827\f",

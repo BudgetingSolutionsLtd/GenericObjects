@@ -8,6 +8,10 @@
 			"Type":"String"
 		},
 		{
+			"Name":"Last Run Date",
+			"Type":"Numeric"
+		},
+		{
 			"Name":"Last Run Time",
 			"Type":"Numeric"
 		},
@@ -25,6 +29,10 @@
 		},
 		{
 			"Name":"File Path",
+			"Type":"String"
+		},
+		{
+			"Name":"Parameters",
 			"Type":"String"
 		}
 	],
