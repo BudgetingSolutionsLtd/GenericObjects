@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"SYS Promote Dimension Attributes",
+	"Name":"SYS Find and Replace in Cube Rules",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"SYS Promote Dimension Attributes.ti",
+	"Code@Code.link":"SYS Find and Replace in Cube Rules.ti",
 	"DataSource":
 	{
 		"Type":"None"
@@ -10,9 +10,9 @@
 	"Parameters":
 	[
 		{
-			"Name":"pDimName",
-			"Prompt":"DimName (without }elementattributes_)",
-			"Value":"test",
+			"Name":"pSourceName",
+			"Prompt":"Cube rules to edit (cube name)",
+			"Value":"TAR - Storage Income Targets",
 			"Type":"String"
 		},
 		{
@@ -28,20 +28,19 @@
 			"Type":"String"
 		},
 		{
-			"Name":"pDestInstance",
-			"Prompt":"Destination instance (Dev/Prod)",
-			"Value":"Dev",
+			"Name":"pFind",
+			"Prompt":"Find:",
+			"Value":"[] = DB( 'Model Parameters', 'Input', 'Current Period' );",
 			"Type":"String"
 		},
 		{
-			"Name":"pDestDB",
-			"Prompt":"Destination DB",
-			"Value":"Dev2",
+			"Name":"pReplace",
+			"Prompt":"Replace:",
+			"Value":"[] = DB( 'Model Parameters', 'Input', 'Current FY' );",
 			"Type":"String"
 		}
 	],
 	"Variables":[],
-	"UID": "1738944318000",
 	"UIData": "_ParameterConstraints=e30=\f",
 	"VariablesUIData": []
 }

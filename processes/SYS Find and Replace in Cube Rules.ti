@@ -70,62 +70,28 @@ If(ResponseStatus <> 200);
 EndIf;
 
 # Get Process data from source database
-url = SourceRoot |'Processes('''|pSourceName|''')';
+url = SourceRoot |'Cubes('''|pSourceName|''')/Rules';
 ExecuteHttpRequest('GET', url, SourceHeader);
 
 # Check the response and end the process if authentication failed
-ResponseProcess = HttpResponseGetBody();
+ResponseRule = HttpResponseGetBody();
 ResponseStatus = HttpResponseGetStatusCode();
 If(ResponseStatus > 299);
-       ItemReject('Error retrieving process '|pSourceName|' in  '|pSourceDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+    ItemReject('Error retrieving process '|pSourceName|' in  '|pSourceDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
 EndIf;
-
 
 
 #Region #~~~~~~~~~~Actual find and replace part ~~~~~~~~~~~#
 #find and replace in prolog
-prolog = JsonGet( ResponseProcess, 'PrologProcedure' );
+rule = JsonGet( ResponseRule, 'value' );
 FindLong = LONG( pFind );
-FindScan = SCAN( pFind, prolog);
+FindScan = SCAN( pFind, rule);
 while(FindScan<>0);
-    prolog = SUBST( prolog, 1, FindScan-1) | pReplace | SUBST( prolog, FindScan+FindLong, long(prolog));
-    FindScan = SCAN( pFind, prolog );
+    rule = SUBST( rule, 1, FindScan-1) | pReplace | SUBST( rule, FindScan+FindLong, long(rule));
+    FindScan = SCAN( pFind, rule );
 end;
-ResponseProcess = JsonReplace( ResponseProcess, 'PrologProcedure', prolog );
+ResponseRule = JsonReplace( ResponseRule, 'value', rule );
 
-
-#find and replace in metadata
-metadata = JsonGet( ResponseProcess, 'MetadataProcedure' );
-FindLong = LONG( pFind );
-FindScan = SCAN( pFind, metadata );
-while(FindScan<>0);
-    metadata = SUBST( metadata, 1, FindScan-1) | pReplace | SUBST( metadata, FindScan+FindLong, long(metadata));
-    FindScan = SCAN( pFind, metadata);
-end;
-ResponseProcess = JsonReplace( ResponseProcess, 'MetadataProcedure', metadata );
-
-ItemReject( metadata );
-
-#find and replace in data
-data = JsonGet( ResponseProcess, 'DataProcedure' );
-FindLong = LONG( pFind );
-FindScan = SCAN( pFind, data );
-while(FindScan<>0);
-    data = SUBST( data, 1, FindScan-1) | pReplace | SUBST( data, FindScan+FindLong, long(data));
-    FindScan = SCAN( pFind, data );
-end;
-ResponseProcess = JsonReplace( ResponseProcess, 'DataProcedure', data );
-
-#find and replace in epilog
-epilog = JsonGet( ResponseProcess, 'EpilogProcedure' );
-FindLong = LONG( pFind );
-FindScan = SCAN( pFind, epilog );
-while(FindScan<>0);
-    epilog = SUBST( epilog, 1, FindScan-1) | pReplace | SUBST( epilog, FindScan+FindLong, long(epilog));
-    FindScan = SCAN( pFind, epilog );
-end;
-ResponseProcess = JsonReplace( ResponseProcess, 'EpilogProcedure', epilog);
-#EndRegion
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
 # UPDATE THE DESTINATION DATABASE
@@ -147,50 +113,27 @@ DestinationHeader = '-H Content-Type: application/json; charset=utf-8';
 
 # Define endpoint
 pDestinationName = pSourceName;
-url = DestinationRoot |'Processes('''|pDestinationName|''')';
+url = DestinationRoot |'Cubes('''|pDestinationName|''')';
 
 # Prepare data
-DestinationData = ResponseProcess;
+DestinationData = JsonAdd( '{}', 'Rules', rule );
 
-# Check if process already exists on target
-url = DestinationRoot |'Processes('''|pDestinationName|''')';
+url = DestinationRoot |'Cubes('''|pDestinationName|''')';
 ExecuteHttpRequest('GET', url, DestinationAuthHeader);
 ResponseStatus = HttpResponseGetStatusCode();
 ResponseBody = HttpResponseGetBody();
 
-If(ResponseStatus < 300);
-    Exists = 1;
-    else;
-    Exists = 0;
-endif;
+DestinationData = JsonRemove( DestinationData, 'Attributes' );
 
-#ItemReject( url | ' ' | NumberToString( ResponseStatus ) | ' ' | NumberToString( Exists ) | ' ' | ResponseBody);
+url = DestinationRoot |'Cubes('''|pDestinationName|''')';
+ExecuteHttpRequest('PATCH', url, DestinationAuthHeader, DestinationHeader,  '-d ' | DestinationData );
 
-# If the process Doesn't already exist, create it
-If (Exists = 0);
-    url = DestinationRoot |'Processes';
-    ExecuteHttpRequest('POST', url, DestinationAuthHeader, DestinationHeader,  '-d ' | DestinationData );
-    
-    ResponseBody = HttpResponseGetBody();
-    ResponseStatus = HttpResponseGetStatusCode();
-    If(ResponseStatus <> 201);
-           ItemReject('Error updating process '|pDestinationName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
-    EndIf;
-Endif;
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus <> 200);
+    ItemReject('Error updating process '|pDestinationName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+EndIf;
 
-# If the process already exists, update it (can't update attributes via PATCH)
-If (Exists = 1);
-    DestinationData = JsonRemove( DestinationData, 'Attributes' );
-    
-    url = DestinationRoot |'Processes('''|pDestinationName|''')';
-    ExecuteHttpRequest('PATCH', url, DestinationAuthHeader, DestinationHeader,  '-d ' | DestinationData );
-    
-    ResponseBody = HttpResponseGetBody();
-    ResponseStatus = HttpResponseGetStatusCode();
-    If(ResponseStatus <> 200);
-           ItemReject('Error updating process '|pDestinationName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
-    EndIf;
-Endif;
 
 
 #endregion
