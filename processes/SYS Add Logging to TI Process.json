@@ -1,0 +1,34 @@
+{
+	"@type":"Process",
+	"Name":"SYS Add Logging to TI Process",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Add Logging to TI Process.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pSourceName",
+			"Prompt":"Process to add logging to:",
+			"Value":"ztest2",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source DB",
+			"Value":"Development",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

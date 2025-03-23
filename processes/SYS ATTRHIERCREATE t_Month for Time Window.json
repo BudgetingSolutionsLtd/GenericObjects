@@ -1,0 +1,47 @@
+{
+	"@type":"Process",
+	"Name":"SYS ATTRHIERCREATE t_Month for Time Window",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS ATTRHIERCREATE t_Month for Time Window.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pHierName",
+			"Prompt":"Subset/Hierarchy Name",
+			"Value":"Next 12 Months",
+			"Type":"String"
+		},
+		{
+			"Name":"pWindowStart",
+			"Prompt":"Window start (eg. current period = 0, previous period = 1)",
+			"Value":1,
+			"Type":"Numeric"
+		},
+		{
+			"Name":"pWindowEnd",
+			"Prompt":"Window end (eg. next period = 1, a year ago = -12)",
+			"Value":12,
+			"Type":"Numeric"
+		},
+		{
+			"Name":"pCreateSubset",
+			"Prompt":"Yes/No",
+			"Value":"Yes",
+			"Type":"String"
+		},
+		{
+			"Name":"pCreateHierarchy",
+			"Prompt":"Yes/No",
+			"Value":"No",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1740599112000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

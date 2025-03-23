@@ -1,0 +1,87 @@
+#region Prolog
+# Process to create an MDX view of a cube with all data
+
+#############################################################################################################################
+# CHANGE LOG
+# 17/02/2025 | Helen Heaton | Process created
+#############################################################################################################################
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process Completed Successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pCubeName: '|pCubeName; 
+#EndRegion
+
+
+
+
+# Process variables
+sViewName = 'AllData';
+
+# Delete view if it already exists
+if(ViewExists( pCubeName, sViewName ) = 1);
+    ViewDestroy( pCubeName, sViewName );
+endif;
+
+# Get number of dimensions on cube
+nDims = CubeDimensionCountGet( pCubeName );
+
+
+#-----------------------------------------------------------------------------------------------------------------
+# create mdx
+#-----------------------------------------------------------------------------------------------------------------
+i = 1;
+
+# Create start of mdx
+sDim = TABDIM( pCubeName, i );
+
+    # check if Leaves hierarchy exists - if so use it, if not, use main hierarchy
+    if (HierarchyExists( sDim, 'Leaves' )=1);
+        sHier='Leaves';
+        else;
+        sHier=sDim;
+    endif;
+
+    mdx = 'SELECT NON EMPTY{{TM1FILTERBYLEVEL(TM1SUBSETALL(['|sDim|'].['|sHier|']) , 0)}} ON 0,NON EMPTY';
+    i=2;
+
+# Loop through remaining dimensions
+while( i <= nDims);
+    sDim = TABDIM( pCubeName, i );
+
+        # check if Leaves hierarchy exists - if so use it, if not, use main hierarchy
+        if (HierarchyExists( sDim, 'Leaves' )=1);
+        sHier='Leaves';
+        else;
+        sHier=sDim;
+    endif;
+    
+    mdx = mdx | ' {{ TM1FILTERBYLEVEL(TM1SUBSETALL(['|sDim|'].['|sHier|']) , 0)}}';
+    if (i < nDims);
+        mdx = mdx | '*';
+    endif;
+i=i+1;
+end;
+
+# Add end of mdx
+mdx = mdx | 'ON 1 FROM  [' |pCubeName | ']';
+
+ViewCreateByMDX( pCubeName, sViewName,mdx, 0 );
+#endregion
+#region Epilog
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+#endregion

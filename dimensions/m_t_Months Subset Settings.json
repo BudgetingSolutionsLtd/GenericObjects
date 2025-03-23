@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"m_t_Months Subset Settings",
+	"Hierarchies@Code.links":
+	[
+		"m_t_Months Subset Settings.hierarchies/m_t_Months Subset Settings.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('m_t_Months Subset Settings')/Hierarchies('m_t_Months Subset Settings')"
+	}
+}

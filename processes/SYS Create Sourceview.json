@@ -1,0 +1,23 @@
+{
+	"@type":"Process",
+	"Name":"SYS Create Sourceview",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Create Sourceview.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pCube",
+			"Prompt":"Cube",
+			"Value":"0",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1740654246000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}
