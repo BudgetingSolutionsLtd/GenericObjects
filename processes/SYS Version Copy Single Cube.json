@@ -1,42 +1,54 @@
 {
 	"@type":"Process",
-	"Name":"SYS Export Cube Data to CSV",
+	"Name":"SYS Version Copy Single Cube",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"SYS Export Cube Data to CSV.ti",
+	"Code@Code.link":"SYS Version Copy Single Cube.ti",
 	"DataSource":
 	{
 		"Type":"TM1CubeView",
-		"dataSourceNameForServer":"Income - Rental Income",
-		"dataSourceNameForClient":"Income - Rental Income",
+		"dataSourceNameForServer":"BC - GL Actuals",
+		"dataSourceNameForClient":"BC - GL Actuals",
 		"view":"Process View"
 	},
 	"Parameters":
 	[
 		{
 			"Name":"pCube",
-			"Prompt":"Cube Name",
-			"Value":"REV - Department - Assumptions",
+			"Prompt":"",
+			"Value":"OH - General Overhead Default Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"pVersionFrom",
+			"Prompt":"",
+			"Value":"Live Version",
+			"Type":"String"
+		},
+		{
+			"Name":"pVersionTo",
+			"Prompt":"",
+			"Value":"Prediction",
 			"Type":"String"
 		}
 	],
 	"Variables":
 	[
 		{
-			"Name":"v1",
+			"Name":"V1",
 			"Type":"String",
 			"Position":1,
 			"StartByte":0,
 			"EndByte":0
 		},
 		{
-			"Name":"v2",
+			"Name":"V2",
 			"Type":"String",
 			"Position":2,
 			"StartByte":0,
 			"EndByte":0
 		},
 		{
-			"Name":"v3",
+			"Name":"V3",
 			"Type":"String",
 			"Position":3,
 			"StartByte":0,
@@ -69,16 +81,10 @@
 			"Position":7,
 			"StartByte":0,
 			"EndByte":0
-		},
-		{
-			"Name":"v8",
-			"Type":"String",
-			"Position":8,
-			"StartByte":0,
-			"EndByte":0
 		}
 	],
-	"UID": "172805710700039",
+	"UID": "1740061579000",
+	"UIData": "_ParameterConstraints=e30=\f",
 	"VariablesUIData": [
 		"VarType=32\fColType=827\f",
 		"VarType=32\fColType=827\f",
@@ -86,8 +92,6 @@
 		"VarType=32\fColType=827\f",
 		"VarType=32\fColType=827\f",
 		"VarType=32\fColType=827\f",
-		"VarType=32\fColType=827\f",
 		"VarType=32\fColType=827\f"
-	],
-	"UIData": "_ParameterConstraints=e30=\f"
+	]
 }

@@ -1,0 +1,130 @@
+{
+	"@type":"Process",
+	"Name":"SYS Add Code to TI Process",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Add Code to TI Process.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pSourceName",
+			"Prompt":"Process to edit",
+			"Value":"ztest2",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source DB",
+			"Value":"Development",
+			"Type":"String"
+		},
+		{
+			"Name":"pSection",
+			"Prompt":"Prolog/metadata/data/epilog",
+			"Value":"Data",
+			"Type":"String"
+		},
+		{
+			"Name":"pStartEnd",
+			"Prompt":"Add code to start or end of section?",
+			"Value":"Start",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine1",
+			"Prompt":"Line 1 of code:",
+			"Value":"thisisaztest2 = thisisaztest2 | 'concat';",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine2",
+			"Prompt":"Line 2 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine3",
+			"Prompt":"Line 3 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine4",
+			"Prompt":"Line 4 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine5",
+			"Prompt":"Line 5 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine6",
+			"Prompt":"Line 6 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine7",
+			"Prompt":"Line 7 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine8",
+			"Prompt":"Line 8 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine9",
+			"Prompt":"Line 9 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine10",
+			"Prompt":"Line 10 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine11",
+			"Prompt":"Line 11 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine12",
+			"Prompt":"Line 12 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine13",
+			"Prompt":"Line 13 of code:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pLine14",
+			"Prompt":"Line 14 of code:",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

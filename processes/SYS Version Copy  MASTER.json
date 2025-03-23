@@ -1,0 +1,43 @@
+{
+	"@type":"Process",
+	"Name":"SYS Version Copy  MASTER",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Version Copy  MASTER.ti",
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForServer":"}Cubes:}Cubes",
+		"dataSourceNameForClient":"}Cubes:}Cubes",
+		"subset":"All"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pVersionFrom",
+			"Prompt":"Version to Copy From",
+			"Value":"Live Version",
+			"Type":"String"
+		},
+		{
+			"Name":"pVersionTo",
+			"Prompt":"Version to Copy To",
+			"Value":"Cathy Test",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"vCube",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1740062846000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": [
+		"VarType=32\fColType=827\f"
+	]
+}

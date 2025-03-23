@@ -3,7 +3,6 @@
 	"Name":"SYS Version Maintenance",
 	"HasSecurityAccess":false,
 	"Code@Code.link":"SYS Version Maintenance.ti",
-	"UIData":"_ParameterConstraints=e30=€",
 	"DataSource":
 	{
 		"Type":"None"
@@ -29,5 +28,8 @@
 			"Type":"String"
 		}
 	],
-	"Variables":[]
+	"Variables":[],
+	"UID": "172805710700048",
+	"VariablesUIData": [],
+	"UIData": "_ParameterConstraints=e30=\f"
 }

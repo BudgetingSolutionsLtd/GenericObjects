@@ -1,0 +1,23 @@
+{
+	"@type":"Process",
+	"Name":"SYS Version - Lock Version",
+	"HasSecurityAccess":true,
+	"Code@Code.link":"SYS Version - Lock Version.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pVersion",
+			"Prompt":"Version to Lock",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1741088677000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"InputLines",
+	"Hierarchies@Code.links":
+	[
+		"InputLines.hierarchies/InputLines.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('InputLines')/Hierarchies('InputLines')"
+	}
+}

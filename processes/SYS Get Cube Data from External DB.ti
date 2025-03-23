@@ -1,0 +1,156 @@
+#region Prolog
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process Completed Successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pCubeName: '|pCubeName |', pSourceInstance: '|pSourceInstance|', pSourceDB: '|pSourceDB | ', pFileName: ' |pFileName  ; 
+#EndRegion
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Define environment variables
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Global settings for the client
+host = CellGetS( 'SYS PA API Credentials', 'Input', 'host' );
+apiKey =  CellGetS( 'SYS PA API Credentials', 'Input', 'apiKey' );
+
+# Convert apiKey to base 64 encoding
+apiKey = Base64Encode( 'apikey:'| apiKey);
+
+# Tenant ID's for the instances that exist
+DevTenant =CellGetS( 'SYS PA API Credentials', 'Input', 'DevTenant' );
+ProdTenant = CellGetS( 'SYS PA API Credentials', 'Input', 'ProdTenant' );
+
+# Select which tenant to use for the source
+If(pSourceInstance @= 'Dev');
+    SourceTenant = DevTenant;
+elseif( pSourceInstance @= 'Prod' );
+    SourceTenant = ProdTenant;
+endif;
+
+# Set databases to copy from and to
+SourceDB = pSourceDB;
+
+
+# Define the root URL for the source and destination for the API calls
+SourceRoot = host |'/api/' |SourceTenant | '/v0/tm1/' |SourceDB|'/api/v1/'; 
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# GET DATA FROM SOURCE DB
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Request a session cookie that means further requests don't need authentication token
+SourceHeader = '-h Authorization: Basic ' | apiKey;
+ExecuteHttpRequest('GET', host | '/api/' | SourceTenant | '/v0/rolemgmt/v1/users/me', SourceHeader);
+
+# Check the response and end the process if authentication failed
+responseBody = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+If(status <> 200);
+    ItemReject('Error authenticating to source environment: ' | responseBody);
+EndIf;
+
+SourceHeader ='Content-Type: application/json; charset=utf-8';
+
+mdx = 'SELECT 
+   {
+      TM1FILTERBYLEVEL(
+         TM1SubsetAll([m_Department Assumptions].[m_Department Assumptions]), 0)
+   } ON 0, 
+   {
+      TM1FILTERBYLEVEL(
+         TM1SubsetAll([Department].[Department]), 0)
+   } ON 1 
+FROM
+   ['|pCubeName|']';
+
+body = '{"Name": "'| GetProcessName() |'","MDX":"'| mdx |'"}';
+# Get Process data from source database
+url = SourceRoot  | 'Cubes('''|pCubeName|''')/Views';
+ExecuteHttpRequest( 'POST', url, '-h ' | SourceHeader, '-d ' | body);
+SourceData = HttpResponseGetBody();
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus > 299);
+       ItemReject('Error receiving '|pCubeName|' in  '|pSourceDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+EndIf;
+
+cellsetID = jsontostring(JsonGet( responseBody, 'ID' ));
+
+# Get Process data from source database
+url = SourceRoot| 'Cubes('''|pCubeName|')/Views('''| GetProcessName() |''')/tm1.Execute?$expand=Cells';
+ExecuteHttpRequest( 'GET', url, '-h ' | SourceHeader, '-o ' | pFileName | '.json');
+SourceData = HttpResponseGetBody();
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus > 299);
+       ItemReject('Error receiving '|pCubeName|' in  '|pSourceDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+EndIf;
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# POST DATA TO TARGET DB
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Request a session cookie that means further requests don't need authentication token 
+# This isn't needed if the source and target databases are on the same instance, but when copy from one instance to another it is, so just do it anyway.
+DestinationHeader = '-h Authorization: Basic ' | apiKey;
+# ExecuteHttpRequest('GET', host | '/api/' | DestinationTenant | '/v0/rolemgmt/v1/users/me', DestinationHeader);
+
+# # Check the response and end the process if authentication failed
+# ResponseBody = HttpResponseGetBody();
+# ResponseStatus = HttpResponseGetStatusCode();
+# If(ResponseStatus <> 200);
+#     ItemReject('Error authenticating to destination environment: ' | ResponseBody);
+# EndIf;
+
+# # Define header
+# DataHeader = '-H Content-Type: application/json; charset=utf-8';
+
+# # Define endpoint
+# pTargetName = pSourceName;
+# url = DestinationRoot | 'Cubes(''' | pTargetName | ''')';
+
+# # Prepare data
+# TargetData = SourceData;
+# JsonRemove( TargetData, 'Attributes' );
+
+# # PATCH the process
+# ExecuteHttpRequest('PATCH', url, DataHeader,  '-d ' | SourceData );
+
+# # Check the response and end the process if authentication failed
+# ResponseBody = HttpResponseGetBody();
+# ResponseStatus = HttpResponseGetStatusCode();
+# If(ResponseStatus <> 200);
+#        ItemReject('Error updating cube '|pTargetName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+# EndIf;
+
+# test =1;
+
+
+
+#endregion
+#region Data
+
+
+#endregion
+#region Epilog
+
+
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+
+#endregion

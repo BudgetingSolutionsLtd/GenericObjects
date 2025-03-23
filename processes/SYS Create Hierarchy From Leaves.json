@@ -1,0 +1,23 @@
+{
+	"@type":"Process",
+	"Name":"SYS Create Hierarchy From Leaves",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Create Hierarchy From Leaves.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"Dim name: ",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1738705425000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

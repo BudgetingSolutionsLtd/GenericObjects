@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"SYS Attribute Dimensions",
+	"Hierarchies@Code.links":
+	[
+		"SYS Attribute Dimensions.hierarchies/SYS Attribute Dimensions.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('SYS Attribute Dimensions')/Hierarchies('SYS Attribute Dimensions')"
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"SYS Create Hierarchy From Attribute",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Create Hierarchy From Attribute.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"Dim name: ",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pHierName",
+			"Prompt":"Hierarchy name:",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1737395635000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

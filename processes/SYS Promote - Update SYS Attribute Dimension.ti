@@ -1,0 +1,120 @@
+#region Prolog
+# Process to update the SYS Atribute dimension Cube
+# This cube is used to determin which attribute dimensions to export when promoting to another environment
+
+#############################################################################################################################
+# CHANGE LOG
+# 07/02/2025 | Helen Heaton | Process created
+#############################################################################################################################
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process Completed Successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters =''; 
+#EndRegion
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Define Process Parameters
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Define variables
+DimName = 'SYS Attribute Dimensions';
+CubeName = 'SYS Attribute Dimensions';
+MeasureDimName = 'm_SYS Attribute Dimensions';
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Create Dimensions if they don't already exist
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# SYS Attribute Dimensions
+IF(DimensionExists( DimName ) = 0);
+    DimensionCreate( DimName );
+Endif;
+
+# m_SYS Attribute Dimensions
+IF(DimensionExists( MeasureDimName ) = 0);
+    DimensionCreate( MeasureDimName );
+    DimensionElementInsert( MeasureDimName, '', 'AttributeDimName', 's' );
+    DimensionElementInsert( MeasureDimName, '', 'AttributeCubeName', 's' );
+    DimensionElementInsert( MeasureDimName, '', 'Copy Dimension', 's' );
+    DimensionElementInsert( MeasureDimName, '', 'Copy Data', 's' );
+    AttrInsert(MeasureDimName, '', 'Picklist', 'S' );
+Endif;
+
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Create Cube if it doesn't already exist
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+IF(CubeExists( CubeName ) = 0);
+    CubeCreate( CubeName, DimName, MeasureDimName );
+Endif;
+
+#endregion
+#region Metadata
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# For all dimensions with attributes, add them to the dimension if they don't already exist
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+AttrDimName = '}ElementAttributes_' | vDimension;
+
+IF(DimensionElementExists( '}Dimensions', AttrDimName ) = 1);
+    IF(DimensionElementExists( DimName, vDimension )=0);
+        DimensionElementInsert( DimName, '', vDimension, 's' );
+    Endif;
+Endif;
+
+
+#endregion
+#region Data
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# For all dimensions with attributes, update the cube values
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+AttrDimName = '}ElementAttributes_' | vDimension;
+AttrCubeName = '}ElementAttributes_' | vDimension;
+
+IF(DimensionElementExists( DimName, vDimension )=1);
+ 
+    # Populate the attribute dimension and attribute cube name
+    CellPutS(AttrDimName,CubeName ,vDimension,'AttributeDimName');
+    CellPutS(AttrCubeName,CubeName ,vDimension,'AttributeCubeName');
+
+    # If the 'Copy Dimension' attribute is blank, i.e. it's new, set as 'y' so that new attribute dimensions are copied by default
+     IF(CellGetS(CubeName ,vDimension,'Copy Dimension')@='');
+        CellPutS('y',CubeName ,vDimension,'Copy Dimension');
+    Endif;
+    
+    # If the 'Copy Data' attribute is blank, i.e. it's new, set as 'n' so that attribute values are NOT copied by default
+     IF(CellGetS(CubeName ,vDimension,'Copy Data')@='');
+        CellPutS('n',CubeName ,vDimension,'Copy Data');
+    Endif;
+
+Endif;
+
+
+
+
+
+#endregion
+#region Epilog
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Create picklists
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+AttrPutS( 'static:y:n', MeasureDimName, 'Copy Dimension', 'Picklist' );
+AttrPutS( 'static:y:n', MeasureDimName, 'Copy Data', 'Picklist' );
+
+
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+
+#endregion
