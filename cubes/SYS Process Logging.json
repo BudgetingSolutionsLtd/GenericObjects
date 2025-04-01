@@ -1,6 +1,6 @@
 {
 	"@type":"Cube",
-	"Name":"SYS Process Control",
+	"Name":"SYS Process Logging",
 	"Dimensions":
 	[
 		{
@@ -10,5 +10,6 @@
 			"@id":"Dimensions('m_Process Control')"
 		}
 	],
+	"Rules@Code.link":"SYS Process Logging.rules",
 	"Views@Code.links":[]
 }

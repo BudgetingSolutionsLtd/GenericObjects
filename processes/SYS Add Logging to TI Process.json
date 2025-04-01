@@ -1,0 +1,41 @@
+{
+	"@type":"Process",
+	"Name":"SYS Add Logging to TI Process",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Add Logging to TI Process.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pSourceName",
+			"Prompt":"Process to add logging to:",
+			"Value":"ztest2",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source DB",
+			"Value":"Development",
+			"Type":"String"
+		},
+		{
+			"Name":"pOverwrite",
+			"Prompt":"If logging exists, overwrite? (Yes/No) (To overwrite, logging section must be surrounded by #Region PROCESS LOGGING #EndRegion PROCESS LOGGING",
+			"Value":"Yes",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1742759243000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}
