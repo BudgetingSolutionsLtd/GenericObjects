@@ -1,0 +1,15 @@
+{
+	"@type":"Cube",
+	"Name":"SYS Quick Cube Creator",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('SYS Quick Cube Creator Input')"
+		},
+		{
+			"@id":"Dimensions('SYS m_Quick Cube Creator')"
+		}
+	],
+	"Rules@Code.link":"SYS Quick Cube Creator.rules",
+	"Views@Code.links":[]
+}

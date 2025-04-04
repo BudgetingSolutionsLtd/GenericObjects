@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"SYS m_Quick Cube Creator",
+	"Hierarchies@Code.links":
+	[
+		"SYS m_Quick Cube Creator.hierarchies/SYS m_Quick Cube Creator.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('SYS m_Quick Cube Creator')/Hierarchies('SYS m_Quick Cube Creator')"
+	}
+}

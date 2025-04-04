@@ -1,51 +1,51 @@
 {
 	"@type":"Hierarchy",
-	"Name":"}repo_Quick Cube Creator Input",
+	"Name":"SYS Quick Cube Creator Input",
 	"Elements":
 	[
 		{
 			"Name":"Cube",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 1",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 2",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 3",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 4",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 5",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 6",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 7",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 8",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 9",
-			"Type":"String"
+			"Type":"Numeric"
 		},
 		{
 			"Name":"Dimension 10",
-			"Type":"String"
+			"Type":"Numeric"
 		}
 	],
 	"Subsets@Code.links":[]
