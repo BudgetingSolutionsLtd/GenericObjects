@@ -1,0 +1,146 @@
+#region Prolog
+inputCubeName = 'SYS Quick Cube Creator';
+cubeName = CellGetS( inputCubeName, 'Cube', 'Name', 'Input' );
+
+#Region First need to make all the new dims and add the elements
+# Loop through all dim inputs
+nDim = 1;
+# Get number of dims
+nDimCount = CellGetN(inputCubeName, 'Dimensions', 'Name', 'Count' );
+while(nDim<=nDimCount);
+    # Get dimension name
+    DimInput = 'Dimension ' | NumberToString( nDim );
+    dimName = CellGetS( inputCubeName, DimInput, 'Name', 'Input' );
+    NewExisting = CellGetS( inputCubeName, DimInput, 'New/Existing?', 'Input' );
+    if(NewExisting@='New');
+        # if dimension doesnt exist, create it
+        if(DimensionExists( dimName )=0);
+            DimensionCreate( dimName );
+        else;
+            DimensionDeleteAllElements( dimName );
+        endif;
+    endif;
+    nDim = nDim+1;
+end;
+
+
+#EndRegion
+#endregion
+#region Epilog
+inputCubeName = 'SYS Quick Cube Creator';
+cubeName = CellGetS( inputCubeName, 'Cube', 'Name', 'Input' );
+
+# next add elements. 
+# Loop through all dim inputs
+nDim = 1;
+# Get number of dims
+nDimCount = CellGetN(inputCubeName, 'Dimensions', 'Name', 'Count' );
+while(nDim<=nDimCount);
+
+    # Get dimension name
+    DimInput = 'Dimension ' | NumberToString( nDim );
+    dimName = CellGetS( inputCubeName, DimInput, 'Name', 'Input' );
+    # Get number of elements
+    nElementCount =  CellGetN( inputCubeName, DimInput, 'Elements', 'Count' );
+    nElement = 1;
+    # loop through all element inputs
+    while(nElement<=nElementCount);
+        elementInput = NumberToString( nElement );
+        # Get element name input
+        elName = CellGetS( inputCubeName, DimInput, elementInput , 'Input' );
+        # if start of element name is s: then create a string element
+        if(SUBST( elName, 1, 2 )@='s:');
+            elName = SUBST( elName, 3, LONG( elName ) );
+            DimensionElementInsertDirect( dimName, '', elName, 's' );
+            # else create n element
+        else;
+            DimensionElementInsertDirect( dimName, '', elName, 'n' );
+        endif;
+        nElement = nElement+1;
+    end;
+    nDim = nDim+1;
+end;
+# and finally create cube
+if(CubeExists( cubeName )=0);
+
+    if(nDimCount=1);
+        # error
+    endif;
+    if(nDimCount>=2);
+        dim1 = CellGetS(inputCubeName, 'Dimension 1', 'Name', 'Input');
+        dim2 = CellGetS(inputCubeName, 'Dimension 2', 'Name', 'Input');
+        if(nDimCount = 2);
+            CubeCreate(cubeName, dim1, dim2);
+        endif;
+    endif;
+
+    if(nDimCount>=3);
+        dim1 = CellGetS(inputCubeName, 'Dimension 1', 'Name', 'Input');
+        dim2 = CellGetS(inputCubeName, 'Dimension 2', 'Name', 'Input');
+        dim3 = CellGetS(inputCubeName, 'Dimension 3', 'Name', 'Input');
+        if(nDimCount = 3);
+            CubeCreate(cubeName, dim1, dim2, dim3);
+        endif;
+    endif;
+
+    if(nDimCount>=4);
+        dim1 = CellGetS(inputCubeName, 'Dimension 1', 'Name', 'Input');
+        dim2 = CellGetS(inputCubeName, 'Dimension 2', 'Name', 'Input');
+        dim3 = CellGetS(inputCubeName, 'Dimension 3', 'Name', 'Input');
+        dim4 = CellGetS(inputCubeName, 'Dimension 4', 'Name', 'Input');
+        if(nDimCount = 4);
+            CubeCreate(cubeName, dim1, dim2, dim3, dim4);
+        endif;
+    endif;
+
+    if(nDimCount>=5);
+        dim1 = CellGetS(inputCubeName, 'Dimension 1', 'Name', 'Input');
+        dim2 = CellGetS(inputCubeName, 'Dimension 2', 'Name', 'Input');
+        dim3 = CellGetS(inputCubeName, 'Dimension 3', 'Name', 'Input');
+        dim4 = CellGetS(inputCubeName, 'Dimension 4', 'Name', 'Input');
+        dim5 = CellGetS(inputCubeName, 'Dimension 5', 'Name', 'Input');
+        if(nDimCount = 5);
+            CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5);
+        endif;
+    endif;
+
+    if(nDimCount>=6);
+        dim1 = CellGetS(inputCubeName, 'Dimension 1', 'Name', 'Input');
+        dim2 = CellGetS(inputCubeName, 'Dimension 2', 'Name', 'Input');
+        dim3 = CellGetS(inputCubeName, 'Dimension 3', 'Name', 'Input');
+        dim4 = CellGetS(inputCubeName, 'Dimension 4', 'Name', 'Input');
+        dim5 = CellGetS(inputCubeName, 'Dimension 5', 'Name', 'Input');
+        dim6 = CellGetS(inputCubeName, 'Dimension 6', 'Name', 'Input');
+        if(nDimCount = 6);
+            CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6);
+        endif;
+    endif;
+
+    if(nDimCount>=7);
+        dim1 = CellGetS(inputCubeName, 'Dimension 1', 'Name', 'Input');
+        dim2 = CellGetS(inputCubeName, 'Dimension 2', 'Name', 'Input');
+        dim3 = CellGetS(inputCubeName, 'Dimension 3', 'Name', 'Input');
+        dim4 = CellGetS(inputCubeName, 'Dimension 4', 'Name', 'Input');
+        dim5 = CellGetS(inputCubeName, 'Dimension 5', 'Name', 'Input');
+        dim6 = CellGetS(inputCubeName, 'Dimension 6', 'Name', 'Input');
+        dim7 = CellGetS(inputCubeName, 'Dimension 7', 'Name', 'Input');
+        if(nDimCount = 7);
+            CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6, dim7);
+        endif;
+    endif;
+
+    if(nDimCount>=8);
+        dim1 = CellGetS(inputCubeName, 'Dimension 1', 'Name', 'Input');
+        dim2 = CellGetS(inputCubeName, 'Dimension 2', 'Name', 'Input');
+        dim3 = CellGetS(inputCubeName, 'Dimension 3', 'Name', 'Input');
+        dim4 = CellGetS(inputCubeName, 'Dimension 4', 'Name', 'Input');
+        dim5 = CellGetS(inputCubeName, 'Dimension 5', 'Name', 'Input');
+        dim6 = CellGetS(inputCubeName, 'Dimension 6', 'Name', 'Input');
+        dim7 = CellGetS(inputCubeName, 'Dimension 7', 'Name', 'Input');
+        dim8 = CellGetS(inputCubeName, 'Dimension 8', 'Name', 'Input');
+        if(nDimCount = 8);
+            CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6, dim7, dim8);
+        endif;
+    endif;
+endif;
+#endregion

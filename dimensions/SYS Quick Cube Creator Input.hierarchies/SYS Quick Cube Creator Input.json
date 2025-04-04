@@ -40,12 +40,51 @@
 			"Type":"Numeric"
 		},
 		{
-			"Name":"Dimension 9",
-			"Type":"Numeric"
+			"Name":"Dimensions",
+			"Type":"Consolidated"
+		}
+	],
+	"Edges":
+	[
+		{
+			"ParentName":"Dimensions",
+			"ComponentName":"Dimension 1",
+			"Weight":1
 		},
 		{
-			"Name":"Dimension 10",
-			"Type":"Numeric"
+			"ParentName":"Dimensions",
+			"ComponentName":"Dimension 2",
+			"Weight":1
+		},
+		{
+			"ParentName":"Dimensions",
+			"ComponentName":"Dimension 3",
+			"Weight":1
+		},
+		{
+			"ParentName":"Dimensions",
+			"ComponentName":"Dimension 4",
+			"Weight":1
+		},
+		{
+			"ParentName":"Dimensions",
+			"ComponentName":"Dimension 5",
+			"Weight":1
+		},
+		{
+			"ParentName":"Dimensions",
+			"ComponentName":"Dimension 6",
+			"Weight":1
+		},
+		{
+			"ParentName":"Dimensions",
+			"ComponentName":"Dimension 7",
+			"Weight":1
+		},
+		{
+			"ParentName":"Dimensions",
+			"ComponentName":"Dimension 8",
+			"Weight":1
 		}
 	],
 	"Subsets@Code.links":[]

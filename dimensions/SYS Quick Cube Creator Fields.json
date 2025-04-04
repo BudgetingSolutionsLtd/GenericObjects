@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"SYS Quick Cube Creator Fields",
+	"Hierarchies@Code.links":
+	[
+		"SYS Quick Cube Creator Fields.hierarchies/SYS Quick Cube Creator Fields.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('SYS Quick Cube Creator Fields')/Hierarchies('SYS Quick Cube Creator Fields')"
+	}
+}

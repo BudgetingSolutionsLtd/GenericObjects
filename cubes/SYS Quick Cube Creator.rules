@@ -1,2 +1,9 @@
-['Cube','New/Existing?'] = s:'New';
-['Cube'] = s:if(!SYS m_Quick Cube Creator@='Name',stet,'');
+['Count','Dimensions'] = if(!SYS Quick Cube Creator Fields@='Name',CONTINUE,0); 
+['Count','New/Existing?'] = stet;
+['Count','Elements','Dimensions'] = c:0;
+['Cube','New/Existing?','Input'] = s:'New';
+['Cube','Input'] = s:if(!SYS Quick Cube Creator Fields@='Name',stet,'');
+['Cube', 'Count'] = 0;
+['Elements','Input'] = s:'';
+['Dimensions','Input'] = s:'';
+['Count'] = if(DB( 'SYS Quick Cube Creator', !SYS Quick Cube Creator Input, !SYS Quick Cube Creator Fields, 'Input' )@<>'',1,stet);

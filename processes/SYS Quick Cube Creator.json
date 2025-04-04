@@ -1,0 +1,14 @@
+{
+	"@type":"Process",
+	"Name":"SYS Quick Cube Creator",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Quick Cube Creator.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[],
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}
