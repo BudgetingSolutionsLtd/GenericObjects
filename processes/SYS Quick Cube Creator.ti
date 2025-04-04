@@ -1,12 +1,21 @@
 #region Prolog
 inputCubeName = 'SYS Quick Cube Creator';
+
+#Check for errors
 cubeName = CellGetS( inputCubeName, 'Cube', 'Name', 'Input' );
 
-#Region First need to make all the new dims and add the elements
+nDimCount = CellGetN(inputCubeName, 'Dimensions', 'Name', 'Count' );
+
+if(cubeName@='');
+    ProcessBreak;
+elseif(nDimCount<2);
+    ProcessBreak;
+endif;
+
+#Region Create all the new dims
 # Loop through all dim inputs
 nDim = 1;
 # Get number of dims
-nDimCount = CellGetN(inputCubeName, 'Dimensions', 'Name', 'Count' );
 while(nDim<=nDimCount);
     # Get dimension name
     DimInput = 'Dimension ' | NumberToString( nDim );
@@ -42,23 +51,23 @@ while(nDim<=nDimCount);
     DimInput = 'Dimension ' | NumberToString( nDim );
     dimName = CellGetS( inputCubeName, DimInput, 'Name', 'Input' );
 
-   if(nDim = 1);
-      dim1 = dimName;
-   elseif(nDim = 2);
-      dim2 = dimName;
-   elseif(nDim = 3);
-      dim3 = dimName;
-   elseif(nDim = 4);
-      dim4 = dimName;
-   elseif(nDim = 5);
-      dim5 = dimName;
-   elseif(nDim = 6);
-      dim6 = dimName;
-   elseif(nDim = 7);
-      dim7 = dimName;
-   elseif(nDim = 8);
-      dim8 = dimName;
-   endif;
+    if(nDim = 1);
+        dim1 = dimName;
+    elseif(nDim = 2);
+        dim2 = dimName;
+    elseif(nDim = 3);
+        dim3 = dimName;
+    elseif(nDim = 4);
+        dim4 = dimName;
+    elseif(nDim = 5);
+        dim5 = dimName;
+    elseif(nDim = 6);
+        dim6 = dimName;
+    elseif(nDim = 7);
+        dim7 = dimName;
+    elseif(nDim = 8);
+        dim8 = dimName;
+    endif;
 
     # Get number of elements
     nElementCount =  CellGetN( inputCubeName, DimInput, 'Elements', 'Count' );
@@ -86,19 +95,19 @@ if(CubeExists( cubeName )=0);
     if(nDimCount=1);
         # error
     elseif(nDimCount = 2);
-      CubeCreate(cubeName, dim1, dim2);
-   elseif(nDimCount = 3);
-      CubeCreate(cubeName, dim1, dim2, dim3);
-   elseif(nDimCount = 4);
-      CubeCreate(cubeName, dim1, dim2, dim3, dim4);
-   elseif(nDimCount = 5);
-      CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5);
-   elseif(nDimCount = 6);
-      CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6);
-   elseif(nDimCount = 7);
-      CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6, dim7);
-   elseif(nDimCount = 8);
-      CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6, dim7, dim8);
-   endif;
+        CubeCreate(cubeName, dim1, dim2);
+    elseif(nDimCount = 3);
+        CubeCreate(cubeName, dim1, dim2, dim3);
+    elseif(nDimCount = 4);
+        CubeCreate(cubeName, dim1, dim2, dim3, dim4);
+    elseif(nDimCount = 5);
+        CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5);
+    elseif(nDimCount = 6);
+        CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6);
+    elseif(nDimCount = 7);
+        CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6, dim7);
+    elseif(nDimCount = 8);
+        CubeCreate(cubeName, dim1, dim2, dim3, dim4, dim5, dim6, dim7, dim8);
+    endif;
 endif;
 #endregion
