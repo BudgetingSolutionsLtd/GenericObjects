@@ -1,0 +1,52 @@
+{
+	"@type":"Hierarchy",
+	"Name":"}repo_Quick Cube Creator Input",
+	"Elements":
+	[
+		{
+			"Name":"Cube",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 1",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 2",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 3",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 4",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 5",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 6",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 7",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 8",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 9",
+			"Type":"String"
+		},
+		{
+			"Name":"Dimension 10",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

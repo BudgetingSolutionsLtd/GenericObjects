@@ -1,0 +1,15 @@
+{
+	"@type":"Cube",
+	"Name":"}repo_Quick Cube Creator",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}repo_Quick Cube Creator Input')"
+		},
+		{
+			"@id":"Dimensions('}repo_m_Quick Cube Creator')"
+		}
+	],
+	"Rules@Code.link":"}repo_Quick Cube Creator.rules",
+	"Views@Code.links":[]
+}
