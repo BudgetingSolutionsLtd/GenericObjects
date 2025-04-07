@@ -1,0 +1,47 @@
+{
+	"@type":"Process",
+	"Name":"SYS Find and Replace in TI Process",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Find and Replace in TI Process.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pSourceName",
+			"Prompt":"Process: ",
+			"Value":"ztest2",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source DB",
+			"Value":"Development",
+			"Type":"String"
+		},
+		{
+			"Name":"pFind",
+			"Prompt":"Find:",
+			"Value":"thisisatest",
+			"Type":"String"
+		},
+		{
+			"Name":"pReplace",
+			"Prompt":"Replace:",
+			"Value":"thisisaztest2",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1742729800000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

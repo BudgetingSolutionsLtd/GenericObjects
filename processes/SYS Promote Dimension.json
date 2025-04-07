@@ -1,0 +1,23 @@
+{
+	"@type":"Process",
+	"Name":"SYS Promote Dimension",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Promote Dimension.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"DimName",
+			"Value":"test",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1729029041000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

@@ -1,0 +1,78 @@
+#region Prolog
+# Copies versions in all cubes containing version. 
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pVersionFrom: '|pVersionFrom| ', pVersionTo: '|pVersionTo; 
+#EndRegion
+
+
+
+# Check version from exists
+IF(Dimix('Version', pVersionFrom)=0);
+  ProcessError; 
+Endif;
+
+# Create a list of all cubes to loop through
+sDim = '}Cubes';
+sSubset = GetProcessName;
+nTemp = 1;
+
+SubsetDestroy( sDim, sSubset );
+SubsetCreate( sDim, sSubset, nTemp );
+SubsetMDXSet( sDim, sSubset, 'TM1Filterbylevel(TM1SubsetAll(['| sDim |']),0)' );
+SubsetMDXSet( sDim, sSubset, '' );
+
+DatasourceDimensionSubset = sSubset;
+DatasourceNameForClient = sDim;
+DatasourceNameForServer = sDim;
+DataSourceType = 'SUBSET';
+
+# If the version doesn't exist, add it in
+IF(Dimix('Version', pVersionTo)=0);
+  DimensionElementInsertDirect( 'Version', '', pVersionTo, 'N' );
+Endif;
+
+
+#endregion
+#region Data
+
+
+sCube = vCube;
+
+nDim=CubeDimensionCountGet( sCube);
+iDim = 1;
+While (iDim <= nDim);
+    sDim = TABDIM( sCube, iDim ); 
+    IF(sDim @='Version');
+        RunProcess( 'SYS Version Copy Single Cube',
+        	'pCube', vCube,
+        	'pVersionFrom', pVersionFrom,
+        	'pVersionTo', pVersionTo );
+
+           
+    Endif;
+
+    iDim = iDim+1;
+End;
+
+
+#endregion
+#region Epilog
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+#endregion

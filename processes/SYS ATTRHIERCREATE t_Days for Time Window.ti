@@ -1,18 +1,19 @@
 #region Prolog
 # Generic process to create a time window hierarchy and/or subset using index attribute
 
-#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
-pPrologNow = Now; 
+#Region PROCESS LOGGING
+## PUT IN PROLOG OF PROCESS TO LOG ##
+pPrologNow = Now;
 # Catch errors with if statement and do nErrors = nErrors+1;
-nErrors = 0;   
-# Redefine message depending on if statement that handled the exception to help user
-pMessage = 'Process Completed Successfully';    
-sMessage1 = '';
-sMessage2 = '';
-sMessage3 = '';
-# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
-pParameters = 'pHierName: ' | pHierName | ', pWindowStart: ' | NumberToString( pWindowStart ) | ', pWindowEnd: '  | NumberToString( pWindowEnd ) | ', pCreateSubset: '  |  pCreateSubset |  'pCreateHierarchy: '  |   pCreateHierarchy ; 
-#EndRegion
+nErrors = 0;
+# Redefine messages depending on exception handling
+pMessage = 'Process completed successfully. ';
+sMessage1 = ''; sMessage2 = ''; sMessage3 = ''; sMessage4 = ''; sMessage5 = '';
+# Concatenate the parameters together to write into output cube. 'pParam1: ' | pParam1 |',  'pParam2: ' | pParam2 | ', | 'pParam3: ' |  pParam3 | ....
+pParameters = 'pHierName: ' | pHierName | ', ' | 'pWindowStart: ' | numbertostring(pWindowStart) | ', ' | 'pWindowEnd: ' | numbertostring(pWindowEnd) | ', ' | 'pCreateSubset: ' | pCreateSubset | ', ' | 'pCreateHierarchy: ' | pCreateHierarchy;
+pReturnString = '';
+pReturnNumber = 0;
+#EndRegion PROCESS LOGGING
 
 
 HierName = pHierName;
@@ -72,12 +73,19 @@ if(pCreateSubset@='No');
     SubsetDestroy( DimName, SubName );
 endif;
 
-#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
-# Put messages here to explain exceptions to user
+#
+#
+#
+#Region PROCESS LOGGING
+## PUT IN EPILOG OF PROCESS TO LOG ##
+# Put messages here to explain exceptions to user;
 if(nErrors>0);
-    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+    pMessage = sMessage1 | ', ' | sMessage2 | ', ' | sMessage3 | ', ' | sMessage4 | ', ' | sMessage5;
 endif;
-ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
-####### pMessage and nErrors must be defined in the process to log with exeption handling.
-#EndRegion
+# pMessage and nErrors must be defined in the process to log with exception handling.
+RunProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);
+#EndRegion PROCESS LOGGING
+
+
+
 #endregion

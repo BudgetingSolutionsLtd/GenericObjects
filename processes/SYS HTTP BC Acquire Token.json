@@ -1,0 +1,15 @@
+{
+	"@type":"Process",
+	"Name":"SYS HTTP BC Acquire Token",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS HTTP BC Acquire Token.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[],
+	"UID": "1732118971000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

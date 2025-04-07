@@ -1,0 +1,35 @@
+{
+	"@type":"Process",
+	"Name":"}repo_Find and Replace",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}repo_Find and Replace.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pString",
+			"Prompt":"String",
+			"Value":"String",
+			"Type":"String"
+		},
+		{
+			"Name":"pFind",
+			"Prompt":"Find",
+			"Value":"Find",
+			"Type":"String"
+		},
+		{
+			"Name":"pReplace",
+			"Prompt":"Replace",
+			"Value":"Replace",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1743541442000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"SYS HTTP BC Execute GET Request and Write to File",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS HTTP BC Execute GET Request and Write to File.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pFileName",
+			"Prompt":"File name:",
+			"Value":"test",
+			"Type":"String"
+		},
+		{
+			"Name":"pRequest",
+			"Prompt":"Request to follow 'https://api.businesscentral.dynamics.com/v2.0/' | tenant | '/Production/ODataV4'",
+			"Value":"this is a test for spaces",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1732118957000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

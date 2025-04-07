@@ -1,0 +1,179 @@
+#region Prolog
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pCube: ' | pCube | ', pVersionFrom: '|pVersionFrom| ', pVersionTo: '|pVersionTo; 
+#EndRegion
+
+
+
+# Create source view 
+sCubeSource = pCube;
+sViewSource = GetProcessName | ' Source';
+sSubsetSource = GetProcessName | ' Source';
+nTemp = 1;
+
+ViewDestroy( sCubeSource, sViewSource );
+ViewCreate( sCubeSource, sViewSource, nTemp );
+
+nDim=CubeDimensionCountGet( sCubeSource );
+iDim = 1;
+While (iDim <= nDim);
+  sDim = TABDIM( sCubeSource, iDim );
+  IF(SubsetExists( sDim, sSubsetSource )=0);
+    SubsetCreate( sDim, sSubsetSource, nTemp );
+  Else;
+    SubsetDeleteAllElements( sDim, sSubsetSource );
+  Endif;
+  SubsetMDXSet( sDim, sSubsetSource, 'TM1Filterbylevel(TM1SubsetAll(['| sDim |']),0)' );
+  SubsetMDXSet( sDim, sSubsetSource, '' );
+  ViewSubsetAssign( sCubeSource, sViewSource, sDim, sSubsetSource );
+iDim = iDim+1;
+End;
+
+sDim = 'VERSION';
+sMDX = '{[' | sDim | '].[' | pVersionFrom | ']}';
+SubsetDeleteAllElements( sDim, sSubsetSource );
+SubsetMDXSet( sDim, sSubsetSource, sMDX );
+SubsetMDXSet( sDim, sSubsetSource, '' );
+
+
+
+# Update Source view
+ViewExtractSkipCalcsSet (sCubeSource, sViewSource, 0);
+ViewExtractSkipRuleValuesSet (sCubeSource, sViewSource, 0);
+ViewExtractSkipZeroesSet (sCubeSource, sViewSource, 1);
+
+DataSourceCubeView = sViewSource;
+DatasourceNameForClient = sCubeSource;
+DatasourceNameForServer = sCubeSource;
+DatasourceType = 'VIEW';
+
+
+
+#################
+# TARGET
+#################
+
+
+
+# Create Target view 
+sCubeTarget = pCube;
+sViewTarget = GetProcessName | ' Target';
+sSubsetTarget = GetProcessName | ' Target';
+
+ViewDestroy( sCubeTarget, sViewTarget );
+ViewCreate( sCubeTarget, sViewTarget, nTemp );
+
+nDim=CubeDimensionCountGet( sCubeTarget );
+iDim = 1;
+While (iDim <= nDim);
+  sDim = TABDIM( sCubeTarget, iDim );
+  IF(SubsetExists( sDim, sSubsetTarget )=0);
+    SubsetCreate( sDim, sSubsetTarget, nTemp );
+  Else;
+    SubsetDeleteAllElements( sDim, sSubsetTarget );
+  Endif;
+  SubsetMDXSet( sDim, sSubsetTarget, 'TM1Filterbylevel(TM1SubsetAll(['| sDim |']),0)' );
+  SubsetMDXSet( sDim, sSubsetTarget, '' );
+  ViewSubsetAssign( sCubeTarget, sViewTarget, sDim, sSubsetTarget );
+iDim = iDim+1;
+End;
+
+sDim = 'Version';
+sMDX = '{[' | sDim | '].[' | pVersionTo | ']}';
+SubsetDeleteAllElements( sDim, sSubsetTarget );
+SubsetMDXSet( sDim, sSubsetTarget, sMDX );
+SubsetMDXSet( sDim, sSubsetTarget, '' );
+
+ViewZeroOut( sCubeTarget, sViewTarget );
+
+
+#endregion
+#region Data
+
+# Which dim is Version
+
+IF(TABDIM( sCubeTarget, 1)@='Version');
+  v1=pVersionTo;
+ElseIf(TABDIM( sCubeTarget, 2)@='Version');
+  v2=pVersionTo;
+ElseIf(TABDIM( sCubeTarget, 3)@='Version');
+  v3=pVersionTo;
+ElseIf(TABDIM( sCubeTarget, 4)@='Version');
+  v4=pVersionTo;
+ElseIf(TABDIM( sCubeTarget, 5)@='Version');
+  v5=pVersionTo;
+ElseIf(TABDIM( sCubeTarget, 6)@='Version');
+  v6=pVersionTo;
+ElseIf(TABDIM( sCubeTarget, 7)@='Version');
+  v7=pVersionTo; 
+ElseIf(TABDIM( sCubeTarget, 8)@='Version');
+  v8=pVersionTo;   
+ElseIf(TABDIM( sCubeTarget, 9)@='Version');
+  v9=pVersionTo; 
+Else;
+  ProcessError;
+Endif;
+
+
+IF(nDim = 5);
+    IF(CellIsUpdateable(  pCube, v1, v2, v3, v4, v5 )<>0);
+        If(Value_Is_String=1);
+            CellPutS( v6, pCube, v1, v2, v3, v4, v5);
+        Else; 
+            CellPutN( NUMBR( v6 ), pCube, v1, v2, v3, v4, v5);
+        Endif;
+    Endif;
+Endif;
+
+IF(nDim = 4);
+    IF(CellIsUpdateable(  pCube, v1, v2, v3, v4 )<>0);
+        If(Value_Is_String=1);
+            CellPutS( v5, pCube, v1, v2, v3, v4);
+        Else; 
+            CellPutN( NUMBR( v5 ), pCube, v1, v2, v3, v4);
+        Endif;
+    Endif;
+Endif;
+
+IF(nDim = 3);
+    IF(CellIsUpdateable(  pCube, v1, v2, v3 )<>0);
+        If(Value_Is_String=1);
+            CellPutS( v4, pCube, v1, v2, v3);
+        Else; 
+            CellPutN( NUMBR( v4 ), pCube, v1, v2, v3);
+        Endif;
+    Endif;
+Endif;
+
+IF(nDim = 2);
+    IF(CellIsUpdateable(  pCube, v1, v2 )<>0);
+        If(Value_Is_String=1);
+            CellPutS( v3, pCube, v1, v2);
+        Else; 
+            CellPutN( NUMBR( v3 ), pCube, v1, v2);
+        Endif;
+    Endif;
+Endif;
+
+
+#endregion
+#region Epilog
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+#endregion

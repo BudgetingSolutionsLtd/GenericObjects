@@ -1,0 +1,476 @@
+{
+	"@type":"Hierarchy",
+	"Name":"SYS Attribute Dimensions",
+	"Elements":
+	[
+		{
+			"Name":"Aggregate",
+			"Type":"String"
+		},
+		{
+			"Name":"BSCF_m_AccountMapping",
+			"Type":"String"
+		},
+		{
+			"Name":"Business Proportion Bands",
+			"Type":"String"
+		},
+		{
+			"Name":"Business Unit",
+			"Type":"String"
+		},
+		{
+			"Name":"Chart of Accounts",
+			"Type":"String"
+		},
+		{
+			"Name":"Customer Type",
+			"Type":"String"
+		},
+		{
+			"Name":"Department",
+			"Type":"String"
+		},
+		{
+			"Name":"Department Type",
+			"Type":"String"
+		},
+		{
+			"Name":"Entity",
+			"Type":"String"
+		},
+		{
+			"Name":"Entries",
+			"Type":"String"
+		},
+		{
+			"Name":"GL Account",
+			"Type":"String"
+		},
+		{
+			"Name":"Income - Storage Income",
+			"Type":"String"
+		},
+		{
+			"Name":"Input",
+			"Type":"String"
+		},
+		{
+			"Name":"InputLines",
+			"Type":"String"
+		},
+		{
+			"Name":"ITIT Input",
+			"Type":"String"
+		},
+		{
+			"Name":"Lease Up Bands",
+			"Type":"String"
+		},
+		{
+			"Name":"Ledger",
+			"Type":"String"
+		},
+		{
+			"Name":"Locations",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Actuals",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Actuals BC Trial Balance",
+			"Type":"String"
+		},
+		{
+			"Name":"m_BC - GL Actuals",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Business Proportion Band Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_BYBOX Income",
+			"Type":"String"
+		},
+		{
+			"Name":"m_BYBOX Input",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Department Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_General Location Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_General Overhead Calculation",
+			"Type":"String"
+		},
+		{
+			"Name":"m_General Overheads Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_General Overheads Phasing",
+			"Type":"String"
+		},
+		{
+			"Name":"m_General Store Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Hoardings Income",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Hoardings Input",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Hourly Rate Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Inflation",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Inflation Data",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Lease Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Lease Up Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Lease Up Profile",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Lease Up Profiles",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Location Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Model Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Model Parameters",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Model Parameters Annual",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Occupancy Targets",
+			"Type":"String"
+		},
+		{
+			"Name":"m_ONS BoE data",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Other Operating Income",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Other Storage Income Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Process Control",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Profit and Loss",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Project Code Usage",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Recharge Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Recharge Calculation",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Rent Growth Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Sales Profiles",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Solar Income Profile",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Space Manager - Site Attributes",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Space Manager Ins and Outs",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Space Manager Unit Summary",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Stable Profile Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Storage Income",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Storage Income Profiles",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Store Actuals",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Store Age Category",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Store Size Band Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Student Number Band Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_SYS Attribute Dimensions",
+			"Type":"String"
+		},
+		{
+			"Name":"m_SYS Business Central Credentials",
+			"Type":"String"
+		},
+		{
+			"Name":"m_SYS PA API Credentials",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Telecom Income",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Telecom Input",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Tenancies",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Tenancy Input",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Time to Maturity",
+			"Type":"String"
+		},
+		{
+			"Name":"m_Trading Pattern",
+			"Type":"String"
+		},
+		{
+			"Name":"Move Ins and Move Outs",
+			"Type":"String"
+		},
+		{
+			"Name":"OH - Spreading Profile",
+			"Type":"String"
+		},
+		{
+			"Name":"Posting Layers",
+			"Type":"String"
+		},
+		{
+			"Name":"Project",
+			"Type":"String"
+		},
+		{
+			"Name":"Recharge",
+			"Type":"String"
+		},
+		{
+			"Name":"Region",
+			"Type":"String"
+		},
+		{
+			"Name":"Rent Growth Bands",
+			"Type":"String"
+		},
+		{
+			"Name":"Role",
+			"Type":"String"
+		},
+		{
+			"Name":"Size Code",
+			"Type":"String"
+		},
+		{
+			"Name":"Space Manager - LedgerItemDescription",
+			"Type":"String"
+		},
+		{
+			"Name":"Space Manager - LedgerItemNominalCode",
+			"Type":"String"
+		},
+		{
+			"Name":"Space Manager - SiteID",
+			"Type":"String"
+		},
+		{
+			"Name":"Space Manager - UnitStatusDescription",
+			"Type":"String"
+		},
+		{
+			"Name":"Store Age Category",
+			"Type":"String"
+		},
+		{
+			"Name":"Store Size",
+			"Type":"String"
+		},
+		{
+			"Name":"Store Student Classification",
+			"Type":"String"
+		},
+		{
+			"Name":"Student Number Bands",
+			"Type":"String"
+		},
+		{
+			"Name":"SYS User Parameters",
+			"Type":"String"
+		},
+		{
+			"Name":"t_Calendar Months",
+			"Type":"String"
+		},
+		{
+			"Name":"t_Calendar Years",
+			"Type":"String"
+		},
+		{
+			"Name":"t_Days",
+			"Type":"String"
+		},
+		{
+			"Name":"t_FinPeriod",
+			"Type":"String"
+		},
+		{
+			"Name":"t_FinYears",
+			"Type":"String"
+		},
+		{
+			"Name":"t_Months",
+			"Type":"String"
+		},
+		{
+			"Name":"t_Rent Growth Years",
+			"Type":"String"
+		},
+		{
+			"Name":"t_Years",
+			"Type":"String"
+		},
+		{
+			"Name":"t_YearsMonths",
+			"Type":"String"
+		},
+		{
+			"Name":"Tenant",
+			"Type":"String"
+		},
+		{
+			"Name":"test",
+			"Type":"String"
+		},
+		{
+			"Name":"Time to Maturity Bands",
+			"Type":"String"
+		},
+		{
+			"Name":"Unit Status",
+			"Type":"String"
+		},
+		{
+			"Name":"Version",
+			"Type":"String"
+		},
+		{
+			"Name":"Zone",
+			"Type":"String"
+		},
+		{
+			"Name":"}Clients",
+			"Type":"String"
+		},
+		{
+			"Name":"}Cultures",
+			"Type":"String"
+		},
+		{
+			"Name":"}ElementAttributes_Chart of Accounts",
+			"Type":"String"
+		},
+		{
+			"Name":"}ElementAttributes_Department",
+			"Type":"String"
+		},
+		{
+			"Name":"}ElementAttributes_GL Account",
+			"Type":"String"
+		},
+		{
+			"Name":"}ElementAttributes_t_Months",
+			"Type":"String"
+		},
+		{
+			"Name":"}Groups",
+			"Type":"String"
+		},
+		{
+			"Name":"}Subsets_Business Unit",
+			"Type":"String"
+		},
+		{
+			"Name":"}Subsets_Chart of Accounts",
+			"Type":"String"
+		},
+		{
+			"Name":"}Views_Space Manager - Store Actuals Daily",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

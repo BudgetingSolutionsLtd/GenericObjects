@@ -1,25 +1,25 @@
 #region Prolog
 ## Process to write to logging cube 
 
-#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+#Region PROCESS LOGGING
 # pPrologNow = Now; 
 # # Catch errors with if statement and do nErrors = nErrors+1;
 # nErrors = 0;   
 # # Redefine message depending on if statement that handled the exception to help user
-# pMessage = 'Process Completed Successfully';    
+# pMessage = 'Process completed successfully';    
 # # Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
 # pParameters =''; 
-#EndRegion
+#EndRegion PROCESS LOGGING
 
 
-#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+#Region PROCESS LOGGING
 # Put messages here to explain exceptions to user
 # if(nErrors>0);
 #     pMessage = 'Errors in process: ' | sMessage1 | sMessage2 ;   
 # endif;
 # ExecuteProcess('SYS Process Logging', 'pProcessName', GetProcessName, 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
 ####### pMessage and nErrors must be defined in the process to log with exeption handling.
-#EndRegion
+#EndRegion PROCESS LOGGING
 
 if(ATTRS( '}clients', pUser, '}TM1_DefaultDisplayValue' )@<>'');
     User = ATTRS( '}clients', pUser, '}TM1_DefaultDisplayValue' );
@@ -46,8 +46,10 @@ CellPutS( pMessage, 'SYS Process Logging', pProcessName, 'Message'  );
 # Message as defined in process to log
 CellPutS( pParameters, 'SYS Process Logging', pProcessName, 'Parameters'  );
 
+# Return string to allow use of the process as a function
+CellPutS( pReturnString, 'SYS Process Logging', pProcessName, 'Return string'  );
 
-
-
+# Return number to allow use of the process as a function
+CellPutN( pReturnNumber, 'SYS Process Logging', pProcessName, 'Return number'  );
 
 #endregion

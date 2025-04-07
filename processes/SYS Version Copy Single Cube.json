@@ -1,0 +1,97 @@
+{
+	"@type":"Process",
+	"Name":"SYS Version Copy Single Cube",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Version Copy Single Cube.ti",
+	"DataSource":
+	{
+		"Type":"TM1CubeView",
+		"dataSourceNameForServer":"BC - GL Actuals",
+		"dataSourceNameForClient":"BC - GL Actuals",
+		"view":"Process View"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pCube",
+			"Prompt":"",
+			"Value":"OH - General Overhead Default Assumptions",
+			"Type":"String"
+		},
+		{
+			"Name":"pVersionFrom",
+			"Prompt":"",
+			"Value":"Live Version",
+			"Type":"String"
+		},
+		{
+			"Name":"pVersionTo",
+			"Prompt":"",
+			"Value":"Prediction",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"V1",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"V2",
+			"Type":"String",
+			"Position":2,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"V3",
+			"Type":"String",
+			"Position":3,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"V4",
+			"Type":"String",
+			"Position":4,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"V5",
+			"Type":"String",
+			"Position":5,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"V6",
+			"Type":"String",
+			"Position":6,
+			"StartByte":0,
+			"EndByte":0
+		},
+		{
+			"Name":"V7",
+			"Type":"String",
+			"Position":7,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1740061579000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": [
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f",
+		"VarType=32\fColType=827\f"
+	]
+}

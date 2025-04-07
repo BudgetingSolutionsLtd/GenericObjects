@@ -1,0 +1,100 @@
+#region Prolog
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = 'pDimName: '|  pDimName|', pHierName: '|pHierName|', pTopLevel: '|pTopLevel|', pParent:'|pParent;
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters =''; 
+#EndRegion
+
+
+# Set Variables
+DimName = pDimname;
+HierName = pHierName;
+SubsetName = 'All Members';
+
+# Define source
+DatasourceType = 'Subset';
+DataSourceNameforServer = DimName;
+DataSourceDimensionSubset='All';
+nSkip = 0;
+nError = 0;
+
+# Delete all members from the hierarchy (check it's not the main hierarchy or the leaves hierarchy)
+If(HierName @= DimName);
+    sMessage1 = 'Main Hierarchy selected - process terminated';
+    ProcessQuit;
+elseif( HierName @= 'Leaves' );
+    sMessage1 = 'Leaves Hierarchy selected - process terminated';
+    ProcessQuit;
+else;
+    HierarchyDeleteAllElements( DimName, HierName );
+endif;
+
+# Create Top Level Element
+HierarchyElementInsert( DimName, HierName, '', pTopLevel, 'C' );
+
+#endregion
+#region Metadata
+# Get Parent
+vParent = attrs(DimName,V1,pParent);
+
+# If no parent specified, skip Item
+If (vParent @= '');
+	Itemskip;
+Endif;
+nSkip =nskip + 1;
+
+# Get ElementType
+If (ELLEV( DimName, V1 ) = 0);
+    ElType = 'N';
+else;
+    ElType = 'C';
+endif;
+
+# If  a consolidated element, and the name clashes with a leaf element rename it
+If (ElType  @= 'C');
+    vPrincipal = DimensionElementPrincipalName( DimName, V1 );
+    IF ( HierarchyElementExists( DimName, 'Leaves', vPrincipal ) = 1);
+        V1 = V1 | ' Total';
+    Endif;
+Endif;
+
+# If Parent clashes with a leaf element rename it
+vParentPrincipal = DimensionElementPrincipalName( DimName, vParent );
+
+IF ( HierarchyElementExists( DimName, 'Leaves', vParentPrincipal ) = 1);
+    vParent = vParent | ' Total';
+Endif;
+
+# Add element to the hierarchy
+HierarchyElementInsert( DimName, HierName, '', V1, ElType );
+
+# If parent specified doesn't exist yet, add it
+If (ElementIndex( DimName, HierName,vParent ) = 0);
+	HierarchyElementInsert( DimName, HierName, '', vParent, 'C' );
+Endif;
+
+# Check if element has already been made a component of its parent and add it if not
+IF(ElementIsComponent( DimName, HierName, V1, vParent ) = 0);
+   HierarchyElementComponentAddDirect(DimName,HierName,vParent,V1,1);
+ENDIF; 
+
+#endregion
+#region Epilog
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+
+#endregion

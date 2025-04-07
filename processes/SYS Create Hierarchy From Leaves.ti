@@ -1,0 +1,80 @@
+#region Prolog
+# Process to create an alt hierarchy which includes all leaves plus a total. The hierarchy will have the name  ''[Dimension] leaves', and a total that will be '[Dimension] Leaves Total'
+
+#############################################################################################################################
+# CHANGE LOG
+# 06/12/2024 | Helen Heaton | Process created
+#
+#############################################################################################################################
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Process logging parameters
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters = 'pDimname:'|pDimName; 
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Hierarchy to create
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+pHierName = PDimName|' Leaves';
+pTotal =pHierName | ' Total';
+
+if(HierarchyExists( pDimname, pHierName )=1);
+    HierarchyDeleteAllElements( pDimName, pHierName );
+else;
+    HierarchyCreate( pDimname, pHierName );
+endif;
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Create Leaves subset on main hierarchy if it doesn't already exist
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SubName = 'Leaves';
+if(SubsetExists( pDimName, SubName)=0);
+    SubsetCreatebyMDX(SubName,  '{TM1FILTERBYLEVEL(TM1SUBSETALL(['|pDimName|'].['|pDimName|']) , 0)}', 0 );
+else;
+    SubsetMDXSet( pDimName, SubName, '{TM1FILTERBYLEVEL(TM1SUBSETALL(['|pDimName|'].['|pDimName|']) , 0)}' );
+endif;
+
+# Get the number of leaf elements
+nmax = SubsetGetSize( pDimName, SubName );
+n=1;
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Create the elements in the new hierarchy
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Create total as a consolidated element
+HierarchyElementInsertDirect( pDimname, pHierName, '', pTotal , 'c' ); 
+
+#Loop through all elements in the leaves hierarchy and add them to the new hierarchy
+while(n<=nmax);
+    ElName = SubsetGetElementName( pDimName, SubName, n );
+            HierarchyElementInsertDirect( pDimName, pHierName, '', elName , 'n' ); 
+            HierarchyElementComponentAddDirect( pDimName, pHierName, pTotal, elName, 1 );
+    n = n+1;
+end;
+
+
+#endregion
+#region Epilog
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Process logging
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+
+# pMessage and nErrors must be defined in the process to log with exeption handling.
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+
+
+#endregion

@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"BSL_APIPROM Update Dimensions Cube",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"BSL_APIPROM Update Dimensions Cube.ti",
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForServer":"}Dimensions:}Dimensions",
+		"dataSourceNameForClient":"}Dimensions:}Dimensions",
+		"subset":"All"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vDimension",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1740411215000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": [
+		"VarType=32\fColType=827\f"
+	]
+}

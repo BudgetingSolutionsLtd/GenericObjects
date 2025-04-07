@@ -1,0 +1,55 @@
+{
+	"@type":"Process",
+	"Name":"SYS DIMREBUILD",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS DIMREBUILD.ti",
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForServer":"Project:Project",
+		"dataSourceNameForClient":"Project:Project",
+		"subset":"All"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"Dimension",
+			"Value":"Chart of Accounts",
+			"Type":"String"
+		},
+		{
+			"Name":"pHierName",
+			"Prompt":"Hierarchy",
+			"Value":"Chart of Accounts",
+			"Type":"String"
+		},
+		{
+			"Name":"pTopLevel",
+			"Prompt":"Top level element",
+			"Value":"Trial Balance",
+			"Type":"String"
+		},
+		{
+			"Name":"pParent",
+			"Prompt":"Parent Attribute",
+			"Value":"Reporting Parent",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"V1",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1732188318000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": [
+		"VarType=32\fColType=827\f"
+	]
+}

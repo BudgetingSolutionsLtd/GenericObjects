@@ -6,12 +6,12 @@
 # Is zero suppressed
 # Programmed for up to 7 dimensions
 
-#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+#Region PROCESS LOGGING
 pPrologNow = Now; 
 # Catch errors with if statement and do nErrors = nErrors+1;
 nErrors = 0;   
 # Redefine message depending on if statement that handled the exception to help user
-pMessage = 'Process Completed Successfully';    
+pMessage = 'Process completed successfully';    
 sMessage1 = '';
 sMessage2 = '';
 sMessage3 = '';
@@ -108,7 +108,7 @@ ELSEIF(nDim = 7);
 EndIf;
 #endregion
 #region Epilog
-#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+#Region PROCESS LOGGING
 # Put messages here to explain exceptions to user
 if(nErrors>0);
     pMessage = sMessage1 |sMessage2 | sMessage3 ;   

@@ -1,0 +1,14 @@
+{
+	"@type":"Cube",
+	"Name":"SYS User Parameters",
+	"Dimensions":
+	[
+		{
+			"@id":"Dimensions('}Clients')"
+		},
+		{
+			"@id":"Dimensions('SYS User Parameters')"
+		}
+	],
+	"Views@Code.links":[]
+}

@@ -1,0 +1,56 @@
+#region Prolog
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters =''; 
+#EndRegion
+
+# Get all the creds
+tenant = CellGetS( 'SYS Business Central Credentials', 'Input', 'Tenant' );
+clientId = CellGetS( 'SYS Business Central Credentials', 'Input', 'Client ID' );
+clientSecret = CellGetS( 'SYS Business Central Credentials', 'Input', 'Client Secret' );
+resource = CellGetS( 'SYS Business Central Credentials', 'Input', 'Resource' );
+company = CellGetS( 'SYS Business Central Credentials', 'Input', 'Company' );
+
+# Construct endpoint url
+URL = 'https://login.microsoftonline.com/' | tenant | '/oauth2/token';
+
+# Contruct header and body
+header = 'Content-Type: application/x-www-form-urlencoded';
+body = 'grant_type= client_credentials&
+client_secret='|clientSecret|'&
+client_id=' | clientId | '&
+resource=' | resource;
+
+ExecuteHttpRequest( 'POST', URL, '-d ' | body, '-h ' | header );
+response = HttpResponseGetBody();
+token = JsonGet( response, 'access_token');
+token = subst( token, 2, long(token)-2);
+
+CellPutS( token, 'SYS Business Central Credentials', 'Input', 'Latest Token');
+
+
+#endregion
+#region Data
+
+
+
+#endregion
+#region Epilog
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+#endregion

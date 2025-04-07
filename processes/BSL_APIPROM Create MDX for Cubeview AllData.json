@@ -1,0 +1,23 @@
+{
+	"@type":"Process",
+	"Name":"BSL_APIPROM Create MDX for Cubeview AllData",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"BSL_APIPROM Create MDX for Cubeview AllData.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pCubeName",
+			"Prompt":"Cube Name",
+			"Value":"REV - Storage Income - Lease up Assumptions",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1743524500000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

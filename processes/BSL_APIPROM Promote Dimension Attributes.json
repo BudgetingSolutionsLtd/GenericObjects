@@ -1,0 +1,47 @@
+{
+	"@type":"Process",
+	"Name":"BSL_APIPROM Promote Dimension Attributes",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"BSL_APIPROM Promote Dimension Attributes.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"DimName (without }elementattributes_)",
+			"Value":"test",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source DB",
+			"Value":"Development",
+			"Type":"String"
+		},
+		{
+			"Name":"pDestInstance",
+			"Prompt":"Destination instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pDestDB",
+			"Prompt":"Destination DB",
+			"Value":"Dev2",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1740411072000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

@@ -1,8 +1,8 @@
 {
 	"@type":"Process",
-	"Name":"SYS Process Control Logging",
+	"Name":"SYS Process Logging",
 	"HasSecurityAccess":false,
-	"Code@Code.link":"SYS Process Control Logging.ti",
+	"Code@Code.link":"SYS Process Logging.ti",
 	"DataSource":
 	{
 		"Type":"None"
@@ -12,13 +12,13 @@
 		{
 			"Name":"pProcessName",
 			"Prompt":"GetProcessName",
-			"Value":"0",
+			"Value":"",
 			"Type":"String"
 		},
 		{
 			"Name":"pUser",
 			"Prompt":"Tm1User",
-			"Value":"0",
+			"Value":"",
 			"Type":"String"
 		},
 		{
@@ -36,18 +36,30 @@
 		{
 			"Name":"pMessage",
 			"Prompt":"pMessage",
-			"Value":"0",
+			"Value":"",
 			"Type":"String"
 		},
 		{
 			"Name":"pParameters",
 			"Prompt":"pParameters",
-			"Value":"0",
+			"Value":"",
 			"Type":"String"
+		},
+		{
+			"Name":"pReturnString",
+			"Prompt":"pReturnString",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pReturnNumber",
+			"Prompt":"pReturnNumber",
+			"Value":0,
+			"Type":"Numeric"
 		}
 	],
 	"Variables":[],
-	"UID": "172805710700043",
+	"UID": "1732531015000",
 	"VariablesUIData": [],
 	"UIData": "_ParameterConstraints=e30=\f"
 }

@@ -1,0 +1,28 @@
+{
+	"@type":"Process",
+	"Name":"SYS DIMUNWIND",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS DIMUNWIND.ti",
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForServer":"Project:Project",
+		"dataSourceNameForClient":"Project:Project",
+		"subset":"All"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"Dimension",
+			"Value":"Project",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1733935528000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": [
+		"IgnoredInputVarName=V1\fVarType=32\fColType=1165\f"
+	]
+}

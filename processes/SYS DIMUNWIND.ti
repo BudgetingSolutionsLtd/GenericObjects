@@ -1,0 +1,43 @@
+#region Prolog
+#Region PROCESS LOGGING
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pDimName: '|pDimName; 
+#EndRegion
+
+DatasourceType = 'Subset';
+DataSourceNameforServer = pDimName;
+DatasourceDimensionSubset = 'All';
+DimName = pDimname;
+
+vIndex = 1;
+vDimSize = DIMSIZ(DimName);
+WHILE(vIndex < vDimSize);
+    vElementUW = DIMNM(DimName,vIndex);
+    vChildSize = ELCOMPN(DimName,vElementUW);
+    WHILE(vChildSize > 0);
+        vChildElementUW = ELCOMP(DimName,vElementUW,vChildSize);
+        DIMENSIONELEMENTCOMPONENTDELETE(DimName, vElementUW, vChildElementUW );
+        vChildSize = vChildSize - 1;
+    END;
+    vIndex = vIndex + 1;
+END;
+#endregion
+#region Epilog
+#Region PROCESS LOGGING
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+
+#endregion

@@ -1,0 +1,15 @@
+{
+	"@type":"Process",
+	"Name":"SYS Delete Persistent Feeders",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Delete Persistent Feeders.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[],
+	"UID": "1739784197000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

@@ -1,0 +1,192 @@
+#region Prolog
+
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pDimName: '|pDimName; 
+#EndRegion
+
+
+#Region # Prepare request and get cookie
+host = 'https://eu-central-1.planninganalytics.saas.ibm.com';
+#prodTenant = 'KU5P1PCUBQ3G';
+devTenant = 'DMZPLFZJ32O0';
+prodTenant = devTenant;
+apiKey =  'azE6dXNyXzJkYmUwZWY2LTM2ZDUtM2ZjYy04YWVmLTg2ODBkODEwOTU2Mjp2NFR4U3Q0VENTMFYxKzhHMDI5U2ZWZzlwMjJ3aHluaExSV2dhWElHYkhvPTpUU1BS';
+header = '-h Authorization: Basic ' | Base64Encode( 'apikey:'| apiKey);
+
+# This returns cookie that means further requests don't need authentication token
+ExecuteHttpRequest('GET', host | '/api/' | devTenant | '/v0/rolemgmt/v1/users/me', header);
+responseBody = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+If(status > 299);
+    ItemReject('Error authenticating: ' | responseBody);
+EndIf;
+#endregion
+
+#Region # Define prod and dev url root 
+# Now we have a cookie we can access standard TM1 REST API
+devDB = 'Development';
+devRoot = host |'/api/' |devTenant | '/v0/tm1/' |devDB|'/api/v1/'; 
+prodDB = 'Dev2';
+prodRoot = host | '/api/' | prodTenant | '/v0/tm1/' | prodDB | '/api/v1/';
+#endregion
+
+dimName =pDimName;
+
+#Region # Get dimension metadata from dev
+url = devRoot | 'Dimensions(''' | dimName | ''')';
+ExecuteHttpRequest('GET', url, header);
+dimensionMetadata = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+If(status > 299);
+    ItemReject('Error retrieving dimension metadata: ' | dimensionMetadata);
+EndIf;
+#EndRegion
+
+#Region #  Get hierarchy metadata from dev
+url = devRoot | 'Dimensions(''' | dimName | ''')/Hierarchies(''' | dimName | ''')';
+ExecuteHttpRequest('GET', url, header);
+hierarchyMetadata = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+If(status > 299);
+    ItemReject('Error retrieving hierarchy metadata: ' | hierarchyMetadata);
+EndIf;
+#EndRegion
+
+
+#Region #  Get elements from dev
+url = devRoot | 'Dimensions(''' | dimName | ''')/Hierarchies(''' | dimName | ''')/Elements';
+ExecuteHttpRequest('GET', url, header);
+elementsData = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+If(status > 299);
+    ItemReject('Error retrieving elements: ' | elementsData);
+EndIf;
+#EndRegion
+
+#Region # Put dimension metadata in prod
+header = '-H Content-Type: application/json; charset=utf-8';
+url = prodRoot | 'Dimensions';
+ExecuteHttpRequest('POST', url, header, '-d ' | dimensionMetadata);
+responseBody = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+If(status > 299);
+    ItemReject('Error creating dimension in prod: ' | responseBody);
+EndIf;
+#EndRegion
+
+#Region # Put hierarchy metadata in prod
+url = prodRoot | 'Dimensions(''' | dimName | ''')/Hierarchies';
+ExecuteHttpRequest('POST', url, header, '-d ' | hierarchyMetadata);
+responseBody = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+If(status > 299);
+    ItemReject('Error creating hierarchy in prod: ' | responseBody);
+EndIf;
+#EndRegion
+
+#Region # Put elements in prod
+url = prodRoot | 'Dimensions(''' | dimName | ''')/Hierarchies(''' | dimName | ''')/Elements';
+n = 0;
+nmax = DIMSIZ( dimName );
+elementsData = jsonget(elementsData,'value');
+
+while(n<nmax);
+    element = jsonget(elementsData,n);
+    element = JsonRemove(element, '@odata.etag');
+    elName = jsonget(element, 'Name');
+    elName = JsonToString( elName );
+    type = jsonget(element, 'Type');    
+    if(element@<>'' & type@='"Consolidated"');
+        ExecuteHttpRequest('POST', url, header, '-d ' | element);
+    endif;
+    responseBody = HttpResponseGetBody();
+    status = HttpResponseGetStatusCode();
+    If(status > 299);
+        ItemReject('Error creating elements in prod: ' | responseBody);
+    EndIf;
+    n = n +1;
+end;
+#EndRegion
+#endregion
+#region Data
+
+
+#endregion
+#region Epilog
+
+
+#Region # then loop through again to create consolidations
+header = '-H Content-Type: application/json; charset=utf-8';
+n = 0;
+nmax = DIMSIZ( dimName );
+#elementsData = jsonget(elementsData,'value');
+while(n<nmax);
+    element = jsonget(elementsData,n);
+    element = JsonRemove(element, '@odata.etag');
+    if(element@<>'');
+        elName = jsonget(element, 'Name');
+        elName = JsonToString( elName );
+
+        type = jsonget(element, 'Type');
+
+        if(type@='"Consolidated"');
+            # Get children of the consolidated element
+            childrenUrl = devRoot | 'Dimensions(''' | dimName | ''')/Hierarchies(''' | dimName | ''')/Elements(''' | elName | ''')/Components';
+            ExecuteHttpRequest('GET', childrenUrl, header);
+            childrenData = HttpResponseGetBody();
+            status = HttpResponseGetStatusCode();
+            If(status > 299);
+                ItemReject('Error creating elements in prod: ' | numbertostring(status)| ' ' | childrenData);
+            EndIf;
+            childrenData = jsonget(childrenData, 'value');
+            nChildren = jsonsize(childrenData);
+            m=0;
+            while(m<nChildren);
+                child = jsonget(childrenData,m);        
+                child = JsonRemove(child, '@odata.etag');
+                child = JsonGet( child, 'Name');
+                child = JsonToString( child );
+
+                body = '{"Element@odata.bind": "Dimensions(''' | dimName |''')/Hierarchies('''| dimName |''')/Elements('''|child|''')"}';
+                body = '{"Element":{"Name":"'| child |'","UniqueName":"['|elName|'].['| Child |']"}}';
+                
+                postURL = prodRoot | 'Dimensions(''' | dimName | ''')/Hierarchies(''' | dimName | ''')/Elements(''' | elName | ''')/tm1.SetComponent';
+          #      ItemReject(body );
+
+                ExecuteHttpRequest('POST', postURL, header, '-d ' | body);
+                response = HttpResponseGetBody();
+                status = HttpResponseGetStatusCode();
+          #      ItemReject( response );
+
+                If(status > 299 );
+                    ItemReject('Error creating elements in prod: ' | numbertostring(status)| ' ' | response);
+                EndIf;
+
+                
+                m=m+1;
+            end;
+        endif;
+    endif;
+    n=n+1;
+end;
+        #EndRegion
+
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+#endregion

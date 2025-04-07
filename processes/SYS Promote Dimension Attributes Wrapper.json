@@ -1,0 +1,55 @@
+{
+	"@type":"Process",
+	"Name":"SYS Promote Dimension Attributes Wrapper",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Promote Dimension Attributes Wrapper.ti",
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForServer":"SYS Attribute Dimensions:SYS Attribute Dimensions",
+		"dataSourceNameForClient":"SYS Attribute Dimensions:SYS Attribute Dimensions",
+		"subset":"All"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source database",
+			"Value":"Development",
+			"Type":"String"
+		},
+		{
+			"Name":"pDestInstance",
+			"Prompt":"Destinantion Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pDestDB",
+			"Prompt":"Destination databse",
+			"Value":"Test",
+			"Type":"String"
+		}
+	],
+	"Variables":
+	[
+		{
+			"Name":"vDimName",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1738928346000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": [
+		"VarType=32\fColType=827\f"
+	]
+}

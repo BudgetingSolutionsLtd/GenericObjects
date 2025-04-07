@@ -1,0 +1,12 @@
+{
+	"@type":"Hierarchy",
+	"Name":"Input",
+	"Elements":
+	[
+		{
+			"Name":"Input",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

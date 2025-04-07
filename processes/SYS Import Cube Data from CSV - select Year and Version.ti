@@ -8,7 +8,7 @@ pPrologNow = Now;
 # Catch errors with if statement and do nErrors = nErrors+1;
 nErrors = 0;   
 # Redefine message depending on if statement that handled the exception to help user
-pMessage = 'Process Completed Successfully';    
+pMessage = 'Process completed successfully';    
 sMessage1 = '';
 sMessage2 = '';
 sMessage3 = '';

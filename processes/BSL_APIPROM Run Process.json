@@ -1,0 +1,35 @@
+{
+	"@type":"Process",
+	"Name":"BSL_APIPROM Run Process",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"BSL_APIPROM Run Process.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pProcessName",
+			"Prompt":"Process to run",
+			"Value":"ATTRHIERCREATE Department",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source DB",
+			"Value":"Dev2",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1740478110000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

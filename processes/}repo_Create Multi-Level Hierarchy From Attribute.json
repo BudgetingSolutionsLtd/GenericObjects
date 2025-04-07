@@ -1,0 +1,82 @@
+{
+	"@type":"Process",
+	"Name":"}repo_Create Multi-Level Hierarchy From Attribute",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}repo_Create Multi-Level Hierarchy From Attribute.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"Dim name: ",
+			"Value":"DimName",
+			"Type":"String"
+		},
+		{
+			"Name":"pAttrName",
+			"Prompt":"Attribute name:",
+			"Value":"AttrName",
+			"Type":"String"
+		},
+		{
+			"Name":"pLevels",
+			"Prompt":"Number of levels? (min 2, max 6)",
+			"Value":2,
+			"Type":"Numeric"
+		},
+		{
+			"Name":"pHierName",
+			"Prompt":"Hierarchy Name: ",
+			"Value":"HierName",
+			"Type":"String"
+		},
+		{
+			"Name":"pOverwrite",
+			"Prompt":"Overwrite? (Y/N)",
+			"Value":"Y/N",
+			"Type":"String"
+		},
+		{
+			"Name":"pLevel1",
+			"Prompt":"Level 1 (leaf level + 1)",
+			"Value":"Level 1",
+			"Type":"String"
+		},
+		{
+			"Name":"pLevel2",
+			"Prompt":"Level 2 (leaf level + 2)",
+			"Value":"Level 2",
+			"Type":"String"
+		},
+		{
+			"Name":"pLevel3",
+			"Prompt":"Level 3 (leaf level + 3)",
+			"Value":"Level 3",
+			"Type":"String"
+		},
+		{
+			"Name":"pLevel4",
+			"Prompt":"Level 4 (leaf level + 4)",
+			"Value":"Level 4",
+			"Type":"String"
+		},
+		{
+			"Name":"pLevel5",
+			"Prompt":"Level 5 (leaf level + 5)",
+			"Value":"Level 5",
+			"Type":"String"
+		},
+		{
+			"Name":"pCreateTotal",
+			"Prompt":"Create Total? (/HierName/ Total) (Y/N)",
+			"Value":"Y/N",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"SYS Clean Up Subsets",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS Clean Up Subsets.ti",
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForServer":"}Dimensions:}Dimensions",
+		"dataSourceNameForClient":"}Dimensions:}Dimensions",
+		"subset":"All"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vDimName",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1738706937000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": [
+		"VarType=32\fColType=827\f"
+	]
+}

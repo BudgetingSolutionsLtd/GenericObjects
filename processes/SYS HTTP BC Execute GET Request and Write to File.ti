@@ -1,0 +1,66 @@
+#region Prolog
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pFileName: '| pFileName| ', pRequest: '| pRequest; 
+#EndRegion
+
+### Process to send GET request and write the response to a file.
+#Region  #Get all the credentials from SYS cube
+CubeName = 'SYS Business Central Credentials';
+tenant = CellGetS(CubeName, 'Input', 'Tenant' );
+clientId = CellGetS(CubeName, 'Input', 'Client ID' );
+clientSecret = CellGetS(CubeName, 'Input', 'Client Secret' );
+resource = CellGetS(CubeName, 'Input', 'Resource' );
+company = CellGetS(CubeName, 'Input', 'Company' );
+#EndRegion
+
+#Region Authenticate
+ExecuteProcess( 'SYS HTTP BC Acquire Token' );
+#EndRegion
+
+# Get token
+token = CellGetS( cubeName, 'Input', 'Latest Token' );
+
+# Check pRequest for spaces and replace with %20
+i=1;
+while (i>0);
+    i = SCAN(' ',pRequest);
+    if(i<>0);
+        pRequest = DELET(pRequest,i,1);
+        pRequest = INSRT('%20',pRequest,i);
+    endif;
+end;
+    
+# Build and send request
+header = 'Authorization:Bearer '| token;
+url = 'https://api.businesscentral.dynamics.com/v2.0/' | tenant | '/Production/ODataV4'| pRequest;
+ExecuteHttpRequest( 'GET', url, '-h ' | header, '-o ' | pFileName | '.json' );
+response = HttpResponseGetBody();
+status = HttpResponseGetStatusCode();
+
+if(status>399);
+    ItemReject( 'Error: ' |  numbertostring(status) | ' ' | response);
+endif;
+
+
+
+
+#endregion
+#region Epilog
+#Region ####### PUT IN EPILOGUE OF PROCESS TO LOG: ##############
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+#endregion

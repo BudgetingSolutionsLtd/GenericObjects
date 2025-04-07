@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"SYS HIERUNWIND",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"SYS HIERUNWIND.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"Dimension",
+			"Value":"Chart of Accounts",
+			"Type":"String"
+		},
+		{
+			"Name":"pHierName",
+			"Prompt":"Hierarchy",
+			"Value":"Chart of Accounts",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1742296852000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}

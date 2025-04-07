@@ -1,0 +1,72 @@
+#region Prolog
+# Got to destroy all the view first or deleteing the subset will error if used
+# Deletes view if it contains the words 'Target' or 'Source'
+
+#Region PROCESS LOGGING
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters =''; 
+#EndRegion
+
+
+imax = DIMSIZ( '}Cubes' );
+i = 1;
+
+while(i<=imax);
+    cubeName = DIMNM( '}Cubes', i );
+     viewsDim = '}Views_' | cubeName;
+
+    if(DimensionExists( viewsDim )=1);
+        nmax = DIMSIZ( viewsDim );
+        n=1;
+        while(n<=nmax);
+            viewName = DIMNM(viewsDim, n );
+            if(SCAN( 'Target',viewName )<>0 % SCAN( 'Source', viewName )<>0);
+                ViewDestroy( cubeName, viewName );
+            endif;
+            n = n+1;
+        end;
+    endif;
+    i = i+1;
+end;
+
+
+
+#endregion
+#region Data
+# Deletes subset if it contains the words 'Target' or 'Source'
+
+subsetDim = '}Subsets_' | vDimName;
+
+if(DimensionExists( subsetDim )=1);
+    nmax = DIMSIZ( subsetDim );
+    n=1;
+    while(n<=nmax);
+        subsetName = DIMNM( subsetDim, n );
+        if(SCAN( 'Target', subsetName )<>0 % SCAN( 'Source', subsetName )<>0);
+            HierarchySubsetDestroy( vDimName, vDimName, subsetName );
+        endif;
+        n = n+1;
+    end;
+endif;
+
+
+
+#endregion
+#region Epilog
+#Region PROCESS LOGGING
+# Put messages here to explain exceptions to user
+if(nErrors>0);
+    pMessage = sMessage1 |sMessage2 | sMessage3 ;   
+endif;
+ExecuteProcess('SYS Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters);
+####### pMessage and nErrors must be defined in the process to log with exeption handling.
+#EndRegion
+#endregion

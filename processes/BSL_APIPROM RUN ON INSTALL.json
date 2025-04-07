@@ -1,0 +1,41 @@
+{
+	"@type":"Process",
+	"Name":"BSL_APIPROM RUN ON INSTALL",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"BSL_APIPROM RUN ON INSTALL.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pHost",
+			"Prompt":"Enter host URL",
+			"Value":"https://eu-central-1.planninganalytics.saas.ibm.com",
+			"Type":"String"
+		},
+		{
+			"Name":"pAPIKey",
+			"Prompt":"Enter the API key",
+			"Value":"azE6dXNyXzJkYmUwZWY2LTM2ZDUtM2ZjYy04YWVmLTg2ODBkODEwOTU2Mjp2NFR4U3Q0VENTMFYxKzhHMDI5U2ZWZzlwMjJ3aHluaExSV2dhWElHYkhvPTpUU1BS",
+			"Type":"String"
+		},
+		{
+			"Name":"pDevTenant",
+			"Prompt":"Enter the tenant ID for the Development environment",
+			"Value":"0",
+			"Type":"String"
+		},
+		{
+			"Name":"pProdTenant",
+			"Prompt":"Enter the tenant ID for the Production Environment",
+			"Value":"0",
+			"Type":"String"
+		}
+	],
+	"Variables":[],
+	"UID": "1740411262000",
+	"UIData": "_ParameterConstraints=e30=\f",
+	"VariablesUIData": []
+}
