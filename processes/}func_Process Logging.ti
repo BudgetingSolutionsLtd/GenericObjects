@@ -1,0 +1,64 @@
+#region Prolog
+## Process to write to logging cube 
+
+##Region PROCESS LOGGING
+# pPrologNow = Now; 
+# # Catch errors with if statement and do nErrors = nErrors+1;
+# nErrors = 0;   
+# # Redefine message depending on if statement that handled the exception to help user
+# pMessage = 'Process completed successfully';    
+# sMessage1 = '';
+# sMessage2 = '';
+# sMessage3 = '';
+# # Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+# pParameters = ''; 
+#pReturnString = '';
+#pReturnNumber = 0;
+##EndRegion PROCESS LOGGING
+
+# #Region PROCESS LOGGING
+# # Put messages here to explain exceptions to user;
+# if(nErrors>0);
+#     pMessage = sMessage1 | sMessage2 | sMessage3;
+# endif;
+# # pMessage and nErrors must be defined in the process to log with exeption handling.
+# RunProcess('}func_Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);
+# #EndRegion PROCESS LOGGING
+
+logCube = 'SYS Process Logging';
+
+if(ATTRS( '}clients', pUser, '}TM1_DefaultDisplayValue' )@<>'');
+    User = ATTRS( '}clients', pUser, '}TM1_DefaultDisplayValue' );
+endif;
+
+# User from User() function in prolog of process to log
+CellPutS( User, logCube, pProcessName, 'Last Run By');
+
+# Time prolog is ran from Now function in prolog of proces to log
+CellPutN( pPrologNow, logCube, pProcessName, 'Last Run Time'  );
+
+# Date prolog is ran from Now function in prolog of proces to log
+CellPutN( pPrologNow, logCube, pProcessName, 'Last Run Date'  );
+
+# Time difference between end of epilog and start of prolog
+CellPutN( Now-pPrologNow, logCube, pProcessName, 'Time Taken'  );
+
+# Number of errors counted in exception handling of process to log and passed as parameter.
+CellPutN( pErrors, logCube, pProcessName, 'Number of Errors'  );
+
+# Message as defined in process to log
+CellPutS( pMessage, logCube, pProcessName, 'Message'  );
+
+# Message as defined in process to log
+CellPutS( pParameters, logCube, pProcessName, 'Parameters'  );
+
+# Return string to allow use of the process as a function
+CellPutS( pReturnString, logCube, pProcessName, 'Return string'  );
+
+# Return number to allow use of the process as a function
+CellPutN( pReturnNumber, logCube, pProcessName, 'Return number'  );
+#endregion
+#region Epilog
+
+# if you add logging to this process, the world will turn into a black hole
+#endregion

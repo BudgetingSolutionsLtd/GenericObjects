@@ -1,0 +1,61 @@
+{
+  "snippetId": "Build_View_2_Dims",
+  "name": "Build view with 2 dimensions",
+  "description": "This builds a view using mdx for a cube with 2 dimensions.",
+  "auxiliaryVariables": [
+    "ViewName",
+    "SubName",
+    "dim1",
+    "mdx1",
+    "dim2",
+    "mdx2",
+    "sCubeName",
+    "nTmp"
+  ],
+  "variables": [
+    {
+      "variableName": "sCubeName",
+      "description": "Cube to create view of.",
+      "valueDefinition": {
+        "type": "CUB",
+        "defaultVal": null
+      }
+    },
+    {
+      "variableName": "nTmp",
+      "description": "Make view temporary? 0/1",
+      "valueDefinition": {
+        "type": "NUMERIC",
+        "defaultVal": null
+      }
+    }
+  ],
+  "script": [
+    "vName:sCubeName = 'vValue:sCubeName';",
+    "vName:nTmp = vValue:nTmp;",
+    "aux:ViewName = GetProcessName | numbertostring(now());",
+    "aux:SubName = aux:ViewName;",
+    "if(ViewExists( vName:sCubeName, aux:ViewName )=1);",
+    "    ViewDestroy( vName:sCubeName, aux:ViewName );",
+    "endif;",
+    "ViewCreate( vName:sCubeName, aux:ViewName, vName:nTmp);",
+    "aux:dim1 = TABDIM( vName:sCubeName, 1 );",
+    "aux:mdx1 = '{TM1FILTERBYLEVEL(TM1SUBSETALL(['|aux:dim1|'].['|aux:dim1|']) , 0)}';",
+    "aux:dim2 = TABDIM( vName:sCubeName, 2 );",
+    "aux:mdx2 = '{TM1FILTERBYLEVEL(TM1SUBSETALL(['|aux:dim2|'].['|aux:dim2|']) , 0)}';",
+    "ViewExtractSkipCalcsSet( vName:sCubeName, aux:ViewName, 1 );",
+    "ViewExtractSkipRuleValuesSet( vName:sCubeName, aux:ViewName, 1 );",
+    "ViewExtractSkipZeroesSet( vName:sCubeName, aux:ViewName, 1 );",
+    "if(SubsetExists( aux:dim1, aux:SubName ) = 1);",
+    "    SubsetDestroy( aux:dim1, aux:SubName );",
+    "endif;",
+    "SubsetCreatebyMDX(aux:SubName, aux:mdx1, aux:dim1,vName:nTmp);",
+    "ViewSubsetAssign( vName:sCubeName, aux:ViewName, aux:dim1, aux:SubName );",
+    "if(SubsetExists( aux:dim2, aux:SubName ) = 1);",
+    "    SubsetDestroy( aux:dim2, aux:SubName );",
+    "endif;",
+    "SubsetCreatebyMDX(aux:SubName, aux:mdx2, aux:dim2, vName:nTmp);",
+    "ViewSubsetAssign( vName:sCubeName, aux:ViewName, aux:dim2, aux:SubName );",
+    "#EndRegion"
+  ]
+}

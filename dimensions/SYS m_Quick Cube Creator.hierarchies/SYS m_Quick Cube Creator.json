@@ -1,0 +1,16 @@
+{
+	"@type":"Hierarchy",
+	"Name":"SYS m_Quick Cube Creator",
+	"Elements":
+	[
+		{
+			"Name":"Input",
+			"Type":"String"
+		},
+		{
+			"Name":"Count",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}

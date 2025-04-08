@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"}repo_Subset Settings t_Days Create",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}repo_Subset Settings t_Days Create.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"VariablesUIData":
+	[
+		"VarType=32\fColType=827\f"
+	],
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForClient":"InputLines:InputLines",
+		"dataSourceNameForServer":"InputLines:InputLines",
+		"subset":"All"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vLine",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

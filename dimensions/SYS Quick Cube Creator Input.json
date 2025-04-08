@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"SYS Quick Cube Creator Input",
+	"Hierarchies@Code.links":
+	[
+		"SYS Quick Cube Creator Input.hierarchies/SYS Quick Cube Creator Input.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('SYS Quick Cube Creator Input')/Hierarchies('SYS Quick Cube Creator Input')"
+	}
+}

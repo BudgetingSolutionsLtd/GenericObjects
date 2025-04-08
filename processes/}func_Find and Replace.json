@@ -1,0 +1,33 @@
+{
+	"@type":"Process",
+	"Name":"}func_Find and Replace",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}func_Find and Replace.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pString",
+			"Prompt":"String",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pFind",
+			"Prompt":"Find",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pReplace",
+			"Prompt":"Replace",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

@@ -1,0 +1,13 @@
+{
+	"@type":"Process",
+	"Name":"}repo_RunOnImport - Create Picklist Cubes",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}repo_RunOnImport - Create Picklist Cubes.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":[],
+	"Variables":[]
+}

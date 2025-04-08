@@ -1,0 +1,45 @@
+{
+	"@type":"Process",
+	"Name":"}func_Find and Replace in Cube Rule",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}func_Find and Replace in Cube Rule.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pCubeName",
+			"Prompt":"Cube rules to edit (cube name)",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceInstance",
+			"Prompt":"Source Instance (Dev/Prod)",
+			"Value":"Dev",
+			"Type":"String"
+		},
+		{
+			"Name":"pSourceDB",
+			"Prompt":"Source DB",
+			"Value":"Development",
+			"Type":"String"
+		},
+		{
+			"Name":"pFind",
+			"Prompt":"Find:",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pReplace",
+			"Prompt":"Replace:",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

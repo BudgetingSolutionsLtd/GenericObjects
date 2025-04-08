@@ -1,0 +1,136 @@
+#region Prolog
+#NEEDS TESTING
+# Process to create a hierarchy from an attribute. The hierarchy will have the attribute name, and a total that will be '/attributename/ Total' 
+
+#Region PROCESS LOGGING
+pPrologNow = Now;
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;
+# Redefine messages depending on exception handling
+pMessage = 'Process completed successfully. ';
+sMessage1 = ''; sMessage2 = ''; sMessage3 = ''; sMessage4 = ''; sMessage5 = '';
+# Concatenate the parameters together to write into output cube. 'pParam1: ' | pParam1 |',  'pParam2: ' | pParam2 | ', | 'pParam3: ' |  pParam3 | ....
+pParameters = 'pDimName: ' | pDimName | ', ' | 'pLevels: ' | numbertostring(pLevels) | ', ' | 'pHierName: ' | pHierName | ', ' | 'pOverwrite: ' | pOverwrite | ', ' | 'pLevel1: ' | pLevel1 | ', ' | 'pLevel2: ' | pLevel2 | ', ' | 'pLevel3: ' | pLevel3 | ', ' | 'pLevel4: ' | pLevel4 | ', ' | 'pLevel5: ' | pLevel5 | ', ' | 'pCreateTotal: ' | pCreateTotal;
+pReturnString = '';
+pReturnNumber = 0;
+#EndRegion PROCESS LOGGING
+
+cubeName = '}ElementAttributes_' | pDimName;
+
+# Reject if more than 6 levels
+if(pLevels>6);
+    sMessage1 = sMessage1 | 'Maximum 6 levels exceeded. ';
+    ItemReject( sMessage1 );
+endif;
+
+# Overwrite if required
+if(HierarchyExists( pDimName, pHierName )=1 & pOverwrite @='Y');
+    HierarchyDestroy( pDimName, pHierName );
+elseif(HierarchyExists( pDimName, pHierName )=1 & pOverwrite @<>'Y');
+    sMessage2 = 'Hierarchy ' | pHierName | ' already exists ';
+    ItemReject( sMessage2 );
+endif;
+HierarchyCreate( pDimName, pHierName );
+
+# Create top level total if required
+if(pCreateTotal@='Y');
+    HierarchyElementInsertDirect( pDimname, pHierName, '', pHierName | ' Total' , 'c' ); 
+endif;
+
+# Create subset of all leaves to loop through
+SubName = GetProcessName() | NumberToString( Now() );
+
+if(SubsetExists( pDimName, SubName)=1);
+    SubsetDestroy( pDimName, SubName );
+endif;
+SubsetCreatebyMDX(SubName,  '{TM1FILTERBYLEVEL(TM1SUBSETALL(['|pDimName|'].['|pDimName|']) , 0)}', 1 );
+
+nmax = SubsetGetSize( pDimName, SubName );
+n=1;
+
+nmax = DIMSIZ( pDimName );
+# Loop through dim adding element as a child of its attribute
+while(n<=nmax);
+
+    # Get element name
+    elName = DIMNM( pDimName, n );
+
+    # Get consolidations from attributes for that element
+    if(pLevels>=2);
+        sLevel1 = CellGetS( cubeName, elName, pLevel1 );
+        if(HierarchyElementExists( pDimName, pHierName, sLevel1 )=0);
+            HierarchyElementInsertDirect( pDimName, pHierName, '', sLevel1, 'c' );
+            HierarchyElementComponentAddDirect( pDimName, pHierName, sLevel1, elName, 1 );
+        endif;
+
+        # add to top level total if required
+        if(pLevels = 2 & pCreateTotal @= 'Y');
+            HierarchyElementComponentAddDirect( pDimName, pHierName, pHierName | ' Total', sLevel1, 1 );
+        endif;
+
+    endif;
+
+    if(pLevels>=3);
+        sLevel2 = CellGetS( cubeName, elName, pLevel2 );
+        if(HierarchyElementExists( pDimName, pHierName, sLevel2 )=0);
+            HierarchyElementInsertDirect( pDimName, pHierName, '', sLevel2, 'c' );
+            HierarchyElementComponentAddDirect( pDimName, pHierName, sLevel2, pLevel1, 1 );
+        endif;
+
+        # add to top level total if required
+        if(pLevels = 3 & pCreateTotal @= 'Y');
+            HierarchyElementComponentAddDirect( pDimName, pHierName, pHierName | ' Total', sLevel2, 1 );
+        endif;
+    endif;
+    
+    if(pLevels>=4);
+        sLevel3 = CellGetS( cubeName, elName, pLevel3 );
+        if(HierarchyElementExists( pDimName, pHierName, sLevel3 )=0);
+            HierarchyElementInsertDirect( pDimName, pHierName, '', sLevel3, 'c' );
+            HierarchyElementComponentAddDirect( pDimName, pHierName, sLevel3, pLevel2, 1 );
+        endif;
+
+        # add to top level total if required
+        if(pLevels = 4 & pCreateTotal @= 'Y');
+            HierarchyElementComponentAddDirect( pDimName, pHierName, pHierName | ' Total', sLevel3, 1 );
+        endif;
+    endif;
+
+    if(pLevels>=5);
+        sLevel4 = CellGetS( cubeName, elName, pLevel4 );
+        if(HierarchyElementExists( pDimName, pHierName, sLevel4 )=0);
+            HierarchyElementInsertDirect( pDimName, pHierName, '', sLevel4, 'c' );
+            HierarchyElementComponentAddDirect( pDimName, pHierName, sLevel4, pLevel3, 1 );
+        endif;
+
+        # add to top level total if required
+    if(pLevels = 5 & pCreateTotal @= 'Y');
+            HierarchyElementComponentAddDirect( pDimName, pHierName, pHierName | ' Total', sLevel4, 1 );
+        endif;
+    endif;
+
+    if(pLevels>=6);
+        sLevel5 = CellGetS( cubeName, elName, pLevel5 );
+        if(HierarchyElementExists( pDimName, pHierName, sLevel5 )=0);
+            HierarchyElementInsertDirect( pDimName, pHierName, '', sLevel5, 'c' );
+            HierarchyElementComponentAddDirect( pDimName, pHierName, sLevel5, pLevel4, 1 );
+        endif;
+
+        # add to top level total if required
+        if(pLevels = 6 & pCreateTotal @= 'Y');
+            HierarchyElementComponentAddDirect( pDimName, pHierName, pHierName | ' Total', sLevel5, 1 );
+        endif;
+    endif;
+end;
+#endregion
+#region Epilog
+
+#Region PROCESS LOGGING
+# Put messages here to explain exceptions to user;
+if(nErrors>0);
+    pMessage = sMessage1 | ', ' | sMessage2 | ', ' | sMessage3 | ', ' | sMessage4 | ', ' | sMessage5;
+endif;
+# pMessage and nErrors must be defined in the process to log with exception handling.
+RunProcess('}func_Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);
+#EndRegion PROCESS LOGGING
+#endregion

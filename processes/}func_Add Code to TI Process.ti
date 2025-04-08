@@ -1,0 +1,253 @@
+#region Prolog
+
+#Region PROCESS LOGGING
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully.';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters = 'pProcessName: ' | pProcessName | ', pSourceInstance: ' | pSourceInstance | ', pSourceDB: ' | pSourceDB | ', pSection: ' | ', ' | pSection | ', pStartEnd: ' | pStartEnd | ', pLine1: ' | pLine1 | ', pLine2: ' | pLine2 | ', pLine3: ' | pLine3 | ', pLine4: ' | pLine4 | ', pLine5: ' | pLine5 | ', pLine6: ' | pLine6 | ', pLine7: ' | pLine7 | ', pLine8: ' | pLine8 | ', pLine9: ' | pLine9 | ', pLine10: ' | pLine10 | ', pLine11: ' | pLine11 | ', pLine12: ' | pLine12 | ', pLine13: ' | pLine13 | ', pLine14: ' | pLine14;
+#EndRegion
+
+
+# Check pProcessName for spaces and replace with %20
+i=1;
+while (i>0);
+    i = SCAN(' ',pProcessName);
+    if(i<>0);
+        pProcessName = DELET(pProcessName,i,1);
+        pProcessName = INSRT('%20',pProcessName,i);
+    endif;
+end;
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Define environment variables
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Global settings for the client
+host = CellGetS( 'SYS PA API Credentials', 'Input', 'host' );
+apiKey =  CellGetS( 'SYS PA API Credentials', 'Input', 'apiKey' );
+
+# Convert apiKey to base 64 encoding
+apiKey = Base64Encode( 'apikey:'| apiKey);
+
+# Tenant ID's for the instances that exist
+DevTenant =CellGetS( 'SYS PA API Credentials', 'Input', 'DevTenant' );
+ProdTenant = CellGetS( 'SYS PA API Credentials', 'Input', 'ProdTenant' );
+
+# Select which tenant to use for the source
+If(pSourceInstance @= 'Dev');
+    SourceTenant = DevTenant;
+elseif( pSourceInstance @= 'Prod' );
+    SourceTenant = ProdTenant;
+endif;
+
+DestinationTenant = SourceTenant;
+# Set databases to copy from and to
+SourceDB = pSourceDB;
+DestinationDB = pSourceDB;
+pDestDB = pSourceDB;
+
+# Define the root URL for the source and destination for the API calls
+SourceRoot = host |'/api/' |SourceTenant | '/v0/tm1/' |SourceDB|'/api/v1/'; 
+DestinationRoot = SourceRoot;
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# GET DATA FROM SOURCE DATABASE
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Request a session cookie that means further requests don't need authentication token
+SourceHeader = '-H Authorization: Basic ' | apiKey;
+ExecuteHttpRequest('GET', host | '/api/' | SourceTenant | '/v0/rolemgmt/v1/users/me', SourceHeader);
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus <> 200);
+    ItemReject('Error authenticating to source environment: ' | ResponseBody);
+EndIf;
+
+# Get Process data from source database
+url = SourceRoot |'Processes('''|pProcessName|''')';
+ExecuteHttpRequest('GET', url, SourceHeader);
+
+# Check the response and end the process if authentication failed
+ResponseProcess = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus > 299);
+    ItemReject('Error retrieving process '|pProcessName|' in  '| pSourceDB |'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+EndIf;
+
+NewLine = '\r\n';
+sCode = pLine1 | NewLine | pLine2 | NewLine | pLine3 | NewLine | pLine4 | NewLine | pLine5 | NewLine | pLine6 | NewLine | pLine7 | NewLine | pLine8 | NewLine | pLine9 | NewLine | pLine10 | NewLine | pLine11 | NewLine | pLine12 | NewLine | pLine13 | NewLine | pLine14;
+
+# if there's two new lines in a row, make it into 1 new line, so the process doesnt have to use 14 lines every time
+pFind = NewLine | NewLine;
+
+FindLong = LONG( pFind );
+FindScan = SCAN( pFind, sCode);
+while(FindScan<>0);
+    Scode = SUBST( sCode, 1, FindScan-1) | NewLine | SUBST( sCode, FindScan+FindLong, long(sCode));
+    FindScan = SCAN( pFind, sCode );
+end;
+    
+#Region #~~~~~~~~~~Actual find and replace part ~~~~~~~~~~~#
+if(pSection@='Prolog');
+    #add code to prolog
+    prolog = JsonGet( ResponseProcess, 'PrologProcedure' );
+    FindLong = LONG( NewLine );
+    FindScan = SCAN( NewLine, prolog);
+
+        line1 = SUBST( prolog, 2, FindScan-2);
+        if(pLine1@=line1);
+            sMessage1 = 'First line ' | line1 | ' matches in ' | pProcessName;
+            nErrors = nErrors + 1;
+        else;
+            if(pStartEnd@='Start');
+                prolog = '"' | sCode | NewLine | SUBST( prolog, 2, long(prolog) );
+            elseif( pStartEnd@='End');
+                prolog = SUBST( prolog, 1, long(prolog)-1 ) | NewLine | sCode | '"' ;
+            endif;
+        endif;
+    endif;
+    ResponseProcess = JsonReplace( ResponseProcess, 'PrologProcedure', prolog );
+
+if(pSection@='Metadata');
+    #add code to metadata
+    metadata = JsonGet( ResponseProcess, 'MetadataProcedure' );
+    FindLong = LONG( NewLine );
+    FindScan = SCAN( NewLine, metadata);
+
+        line1 = SUBST( metadata, 2, FindScan-2);
+        if(pLine1@=line1);
+            sMessage1 = 'First line ' | line1 | ' matches in ' | pProcessName;
+            nErrors = nErrors + 1;
+        else;
+            if(pStartEnd@='Start');
+                metadata = '"' | sCode | NewLine | SUBST( metadata, 2, long(metadata) );
+            elseif( pStartEnd@='End');
+                metadata = SUBST( metadata, 1, long(metadata)-1 ) | NewLine | sCode | '"' ;
+            endif;
+        endif;
+    endif;
+    ResponseProcess = JsonReplace( ResponseProcess, 'MetadataProcedure', metadata );
+
+if(pSection@='Data');
+    #add code to data
+    data = JsonGet( ResponseProcess, 'DataProcedure' );
+    FindLong = LONG( NewLine );
+    FindScan = SCAN( NewLine, data);
+
+        line1 = SUBST( data, 2, FindScan-2);
+        if(pLine1@=line1);
+            sMessage1 = 'First line ' | line1 | ' matches in ' | pProcessName;
+            nErrors = nErrors + 1;
+        else;
+            if(pStartEnd@='Start');
+                data = '"' | sCode | NewLine | SUBST( data, 2, long(data) );
+            elseif( pStartEnd@='End');
+                data = SUBST( data, 1, long(data)-1 ) | NewLine | sCode | '"' ;
+            endif;
+        endif;
+    endif;
+    ResponseProcess = JsonReplace( ResponseProcess, 'DataProcedure', data );
+
+if(pSection@='Epilog');
+    #add code to epilog
+    epilog = JsonGet( ResponseProcess, 'EpilogProcedure' );
+    FindLong = LONG( NewLine );
+    FindScan = SCAN( NewLine, epilog);
+
+        line1 = SUBST( epilog, 2, FindScan-2);
+        if(pLine1@=line1);
+            sMessage1 = 'First line ' | line1 | ' matches in ' | pProcessName;
+            nErrors = nErrors + 1;
+        else;
+            if(pStartEnd@='Start');
+                epilog = '"' | sCode | NewLine | SUBST( epilog, 2, long(epilog) );
+            elseif( pStartEnd@='End');
+                epilog = SUBST( epilog, 1, long(epilog)-1 ) | NewLine | sCode | '"' ;
+            endif;
+        endif;
+    endif;
+    ResponseProcess = JsonReplace( ResponseProcess, 'EpilogProcedure', epilog);
+#EndRegion
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# UPDATE THE DESTINATION DATABASE
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Request a session cookie that means further requests don't need authentication token 
+# This isn't needed if the source and target databases are on the same instance, but when copy from one instance to another it is, so just do it anyway.
+DestinationAuthHeader = '-H Authorization: Basic ' | apiKey;
+ExecuteHttpRequest('GET', host | '/api/' | DestinationTenant | '/v0/rolemgmt/v1/users/me', DestinationAuthHeader);
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus <> 200);
+    ItemReject('Error authenticating to destination environment: ' | ResponseBody);
+EndIf;
+
+# Define header
+DestinationHeader = '-H Content-Type: application/json; charset=utf-8';
+
+# Define endpoint
+pDestinationName = pProcessName;
+url = DestinationRoot |'Processes('''|pDestinationName|''')';
+
+# Prepare data
+DestinationData = ResponseProcess;
+
+# Check if process already exists on target
+url = DestinationRoot |'Processes('''|pDestinationName|''')';
+ExecuteHttpRequest('GET', url, DestinationAuthHeader);
+ResponseStatus = HttpResponseGetStatusCode();
+ResponseBody = HttpResponseGetBody();
+
+If(ResponseStatus < 300);
+    Exists = 1;
+else;
+    Exists = 0;
+endif;
+
+#ItemReject( url | ' ' | NumberToString( ResponseStatus ) | ' ' | NumberToString( Exists ) | ' ' | ResponseBody);
+
+# If the process Doesn't already exist, create it
+If (Exists = 0);
+    url = DestinationRoot |'Processes';
+    ExecuteHttpRequest('POST', url, DestinationAuthHeader, DestinationHeader,  '-d ' | DestinationData );
+
+    ResponseBody = HttpResponseGetBody();
+    ResponseStatus = HttpResponseGetStatusCode();
+    If(ResponseStatus <> 201);
+        ItemReject('Error updating process '|pDestinationName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+    EndIf;
+Endif;
+
+# If the process already exists, update it (can't update attributes via PATCH)
+If (Exists = 1);
+    DestinationData = JsonRemove( DestinationData, 'Attributes' );
+
+    url = DestinationRoot |'Processes('''|pDestinationName|''')';
+    ExecuteHttpRequest('PATCH', url, DestinationAuthHeader, DestinationHeader,  '-d ' | DestinationData );
+
+    ResponseBody = HttpResponseGetBody();
+    ResponseStatus = HttpResponseGetStatusCode();
+    If(ResponseStatus <> 200);
+        ItemReject('Error updating process '|pDestinationName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+    EndIf;
+Endif;
+#endregion
+#region Epilog
+#Region PROCESS LOGGING
+# Put messages here to explain exceptions to user;
+if(nErrors>0);
+    pMessage = sMessage1 | sMessage2;
+endif;
+# pMessage and nErrors must be defined in the process to log with exeption handling.
+RunProcess('}func_Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);
+#EndRegion PROCESS LOGGING
+#endregion

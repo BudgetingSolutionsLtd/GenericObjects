@@ -1,0 +1,28 @@
+{
+	"@type":"Hierarchy",
+	"Name":"m_t_Months Subset Settings",
+	"Elements":
+	[
+		{
+			"Name":"Subset Name",
+			"Type":"String"
+		},
+		{
+			"Name":"Window Start",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Window End",
+			"Type":"Numeric"
+		},
+		{
+			"Name":"Create Subset?",
+			"Type":"String"
+		},
+		{
+			"Name":"Create Hierarchy?",
+			"Type":"String"
+		}
+	],
+	"Subsets@Code.links":[]
+}

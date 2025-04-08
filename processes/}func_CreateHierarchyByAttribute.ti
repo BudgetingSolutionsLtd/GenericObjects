@@ -1,0 +1,70 @@
+#region Prolog
+# Process to create an alt hierarchy from an attribute. The hierarchy will have the attribute name, and a total that will be '/attributename/ Total'
+
+#Region ####### PUT IN PROLOGUE OF PROCESS TO LOG: #######
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully.';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pDimName: '| pDimName | ', pAttrName: '| pAttrName; 
+pReturnString = '';
+pReturnNumber = 0;
+#EndRegion PROCESS LOGGING
+
+if(HierarchyExists( pDimname, pAttrName )=1);
+    HierarchyDestroy( pDimName, pAttrName );
+endif;
+HierarchyCreate( pDimname, pAttrName );
+
+SubName = 'All Leaves';
+if(SubsetExists( pDimName, SubName)=0);
+    SubsetCreatebyMDX(SubName,  '{TM1FILTERBYLEVEL(TM1SUBSETALL(['|pDimName|'].['|pDimName|']) , 0)}', 1 );
+else;
+    SubsetMDXSet( pDimName, SubName, '{TM1FILTERBYLEVEL(TM1SUBSETALL(['|pDimName|'].['|pDimName|']) , 0)}' );
+endif;
+
+nmax = SubsetGetSize( pDimName, SubName );
+n=1;
+
+if(HierarchyExists( pDimName, pAttrName )=1);
+   HierarchyDeleteAllElements( pDimName, pAttrName );
+else;
+    HierarchyCreate( pDimName, pAttrName );
+endif;
+
+HierarchyElementInsertDirect( pDimname, pAttrName, '', pAttrName | ' Total' , 'c' ); 
+
+while(n<=nmax);
+    ElName = SubsetGetElementName( pDimName, SubName, n );
+    AttrValue = ATTRS( pDimName, ElName, pAttrName );
+    if(attrValue@='');
+         sMessage1 = sMessage1 | elName | ' attribute "' | pAttrName | '" is blank, ';
+         nErrors = nErrors + 1;
+     else;
+        # add attribute as consol if it doesnt exist
+          if(HierarchyElementExists( pDimName, pAttrName, attrValue )=0);
+              HierarchyElementInsertDirect( pDimName, pAttrName, '', attrValue, 'c' );
+              HierarchyElementComponentAddDirect( pDimName, pAttrName,  pAttrName | ' Total' , attrValue, 1 );
+           endif;
+            HierarchyElementInsertDirect( pDimName, pAttrName, '', elName , 'n' ); 
+            HierarchyElementComponentAddDirect( pDimName, pAttrName, attrValue, elName, 1 );
+         endif;
+    n = n+1;
+end;
+#endregion
+#region Epilog
+
+#Region PROCESS LOGGING
+# Put messages here to explain exceptions to user;
+if(nErrors>0);
+    pMessage = sMessage1 | sMessage2 | sMessage3;
+endif;
+# pMessage and nErrors must be defined in the process to log with exeption handling.
+RunProcess('}func_Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);
+#EndRegion PROCESS LOGGING
+#endregion

@@ -1,0 +1,36 @@
+#region Prolog
+#Region PROCESS LOGGING
+pPrologNow = Now;
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;
+# Redefine messages depending on exception handling
+pMessage = 'Process completed successfully. ';
+sMessage1 = ''; sMessage2 = ''; sMessage3 = ''; sMessage4 = ''; sMessage5 = '';
+# Concatenate the parameters together to write into output cube. 'pParam1: ' | pParam1 |',  'pParam2: ' | pParam2 | ', | 'pParam3: ' |  pParam3 | ....
+pParameters = 'pString: ' | pString | ', ' | 'pFind: ' | pFind | ', ' | 'pReplace: ' | pReplace;
+pReturnString = '';
+pReturnNumber = 0;
+#EndRegion PROCESS LOGGING
+
+# Find and replace
+outputString = pString;
+FindLong = LONG( pFind );
+FindScan = SCAN( pFind, outputString);
+while(FindScan<>0);
+    outputString= SUBST( outputString, 1, FindScan-1) | pReplace | SUBST( outputString, FindScan+FindLong, long(outputString));
+    FindScan = SCAN( pFind, outputString);
+end;
+
+pReturnString = outputString;
+#endregion
+#region Epilog
+
+#Region PROCESS LOGGING
+# Put messages here to explain exceptions to user;
+if(nErrors>0);
+    pMessage = sMessage1 | ', ' | sMessage2 | ', ' | sMessage3 | ', ' | sMessage4 | ', ' | sMessage5;
+endif;
+# pMessage and nErrors must be defined in the process to log with exception handling.
+RunProcess('}func_Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);
+#EndRegion PROCESS LOGGING
+#endregion

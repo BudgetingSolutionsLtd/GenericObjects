@@ -1,0 +1,261 @@
+#region Prolog
+#Region PROCESS LOGGING
+pPrologNow = Now; 
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;   
+# Redefine message depending on if statement that handled the exception to help user
+pMessage = 'Process completed successfully.';    
+sMessage1 = '';
+sMessage2 = '';
+sMessage3 = '';
+# Concatenate the parameters together to write into output cube. pParam1 | ', ' | pParam2 | ', ' | pParam3 | ....
+pParameters ='pSourceName: ' | pSourceName | ', pSourceInstance: ' | pSourceInstance | ', pSourceDB: ' | pSourceDB;
+pReturnString = '';
+pReturnNumber = 0;
+#EndRegion PROCESS LOGGING
+
+if(pSourceName@='SYS Add Logging to TI Process');
+    ProcessBreak;
+endif;
+
+# Check pSourceName for spaces and replace with %20
+i=1;
+while (i>0);
+    i = SCAN(' ',pSourceName);
+    if(i<>0);
+        pSourceName = DELET(pSourceName,i,1);
+        pSourceName = INSRT('%20',pSourceName,i);
+    endif;
+end;
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Define environment variables
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Global settings for the client
+host = CellGetS( 'SYS PA API Credentials', 'Input', 'host' );
+apiKey =  CellGetS( 'SYS PA API Credentials', 'Input', 'apiKey' );
+
+# Convert apiKey to base 64 encoding
+apiKey = Base64Encode( 'apikey:'| apiKey);
+
+# Tenant ID's for the instances that exist
+DevTenant =CellGetS( 'SYS PA API Credentials', 'Input', 'DevTenant' );
+ProdTenant = CellGetS( 'SYS PA API Credentials', 'Input', 'ProdTenant' );
+
+# Select which tenant to use for the source
+If(pSourceInstance @= 'Dev');
+    SourceTenant = DevTenant;
+elseif( pSourceInstance @= 'Prod' );
+    SourceTenant = ProdTenant;
+endif;
+
+DestinationTenant = SourceTenant;
+# Set databases to copy from and to
+SourceDB = pSourceDB;
+DestinationDB = pSourceDB;
+pDestDB = pSourceDB;
+
+# Define the root URL for the source and destination for the API calls
+SourceRoot = host |'/api/' |SourceTenant | '/v0/tm1/' |SourceDB|'/api/v1/'; 
+DestinationRoot = SourceRoot;
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# GET DATA FROM SOURCE DATABASE
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Request a session cookie that means further requests don't need authentication token
+SourceHeader = '-H Authorization: Basic ' | apiKey;
+ExecuteHttpRequest('GET', host | '/api/' | SourceTenant | '/v0/rolemgmt/v1/users/me', SourceHeader);
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus <> 200);
+    ItemReject('Error authenticating to source environment: ' | ResponseBody);
+EndIf;
+
+# Get Process data from source database
+url = SourceRoot |'Processes('''|pSourceName|''')';
+ExecuteHttpRequest('GET', url, SourceHeader);
+
+# Check the response and end the process if authentication failed
+ResponseProcess = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus > 299);
+    ItemReject('Error retrieving process '|pSourceName|' in  '| pSourceDB |'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+EndIf;
+
+# Build pParameters part
+parameters = JsonGet( ResponseProcess, 'Parameters' );
+
+sParameters = '';
+nParameters = JsonSize( parameters );
+n=0;
+while(n<=nParameters-1);
+    sParameter = JsonToString(JsonGet(JsonGet( parameters, n ),'Name'));
+    sType = JsonToString(JsonGet(JsonGet( parameters, n ),'Type'));
+    if(sType@='numeric');
+        sParameters = sParameters | char(39)  | sParameter |   ': ' | char(39)  |  ' | '  | 'numbertostring(' | sParameter |  ') | '  | char(39) |', ' | char(39)  |  ' | ' ;
+    else;
+        sParameters = sParameters | char(39)  | sParameter |   ': ' | char(39)  |  ' | '  |  sParameter |  ' | '  | char(39) |', ' | char(39)  |  ' | ' ;
+    endif;
+    n = n+1;
+end;
+#Get rid of  | ', ' | at the end of last one
+sParameters = SUBST( sParameters, 1, long(sParameters)-10);
+
+if(sParameters @= '*ERR*');
+ sParameters = char(39) | char(39);
+endif;
+NewLine = '\r\n';
+pLine1 = '#Region PROCESS LOGGING';
+pLine2 = 'pPrologNow = Now;';
+pLine3 = '# Catch errors with if statement and do nErrors = nErrors+1;';
+pLine4 = 'nErrors = 0;';
+pLine5 = '# Redefine messages depending on exception handling';
+pLine6 = 'pMessage = ' | char(39) | 'Process completed successfully. '| char(39) | ';';
+pLine7 = 'sMessage1 = ' | char(39) | char(39) | ';' | ' sMessage2 = ' | char(39) | char(39) | ';' | ' sMessage3 = ' | char(39) | char(39) | ';' | ' sMessage4 = ' | char(39) | char(39) | ';' | ' sMessage5 = ' | char(39) | char(39) | ';';
+pLine8 =  '# Concatenate the parameters together to write into output cube. ' | char(39) | 'pParam1: ' | char(39) | ' | pParam1 |' | char(39) | ',  ' | char(39) | 'pParam2: ' | char(39) | ' | pParam2 | ' | char(39) | ', | ' | char(39) | 'pParam3: ' | char(39) | ' |  pParam3 | ....';
+pLine9 = 'pParameters = ' | sParameters | ';';
+pLine10 =  'pReturnString = ' | char(39) | char(39) | ';';
+pLine11 = 'pReturnNumber = 0;';
+pLine12 = '#EndRegion PROCESS LOGGING';
+pLine13 = '';
+pLine14 = '';
+
+sCode = pLine1 | NewLine | pLine2 | NewLine | pLine3 | NewLine | pLine4 | NewLine | pLine5 | NewLine | pLine6 | NewLine | pLine7 | NewLine | pLine8 | NewLine | pLine9 | NewLine | pLine10 | NewLine | pLine11 | NewLine | pLine12 | NewLine | pLine13 | NewLine | pLine14;
+
+#Region #~~~~~~~~~~Add logging code ~~~~~~~~~~~#
+
+#add code to prolog
+prolog = JsonGet( ResponseProcess, 'PrologProcedure' );
+Find = '#EndRegion PROCESS LOGGING';
+FindLong = LONG( Find );
+FindScan = SCAN( Find, prolog);
+regionStart = SCAN( '#Region PROCESS LOGGING', prolog );
+
+#delete old processlogging bit
+if(FindScan<>0 & pOverwrite@='No');
+    sMessage1 = 'Process Logging exists in ' | pSourceName;
+    nErrors = nErrors + 1;
+    ProcessBreak;
+elseif(FindScan<>0 & pOverwrite@='Yes');
+    beforeRegion = SUBST( prolog, 1, regionStart );
+    prolog = beforeRegion | NewLine | sCode | NewLine |  SUBST( prolog, FindScan+FindLong, long(prolog)-1 );
+else;
+    prolog = '"' | sCode | NewLine | SUBST( prolog, 2, long(prolog) );
+endif;
+ResponseProcess = JsonReplace( ResponseProcess, 'PrologProcedure', prolog );
+
+pLine1 = '#Region PROCESS LOGGING';
+pLine2 = '# Put messages here to explain exceptions to user;';
+pLine3 = 'if(nErrors>0);';
+pLine4 = '    pMessage = sMessage1 | ' | char(39) | ', ' | char(39) | ' | sMessage2 | ' | char(39) | ', ' | char(39) | ' | sMessage3 | ' | char(39) | ', ' | char(39) | ' | sMessage4 | ' | char(39) | ', ' | char(39) | ' | sMessage5;';
+pLine5 = 'endif;';
+pLine6 = '# pMessage and nErrors must be defined in the process to log with exception handling.';
+pLine7 = 'RunProcess(' | char(39) | 'SYS Process Logging' | char(39) | ', ' | char(39) | 'pProcessName' | char(39) | ',GetProcessName(), ' | char(39) | 'pUser' | char(39) | ', tm1user, ' | char(39) | 'pPrologNow' | char(39) | ', pPrologNow, ' | char(39) | 'pErrors' | char(39) | ', nErrors, ' | char(39) | 'pMessage' | char(39) | ', pMessage, ' | char(39) | 'pParameters' | char(39) | ', pParameters, ' | char(39) | 'pReturnString' | char(39) | ', pReturnString, ' | char(39) | 'pReturnNumber' | char(39) | ', pReturnNumber);';
+pLine8 = '#EndRegion PROCESS LOGGING';
+pLine9 = '';
+
+
+sCode = pLine1 | NewLine | pLine2 | NewLine | pLine3 | NewLine | pLine4 | NewLine | pLine5 | NewLine | pLine6 | NewLine | pLine7 | NewLine | pLine8 | NewLine | pLine9;
+
+#add code to epilog
+epilog = JsonGet( ResponseProcess, 'EpilogProcedure' );
+Find = '#Region PROCESS LOGGING';
+FindLong = LONG( Find );
+FindScan = SCAN( Find, epilog);
+regionEnd = SCAN( '#EndRegion PROCESS LOGGING', epilog );
+EndLong = LONG(  '#EndRegion PROCESS LOGGING' );
+
+#delete old processlogging bit
+if(FindScan<>0 & pOverwrite@='No');
+    sMessage1 = 'Process Logging exists in ' | pSourceName;
+    nErrors = nErrors + 1;
+    ProcessBreak;
+elseif(FindScan<>0 & pOverwrite@='Yes');
+    beforeRegion = SUBST( epilog, 1, findScan );
+    afterRegion = SUBST( epilog, regionEnd+EndLong, long(epilog) );
+    epilog = beforeRegion | NewLine | sCode | NewLine | afterRegion ;
+else;
+    epilog = SUBST( epilog, 1, long(epilog)-1 ) | NewLine | sCode | '"' ;
+endif;
+ResponseProcess = JsonReplace( ResponseProcess, 'EpilogProcedure', epilog);
+#EndRegion
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# UPDATE THE DESTINATION DATABASE
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Request a session cookie that means further requests don't need authentication token 
+# This isn't needed if the source and target databases are on the same instance, but when copy from one instance to another it is, so just do it anyway.
+DestinationAuthHeader = '-H Authorization: Basic ' | apiKey;
+ExecuteHttpRequest('GET', host | '/api/' | DestinationTenant | '/v0/rolemgmt/v1/users/me', DestinationAuthHeader);
+
+# Check the response and end the process if authentication failed
+ResponseBody = HttpResponseGetBody();
+ResponseStatus = HttpResponseGetStatusCode();
+If(ResponseStatus <> 200);
+    ItemReject('Error authenticating to destination environment: ' | ResponseBody);
+EndIf;
+
+# Define header
+DestinationHeader = '-H Content-Type: application/json; charset=utf-8';
+
+# Define endpoint
+pDestinationName = pSourceName;
+url = DestinationRoot |'Processes('''|pDestinationName|''')';
+
+# Prepare data
+DestinationData = ResponseProcess;
+
+# Check if process already exists on target
+url = DestinationRoot |'Processes('''|pDestinationName|''')';
+ExecuteHttpRequest('GET', url, DestinationAuthHeader);
+ResponseStatus = HttpResponseGetStatusCode();
+ResponseBody = HttpResponseGetBody();
+
+If(ResponseStatus < 300);
+    Exists = 1;
+else;
+    Exists = 0;
+endif;
+
+#ItemReject( url | ' ' | NumberToString( ResponseStatus ) | ' ' | NumberToString( Exists ) | ' ' | ResponseBody);
+
+# If the process Doesn't already exist, create it
+If (Exists = 0);
+    url = DestinationRoot |'Processes';
+    ExecuteHttpRequest('POST', url, DestinationAuthHeader, DestinationHeader,  '-d ' | DestinationData );
+
+    ResponseBody = HttpResponseGetBody();
+    ResponseStatus = HttpResponseGetStatusCode();
+    If(ResponseStatus <> 201);
+        ItemReject('Error updating process '|pDestinationName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+    EndIf;
+Endif;
+
+# If the process already exists, update it (can't update attributes via PATCH)
+If (Exists = 1);
+    DestinationData = JsonRemove( DestinationData, 'Attributes' );
+
+    url = DestinationRoot |'Processes('''|pDestinationName|''')';
+    ExecuteHttpRequest('PATCH', url, DestinationAuthHeader, DestinationHeader,  '-d ' | DestinationData );
+
+    ResponseBody = HttpResponseGetBody();
+    ResponseStatus = HttpResponseGetStatusCode();
+    If(ResponseStatus <> 200);
+        ItemReject('Error updating process '|pDestinationName|' in  '|pDestDB|'  Error code: '|NumberToString( ResponseStatus)|' Response: ' | ResponseBody);
+    EndIf;
+Endif;
+#endregion
+#region Epilog
+
+#Region PROCESS LOGGING
+# Put messages here to explain exceptions to user;
+if(nErrors>0);
+    pMessage = sMessage1 | sMessage2 | sMessage3;
+endif;
+# pMessage and nErrors must be defined in the process to log with exeption handling.
+RunProcess('}func_Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);
+#EndRegion PROCESS LOGGING
+#endregion

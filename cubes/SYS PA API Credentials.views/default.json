@@ -1,0 +1,15 @@
+{
+	"@type":"MDXView",
+	"Name":"default",
+	"MDX@Code.link":"default.mdx",
+	"Meta" : 
+	{
+		"Aliases" : {},
+		"ContextSets" : {},
+		"ExpandAboves" : 
+		{
+			"[Input].[Input]" : false,
+			"[m_SYS PA API Credentials].[m_SYS PA API Credentials]" : false
+		}
+	}
+}

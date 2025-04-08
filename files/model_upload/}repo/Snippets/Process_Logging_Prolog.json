@@ -1,0 +1,31 @@
+{
+  "snippetId": "PROCESS_LOGGING_PROLOG",
+  "name": "Initialise process for custom logging",
+  "description": "Put this snippet in the prolog to initialise process to use custom process logging",
+  "auxiliaryVariables": [
+    "pPrologNow",
+    "nErrors",
+    "pMessage",
+    "sMessage1",
+    "sMessage2",
+    "pParameters",
+    "pReturnString",
+    "pReturnNumber"
+  ],
+  "variables": [],
+  "script": [
+    "#Region PROCESS LOGGING",
+    "aux:pPrologNow = Now;",
+    "# Catch errors with if statement and do nErrors = nErrors+1;",
+    "aux:nErrors = 0;",
+    "# Redefine messages depending on exception handling",
+    "aux:pMessage = 'Process completed successfully. ';",
+    "aux:sMessage1 = '';",
+    "aux:sMessage2 = '';",
+    "# Concatenate the parameters together to write into output cube. 'pParam1: ' | pParam1 | ',  'pParam2: ' | pParam2 | ', | 'pParam3: ' |  pParam3 | ....",
+    "aux:pParameters ='';",
+    "aux:pReturnString = '';",
+    "aux:pReturnNumber = 0;",
+    "#EndRegion PROCESS LOGGING"
+  ]
+}

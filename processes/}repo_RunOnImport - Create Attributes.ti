@@ -1,0 +1,43 @@
+#region Prolog
+# Copy and paste this code for attributes you want creating
+
+#Region m_t_Months Subset Settings
+dimName = 'm_t_Months Subset Settings';
+attrName = 'picklist';
+type = 's';
+
+if(DimensionElementExists( 'ElementAttributes_' | dimName, attrName )=0);
+    AttrInsert( dimName, '', attrName, type );
+endif;
+AttrPutS( 'static:Yes:No', dimName, 'Create Hierarchy?', attrName);
+AttrPutS( 'static:Yes:No', dimName, 'Create Subset?', attrName);
+#EndRegion
+
+#Region m_t_Days Subset Settings
+dimName = 'm_t_Days Subset Settings';
+attrName = 'picklist';
+type = 's';
+
+if(DimensionElementExists( 'ElementAttributes_' | dimName, attrName )=0);
+    AttrInsert( dimName, '', attrName, type );
+endif;
+AttrPutS( 'static:Yes:No', dimName, 'Create Hierarchy?', attrName);
+AttrPutS( 'static:Yes:No', dimName, 'Create Subset?', attrName);
+#EndRegion
+
+#Region m_Process Control
+dimName = 'm_Process Control';
+attrName = 'format';
+type = 's';
+
+if(DimensionElementExists( 'ElementAttributes_' | dimName, attrName )=0);
+    AttrInsert( dimName, '', attrName, type );
+endif;
+AttrPutS( 'c:dd/mm/yyyy', dimName, 'Last Run Date', attrName);
+AttrPutS( 'd:H:mm:ssICD', dimName, 'Last Run Time', attrName);
+AttrPutS( 'd:H:mm:ssICD', dimName, 'Time Taken', attrName);
+AttrPutS( 'd:#,##0;(#,##0)', dimName, 'Number of Errors', attrName);
+
+#EndRegion
+
+#endregion

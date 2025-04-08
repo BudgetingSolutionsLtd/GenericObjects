@@ -1,0 +1,61 @@
+#region Prolog
+#Region PROCESS LOGGING
+pPrologNow = Now;
+# Catch errors with if statement and do nErrors = nErrors+1;
+nErrors = 0;
+# Redefine messages depending on exception handling
+pMessage = 'Process completed successfully. ';
+sMessage1 = '';
+sMessage2 = '';
+# Concatenate the parameters together to write into output cube. 'pParam1: ' | pParam1 | ',  'pParam2: ' | pParam2 | ', | 'pParam3: ' |  pParam3 | ....
+pParameters ='';
+pReturnString = '';
+pReturnNumber = 0;
+#EndRegion PROCESS LOGGING
+#endregion
+#region Data
+
+Name = CellGetS( 'SYS Subset Settings t_Days', vLine, 'Subset Name' );
+
+if(Name@='');
+    itemskip;
+endif;
+
+nWindowStart = CellGetN( 'SYS Subset Settings t_Days', vLine, 'Window Start' );
+nWindowEnd = CellGetN( 'SYS Subset Settings t_Days', vLine, 'Window End' );
+CreateSubset = CellGetS( 'SYS Subset Settings t_Days', vLine, 'Create Subset?' );
+CreateHier = CellGetS( 'SYS Subset Settings t_Days', vLine, 'Create Hierarchy?' );
+
+if(CreateSubset@='' % CreateHier@='');
+    pMessage1 = 'Line ' | vLine | ' is incomplete.';
+    ItemSkip;
+endif;
+
+# Sometimes 0 returns 5e-324?
+IF (ABS(nWindowStart) < 0.1 & ABS(nWindowStart) > -0.1);
+  nWindowStart = 0;
+ENDIF;
+
+IF (ABS(nWindowEnd) < 0.1 & ABS(nWindowEnd) > -0.1);
+  nWindowEnd = 0;
+ENDIF;
+
+RunProcess( 'SYS ATTRHIERCREATE t_Days for Time Window',
+	'pHierName', Name,
+	'pWindowStart', nWindowStart,
+	'pWindowEnd', nWindowEnd,
+	'pCreateSubset', CreateSubset,
+	'pCreateHierarchy', CreateHier );
+
+#endregion
+#region Epilog
+
+#Region PROCESS LOGGING
+# Put messages here to explain exceptions to user;
+if(nErrors>0);
+    pMessage = sMessage1 | sMessage2;
+endif;
+# pMessage and nErrors must be defined in the process to log with exeption handling.
+RunProcess('}func_Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);
+#EndRegion PROCESS LOGGING
+#endregion

@@ -1,0 +1,22 @@
+{
+	"@type":"MDXView",
+	"Name":"Default",
+	"MDX@Code.link":"Default.mdx",
+	"Meta" : 
+	{
+		"Aliases" : {},
+		"ContextSets" : 
+		{
+			"[SYS m_Quick Cube Creator].[SYS m_Quick Cube Creator]" : 
+			{
+				"Expression" : "{[SYS m_Quick Cube Creator].[SYS m_Quick Cube Creator].MEMBERS}"
+			}
+		},
+		"ExpandAboves" : 
+		{
+			"[SYS Quick Cube Creator Fields].[SYS Quick Cube Creator Fields]" : false,
+			"[SYS Quick Cube Creator Input].[SYS Quick Cube Creator Input]" : false,
+			"[SYS m_Quick Cube Creator].[SYS m_Quick Cube Creator]" : false
+		}
+	}
+}

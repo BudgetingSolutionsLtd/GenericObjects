@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"}Process Logging",
+	"Hierarchies@Code.links":
+	[
+		"}Process Logging.hierarchies/}Process Logging.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('}Process Logging')/Hierarchies('}Process Logging')"
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"@type":"Process",
+	"Name":"}func_Create Picklist Cube",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}func_Create Picklist Cube.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pCubeName",
+			"Prompt":"Cube",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

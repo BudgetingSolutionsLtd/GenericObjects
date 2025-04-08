@@ -1,0 +1,65 @@
+#region Prolog
+# Use this process to create any picklists on import of the repository
+
+#Region Cube1 SYS Quick Cube Creator
+Cube1 = 'SYS Quick Cube Creator';
+
+Rule1Line1 = '[ ' | char(39) | 'New/Existing?' | char(39) | ',' | char(39) | 'Input ' | char(39) | '] = s: '| char(39) | 'Static:New:Existing' | char(39) | ';';
+Rule1Line2 = '[' | char(39) | 'New/Existing?' | char(39) | ',' | char(39) | 'Input' | char(39) | '] = s:' | char(39) | 'Static:New:Existing' | char(39) | ';
+[' | char(39) | 'Name' | char(39) | ',' | char(39) | 'Input' | char(39) | '] = s:if(SUBST( !SYS Quick Cube Creator Input, 1,9)@=' | char(39) | 'Dimension' | char(39) | ' & DB( ' | char(39) | 'SYS Quick Cube Creator' | char(39) | ', !SYS Quick Cube Creator Input, ' | char(39) | 'New/Existing?' | char(39) | ', ' | char(39) | 'Input' | char(39) | ' )@=' | char(39) | 'Existing' | char(39) | ' ,' | char(39) | 'dimension:}Dimensions' | char(39) | ',DB( ' | char(39) | 'SYS Quick Cube Creator' | char(39) | ', !SYS Quick Cube Creator Input, ' | char(39) | 'New/Existing?' | char(39) | ',' | char(39) | 'Input' | char(39) | ' ));';
+
+RunProcess( '}repo_Create Picklist Cube',
+	'pCubeName', Cube1 );
+#EndRegion
+
+# #Region Cube2 SYS Subset Settings t_Months
+# Cube2 = 'SYS Subset Settings t_Months';
+# Rule2Line1 = '[{' | char(39) | 'Create Subset?' | char(39) | ',' | char(39) | 'Create Hierarchy?' | char(39) | '}] = s:' | char(39) | 'static:Yes:No' | char(39) | ';';
+
+# RunProcess( '}repo_Create Picklist Cube',
+# 	'pCubeName', Cube2 );
+# #EndRegion
+
+# #Region Cube3 SYS Subset Settings t_Days
+# Cube3 = 'SYS Subset Settings t_Days';
+# picklistCube = '}picklist' | cube3;
+# Rule3Line1 = '[{' | char(39) | 'Create Subset?' | char(39) | ',' | char(39) | 'Create Hierarchy?' | char(39) | '}] = s:' | char(39) | 'static:Yes:No' | char(39) | ';';
+
+# RunProcess( '}repo_Create Picklist Cube',
+# 	'pCubeName', Cube3 );
+# #EndRegion
+
+
+#endregion
+#region Epilog
+# Add rules to picklist cubes
+
+#Region Cube1 SYS Quick Cube Creator
+# RunProcess( '}repo_Add Code to Cube Rule',
+# 	'pCubeName', Cube1,
+# 	'pSourceInstance', 'Dev',
+# 	'pSourceDB', 'Development',
+# 	'pStartEnd', 'Start',
+# 	'pLine1', Rule1Line1,
+# 	'pLine2', Rule1Line2 );
+# #EndRegion
+
+# #Region Cube2 SYS Subset Settings t_Months
+# RunProcess( '}repo_Add Code to Cube Rule',
+# 	'pCubeName', Cube2,
+# 	'pSourceInstance', 'Dev',
+# 	'pSourceDB', 'Development',
+# 	'pStartEnd', 'Start',
+# 	'pLine1', Rule2Line1);
+# #EndRegion
+
+
+# #Region Cube2 SYS Subset Settings t_Days
+# RunProcess( '}repo_Add Code to Cube Rule',
+# 	'pCubeName', Cube3,
+# 	'pSourceInstance', 'Dev',
+# 	'pSourceDB', 'Development',
+# 	'pStartEnd', 'Start',
+# 	'pLine1', Rule3Line1);
+# #EndRegion
+#endregion

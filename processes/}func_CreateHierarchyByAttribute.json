@@ -1,0 +1,27 @@
+{
+	"@type":"Process",
+	"Name":"}func_CreateHierarchyByAttribute",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}func_CreateHierarchyByAttribute.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimName",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pAttrName",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

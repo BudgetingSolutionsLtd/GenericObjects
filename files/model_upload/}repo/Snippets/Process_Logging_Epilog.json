@@ -1,0 +1,26 @@
+{
+  "snippetId": "PROCESS_LOGGING_EPILOG",
+  "name": "Snippet for epilog for custom process logging",
+  "description": "Put this snippet in the epilog to use custom process logging",
+  "auxiliaryVariables": [
+    "pPrologNow",
+    "nErrors",
+    "pMessage",
+    "sMessage1",
+    "sMessage2",
+    "pParameters",
+    "pReturnString",
+    "pReturnNumber"
+  ],
+  "variables": [],
+  "script": [
+    "#Region PROCESS LOGGING",
+    "# Put messages here to explain exceptions to user;",
+    "if(nErrors>0);",
+    "    pMessage = sMessage1 | sMessage2;",
+    "endif;",
+    "# pMessage and nErrors must be defined in the process to log with exeption handling.",
+    "RunProcess('}func_Process Logging', 'pProcessName',GetProcessName(), 'pUser', tm1user, 'pPrologNow', pPrologNow, 'pErrors', nErrors, 'pMessage', pMessage, 'pParameters', pParameters, 'pReturnString', pReturnString, 'pReturnNumber', pReturnNumber);",
+    "#EndRegion PROCESS LOGGING"
+  ]
+}

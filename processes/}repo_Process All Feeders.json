@@ -1,0 +1,29 @@
+{
+	"@type":"Process",
+	"Name":"}repo_Process All Feeders",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"}repo_Process All Feeders.ti",
+	"UIData":"_ParameterConstraints=e30=\f",
+	"VariablesUIData":
+	[
+		"VarType=32\fColType=827\f"
+	],
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForClient":"}Cubes:}Cubes",
+		"dataSourceNameForServer":"}Cubes:}Cubes",
+		"subset":"All"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vCubeName",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	]
+}

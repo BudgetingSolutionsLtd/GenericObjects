@@ -1,0 +1,72 @@
+#skipcheck;
+
+#Standard hierarchies NEEDED FOR CALCS DONT DELETE
+
+['1','Subset Name']  = s:'48 Month Window';
+['1','Window Start'] = -24;
+['1','Window End'] = 24;
+['1','Create Subset?'] = s:'Yes';
+['1','Create Hierarchy?'] = s:'No';
+
+['2','Subset Name']  = s:'Next 10 Years';
+['2','Window Start'] =  1;
+['2','Window End'] = 120;
+['2','Create Subset?'] = s:'Yes';
+['2','Create Hierarchy?'] = s:'Yes';
+
+['3','Subset Name']  = s:'Next 12 Months';
+['3','Window Start'] = 1;
+['3','Window End'] = 12;
+['3','Create Subset?'] = s:'Yes';
+['3','Create Hierarchy?'] = s:'Yes';
+
+['4','Subset Name']  = s:'Next 24 Months';
+['4','Window Start'] = 1;
+['4','Window End'] = 24;
+['4','Create Subset?'] = s:'Yes';
+['4','Create Hierarchy?'] = s:'Yes';
+
+['5','Subset Name']  = s:'Next 36 Months';
+['5','Window Start'] = 1;
+['5','Window End'] = 36;
+['5','Create Subset?'] = s:'Yes';
+['5','Create Hierarchy?'] = s:'Yes';
+
+['6','Subset Name']  = s:'Next 48 Months';
+['6','Window Start'] = 1;
+['6','Window End'] = 48;
+['6','Create Subset?'] = s:'Yes';
+['6','Create Hierarchy?'] = s:'Yes';
+
+['7','Subset Name']  = s:'Prior 10 Years';
+['7','Window Start'] = -120;
+['7','Window End'] = 1;
+['7','Create Subset?'] = s:'Yes';
+['7','Create Hierarchy?'] = s:'Yes';
+
+['8','Subset Name']  = s:'Prior 12 Months';
+['8','Window Start'] = -12;
+['8','Window End'] = -1;
+['8','Create Subset?'] = s:'Yes';
+['8','Create Hierarchy?'] = s:'Yes';
+
+['9','Subset Name']  = s:'Prior 24 Months';
+['9','Window Start'] = -24;
+['9','Window End'] = -1;
+['9','Create Subset?'] = s:'Yes';
+['9','Create Hierarchy?'] = s:'Yes';
+
+['10','Subset Name']  = s:'Prior 36 Months';
+['10','Window Start'] = -36;
+['10','Window End'] = -1;
+['10','Create Subset?'] = s:'Yes';
+['10','Create Hierarchy?'] = s:'Yes';
+
+['11','Subset Name']  = s:'Prior 48 Months';
+['11','Window Start'] = -48;
+['11','Window End'] = -1;
+['11','Create Subset?'] = s:'Yes';
+['11','Create Hierarchy?'] = s:'Yes';
+
+FEEDERS;
+#['Subset Name'] => ['Window Start'],['Window End'];

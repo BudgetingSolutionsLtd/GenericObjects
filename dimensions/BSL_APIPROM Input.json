@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"BSL_APIPROM Input",
+	"Hierarchies@Code.links":
+	[
+		"BSL_APIPROM Input.hierarchies/BSL_APIPROM Input.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('BSL_APIPROM Input')/Hierarchies('BSL_APIPROM Input')"
+	}
+}
